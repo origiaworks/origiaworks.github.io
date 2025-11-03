@@ -66,41 +66,40 @@
             <p>&copy; 2023 ORIGIAWORKS All Rights Reserved.</p>
         </div>
     </footer>
-
-</body>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script type="text/javascript">
-    (function(){
-        // EmailJSの初期化
-        emailjs.init({
-          publicKey: 'aYL364IgikU4yPKdE', // EmailJSの 'Account' -> 'API Keys' から Public Key をコピー
-        });
-    })();
-
-    document.getElementById('deletion-form').addEventListener('submit', function(event) {
-        event.preventDefault(); // デフォルトのフォーム送信をキャンセル
-
-        const submitBtn = document.getElementById('submit-btn');
-        const formMessage = document.getElementById('form-message');
-        submitBtn.disabled = true;
-        submitBtn.textContent = '送信中...';
-
-        // EmailJSでメールを送信
-        emailjs.sendForm('service_xeoggyw', 'template_j2efsli', this)
-            .then(function() {
-                console.log('SUCCESS!');
-                formMessage.style.color = 'green';
-                formMessage.textContent = '送信が完了しました。内容を確認の上、対応いたします。';
-                document.getElementById('deletion-form').reset(); // フォームをリセット
-                submitBtn.disabled = false;
-                submitBtn.textContent = '送信する';
-            }, function(error) {
-                console.log('FAILED...', error);
-                formMessage.style.color = 'red';
-                formMessage.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
-                submitBtn.disabled = false;
-                submitBtn.textContent = '送信する';
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            // EmailJSの初期化
+            emailjs.init({
+            publicKey: 'aYL364IgikU4yPKdE', // EmailJSの 'Account' -> 'API Keys' から Public Key をコピー
             });
-    });
-</script>
+        })();
+
+        document.getElementById('deletion-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // デフォルトのフォーム送信をキャンセル
+
+            const submitBtn = document.getElementById('submit-btn');
+            const formMessage = document.getElementById('form-message');
+            submitBtn.disabled = true;
+            submitBtn.textContent = '送信中...';
+
+            // EmailJSでメールを送信
+            emailjs.sendForm('service_xeoggyw', 'template_j2efsli', this)
+                .then(function() {
+                    console.log('SUCCESS!');
+                    formMessage.style.color = 'green';
+                    formMessage.textContent = '送信が完了しました。内容を確認の上、対応いたします。';
+                    document.getElementById('deletion-form').reset(); // フォームをリセット
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = '送信する';
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    formMessage.style.color = 'red';
+                    formMessage.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = '送信する';
+                });
+        });
+    </script>
+</body>
 </html>
