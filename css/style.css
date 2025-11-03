@@ -1,149 +1,86 @@
-/* 全体的な設定 */
-body {
-    font-family: sans-serif;
-    margin: 0;
-    color: #333;
-    background-color: #f9f9f9;
-}
+/* ===================================
+   レスポンシブ対応 (スマホ用スタイル)
+   画面幅が768px以下の場合に適用
+   =================================== */
+@media (max-width: 768px) {
 
-.container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+    /* --- 全体的な調整 --- */
+    .container {
+        padding: 0 15px; /* スマホでは左右の余白を少し狭く */
+    }
 
-/* ヘッダー */
-header {
-    background-color: #fff;
-    padding: 20px 0;
-    border-bottom: 1px solid #ddd;
-}
-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #333;
-}
-nav ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-}
-nav li {
-    margin-left: 20px;
-}
-nav a {
-    text-decoration: none;
-    color: #555;
-    font-weight: bold;
-}
-nav a:hover {
-    color: #007bff;
-}
+    h1 {
+        font-size: 28px; /* 見出しを少し小さく */
+    }
+    h2 {
+        font-size: 24px;
+    }
 
-/* メインコンテンツ */
-main {
-    padding: 40px 0;
-}
-h1 {
-    font-size: 36px;
-    border-bottom: 2px solid #007bff;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-}
-h2 {
-    font-size: 28px;
-    color: #333;
-}
+    /* --- ヘッダーのナビゲーション --- */
+    header .container {
+        flex-direction: column; /* ロゴとナビを縦積みに */
+    }
+    .logo {
+        margin-bottom: 15px; /* ロゴの下に余白 */
+    }
+    nav ul {
+        flex-direction: column; /* ナビメニューを縦積みに */
+        align-items: center; /* 中央揃えに */
+    }
+    nav li {
+        margin-left: 0;
+        margin-bottom: 10px; /* 各メニューの間に余白 */
+    }
 
-/* Topページ用 */
-.hero {
-    position: relative;
-    text-align: center;
-    color: white;
-}
-.hero img {
-    width: 100%;
-    object-fit: cover; 
-    display: block;
-}
-.hero-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.5); /* 文字を見やすくするための背景 */
-    padding: 20px;
-    border-radius: 5px;
-}
-.message {
-    padding: 40px 0;
-    text-align: center;
-}
+    /* --- Topページのヒーローイメージ --- */
+    .hero img {
+        height: 300px; /* スマホでは高さを少し抑える */
+    }
+    .hero-text h1 {
+        font-size: 24px; /* キャッチコピーの文字サイズを調整 */
+    }
+    .hero-text p {
+        font-size: 14px;
+    }
 
-/* Aboutページ用 */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-th, td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: left;
-}
-th {
-    background-color: #f2f2f2;
-    width: 30%;
-}
+    /* --- Aboutページの会社概要テーブル --- */
+    table, thead, tbody, th, td, tr {
+        display: block; /* テーブルの表示をブロック要素に変更 */
+    }
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px; /* 見出し行は非表示に */
+    }
+    tr {
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+    }
+    td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%; /* 左側にスペースを空ける */
+        text-align: left;
+    }
+    td:before {
+        /* thの内容をtdの左側に表示する */
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+    }
+    /* 各行のtdに、対応するthのテキストをセットする */
+    td:nth-of-type(1):before { content: "会社名"; }
+    td:nth-of-type(2):before { content: "設立"; }
+    td:nth-of-type(3):before { content: "代表者"; }
+    td:nth-of-type(4):before { content: "事業内容"; }
+    /* ※もしテーブルの行が増えたら、ここも追加が必要です */
 
-/* フッター */
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 40px;
-}
-
-/* フッターの区切り記号 */
-.footer-nav span {
-    color: #fff; /* 記号の色を白に */
-    margin: 0 10px; /* 記号の左右に少し余白 */
-}
-
-/* フォーム用のスタイル */
-.form-group {
-    margin-bottom: 20px;
-}
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-.form-group input,
-.form-group select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; /* paddingを含めてwidth 100%にする */
-}
-button[type="submit"] {
-    background-color: #007bff;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-}
-button[type="submit"]:hover {
-    background-color: #0056b3;
-}
+    /* --- フッター --- */
+    .footer-nav {
+        display: flex;
+        flex-directi
