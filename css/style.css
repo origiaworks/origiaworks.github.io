@@ -170,72 +170,39 @@ button[type="submit"]:hover {
 }
 
 /* ===================================
-   スマホ表示のための最小限の調整
-   =================================== */
-@media (max-width: 768px) {
-
-    /* ヘッダー: 横に並びきらないので、ロゴとナビを縦に並べます */
-    header .container {
-        flex-direction: column; /* 縦並びにする */
-    }
-    .logo {
-        margin-bottom: 15px; /* ロゴの下に少し余白 */
-    }
-    nav li {
-        margin-left: 15px; /* メニュー間の余白を少し調整 */
-    }
-
-
-    /* テーブル: 画面からはみ出てしまうので、文字を小さくして収めます */
-    table {
-        font-size: 12px;
-    }
-    th, td {
-        padding: 8px; /* セルの余白を少し詰めます */
-    }
-
-    /* フッター: 横に並びきらないので、リンクを縦に並べます */
-    .footer-nav {
-        display: flex; /* ← display:flex を指定 */
-        flex-direction: column; /* 縦並びにする */
-        gap: 10px; /* リンクの間に少し隙間を空ける */
-        margin-bottom: 15px; /* ← コピーライトとの間に余白 */
-    }
-    .footer-nav span {
-        display: none; /* 区切り文字「|」は縦並びだと不要なので消します */
-    }
-/* ===================================
    ヘッダーのSNSアイコン用スタイル
    =================================== */
 
 /* --- PC表示用のスタイル --- */
 header .container {
-    gap: 20px; /* ナビとアイコンの間に隙間を作る */
+    gap: 20px;
 }
 
 .sns-links {
     display: flex;
     align-items: center;
-    gap: 15px; /* アイコンとアイコンの間の隙間 */
+    gap: 15px;
 }
 
 .sns-links a {
-    color: #333; /* アイコンの基本色 */
-    transition: color 0.3s ease; /* 色が変わる際のアニメーション */
+    color: #555; /* アイコンの基本色を少し薄めに */
+    transition: all 0.2s ease-in-out; /* 色とサイズ変更のアニメーション */
 }
 
 .sns-links a:hover {
     color: #007bff; /* マウスを乗せた時の色 */
+    transform: scale(1.1); /* マウスを乗せた時に少しだけ拡大 */
 }
 
 .sns-links svg {
-    display: block; /* SVGの下にできる余白をなくす */
+    display: block;
 }
 
 /* --- スマホ表示用のスタイル --- */
 @media (max-width: 768px) {
     .sns-links {
-        margin-top: 15px; /* ナビメニューとの間に余白を作る */
+        margin-top: 15px;
     }
 }
 }
+
