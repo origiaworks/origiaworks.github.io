@@ -204,5 +204,37 @@ button[type="submit"]:hover {
     .footer-nav span {
         display: none; /* 区切り文字「|」は縦並びだと不要なので消します */
     }
+/* ===================================
+   ヘッダーのSNSアイコン用スタイル
+   =================================== */
 
+/* --- PC表示用のスタイル --- */
+header .container {
+    gap: 20px; /* ナビとアイコンの間に隙間を作る */
+}
+
+.sns-links {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* アイコンとアイコンの間の隙間 */
+}
+
+.sns-links a {
+    color: #333; /* アイコンの基本色 */
+    transition: color 0.3s ease; /* 色が変わる際のアニメーション */
+}
+
+.sns-links a:hover {
+    color: #007bff; /* マウスを乗せた時の色 */
+}
+
+.sns-links svg {
+    display: block; /* SVGの下にできる余白をなくす */
+}
+
+/* --- スマホ表示用のスタイル --- */
+@media (max-width: 768px) {
+    .sns-links {
+        margin-top: 15px; /* ナビメニューとの間に余白を作る */
+    }
 }
