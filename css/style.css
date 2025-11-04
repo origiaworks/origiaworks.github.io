@@ -208,4 +208,14 @@ footer {
     nav li {
         margin-left: 15px;
     }
+
+        /* フッターナビゲーションを縦並びに変更 */
+    .footer-nav ul {
+        flex-direction: column; /* flexの方向を縦にする */
+        align-items: center;    /* 中央揃えにする */
+    }
+
+    .footer-nav li {
+        margin: 10px 0; /* 各メニュー項目の上下に余白を作る */
+    }
 }
