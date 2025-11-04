@@ -168,12 +168,20 @@ footer {
         margin-right: 15px; /* 左右の余白を均等に */
     }
 
-    /* フッターナビゲーションを縦並びに変更 */
+    /* --- フッターナビゲーションを完全に縦並び（左揃え）に変更 --- */
     .footer-nav ul {
         flex-direction: column;
-        align-items: center;
+        /* 各項目を中央ではなく、左端にそろえる */
+        align-items: flex-start; 
+
+        /* 【補足】リスト全体を中央に配置しつつ、文字は左揃えにするテクニック */
+        width: fit-content; /* リストの幅を、中身の一番長いテキストに合わせる */
+        margin-left: auto;
+        margin-right: auto;
     }
+
     .footer-nav li {
         margin: 10px 0; /* 上下の余白に変更 */
     }
 }
+
