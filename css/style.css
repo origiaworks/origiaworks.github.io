@@ -135,3 +135,97 @@ footer {
 .footer-nav span {
     color
 }
+
+/* --- ハンバーガーメニュー用のCSS --- */
+
+/* ボタンの基本スタイル */
+#hamburger-btn {
+    display: none; /* PCでは非表示 */
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 100; /* メニューより手前に表示 */
+}
+
+#hamburger-btn span {
+    display: block;
+    position: absolute;
+    left: 5px;
+    width: 30px;
+    height: 2px;
+    background-color: #333;
+    transition: all 0.3s;
+}
+
+#hamburger-btn span:nth-of-type(1) {
+    top: 10px;
+}
+#hamburger-btn span:nth-of-type(2) {
+    top: 19px;
+}
+#hamburger-btn span:nth-of-type(3) {
+    bottom: 10px;
+}
+
+/* ボタンが active になった時（×印にする） */
+#hamburger-btn.active span:nth-of-type(1) {
+    top: 19px;
+    transform: rotate(45deg);
+}
+#hamburger-btn.active span:nth-of-type(2) {
+    opacity: 0;
+}
+#hamburger-btn.active span:nth-of-type(3) {
+    top: 19px;
+    transform: rotate(-45deg);
+}
+
+/* --- スマホ表示用のスタイル (768px以下で適用) --- */
+@media screen and (max-width: 768px) {
+    
+    /* PC用のメニューを非表示に */
+    nav ul {
+        display: none;
+    }
+
+    /* ハンバーガーボタンを表示 */
+    #hamburger-btn {
+        display: block;
+    }
+
+    /* ナビゲーション全体の位置とスタイル */
+    #gnav {
+        /* 最初は画面の外に隠しておく */
+        position: fixed;
+        top: 0;
+        right: -100%; /* 画面右外に配置 */
+        width: 70%;   /* 画面幅の70% */
+        height: 100vh; /* 画面全体の高さ */
+        background-color: rgba(255, 255, 255, 0.95);
+        transition: right 0.5s;
+        z-index: 50;
+    }
+    
+    /* activeクラスが付いた時にメニューを表示 */
+    #gnav.active {
+        right: 0; /* 右外からスライドイン */
+    }
+
+    /* メニュー項目を縦並びに */
+    #gnav ul {
+        display: flex;
+        flex-direction: column; /* 縦並びに変更 */
+        align-items: center;
+        padding-top: 80px;
+    }
+    #gnav li {
+        margin-left: 0;
+        padding: 20px 0;
+        width: 100%;
+        text-align: center;
+    }
+}
+
