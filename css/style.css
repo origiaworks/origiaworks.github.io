@@ -209,13 +209,19 @@ footer {
         margin-left: 15px;
     }
 
-        /* フッターナビゲーションを縦並びに変更 */
-    .footer-nav ul {
+    /* フッターナビゲーションを縦並びに変更 */
+    .footer-nav {
         flex-direction: column; /* flexの方向を縦にする */
-        align-items: center;    /* 中央揃えにする */
     }
 
-    .footer-nav li {
-        margin: 10px 0; /* 各メニュー項目の上下に余白を作る */
+    /* 各リンクの上下に余白を設ける */
+    .footer-nav a {
+        margin: 10px 0;
+    }
+    
+    /* 縦並びの時は区切り線「|」を非表示にする */
+    .footer-nav span {
+        display: none;
     }
 }
+
