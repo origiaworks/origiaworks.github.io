@@ -183,49 +183,29 @@ footer {
     transform: rotate(-45deg);
 }
 
-/* --- スマホ表示用のスタイル (768px以下で適用) --- */
+/* --- ここからスマホ用のスタイルを追加 --- */
+
+/* 画面の幅が768px以下の場合に適用される */
 @media screen and (max-width: 768px) {
     
-    /* PC用のメニューを非表示に */
+    /* ヘッダー内の要素（ロゴとナビ）を縦並びに変更 */
+    header .container {
+        flex-direction: column;
+    }
+
+    /* ロゴの下に少しスペースを空ける */
+    .logo {
+        margin-bottom: 15px;
+    }
+
+    /* ナビゲーションメニューを中央揃えにする */
     nav ul {
-        display: none;
-    }
-
-    /* ハンバーガーボタンを表示 */
-    #hamburger-btn {
-        display: block;
-    }
-
-    /* ナビゲーション全体の位置とスタイル */
-    #gnav {
-        /* 最初は画面の外に隠しておく */
-        position: fixed;
-        top: 0;
-        right: -100%; /* 画面右外に配置 */
-        width: 70%;   /* 画面幅の70% */
-        height: 100vh; /* 画面全体の高さ */
-        background-color: rgba(255, 255, 255, 0.95);
-        transition: right 0.5s;
-        z-index: 50;
+        justify-content: center;
+        width: 100%; /* 中央揃えのために幅を確保 */
     }
     
-    /* activeクラスが付いた時にメニューを表示 */
-    #gnav.active {
-        right: 0; /* 右外からスライドイン */
-    }
-
-    /* メニュー項目を縦並びに */
-    #gnav ul {
-        display: flex;
-        flex-direction: column; /* 縦並びに変更 */
-        align-items: center;
-        padding-top: 80px;
-    }
-    #gnav li {
-        margin-left: 0;
-        padding: 20px 0;
-        width: 100%;
-        text-align: center;
+    /* メニュー項目の左側の余白を少し調整（お好みで） */
+    nav li {
+        margin-left: 15px;
     }
 }
-
