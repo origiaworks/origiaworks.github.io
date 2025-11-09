@@ -36,6 +36,12 @@ header .container {
     text-decoration: none;
     color: #333;
 }
+/* ヘッダーのロゴ画像 */
+.logo img {
+  height: 50px; /* ここで表示したい高さを指定します */
+  width: auto;  /* 横幅は高さに合わせて自動で調整されます */
+  vertical-align: middle; /* メニューの文字と高さを揃えるために指定 */
+}
 nav ul {
     margin: 0;
     padding: 0;
@@ -208,6 +214,7 @@ footer {
         margin: 10px 0; /* ★スマホ: 上下の余白に変更 */
     }
 }
+
 
 
 
