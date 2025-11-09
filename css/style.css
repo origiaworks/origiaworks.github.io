@@ -17,6 +17,7 @@ body {
   text-align: right; /* テキストを右寄せにする */
   line-height: 1.8;  /* 本文と行間を合わせる */
   box-sizing: border-box; /* 【念のため追記】padding等があっても幅が100%を超えないようにする */
+  font-family: "Yuji Syuku", serif;
 }
 /* ヘッダー */
 header {
@@ -207,6 +208,7 @@ footer {
         margin: 10px 0; /* ★スマホ: 上下の余白に変更 */
     }
 }
+
 
 
 
