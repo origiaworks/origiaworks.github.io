@@ -13,8 +13,10 @@ body {
 }
 /* 署名 */
 .signature {
+  width: 100%;       /* 【追記】幅を親要素いっぱいに広げる */
   text-align: right; /* テキストを右寄せにする */
   line-height: 1.8;  /* 本文と行間を合わせる */
+  box-sizing: border-box; /* 【念のため追記】padding等があっても幅が100%を超えないようにする */
 }
 /* ヘッダー */
 header {
@@ -205,6 +207,7 @@ footer {
         margin: 10px 0; /* ★スマホ: 上下の余白に変更 */
     }
 }
+
 
 
 
