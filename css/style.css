@@ -11,7 +11,11 @@ body {
     margin: 0 auto;
     padding: 0 20px;
 }
-
+/* 署名 */
+.signature {
+  text-align: right; /* テキストを右寄せにする */
+  line-height: 1.8;  /* 本文と行間を合わせる */
+}
 /* ヘッダー */
 header {
     background-color: #fff;
@@ -201,6 +205,7 @@ footer {
         margin: 10px 0; /* ★スマホ: 上下の余白に変更 */
     }
 }
+
 
 
 
