@@ -3,131 +3,282 @@
 /* ============================================= */
 *, *::before, *::after {
     box-sizing: border-box;
+/* 全体的な設定 */
+body {
+font-family: sans-serif;
+margin: 0;
+color: #333;
+background-color: #f9f9f9;
 }
 
 body {
-    font-family: sans-serif; /* ← お好みのフォントファミリーに戻してください */
+    font-family: sans-serif;
     margin: 0;
-    color: #333;
-    background-color: #f9f9f9;
+.container {
+max-width: 960px;
+margin: 0 auto;
+padding: 0 20px;
+}
+/* 署名 */
+.signature {
+width: 100%;       /* 【追記】幅を親要素いっぱいに広げる */
+text-align: right; /* テキストを右寄せにする */
+line-height: 1.8;  /* 本文と行間を合わせる */
+box-sizing: border-box; /* 【念のため追記】padding等があっても幅が100%を超えないようにする */
+  font-family: "Zen Kurenaido", cursive;
+  font-family: "Yuji Syuku", serif;
+}
+/* ヘッダー */
+header {
+background-color: #fff;
+padding: 20px 0;
+border-bottom: 1px solid #ddd;
+}
+header .container {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.logo {
+font-size: 24px;
+font-weight: bold;
+text-decoration: none;
+color: #333;
+}
+/* ヘッダーのロゴ画像 */
+.logo img {
+height: 50px; /* ここで表示したい高さを指定します */
+width: auto;  /* 横幅は高さに合わせて自動で調整されます */
+vertical-align: middle; /* メニューの文字と高さを揃えるために指定 */
+}
+nav ul {
+margin: 0;
+padding: 0;
+list-style: none;
+display: flex;
+}
+nav li {
+margin-left: 20px;
+}
+nav a {
+text-decoration: none;
+color: #555;
+font-weight: bold;
+}
+nav a:hover {
+color: #007bff;
 }
 
 ul {
     list-style: none;
     padding: 0;
     margin: 0;
+/* メインコンテンツ */
+main {
+padding: 40px 0;
 }
-
-a {
-    text-decoration: none;
-    color: inherit;
+h1 {
+font-size: 36px;
+border-bottom: 2px solid #007bff;
+padding-bottom: 10px;
+margin-bottom: 20px;
+}
+h2 {
+font-size: 28px;
+color: #333;
 }
 
 img {
     max-width: 100%;
     height: auto;
     display: block;
+/* Topページ用 */
+.hero {
+position: relative;
+text-align: center;
+color: white;
+}
+.hero img {
+width: 100%;
+object-fit: cover; 
+display: block;
+}
+.hero-text {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color: rgba(0, 0, 0, 0.5);
+padding: 20px;
+border-radius: 5px;
+width: 90%;
+max-width: 800px;
+box-sizing: border-box;
+}
+.hero-text h1 {
+font-size: clamp(24px, 6vw, 48px);
+line-height: 1.3;
+border-bottom: none;
+padding-bottom: 0;
+margin-bottom: 10px;
+}
+.hero-text p {
+font-size: clamp(14px, 2.5vw, 20px);
+margin: 0;
+}
+.message {
+padding: 40px 0;
+text-align: center;
 }
 
 /* ============================================= */
-/* --- ヘッダーのレイアウト（PC用） --- */
+/* --- ヘッダー専用スタイル --- */
 /* ============================================= */
+/* Aboutページ用 */
+table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 20px;
+}
+th, td {
+border: 1px solid #ddd;
+padding: 12px;
+text-align: left;
+}
+th {
+background-color: #f2f2f2;
+width: 30%;
+}
 
+/* ヘッダー全体 */
 header {
     background-color: #fff;
+    padding: 20px 0;
     border-bottom: 1px solid #ddd;
+/* フッター */
+footer {
+background-color: #333;
+color: #fff;
+text-align: center;
+padding: 20px 0;
+margin-top: 40px;
 }
 
+/* ヘッダー内のコンテンツを囲むコンテナ */
 header .container {
-    display: flex;
-    align-items: center;
-    
     max-width: 1100px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0 20px;
+    /* ↓【重要】ロゴとナビゲーションを横並びにする */
+    display: flex;
+    justify-content: space-between; /* 両端に配置 */
+    align-items: center; /* 上下中央揃え */
+/* --- フッターナビゲーションのスタイル (PC用) --- */
+.footer-nav ul {
+display: flex;
+justify-content: center; /* ★PC: 横方向に中央揃え */
+flex-wrap: wrap;
+list-style: none;
+padding: 0;
+margin: 0 0 15px 0;
 }
 
+.footer-nav li {
+margin: 0 15px; /* ★PC: 左右の余白 */
+}
+
+/* ロゴ画像 */
 header .logo {
-    height: 50px;
-    /* ロゴが縮まないようにする設定 */
-    flex-shrink: 0;
+    height: 50px; /* ロゴの高さを指定 */
+.footer-nav a {
+color: #fff;
+text-decoration: none;
 }
 
+/* ナビゲーション全体（文字メニューとSNSアイコンを囲む） */
 nav {
-    margin-left: auto;
-}
-
-nav ul {
+    /* ↓【重要】中の要素（文字メニューとSNSアイコン）を縦に並べる */
     display: flex;
-    gap: 30px;
+    flex-direction: column;
+    align-items: flex-end; /* 全体を右端に寄せる */
+.footer-nav a:hover {
+text-decoration: underline;
 }
 
-nav a {
+/* 文字メニューのリスト(ul) */
+nav > ul {
+    display: flex; /* メニュー項目を横並びに */
+    gap: 25px; /* メニュー項目の間隔 */
+/* ============================================= */
+/* --- スマホ用のスタイル --- */
+/* 画面の幅が768px以下の場合に適用される */
+/* ============================================= */
+@media screen and (max-width: 768px) {
+/* 全ページのh1タグのサイズを調整 */
+h1 {
+font-size: 28px; /* ←ここの数値を調整して最適なサイズを探してください */
+line-height: 1.4; /* 行間も少し詰めると見やすい場合があります */
+}
+
+/* 全ページのh2タグのサイズを調整 */
+h2 {
+font-size: 22px; /* h2も大きければ調整 */
+}
+
+nav > ul a {
+    text-decoration: none;
+    color: #333;
     font-weight: bold;
+/* トップページのキャッチコピー部分だけ、さらに細かく調整する場合 */
+.hero-text h1 {
+font-size: 32px; /* トップページのh1は他より少し大きくてもOK */
+line-height: 1.5;
 }
 
-nav a:hover {
-    color: #007bff;
-}
-
+/* SNSアイコンのエリア */
 .social-icons {
-    margin-left: 40px;
+    margin-top: 10px; /* 上の文字メニューとの間に余白 */
+/* ご挨拶セクションの段落の文字サイズなど */
+.message p {
+font-size: 15px;
+}
+/* ヘッダーを縦並びに変更 */
+header .container {
+flex-direction: column;
+}
+.logo {
+margin-bottom: 15px;
+}
+nav ul {
+justify-content: center;
+width: 100%;
+}
+nav li {
+margin-left: 15px;
+margin-right: 15px; /* 左右の余白を均等に */
 }
 
+/* SNSアイコンのリスト(ul) */
 .social-icons ul {
-    display: flex;
-    gap: 15px;
+    display: flex; /* アイコンを横並びに */
+    gap: 15px; /* アイコン同士の間隔 */
+/* --- フッターナビゲーションを縦並びに変更 --- */
+.footer-nav ul {
+flex-direction: column; /* ★スマホ: 縦並びに変更 */
+align-items: center;    /* ★スマホ: 縦になったものを中央に揃える */
 }
 
 .social-icons img {
     width: 32px;
     height: 32px;
+.footer-nav li {
+margin: 10px 0; /* ★スマホ: 上下の余白に変更 */
 }
-
-.social-icons img:hover {
-    opacity: 0.7;
-}
-
-/* ============================================= */
-/* --- スマホ用のスタイル (画面幅が768px以下で適用) --- */
-/* ============================================= */
-@media screen and (max-width: 768px) {
-    
-    header .container {
-        /* ロゴとメニュー全体を縦並びに変更 */
-        flex-direction: column;
-        gap: 20px; /* ロゴとメニューの間の余白 */
-    }
-
-    /* 文字メニューとSNSアイコンを中央寄せに */
-    nav {
-        margin-left: 0; /* 右寄せ指定を解除 */
-        order: 2;       /* SNSアイコンより下に表示 */
-    }
-
-    .social-icons {
-        margin-left: 0; /* 右寄せ指定を解除 */
-        order: 1;       /* 文字メニューより上に表示 */
-    }
-
-    /* メニューやアイコンの隙間を少し詰める */
-    nav ul {
-        gap: 20px;
-        justify-content: center; /* 中央寄せ */
-    }
-    .social-icons ul {
-        gap: 20px;
-        justify-content: center; /* 中央寄せ */
-    }
 }
 
 
-/* ============================================= */
-/* --- メインコンテンツ以下のスタイル（既存のもの） --- */
-/* ここから下は、お客様の既存のCSSを貼り付けてください */
-/* ============================================= */
 
-/* main { ... } */
-/* .hero { ... } */
-/* footer { ... } */
-/* など... */
+
+
+
+
