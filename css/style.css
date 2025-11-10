@@ -24,29 +24,28 @@ body {
 /* ヘッダー */
 header {
     background-color: #fff;
-    padding: 20px 0 0 0; /* 下のパディングを削除 */
+    padding: 20px 0;
     border-bottom: 1px solid #ddd;
 }
 
-/* ★変更点：セレクタをより具体的に指定 */
-.header-main.container {
+/* ★変更点：ヘッダー全体のレイアウト */
+.header-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* ロゴを左、残りを右に配置 */
     align-items: center;
-    padding-bottom: 20px; /* 元のheaderのpadding-bottomをここに移動 */
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #333;
 }
 
 .logo img {
     height: 50px;
     width: auto;
     vertical-align: middle;
+}
+
+/* ★変更点：右側の要素のレイアウト */
+.header-right {
+    display: flex;
+    flex-direction: column; /* ナビとSNSアイコンを縦に並べる */
+    align-items: flex-end;  /* 右寄せにする */
 }
 
 nav ul {
@@ -68,6 +67,24 @@ nav a {
 
 nav a:hover {
     color: #007bff;
+}
+
+/* ★変更点：ヘッダーSNSアイコンのスタイル */
+.social-icons-header {
+    display: flex;
+    gap: 12px; /* アイコン間の隙間 */
+    margin-top: 10px; /* 上のナビメニューとの隙間 */
+}
+
+.social-icons-header img {
+    width: 28px;
+    height: 28px;
+    display: block;
+    transition: opacity 0.3s;
+}
+
+.social-icons-header img:hover {
+    opacity: 0.7;
 }
 
 /* メインコンテンツ */
@@ -93,13 +110,11 @@ h2 {
     text-align: center;
     color: white;
 }
-
 .hero img {
     width: 100%;
-    object-fit: cover;
+    object-fit: cover; 
     display: block;
 }
-
 .hero-text {
     position: absolute;
     top: 50%;
@@ -112,7 +127,6 @@ h2 {
     max-width: 800px;
     box-sizing: border-box;
 }
-
 .hero-text h1 {
     font-size: clamp(24px, 6vw, 48px);
     line-height: 1.3;
@@ -120,12 +134,10 @@ h2 {
     padding-bottom: 0;
     margin-bottom: 10px;
 }
-
 .hero-text p {
     font-size: clamp(14px, 2.5vw, 20px);
     margin: 0;
 }
-
 .message {
     padding: 40px 0;
     text-align: center;
@@ -137,13 +149,11 @@ table {
     border-collapse: collapse;
     margin-top: 20px;
 }
-
 th, td {
     border: 1px solid #ddd;
     padding: 12px;
     text-align: left;
 }
-
 th {
     background-color: #f2f2f2;
     width: 30%;
@@ -166,16 +176,13 @@ footer {
     padding: 0;
     margin: 0 0 15px 0;
 }
-
 .footer-nav li {
     margin: 0 15px;
 }
-
 .footer-nav a {
     color: #fff;
     text-decoration: none;
 }
-
 .footer-nav a:hover {
     text-decoration: underline;
 }
@@ -184,50 +191,19 @@ footer {
 .social-icons {
     margin-top: 12px;
 }
-
 .social-icons ul {
     display: flex;
     gap: 15px;
 }
-
 .social-icons img {
     width: 32px;
     height: 32px;
     display: block;
     transition: opacity 0.3s;
 }
-
 .social-icons img:hover {
     opacity: 0.7;
 }
-
-
-/* --- 【ここから追加】ヘッダーのSNSアイコン --- */
-.social-icons-header {
-    background-color: #fff;
-    padding: 10px 0;
-    border-top: 1px solid #eee;
-}
-
-.social-icons-header .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-}
-
-.social-icons-header img {
-    width: 32px;
-    height: 32px;
-    display: block;
-    transition: opacity 0.3s;
-}
-
-.social-icons-header img:hover {
-    opacity: 0.7;
-}
-/* --- 【ここまで追加】 --- */
-
 
 /* ============================================= */
 /* --- スマホ用のスタイル (768px以下) --- */
@@ -237,57 +213,41 @@ footer {
         font-size: 28px;
         line-height: 1.4;
     }
-
     h2 {
         font-size: 22px;
     }
-
     .hero-text h1 {
         font-size: 32px;
         line-height: 1.5;
     }
-
     .message p {
         font-size: 15px;
     }
 
-    /* ★変更点：ヘッダーのロゴとナビを縦並びに */
-    .header-main.container {
-        flex-direction: column;
+    /* ★変更点：スマホでのヘッダーレイアウト */
+    .header-container {
+        flex-direction: column; /* 全体を縦並びに */
     }
-
     .logo {
-        margin-bottom: 15px;
+        margin-bottom: 20px; /* ロゴと下の要素の間に余白 */
     }
-
+    .header-right {
+        align-items: center; /* ナビとSNSアイコンを中央揃えに */
+    }
     nav ul {
         justify-content: center;
         width: 100%;
     }
-
     nav li {
-        margin-left: 15px;
-        margin-right: 15px;
+        margin-left: 10px;
+        margin-right: 10px;
     }
-    
-    /* --- 【ここから追加】ヘッダーSNSアイコンのスマホ調整 --- */
-    .social-icons-header .container {
-        gap: 15px; /* アイコンの隙間を少し詰める */
-    }
-
-    .social-icons-header img {
-        width: 28px;  /* アイコンを少し小さくする */
-        height: 28px;
-    }
-    /* --- 【ここまで追加】 --- */
-
 
     /* フッターナビゲーションを縦並びに変更 */
     .footer-nav ul {
         flex-direction: column;
         align-items: center;
     }
-
     .footer-nav li {
         margin: 10px 0;
     }
