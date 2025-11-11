@@ -73,7 +73,7 @@ nav a:hover {
 .social-icons-header {
     display: flex;
     gap: 12px; /* アイコン間の隙間 */
-    margin-top: 10px; /* 上のナビメニューとの隙間 */
+    margin-top: 15px; /* ← ここの数値を 10px から 15px に変更 */
 }
 
 .social-icons-header img {
@@ -252,3 +252,4 @@ footer {
         margin: 10px 0;
     }
 }
+
