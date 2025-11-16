@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline' 'unsafe-eval';">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ORIGIAWORKS - Data Deletion Request</title>
     <link rel="stylesheet" href="css/style.css">
@@ -18,39 +17,16 @@
             アプリケーションのユーザーアカウントおよび関連データを削除する際は、以下のフォームより送信してください。<br>
             一度削除したデータは元に戻せませんのでご注意ください。
         </p>
-
-        <form id="deletion-form">
-            <div class="form-group">
-                <label for="app_name">対象のアプリ名</label>
-                <input type="text" id="app_name" name="app_name" required>
-            </div>
-
-            <div class="form-group">
-                <label for="user_id">ユーザーID</label>
-                <input type="text" id="user_id" name="user_id" required>
-            </div>
-
-            <div class="form-group">
-                <label for="user_email">連絡用メールアドレス</label>
-                <input type="email" id="user_email" name="user_email" required>
-            </div>
-
-            <button type="submit" id="submit-btn">送信する</button>
-        </form>
-
-        <div id="form-message" style="margin-top: 15px;"></div>
     </div>
 </main>
 
 <footer id="footer-placeholder"></footer>
-
-<!-- EmailJSライブラリ -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
+    
 <!-- 外部スクリプト -->
 <script src="js/deletion.js"></script>
 
 </body>
 </html>
+
 
 
