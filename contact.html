@@ -9,25 +9,53 @@
 <body>
     <!-- ヘッダー（全ページ共通） -->
     <header id="header-placeholder"></header>
-
-    <!-- ここからが各ページ固有のコンテンツ -->
+    
+    <!-- ここからが各ページ固有のコンテンツ --><!-- index.html の <main> の中身 -->
     <main>
-    <div class="container">
-        <h1>Contact Us</h1>
-        <p>お問い合わせは、以下のメールアドレスまでお願いいたします。</p>
+    <h2>Contact Us<br>（お問い合わせ）</h2>    
+    <!-- 
+      重要: この方法は JavaScript を使用して動的に mailto リンクを生成します。
+      HTMLの form action="mailto:..." は非推奨（POSTメソッドが使えない）ため、
+      JavaScript で入力値を取得してリンクに変換します。
+    -->
 
-        <div class="contact-info">
-            <!-- ↓ここを修正しました -->
-            <p><strong>メールアドレス:</strong> <a href="mailto:origia000@gmail.com">origia000@gmail.com</a></p>
-        </div>
+    <div class="form-group">
+        <label for="contact_subject">件名：</label>
+        <input type="text" id="contact_subject" required>
     </div>
+    
+    <div class="form-group">        
+    <label for="details">お問い合わせ内容：</label>
+    <textarea 
+        id="details" 
+        name="details" 
+        rows="8" 
+        cols="60"
+        placeholder="具体的な内容をご記入ください。"
+        required
+    ></textarea>
+    </div>
+
+        <!--
+    <div class="form-group">
+        <label for="email_addr">メールアドレス：</label>
+        <input type="email" id="email_addr" required>
+    </div>
+    --!>
+        
+    <!-- 送信ボタンをクリックしたときに JavaScript 関数を実行 -->
+    <button onclick="deletionSendMail()">メールクライアントを起動して送信</button>
     </main>
     <!-- ここまでが各ページ固有のコンテンツ -->
 
     <!-- フッター（全ページ共通） -->
     <footer id="footer-placeholder"></footer>
-    <script src="/js/main.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- データ削除処理用JavaScriptファイルを読み込む -->
+    <script src="js/deletion_mailsend.js"></script>
 </body>
 
 </html>
+
 
