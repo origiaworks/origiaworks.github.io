@@ -3,8 +3,8 @@ function contactSendMail() {
     const details = document.getElementById('details').value;
 
     // バリデーション（簡単な入力チェック）
-    if (!appName || !userId) {
-        alert("全ての項目を入力してください。");
+    if (!details) {
+        alert("お問い合わせ内容を入力してください。");
         return;
     }
 
