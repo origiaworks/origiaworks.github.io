@@ -5,7 +5,7 @@ function sendMail() {
     const emailAddr = document.getElementById('email_addr').value;
 
     // バリデーション（簡単な入力チェック）
-    if (!appName || !userId || !emailAddr) {
+    if (!appName || !userId) {
         alert("全ての項目を入力してください。");
         return;
     }
@@ -14,8 +14,7 @@ function sendMail() {
     // 改行は %0A （URLエンコードされた改行コード）を使用
     let body = "以下の情報でお問い合わせがありました。%0A%0A";
     body += "アプリ名: " + appName + "%0A";
-    body += "ユーザーID: " + userId + "%0A";
-    body += "メールアドレス: " + emailAddr + "%0A";
+    body += "ユーザーID: " + userId;
 
     // 宛先と件名（ここでは固定値）
     const to = "origia000@gmail.com"; // ★あなたのメールアドレスに変更してください
