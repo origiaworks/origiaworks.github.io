@@ -15,8 +15,8 @@
     <div class="container">
         <h1>データ削除依頼</h1>
         <p>
-            アプリケーションのユーザーアカウントおよび関連データを削除する場合は、以下のフォームにご記入の上送信してください。<br>
-            一度削除されたデータは復元できませんのでご注意ください。
+            アプリケーションのユーザーアカウントおよび関連データを削除する際は、以下のフォームより送信してください。<br>
+            一度削除したデータは元に戻せませんのでご注意ください。
         </p>
 
         <form id="deletion-form">
@@ -34,48 +34,21 @@
                 <label for="user_email">連絡用メールアドレス</label>
                 <input type="email" id="user_email" name="user_email" required>
             </div>
-            
+
             <button type="submit" id="submit-btn">送信する</button>
         </form>
+
         <div id="form-message" style="margin-top: 15px;"></div>
     </div>
 </main>
 
 <footer id="footer-placeholder"></footer>
 
+<!-- EmailJSライブラリ -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>
-// EmailJS 初期化
-emailjs.init({
-    publicKey: "lEActPSPkZVjo0og8"
-});
 
-// submit処理
-document.getElementById('deletion-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const submitBtn = document.getElementById('submit-btn');
-    const formMessage = document.getElementById('form-message');
-    submitBtn.disabled = true;
-    submitBtn.textContent = "送信中...";
-
-    emailjs.sendForm("service_xeoggyw", "template_hhzdo2m", this)
-    .then(() => {
-        formMessage.style.color = "green";
-        formMessage.textContent = "送信が完了しました。対応をお待ちください。";
-        this.reset();
-        submitBtn.disabled = false;
-        submitBtn.textContent = "送信する";
-    })
-    .catch(error => {
-        console.log(error);
-        formMessage.style.color = "red";
-        formMessage.textContent = "送信に失敗しました。時間をおいて再度お試しください。";
-        submitBtn.disabled = false;
-        submitBtn.textContent = "送信する";
-    });
-});
-</script>
+<!-- 外部スクリプト -->
+<script src="js/deletion.js"></script>
 
 </body>
 </html>
