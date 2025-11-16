@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- ヘッダー（全ページ共通） -->
+    <header id="header-placeholder"></header>
+    
+    <!-- ここからが各ページ固有のコンテンツ --><!-- index.html の <main> の中身 -->
+    <main>
     <h2>ゲームデータ削除依頼フォーム</h2>    
     <!-- 
       重要: この方法は JavaScript を使用して動的に mailto リンクを生成します。
@@ -31,7 +36,12 @@
     
     <!-- 送信ボタンをクリックしたときに JavaScript 関数を実行 -->
     <button onclick="sendMail()">メールクライアントを起動して送信</button>
+    </main>
+    <!-- ここまでが各ページ固有のコンテンツ -->
 
+    <!-- フッター（全ページ共通） -->
+    <footer id="footer-placeholder"></footer>
+    <script src="js/main.js"></script>
     <script>
         function sendMail() {
             // 入力値を取得
@@ -65,6 +75,7 @@
     </script>
 </body>
 </html>
+
 
 
 
