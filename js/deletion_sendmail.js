@@ -1,4 +1,4 @@
-function deletionMailSend() {
+function deletionSendMail() {
     // 入力値を取得
     const appName = document.getElementById('app_name').value;
     const userId = document.getElementById('user_id').value;
