@@ -35,46 +35,16 @@
     </div>
     
     <!-- 送信ボタンをクリックしたときに JavaScript 関数を実行 -->
-    <button onclick="sendMail()">メールクライアントを起動して送信</button>
+    <button onclick="js/mailsend.js">メールクライアントを起動して送信</button>
     </main>
     <!-- ここまでが各ページ固有のコンテンツ -->
 
     <!-- フッター（全ページ共通） -->
     <footer id="footer-placeholder"></footer>
     <script src="js/main.js"></script>
-    <script>
-        function sendMail() {
-            // 入力値を取得
-            const appName = document.getElementById('app_name').value;
-            const userId = document.getElementById('user_id').value;
-            const emailAddr = document.getElementById('email_addr').value;
-
-            // バリデーション（簡単な入力チェック）
-            if (!appName || !userId || !emailAddr) {
-                alert("全ての項目を入力してください。");
-                return;
-            }
-
-            // メール本文を作成
-            // 改行は %0A （URLエンコードされた改行コード）を使用
-            let body = "以下の情報でお問い合わせがありました。%0A%0A";
-            body += "アプリ名: " + appName + "%0A";
-            body += "ユーザーID: " + userId + "%0A";
-            body += "メールアドレス: " + emailAddr + "%0A";
-
-            // 宛先と件名（ここでは固定値）
-            const to = "origia000@gmail.com"; // ★あなたのメールアドレスに変更してください
-            const subject = "アプリからの問い合わせ";
-
-            // mailtoリンクを生成して開く
-            const mailtoLink = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            
-            // ユーザーのメールクライアントを起動
-            window.location.href = mailtoLink;
-        }
-    </script>
 </body>
 </html>
+
 
 
 
