@@ -1,6 +1,6 @@
 function contactSendMail() {
     // 入力値を取得
-    const detail = document.getElementById('detail').value;
+    const details = document.getElementById('details').value;
 
     // バリデーション（簡単な入力チェック）
     if (!appName || !userId) {
@@ -13,7 +13,7 @@ function contactSendMail() {
 
     let body  = "お問い合わせ内容" + NL + NL;
     body += "-----------------------------------------" + NL;
-    body += detail + NL;
+    body += details + NL;
     body += "-----------------------------------------" + NL + NL;
     body += "※ 本メール送信後、本人確認のため、サポートより返信させていただく場合がございます。" + NL;
 
