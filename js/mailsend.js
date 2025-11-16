@@ -18,7 +18,7 @@ function sendMail() {
 
     // 宛先と件名（ここでは固定値）
     const to = "origia000@gmail.com"; // ★あなたのメールアドレスに変更してください
-    const subject = "アプリからの問い合わせ";
+    const subject = "データ削除依頼";
 
     // mailtoリンクを生成して開く
     const mailtoLink = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
