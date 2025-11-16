@@ -2,91 +2,80 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://cdn.jsdelivr.net 'unsafe-eval' 'unsafe-inline';">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://cdn.jsdelivr.net;">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ORIGIAWORKS - Data Deletion Request</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- ヘッダー（全ページ共通） -->
-    <header id="header-placeholder"></header>
+<header id="header-placeholder"></header>
 
-    <!-- ここからが各ページ固有のコンテンツ -->
-    <!-- data-deletion.html の <main> の中身 -->
-    <main>
-        <div class="container">
-            <h1>データ削除依頼</h1>
-            <p>
-                アプリケーションのユーザーアカウントおよび関連データの削除を希望される場合は、以下のフォームにご記入の上、送信してください。<br>
-                データが削除されると復元することはできませんので、ご注意ください。
-            </p>
+<main>
+    <div class="container">
+        <h1>データ削除依頼</h1>
+        <p>
+            アプリケーションのユーザーアカウントおよび関連データを削除する場合は、以下のフォームにご記入の上送信してください。<br>
+            一度削除されたデータは復元できませんのでご注意ください。
+        </p>
 
-            <form id="deletion-form">
-                <div class="form-group">
-                    <label for="app_name">対象のアプリ名</label>
-                    <input type="text" id="app_name" name="app_name" required>
-                </div>
+        <form id="deletion-form">
+            <div class="form-group">
+                <label for="app_name">対象のアプリ名</label>
+                <input type="text" id="app_name" name="app_name" required>
+            </div>
 
-                <div class="form-group">
-                    <label for="user_id">ユーザーID</label>
-                    <input type="text" id="user_id" name="user_id" required>
-                </div>
-                <div class="form-group">
-                    <label for="user_email">連絡用のメールアドレス</label>
-                    <input type="email" id="user_email" name="user_email" required>
-                </div>
-                <button type="submit" id="submit-btn">送信する</button>
-            </form>
-            <div id="form-message" style="margin-top: 15px;"></div>
-        </div>
-    </main>
-    <!-- ここまでが各ページ固有のコンテンツ -->
+            <div class="form-group">
+                <label for="user_id">ユーザーID</label>
+                <input type="text" id="user_id" name="user_id" required>
+            </div>
 
-    <!-- フッター（全ページ共通） -->
-    <footer id="footer-placeholder"></footer>
+            <div class="form-group">
+                <label for="user_email">連絡用メールアドレス</label>
+                <input type="email" id="user_email" name="user_email" required>
+            </div>
+            
+            <button type="submit" id="submit-btn">送信する</button>
+        </form>
+        <div id="form-message" style="margin-top: 15px;"></div>
+    </div>
+</main>
 
-    <!-- メール送信用スクリプト -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
-    <script src="js/main.js"></script>
-        (function(){
-            // EmailJSの初期化
-            emailjs.init({
-            publicKey: 'lEActPSPkZVjo0og8', // EmailJSの 'Account' -> 'API Keys' から Public Key をコピー
-            });
-        })();
+<footer id="footer-placeholder"></footer>
 
-        document.getElementById('deletion-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // デフォルトのフォーム送信をキャンセル
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+// EmailJS 初期化
+emailjs.init({
+    publicKey: "lEActPSPkZVjo0og8"
+});
 
-            const submitBtn = document.getElementById('submit-btn');
-            const formMessage = document.getElementById('form-message');
-            submitBtn.disabled = true;
-            submitBtn.textContent = '送信中...';
+// submit処理
+document.getElementById('deletion-form').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-            // EmailJSでメールを送信
-            emailjs.sendForm('service_xeoggyw', 'template_hhzdo2m', this)
-                .then(function() {
-                    console.log('SUCCESS!');
-                    formMessage.style.color = 'green';
-                    formMessage.textContent = '送信が完了しました。内容を確認の上、対応いたします。';
-                    document.getElementById('deletion-form').reset(); // フォームをリセット
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = '送信する';
-                }, function(error) {
-                    console.log('FAILED...', error);
-                    formMessage.style.color = 'red';
-                    formMessage.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = '送信する';
-                });
-        });
-    </script>
+    const submitBtn = document.getElementById('submit-btn');
+    const formMessage = document.getElementById('form-message');
+    submitBtn.disabled = true;
+    submitBtn.textContent = "送信中...";
+
+    emailjs.sendForm("service_xeoggyw", "template_hhzdo2m", this)
+    .then(() => {
+        formMessage.style.color = "green";
+        formMessage.textContent = "送信が完了しました。対応をお待ちください。";
+        this.reset();
+        submitBtn.disabled = false;
+        submitBtn.textContent = "送信する";
+    })
+    .catch(error => {
+        console.log(error);
+        formMessage.style.color = "red";
+        formMessage.textContent = "送信に失敗しました。時間をおいて再度お試しください。";
+        submitBtn.disabled = false;
+        submitBtn.textContent = "送信する";
+    });
+});
+</script>
+
 </body>
-
 </html>
-
-
-
-
