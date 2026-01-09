@@ -1,2 +1,2 @@
 # origiaworks.github.io
-"ORGIAWORKS" Corporate website. 
+"ORGIAWORKS" Corporate website
