@@ -28,10 +28,9 @@ header {
     border-bottom: 1px solid #ddd;
 }
 
-/* ★変更点：ヘッダー全体のレイアウト */
 .header-container {
     display: flex;
-    justify-content: space-between; /* ロゴを左、残りを右に配置 */
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -41,11 +40,10 @@ header {
     vertical-align: middle;
 }
 
-/* ★変更点：右側の要素のレイアウト */
 .header-right {
     display: flex;
-    flex-direction: column; /* ナビとSNSアイコンを縦に並べる */
-    align-items: flex-end;  /* 右寄せにする */
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 nav ul {
@@ -69,11 +67,10 @@ nav a:hover {
     color: #007bff;
 }
 
-/* ★変更点：ヘッダーSNSアイコンのスタイル */
 .social-icons-header {
     display: flex;
-    gap: 12px; /* アイコン間の隙間 */
-    margin-top: 15px; /* ← ここの数値を 10px から 15px に変更 */
+    gap: 12px;
+    margin-top: 15px;
 }
 
 .social-icons-header img {
@@ -99,7 +96,12 @@ h1 {
     margin-bottom: 20px;
 }
 
+/* タイトルは左揃えを維持 */
 h2 {
+    text-align: left;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
     font-size: 28px;
     color: #333;
 }
@@ -187,13 +189,15 @@ footer {
     text-decoration: underline;
 }
 
-/* フッターのSNSアイコンエリアのスタイル */
 .social-icons {
     margin-top: 12px;
 }
 .social-icons ul {
     display: flex;
     gap: 15px;
+    justify-content: center; /* フッターのアイコンを中央へ */
+    padding: 0;
+    list-style: none;
 }
 .social-icons img {
     width: 32px;
@@ -203,6 +207,54 @@ footer {
 }
 .social-icons img:hover {
     opacity: 0.7;
+}
+
+/* ============================================= */
+/* Contactページ用の追加・修正スタイル */
+/* ============================================= */
+
+/* フォーム全体を中央に寄せるための親要素 */
+.contact-form-wrapper {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* 入力欄のグループ（ラベルとtextarea） */
+.form-group {
+    display: inline-block; /* 中身の幅に合わせ、親のcenterに従う */
+    text-align: left;      /* 内部のテキスト（ラベル）は左寄せ */
+    width: 100%;
+    max-width: 600px;      /* 入力欄の最大横幅 */
+    margin-bottom: 25px;
+}
+
+textarea {
+    width: 100%;           /* 親(.form-group)の幅いっぱいにする */
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-top: 10px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* 送信ボタン */
+button {
+    display: inline-block; /* センターラインに合わせる */
+    padding: 12px 36px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
 }
 
 /* ============================================= */
@@ -224,15 +276,14 @@ footer {
         font-size: 15px;
     }
 
-    /* ★変更点：スマホでのヘッダーレイアウト */
     .header-container {
-        flex-direction: column; /* 全体を縦並びに */
+        flex-direction: column;
     }
     .logo {
-        margin-bottom: 20px; /* ロゴと下の要素の間に余白 */
+        margin-bottom: 20px;
     }
     .header-right {
-        align-items: center; /* ナビとSNSアイコンを中央揃えに */
+        align-items: center;
     }
     nav ul {
         justify-content: center;
@@ -243,7 +294,6 @@ footer {
         margin-right: 10px;
     }
 
-    /* フッターナビゲーションを縦並びに変更 */
     .footer-nav ul {
         flex-direction: column;
         align-items: center;
@@ -252,4 +302,3 @@ footer {
         margin: 10px 0;
     }
 }
-

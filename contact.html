@@ -12,26 +12,30 @@
     
     <!-- ここからが各ページ固有のコンテンツ --><!-- index.html の <main> の中身 -->
     <main>
-    <h2>Contact<br>（お問い合わせ）</h2>    
-    <!-- 
-      重要: この方法は JavaScript を使用して動的に mailto リンクを生成します。
-      HTMLの form action="mailto:..." は非推奨（POSTメソッドが使えない）ため、
-      JavaScript で入力値を取得してリンクに変換します。
-    -->
-    <div class="form-group">        
-    <label for="details">お問い合わせ内容：</label><br>
-    <textarea 
-        id="details" 
-        name="details" 
-        rows="8" 
-        cols="60"
-        placeholder="具体的な内容をご記入ください。"
-        required
-    ></textarea>
-    </div>
+        <div class="container"> <!-- (1) ページ全体の幅を About等と合わせる枠 -->
         
-    <!-- 送信ボタンをクリックしたときに JavaScript 関数を実行 -->
-    <button onclick="contactSendMail()">メールクライアントを起動して送信</button>
+            <h2>Contact<br>（お問い合わせ）</h2>    
+
+            <div class="contact-form-center"> <!-- (2) この中身だけを中央に寄せる枠 -->
+            
+                <div class="form-group">        
+                    <label for="details">お問い合わせ内容：</label><br>
+                    <textarea 
+                        id="details" 
+                        name="details" 
+                        rows="8" 
+                        cols="60"
+                        placeholder="具体的な内容をご記入ください。"
+                        required
+                    ></textarea>
+                </div>
+                
+                <div>
+                    <button onclick="contactSendMail()">メールクライアントを起動して送信</button>
+                </div>
+
+            </div>
+        </div>
     </main>
     <!-- ここまでが各ページ固有のコンテンツ -->
 
@@ -42,10 +46,4 @@
     <!-- データ削除処理用JavaScriptファイルを読み込む -->
     <script src="js/contact_sendmail.js"></script>
 </body>
-
 </html>
-
-
-
-
-
