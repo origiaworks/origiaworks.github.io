@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遊び方ガイド - Smiley Ball Puzzle</title>
+    <style>
+        :root {
+            --main-blue: #0047AB;
+            --accent-orange: #FF8C00;
+            --bonus-yellow: #FFD700;
+            --bg-color: #f4f7f9;
+            --card-bg: #ffffff;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: var(--main-blue);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 { margin: 0; font-size: 1.8rem; }
+        .container {
+            max-width: 650px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        .section {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        h2 {
+            color: var(--main-blue);
+            border-left: 6px solid var(--main-blue);
+            padding-left: 12px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+        .rule-item {
+            margin-bottom: 25px;
+        }
+        .rule-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .rule-icon {
+            font-size: 1.8rem;
+            margin-right: 12px;
+            background: #eef2f7;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        .rule-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .rule-img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            display: block;
+        }
+        .rule-text {
+            font-size: 1rem;
+            color: #555;
+        }
+        .rule-text b {
+            color: var(--accent-orange);
+        }
+        .rule-text b.bonus {
+            color: var(--main-blue);
+            background: #fff9c4;
+            padding: 0 4px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 5px;
+            background: var(--main-blue);
+            color: white;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+        }
+        .footer {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #888;
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Smiley Ball Puzzle<br>遊び方ガイド</h1>
+</header>
+
+<div class="container">
+
+    <!-- 基本ルール -->
+    <div class="section">
+        <h2>1. 基本ルール</h2>
+        
+        <div class="rule-item">
+            <div class="rule-header">
+                <div class="rule-icon">👆</div>
+                <div class="rule-title">なぞって消す</div>
+            </div>
+            <img src="img_match_rule.jpg" alt="なぞって消す" class="rule-img">
+            <div class="rule-text">同じ色のボールを<b>3つ以上</b>なぞると消すことができます。</div>
+        </div>
+
+        <div class="rule-item">
+            <div class="rule-header">
+                <div class="rule-icon">🌟</div>
+                <div class="rule-title">ボーナスキャラ</div>
+            </div>
+            <img src="img_bonus_rule.jpg" alt="ボーナスキャラ" class="rule-img">
+            <div class="rule-text">画面左上の「BONUS」と同じ色のボールを消すと、獲得スコアが通常の<b>2倍</b>になります！</div>
+        </div>
+
+        <div class="rule-item">
+            <div class="rule-header">
+                <div class="rule-icon">💣</div>
+                <div class="rule-title">ボムの出現</div>
+            </div>
+            <img src="img_bomb_rule.jpg" alt="ボムの出現" class="rule-img">
+            <div class="rule-text">一度に<b>7つ以上</b>つなげて消すと「ボム」が出現！タップすると周りのボールを巻き込んで爆発します。</div>
+        </div>
+
+        <div class="rule-item">
+            <div class="rule-header">
+                <div class="rule-icon">⚡</div>
+                <div class="rule-title">コンボ倍率</div>
+            </div>
+            <img src="img_combo_rule.jpg" alt="コンボ" class="rule-img">
+            <div class="rule-text">素早く連続で消すと<b>コンボ</b>が発生。コンボが続くほどスコア倍率が上がり、消去時の音程も高くなっていきます。</div>
+        </div>
+    </div>
+
+    <!-- スキル -->
+    <div class="section">
+        <h2>2. スペシャルスキル</h2>
+        
+        <div class="rule-item">
+            <div class="badge">BURST</div>
+            <div class="rule-header">
+                <div class="rule-icon">🔥</div>
+                <div class="rule-title">バースト</div>
+            </div>
+            <img src="img_burst_skill.jpg" alt="バーストスキル" class="rule-img">
+            <div class="rule-text">ゲージ満タンで発動！画面上のボールをランダムに<b>20個</b>一気に消去します。</div>
+        </div>
+
+        <div class="rule-item">
+            <div class="badge">EXCHANGE</div>
+            <div class="rule-header">
+                <div class="rule-icon">🔁</div>
+                <div class="rule-title">エクスチェンジ</div>
+            </div>
+            <img src="img_exchange_skill.jpg" alt="エクスチェンジスキル" class="rule-img">
+            <div class="rule-text">ボールを一時的に<b>4種類</b>に減らします。大連鎖を作るチャンスです。</div>
+        </div>
+    </div>
+
+    <!-- チアフルタイム -->
+    <div class="section">
+        <h2>3. チアフルタイム</h2>
+        <div class="rule-item">
+            <div class="rule-header">
+                <div class="rule-icon">✨</div>
+                <div class="rule-title">フィーバーモード</div>
+            </div>
+            <img src="img_cheerful_mode.jpg" alt="チアフルタイム" class="rule-img">
+            <div class="rule-text">
+                ゲージが溜まると自動で突入！<br>
+                ・<b>10秒間</b>継続し、獲得スコアが<b>2.5倍</b><br>
+                ・制限時間が <b>+5秒</b> 回復<br>
+                ・チアフル中は<b>コンボが途切れません</b><br><br>
+                <b class="bonus">★突入時ボーナス★</b><br>
+                突入した瞬間のコンボ数に応じて<b>【コンボ数 × 50点】</b>がボーナスとして加算されます！
+            </div>
+        </div>
+    </div>
+
+    <!-- ランキング -->
+    <div class="section">
+        <h2>4. ランキング・機能</h2>
+        <div class="rule-item">
+            <div class="rule-header">
+                <div class="rule-icon">🏆</div>
+                <div class="rule-title">オンラインランキング</div>
+            </div>
+            <img src="img_ranking_ui.jpg" alt="ランキング画面" class="rule-img">
+            <div class="rule-text">
+                ・<b>アイコンタップ</b>：自分のキャラクターを変更できます。<br>
+                ・<b>SEND</b>：ハイスコアを送信します。<br>
+                ・<b>FETCH</b>：最新の順位を取得します。<br>
+                ・<b>DELETE</b>：アカウントデータを完全に削除します。
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    Copyright &copy; 2024 Origia. All Rights Reserved.
+</div>
+
+</body>
+</html>
