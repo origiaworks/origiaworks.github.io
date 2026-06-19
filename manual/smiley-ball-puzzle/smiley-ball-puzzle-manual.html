@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,7 +62,7 @@
             border-radius: 20px;
             padding: 25px;
             margin-bottom: 30px;
-            box-shadow: 0 8px 0px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 0px rgba(0, 0, 0, 0.1);
             border: 4px solid var(--bg-blue);
         }
 
@@ -81,7 +82,10 @@
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
         }
-        .screenshot-gallery::-webkit-scrollbar { display: none; }
+
+        .screenshot-gallery::-webkit-scrollbar {
+            display: none;
+        }
 
         .screenshot-item {
             flex: 0 0 calc(33.333% - 8px);
@@ -95,7 +99,7 @@
             border-radius: 12px;
             border: 3px solid #444;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .phone-frame img {
@@ -123,6 +127,7 @@
             align-items: center;
             gap: 15px;
         }
+
         .bomb-icon {
             background: var(--bomb-pink);
             width: 65px;
@@ -135,6 +140,7 @@
             box-shadow: 0 4px 0 #99004d;
             overflow: hidden;
         }
+
         .bomb-icon img {
             width: 85%;
             height: 85%;
@@ -158,13 +164,37 @@
             margin-bottom: 15px;
             aspect-ratio: 16 / 9;
         }
-        .collection-hero img { width: 100%; height: 100%; object-fit: cover; }
 
-        .skill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
-        .skill-card { padding: 12px; border-radius: 10px; text-align: center; color: white; font-size: 0.8rem; font-weight: bold; }
-        .burst { background: #E65100; }
-        .exchange { background: #AA00FF; }
-        
+        .collection-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .skill-card {
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .burst {
+            background: #E65100;
+        }
+
+        .exchange {
+            background: #AA00FF;
+        }
+
         .btn-sample {
             display: inline-block;
             padding: 8px 18px;
@@ -172,87 +202,111 @@
             color: black;
             font-weight: bold;
             margin: 5px;
-            box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+            box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
             font-size: 0.85rem;
         }
 
-        footer { text-align: center; padding: 30px; font-size: 0.75rem; color: #888; }
-        .poyon:hover { transform: scale(1.02); transition: 0.2s; }
+        footer {
+            text-align: center;
+            padding: 30px;
+            font-size: 0.75rem;
+            color: #888;
+        }
+
+        .poyon:hover {
+            transform: scale(1.02);
+            transition: 0.2s;
+        }
     </style>
 </head>
+
 <body>
 
-<header>
-    <h1 class="game-title">Smiley Ball Puzzle</h1>
-    <div class="catchphrase">⏱ 90秒でサクッとパズル！</div>
-</header>
+    <header>
+        <h1 class="game-title">Smiley Ball Puzzle</h1>
+        <div class="catchphrase">⏱ 90秒でサクッとパズル！</div>
+    </header>
 
-<div class="container">
+    <div class="container">
 
-    <section class="poyon">
-        <h2>🎮 あそびかた</h2>
-        <div class="screenshot-gallery">
-            <div class="screenshot-item">
-                <div class="phone-frame"><img src="img/ss_000.png" alt="つなげる"></div>
-                <div class="step-label">①なぞって消去！</div>
+        <section class="poyon">
+            <h2>🎮 あそびかた</h2>
+            <div class="screenshot-gallery">
+                <div class="screenshot-item">
+                    <div class="phone-frame"><img src="img/ss_000.png" alt="つなげる"></div>
+                    <div class="step-label">①なぞって消去！</div>
+                </div>
+                <div class="screenshot-item">
+                    <div class="phone-frame"><img src="img/ss_001.png" alt="フィーバー"></div>
+                    <div class="step-label">②チアフルタイム</div>
+                </div>
+                <div class="screenshot-item">
+                    <div class="phone-frame"><img src="img/ss_002.png" alt="スキル"></div>
+                    <div class="step-label">③スキルで逆転</div>
+                </div>
             </div>
-            <div class="screenshot-item">
-                <div class="phone-frame"><img src="img/ss_001.png" alt="フィーバー"></div>
-                <div class="step-label">②チアフルタイム</div>
+        </section>
+
+        <!-- ボムセクション -->
+        <section class="poyon">
+            <h2>💥 攻略のカギ：ボム</h2>
+            <div class="bomb-box">
+                <div class="bomb-icon">
+                    <img src="img/Bomb.png" alt="ボム">
+                </div>
+                <div>
+                    <p style="margin:0; font-weight:bold; color:var(--bomb-pink);">7個以上つなげて出現！</p>
+                    <p style="margin:5px 0 0; font-size:0.85rem;">ボムをタップすると、まわりのスマイリーをまとめてドカンと消去！一気にスコアを稼ぐチャンス！</p>
+                </div>
             </div>
-            <div class="screenshot-item">
-                <div class="phone-frame"><img src="img/ss_002.png" alt="スキル"></div>
-                <div class="step-label">③スキルで逆転</div>
+        </section>
+
+        <section class="character-highlight poyon">
+            <h2>🌈 コレクション</h2>
+            <div class="collection-hero">
+                <img src="img/collections.png" alt="スマイリー大集合！">
             </div>
-        </div>
-    </section>
+            <p>個性豊かなキャラは全部で <strong>24種類！</strong></p>
+        </section>
 
-    <!-- ボムセクション -->
-    <section class="poyon">
-        <h2>💥 攻略のカギ：ボム</h2>
-        <div class="bomb-box">
-            <div class="bomb-icon">
-                <img src="img/Bomb.png" alt="ボム">
+        <section>
+            <h2>🚀 特殊スキル</h2>
+            <div class="skill-grid">
+                <div class="skill-card burst">BURST<br><span
+                        style="font-size:0.65rem; font-weight:normal;">下の玉をドカンと消去</span></div>
+                <div class="skill-card exchange">EXCHANGE<br><span
+                        style="font-size:0.65rem; font-weight:normal;">盤面の色を減らすよ</span></div>
             </div>
-            <div>
-                <p style="margin:0; font-weight:bold; color:var(--bomb-pink);">7個以上つなげて出現！</p>
-                <p style="margin:5px 0 0; font-size:0.85rem;">ボムをタップすると、まわりのスマイリーをまとめてドカンと消去！一気にスコアを稼ぐチャンス！</p>
+            <div
+                style="margin-top:15px; background: yellow; border: 2px solid black; padding: 10px; border-radius: 10px; text-align: center; font-weight: bold; font-size: 0.85rem;">
+                ✨ CHEERFUL MODE ✨<br>スコア3倍 ＆ 残りタイム回復！
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="character-highlight poyon">
-        <h2>🌈 コレクション</h2>
-        <div class="collection-hero">
-            <img src="img/collections.png" alt="スマイリー大集合！">
-        </div>
-        <p>個性豊かなキャラは全部で <strong>24種類！</strong></p>
-    </section>
+        <section>
+            <h2>🏆 ランキング</h2>
+            <p style="font-size: 0.85rem; text-align: center; margin-bottom: 15px;">
+                のプレイヤーとハイスコアを競い合おう！<br>
+            </p>
+            <!-- 操作ボタンエリア -->
+            <div style="text-align: center; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div>
+                    <div class="btn-sample" style="background:#03f2ff; width: 80%; color: #000;">SEND</div>
+                    <div style="font-size: 0.65rem; margin-top: 5px;">スコアを送信！</div>
+                </div>
+                <div>
+                    <div class="btn-sample" style="background:#76ff03; width: 80%; color: #000;">FETCH</div>
+                    <div style="font-size: 0.65rem; margin-top: 5px;">順位をチェック！</div>
+                </div>
+            </div>
+        </section>
 
-    <section>
-        <h2>🚀 特殊スキル</h2>
-        <div class="skill-grid">
-            <div class="skill-card burst">BURST<br><span style="font-size:0.65rem; font-weight:normal;">下の玉をドカンと消去</span></div>
-            <div class="skill-card exchange">EXCHANGE<br><span style="font-size:0.65rem; font-weight:normal;">盤面の色を減らすよ</span></div>
-        </div>
-        <div style="margin-top:15px; background: yellow; border: 2px solid black; padding: 10px; border-radius: 10px; text-align: center; font-weight: bold; font-size: 0.85rem;">
-            ✨ CHEERFUL MODE ✨<br>スコア3倍 ＆ 残りタイム回復！
-        </div>
-    </section>
+    </div>
 
-    <section>
-        <h2>🏆 ランキング</h2>
-        <div style="text-align: center;">
-            <div class="btn-sample" style="background:var(--ranking-orange);">SEND</div>
-            <div class="btn-sample" style="background:#76ff03;">FETCH</div>
-        </div>
-    </section>
-
-</div>
-
-<footer>
-    Copyright &copy; 2026 ORIGIAWORKS All Rights Reserved.
-</footer>
+    <footer>
+        Copyright &copy; 2026 ORIGIAWORKS All Rights Reserved.
+    </footer>
 
 </body>
+
 </html>
