@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
             --primary-color: #ff9800;
             --secondary-color: #2196f3;
             --accent-color: #e91e63;
+            --hint-color: #4caf50;
             --bg-color: #f5f5f5;
             --text-color: #333;
             --card-bg: #fff;
@@ -43,7 +45,11 @@
             margin-bottom: 30px;
         }
 
-        h1 { margin: 0; font-size: 2rem; }
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
         h2 {
             color: var(--primary-color);
             border-left: 5px solid var(--primary-color);
@@ -57,7 +63,7 @@
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             overflow: hidden;
         }
 
@@ -72,7 +78,7 @@
             border: 1px solid #ddd;
         }
 
-        /* スキルボタンUIのデザイン（より長方形に） */
+        /* スキルボタンUIのデザイン（長方形） */
         .skill-ui-container {
             margin: 15px 0;
             display: flex;
@@ -81,30 +87,35 @@
 
         .btn-ui {
             display: inline-block;
-            width: 180px; /* 幅を広げました */
+            width: 180px;
             padding: 10px 0;
-            border-radius: 8px; /* 角丸を抑えて長方形らしくしました */
+            border-radius: 8px;
             color: white;
             font-weight: bold;
             font-size: 1rem;
             text-align: center;
             letter-spacing: 2px;
-            box-shadow: 0 5px 0 rgba(0,0,0,0.2);
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-            border: 2px solid rgba(255,255,255,0.3);
+            box-shadow: 0 5px 0 rgba(0, 0, 0, 0.2);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
-        .btn-burst { background: linear-gradient(#ff9800, var(--burst-color)); }
-        .btn-exchange { background: linear-gradient(#d500f9, var(--exchange-color)); }
-        
-        /* ボムアイコン画像の設定 */
+        .btn-burst {
+            background: linear-gradient(#ff9800, var(--burst-color));
+        }
+
+        .btn-exchange {
+            background: linear-gradient(#d500f9, var(--exchange-color));
+        }
+
+        /* ボムアイコン画像 */
         .bomb-icon-img {
             width: 80px;
             height: 80px;
             object-fit: contain;
             margin: 10px auto;
             display: block;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
         }
 
         .flex-content {
@@ -112,8 +123,15 @@
             gap: 20px;
             flex-wrap: wrap;
         }
-        .flex-content .text-side { flex: 1; min-width: 250px; }
-        .flex-content .img-side { width: 200px; }
+
+        .flex-content .text-side {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .flex-content .img-side {
+            width: 200px;
+        }
 
         .grid {
             display: grid;
@@ -126,7 +144,7 @@
             background: var(--card-bg);
             border-radius: 12px;
             padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -134,6 +152,11 @@
 
         .highlight {
             color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .hint-highlight {
+            color: var(--hint-color);
             font-weight: bold;
         }
 
@@ -154,140 +177,172 @@
         }
 
         @media (max-width: 600px) {
-            .flex-content .img-side { width: 100%; }
-            .manual-img { max-width: 300px; margin: 0 auto 15px; }
+            .flex-content .img-side {
+                width: 100%;
+            }
+
+            .manual-img {
+                max-width: 300px;
+                margin: 0 auto 15px;
+            }
         }
     </style>
 </head>
+
 <body>
 
-<header>
-    <h1>スマイリーボールパズル</h1>
-    <p>なぞってつなげる爽快パズル！</p>
-</header>
+    <header>
+        <h1>スマイリーボールパズル</h1>
+        <p>なぞってつなげる爽快パズル！</p>
+    </header>
 
-<div class="container">
+    <div class="container">
 
-    <section class="card">
-        <h2>基本ルール</h2>
-        <div class="flex-content">
-            <div class="img-side">
-                <img src="img/rule_basic.png" alt="基本ルール" class="manual-img">
-            </div>
-            <div class="text-side">
-                <p>同じ種類の「スマイリー」を<span class="highlight">3つ以上</span>なぞってつなげると消去できます。</p>
-                <ul>
-                    <li><strong>制限時間：</strong> 90秒間（Cheerfulモード突入で延長）</li>
-                    <li><strong>コンボ：</strong> 素早く消し続けるとコンボが発生。スコア倍率がアップします。</li>
-                    <li><strong>ボーナス：</strong> マイスマイリーと同じ色のキャラを消すと、スコアにボーナスが入ります。</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <h2>特殊スキル・アイテム</h2>
-    <div class="grid">
-        <!-- バースト -->
-        <div class="skill-card">
-            <div class="skill-ui-container">
-                <div class="btn-ui btn-burst">BURST</div>
-            </div>
-            <h3>バースト</h3>
-            <p>消去数でゲージが蓄積。ボタンを押すと画面下部のスマイリーをまとめて一掃します！</p>
-        </div>
-
-        <!-- エクスチェンジ -->
-        <div class="skill-card">
-            <div class="skill-ui-container">
-                <div class="btn-ui btn-exchange">EXCHANGE</div>
-            </div>
-            <h3>エクスチェンジ</h3>
-            <p>一定時間経過で使用可能。スマイリーを3色に絞り込み、大連鎖のチャンスを作ります！</p>
-        </div>
-
-        <!-- ボム -->
-        <div class="skill-card">
-            <!-- ボムだけは画像 -->
-            <img src="img/bomb.png" alt="ボムアイコン" class="bomb-icon-img">
-            <h3>ボム</h3>
-            <p><span class="highlight">7つ以上</span>つなげると出現。タップで周囲を爆破し、他のボムとも連鎖爆発します！</p>
-        </div>
-    </div>
-
-    <section class="card">
-        <h2>チアフルタイム</h2>
-        <div class="flex-content">
-            <div class="text-side">
-                <p>ゲージ満タンで突入！BGMが変化し、ハイスコア獲得の最大チャンスです。</p>
-                <div class="combo-box">
+        <section class="card">
+            <h2>基本ルール</h2>
+            <div class="flex-content">
+                <div class="img-side">
+                    <img src="img/rule_basic.png" alt="基本ルール" class="manual-img">
+                </div>
+                <div class="text-side">
+                    <p>同じ種類の「スマイリー」を<span class="highlight">3つ以上</span>なぞってつなげると消去できます。</p>
                     <ul>
-                        <li><strong>スコア3倍：</strong> 全ての消去スコアが3倍に。</li>
-                        <li><strong>時間延長：</strong> 突入時に制限時間が5秒追加。</li>
-                        <li><strong>コンボ維持：</strong> 時間が経過してもコンボがリセットされません。</li>
+                        <li><strong>制限時間：</strong> 90秒間（Cheerfulモード突入で延長）</li>
+                        <li><strong>コンボ：</strong> 素早く消し続けるとコンボが発生。スコア倍率がアップします。</li>
+                        <li><strong>ボーナス：</strong> マイスマイリーと同じ色のキャラを消すと、スコアにボーナスが入ります。</li>
                     </ul>
                 </div>
             </div>
-            <div class="img-side">
-                <img src="img/mode_cheerful.png" alt="チアフルタイム" class="manual-img">
+        </section>
+
+        <h2>特殊スキル・アイテム</h2>
+        <div class="grid">
+            <div class="skill-card">
+                <div class="skill-ui-container">
+                    <div class="btn-ui btn-burst">BURST</div>
+                </div>
+                <h3>バースト</h3>
+                <p>ゲージが溜まると発動可能。画面下部のスマイリーを一気に消し去ります！</p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-ui-container">
+                    <div class="btn-ui btn-exchange">EXCHANGE</div>
+                </div>
+                <h3>エクスチェンジ</h3>
+                <p>10秒ごとに使用可能。スマイリーを3色に絞り込み、大連鎖を誘発します！</p>
+            </div>
+
+            <div class="skill-card">
+                <img src="img/bomb.png" alt="ボムアイコン" class="bomb-icon-img">
+                <h3>ボム</h3>
+                <p><span class="highlight">7つ以上</span>つなげると出現。タップで周囲を爆破し、他のボムとの誘爆も狙えます！</p>
             </div>
         </div>
-    </section>
 
-    <section class="card">
-        <h2>世界ランキング</h2>
-        <div class="flex-content">
-            <div class="img-side">
-                <img src="img/ranking_icon.png" alt="ランキング" class="manual-img">
+        <section class="card">
+            <h2>チアフルタイム</h2>
+            <div class="flex-content">
+                <div class="text-side">
+                    <p>ゲージ満タンで突入！BGMが変化し、ハイスコア獲得の最大チャンスです。</p>
+                    <div class="combo-box">
+                        <ul>
+                            <li><strong>スコア3倍：</strong> 全ての消去スコアが3倍に。</li>
+                            <li><strong>時間延長：</strong> 突入時に制限時間が5秒追加。</li>
+                            <li><strong>コンボ維持：</strong> モード中はコンボが途切れません。</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="img-side">
+                    <img src="img/mode_cheerful.png" alt="チアフルタイム" class="manual-img">
+                </div>
             </div>
-            <div class="text-side">
-                <p>ネットに接続して、世界中のプレイヤーとスコアを競いましょう！</p>
-                <ul>
-                    <li><strong>スコア送信：</strong> ハイスコアが出たらランキングに登録！</li>
-                    <li><strong>アイコン：</strong> マイスマイリーに設定しているキャラが表示されます。</li>
-                    <li><strong>ID表示：</strong> あなた独自のIDがランキング上に表示されます。</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="card">
-        <h2>オプション設定</h2>
-        <div class="flex-content">
-            <div class="text-side">
-                <p>デバイスに合わせて、最適な環境でゲームをプレイできます。</p>
-                <ul>
-                    <li><strong>パフォーマンス優先：</strong> 物理演算を軽量化し負荷を抑えます。</li>
-                    <li><strong>高画質優先：</strong> なめらかな動きで楽しめます（推奨環境）。</li>
-                    <li><strong>音量調節：</strong> BGMとSEを個別に変更可能です。</li>
-                </ul>
+        <section class="card">
+            <h2>コレクションと育成</h2>
+            <div class="flex-content">
+                <div class="img-side">
+                    <img src="img/collection_icon.png" alt="コレクション" class="manual-img">
+                </div>
+                <div class="text-side">
+                    <p>手に入れたスマイリーを強化して、さらなる高みを目指しましょう。</p>
+                    <ul>
+                        <li><strong>レベルアップ：</strong> キャラが重複するとLvアップし、獲得スコアが増加。</li>
+                        <li><strong>マイキャラ設定：</strong> お気に入りを選んでパズルの主役を決定。</li>
+                    </ul>
+                </div>
             </div>
-            <div class="img-side">
-                <img src="img/option_icon.png" alt="オプション" class="manual-img">
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="card">
-        <h2>コレクションと育成</h2>
-        <div class="flex-content">
-            <div class="img-side">
-                <img src="img/collection_icon.png" alt="コレクション" class="manual-img">
+        <section class="card">
+            <h2>世界ランキング</h2>
+            <div class="flex-content">
+                <div class="img-side">
+                    <img src="img/ranking_icon.png" alt="ランキング" class="manual-img">
+                </div>
+                <div class="text-side">
+                    <p>ネットに接続して、世界中のプレイヤーとスコアを競いましょう！</p>
+                    <ul>
+                        <li><strong>スコア送信：</strong> 自慢のハイスコアを世界に公開。</li>
+                        <li><strong>アイコン反映：</strong> 現在のマイキャラがランキングに表示。</li>
+                        <li><strong>ユニークID：</strong> 自分だけのIDでランキングに名を刻もう。</li>
+                    </ul>
+                </div>
             </div>
-            <div class="text-side">
-                <p>キャラを育てることで、一回の消去で得られるスコアがどんどん上がります。</p>
-                <ul>
-                    <li><strong>レベルアップ：</strong> キャラを重複して手に入れると成長。</li>
-                    <li><strong>マイキャラ設定：</strong> お気に入りを選んでボーナス色を決定。</li>
-                    <li><strong>広告ボーナス：</strong> 動画視聴でもう1体追加獲得のチャンス。</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-</div>
+        </section>
 
-<footer>
-    <p>&copy; 2026 ORIGIAWORKS</p>
-</footer>
+        <section class="card">
+            <h2>オプション設定</h2>
+            <div class="flex-content">
+                <div class="text-side">
+                    <p>お使いの端末に合わせて画質や音量を最適化できます。</p>
+                    <ul>
+                        <li><strong>画質切替：</strong> パフォーマンス優先か高画質優先かを選択。</li>
+                        <li><strong>サウンド：</strong> BGMとSEの音量を細かく調節可能。</li>
+                        <li><strong>データ管理：</strong> サーバーデータの削除などもここから行えます。</li>
+                    </ul>
+                </div>
+                <div class="img-side">
+                    <img src="img/option_icon.png" alt="オプション" class="manual-img">
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2 class="hint-title">攻略のヒント</h2>
+
+            <div class="hint-item">
+                <div class="hint-icon-circle chain-color">🔗</div>
+                <div class="hint-text-side">
+                    <p><strong>大連鎖のコツ</strong></p>
+                    <p>エクスチェンジを使って色を減らしてから、一気にロングチェーンを狙いましょう。コンボを繋いだ状態でボムを使うのが最高スコアへの近道です。</p>
+                </div>
+            </div>
+
+            <div class="hint-item">
+                <div class="hint-icon-circle ad-color">🎁</div>
+                <div class="hint-text-side">
+                    <p><strong>もう1体ゲット！</strong></p>
+                    <p>報酬画面で<span class="hint-highlight">動画広告</span>を視聴すると、追加でもう1体スマイリーを獲得できます。効率よく集めたい時にオススメです。</p>
+                </div>
+            </div>
+
+            <div class="hint-item">
+                <div class="hint-icon-circle secret-color">❓</div>
+                <div class="hint-text-side">
+                    <p><strong>隠しキャラの影…</strong></p>
+                    <p><span class="hint-highlight">タイトル画面のロゴ</span>には秘密が隠されているぞ！伝説のキャラが目覚めるかも…？</p>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 ORIGIAWORKS</p>
+    </footer>
 
 </body>
+
 </html>
