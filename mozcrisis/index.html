@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOZCRISIC | Digital Screamo & Algorithm Rock</title>
+    <style>
+        :root {
+            --main-red: #ff3e3e;
+            --cyber-blue: #00f3ff;
+            --bg-black: #0a0a0a;
+            --card-bg: #151515;
+            --text-white: #e0e0e0;
+            --code-font: 'Consolas', 'Monaco', 'Courier New', monospace;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: var(--text-white);
+            font-family: 'Segoe UI', 'Hiragino Kaku Gothic ProN', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 15px 0;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            font-family: var(--code-font);
+            font-size: 0.8rem;
+            border-bottom: 1px solid #222;
+        }
+
+        nav a { color: #fff; text-decoration: none; transition: 0.3s; }
+        nav a:hover { color: var(--cyber-blue); }
+
+        /* Glitch Header */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+            border-bottom: 1px solid #333;
+        }
+
+        .glitch-logo {
+            font-size: clamp(3.5rem, 12vw, 9rem);
+            font-weight: 900;
+            letter-spacing: 0.15em;
+            font-family: var(--code-font);
+            position: relative;
+            text-shadow: 2px 0 var(--main-red), -2px 0 var(--cyber-blue);
+        }
+
+        .tagline {
+            font-family: var(--code-font);
+            color: var(--cyber-blue);
+            font-size: 1.1rem;
+            margin-top: 20px;
+            opacity: 0.8;
+        }
+
+        /* Section Styling */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: var(--code-font);
+            font-size: 2.5rem;
+            display: inline-block;
+            border-right: 10px solid var(--main-red);
+            padding-right: 15px;
+            margin: 0;
+        }
+
+        /* Logic Box */
+        .logic-box {
+            background: #000;
+            border: 1px solid #333;
+            padding: 40px;
+            font-family: var(--code-font);
+            margin-bottom: 100px;
+            position: relative;
+        }
+
+        .logic-box::before {
+            content: "lyric_logic.sh";
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--main-red);
+            padding: 2px 10px;
+            font-size: 0.7rem;
+            color: #fff;
+        }
+
+        .code-comment { color: #6a9955; }
+        .code-keyword { color: #c586c0; }
+        .code-func { color: #dcdcaa; }
+        .code-string { color: #ce9178; }
+
+        /* Member Grid */
+        .member-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 40px;
+            margin-bottom: 100px;
+        }
+
+        .member-card {
+            background: var(--card-bg);
+            border: 1px solid #222;
+            overflow: hidden;
+            transition: 0.4s ease;
+        }
+
+        .member-card:hover {
+            border-color: var(--cyber-blue);
+            transform: scale(1.02);
+        }
+
+        .img-wrapper {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        .img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .info { padding: 25px; }
+        .role-tag { font-family: var(--code-font); color: var(--main-red); font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
+        .name-area { display: flex; align-items: baseline; gap: 12px; margin: 8px 0; }
+        .name-jp { font-size: 1.8rem; font-weight: bold; }
+        .name-real { font-size: 0.8rem; color: #777; }
+        .profile-text { font-size: 0.9rem; color: #ccc; margin-top: 15px; }
+
+        /* Discography Styles */
+        .disco-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .disco-card { text-align: left; }
+
+        .jacket {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: #222;
+            margin-bottom: 15px;
+            transition: 0.3s;
+            border: 1px solid #333;
+            display: block;
+            object-fit: cover;
+        }
+
+        .disco-card:hover .jacket {
+            transform: translateY(-5px);
+            border-color: var(--main-red);
+            box-shadow: 0 10px 20px rgba(255, 62, 62, 0.2);
+        }
+
+        .disco-title { font-size: 1.1rem; font-weight: bold; margin-bottom: 5px; display: block; color: #fff; }
+        .disco-date { font-family: var(--code-font); font-size: 0.8rem; color: #666; margin-bottom: 10px; }
+
+        .yt-link {
+            display: inline-block;
+            font-family: var(--code-font);
+            font-size: 0.75rem;
+            color: var(--main-red);
+            text-decoration: none;
+            border: 1px solid var(--main-red);
+            padding: 4px 10px;
+            transition: 0.3s;
+        }
+
+        .yt-link:hover { background: var(--main-red); color: #fff; }
+
+        /* Footer & Disclaimer */
+        footer {
+            background: #050505;
+            padding: 80px 20px;
+            text-align: center;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .copyright { font-family: var(--code-font); color: #444; margin-bottom: 30px; }
+        .disclaimer-box { max-width: 900px; margin: 0 auto; border-top: 1px solid #222; padding-top: 20px; }
+        .disclaimer-text { font-size: 0.7rem; color: #555; line-height: 1.8; text-align: justify; word-break: break-all; }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#home">01_HOME</a>
+        <a href="#logic">02_LOGIC</a>
+        <a href="#members">03_MEMBERS</a>
+        <a href="#discography">04_DISCOGRAPHY</a>
+    </nav>
+
+    <header id="home">
+        <div class="glitch-logo">MOZCRISIC</div>
+        <div class="tagline">Execute: Digital_Screamo.sh --heavy --fast</div>
+    </header>
+
+    <div class="container">
+        
+        <!-- 02_LOGIC -->
+        <section id="logic" class="logic-box">
+            <span class="code-comment"># Post-Digital Screamo Definition</span><br>
+            <span class="code-keyword">import</span> human_emotion<br>
+            <span class="code-keyword">from</span> moz_system <span class="code-keyword">import</span> heavy_noise<br>
+            <br>
+            <span class="code-func">def</span> <span class="code-func">analyze_pain</span>(data_set):<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment"># メモリリークした記憶を再起的にスキャン</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> [exception <span class="code-keyword">for</span> exception <span class="code-keyword">in</span> data_set <span class="code-keyword">if</span> heart_rate > 180]<br>
+            <br>
+            <p style="margin-top: 20px; font-family: sans-serif; color: #fff;">
+                MOZCRISICの楽曲は、精緻なアルゴリズムと肉体的な咆哮の衝突点にある。<br>
+                データサイエンスの比喩で綴られる歌詞は、現代社会のシステムエラーを暴き出し、<br>
+                スクリーモの轟音によってその「例外処理」を完遂する。
+            </p>
+        </section>
+
+        <!-- 03_MEMBERS -->
+        <section id="members">
+            <div class="section-header"><h2>MEMBERS</h2></div>
+            <div class="member-grid">
+                <div class="member-card">
+                    <div class="img-wrapper"><img src="img/rose.png" alt="Rose"></div>
+                    <div class="info">
+                        <div class="role-tag">Vo & Gt / Architect</div>
+                        <div class="name-area"><span class="name-jp">ローズ</span><span class="age">20</span></div>
+                        <div class="name-real">石神・R・フローレンス</div>
+                        <p class="profile-text">元プログラマー。バンドの設計者。おにぎりプリントのTシャツを纏い、データサイエンス用語を駆使したリリックで感情をコード化する。日本語と英語が激しく交錯するバイリンガル・スタイル。</p>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="img-wrapper"><img src="img/yodo.png" alt="Yodo"></div>
+                    <div class="info">
+                        <div class="role-tag">Bass / Core_Module</div>
+                        <div class="name-area"><span class="name-jp">淀</span><span class="age">23</span></div>
+                        <div class="name-real">御母衣 京子</div>
+                        <p class="profile-text">皇族の血を引くお嬢様。袴姿で白いベースを操る。酒とタバコを愛し、メンバー内で最も「ロック」な生き様を貫く姿から、敬意を込めて「姐さん」と呼ばれている。基底を揺るがす圧倒的な重低音をシステムに送り込む。</p>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="img-wrapper"><img src="img/lena.png" alt="Lena"></div>
+                    <div class="info">
+                        <div class="role-tag">Key & Scream / Overload</div>
+                        <div class="name-area"><span class="name-jp">レナ</span><span class="age">22</span></div>
+                        <div class="name-real">斎藤 エレーナ</div>
+                        <p class="profile-text">ロシア出身の美しき叫び手。ゴスロリ衣装で超絶技巧のキーボードを弾き倒し、システムをオーバーロードさせる咆哮を放つ完璧主義のナルシスト。日本語は苦手だが、「ロリータしか勝たん。」という口癖だけは執拗なまでに使いこなす。</p>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="img-wrapper"><img src="img/mio.png" alt="Mio"></div>
+                    <div class="info">
+                        <div class="role-tag">Drums / Traffic_Control</div>
+                        <div class="name-area"><span class="name-jp">ミオ</span><span class="age">21</span></div>
+                        <div class="name-real">ミオ・ロドリゲス</div>
+                        <p class="profile-text">ヒスパニック系のエネルギッシュなドラマー。スポーツ万能であらゆる競技において秀逸な成績を残す身体能力を持つが、本人はそのボーイッシュな性格とガタイの良さを気にしており、内面はメンバーの誰よりも乙女チック。ワイルドな打法で正確なクロックを刻む。</p>
+                    </div>
+                </div>
+
+                <div class="member-card">
+                    <div class="img-wrapper"><img src="img/jiwoo.png" alt="Jiwoo"></div>
+                    <div class="info">
+                        <div class="role-tag">DJ / Encryption</div>
+                        <div class="name-area"><span class="name-jp">DJ JIWOO</span><span class="age">18</span></div>
+                        <div class="name-real">イ・ジウ</div>
+                        <p class="profile-text">韓国出身。ビッグサイズのパーカースタイルで素顔を隠し、ノイズを暗号化してフロアへ撒き散らす。極度の恥ずかしがり屋で公の場では一切喋らないため、彼女が口を開く代わりに淀がその想いを言葉にする。寡黙な最年少DJだが、そのオーバーサイズな服の中には圧倒的な美貌を秘めている。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04_DISCOGRAPHY -->
+        <section id="discography">
+            <div class="section-header"><h2>DISCOGRAPHY</h2></div>
+            <div class="disco-grid">
+                <div class="disco-card">
+                    <img src="img/disco1.png" class="jacket" alt="J-pop is Dead">
+                    <span class="disco-title">J-pop is Dead</span>
+                    <div class="disco-date">2026.08.24 RELEASE</div>
+                    <a href="#" class="yt-link">WATCH ON YOUTUBE</a>
+                </div>
+                <div class="disco-card">
+                    <img src="img/disco2.png" class="jacket" alt="Deep Learning">
+                    <span class="disco-title">Deep Learning / Deep Despair</span>
+                    <div class="disco-date">2026.03.12 RELEASE</div>
+                    <a href="#" class="yt-link">WATCH ON YOUTUBE</a>
+                </div>
+                <div class="disco-card">
+                    <img src="img/disco3.png" class="jacket" alt="Garbage Collection">
+                    <span class="disco-title">Garbage Collection</span>
+                    <div class="disco-date">2025.11.01 RELEASE</div>
+                    <a href="#" class="yt-link">WATCH ON YOUTUBE</a>
+                </div>
+                <div class="disco-card">
+                    <img src="img/disco4.png" class="jacket" alt="DDoS">
+                    <span class="disco-title">DDoS (Distributed Denial of Soul)</span>
+                    <div class="disco-date">2025.05.20 RELEASE</div>
+                    <a href="#" class="yt-link">WATCH ON YOUTUBE</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="copyright">
+            &copy; 2026 MOZCRISIC / ORIGIAWORKS. ALL RIGHTS RESERVED.
+        </div>
+        <div class="disclaimer-box">
+            <p class="disclaimer-text">
+                MOZCRISIC（およびモズクライシス）はORIGIAWORKSが創作した架空の団体であり、表現や物語はすべてフィクションです。実在の人物・宗教・事件等とは一切関係ありません。また、特定の思想や信条を擁護・非難する目的で制作されたものではありません。
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
