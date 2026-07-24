@@ -1,0 +1,21 @@
+<div class="watermark"><img src="../img/mio_stand.png"></div>
+    <div class="container">
+        <header class="header-area" style="border-left-color: #ffaa00;">
+            <div class="role-title" style="color: #ffaa00;">Drums / Traffic Control</div>
+            <h1 class="name-main">MIO</h1>
+            <div class="name-sub">ミオ・ロドリゲス</div>
+        </header>
+        <div class="quote-box" style="border-bottom-color: #ffaa00;">「どんな競技（リズム）でも、アタシが完璧にコントロールしてやる！」</div>
+        <div class="spec-grid">
+            <div class="spec-item"><div class="spec-label" style="color: #ffaa00;">STAMINA</div><div class="spec-value">Infinite (All-Rounder)</div></div>
+            <div class="spec-item"><div class="spec-label" style="color: #ffaa00;">GIRLY METER</div><div class="spec-value">120% (Hidden)</div></div>
+            <div class="spec-item"><div class="spec-label" style="color: #ffaa00;">ALCOHOL</div><div class="spec-value">High Rank</div></div>
+            <div class="spec-item"><div class="spec-label" style="color: #ffaa00;">CLOCK SYNC</div><div class="spec-value">0.001ms Precision</div></div>
+        </div>
+        <section class="bio-section">
+            <h3 style="color: #ffaa00;">BIOGRAPHY</h3>
+            <p>ヒスパニック系のエネルギッシュなドラマー。スポーツ万能であらゆる競技において秀逸な成績を残す身体能力を持つが、本人はそのボーイッシュな性格を気にしており、内面は乙女。ワイルドな打法で正確なクロックを刻む。</p>
+            <h3>EQUIPMENT</h3>
+            <div class="gear-box">Drums: Custom Shell Kit / Stick: Heavy Oak / Sport: Decathlon Champion</div>
+        </section>
+    </div>

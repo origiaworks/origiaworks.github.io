@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROFILE: ROSE | MOZCRISIC</title>
+    <style>
+        :root {
+            --member-color: #ff3e3e;
+            --bg-black: #0a0a0a;
+            --text-white: #e0e0e0;
+            --code-font: 'Consolas', 'Monaco', 'Courier New', monospace;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: var(--text-white);
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .watermark {
+            position: fixed;
+            top: 50%;
+            right: -15%;
+            transform: translateY(-50%);
+            width: 100vh;
+            aspect-ratio: 1 / 1;
+            z-index: -1;
+            opacity: 0.25;
+            filter: brightness(1.1);
+            pointer-events: none;
+        }
+
+        .watermark img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        nav {
+            padding: 20px;
+            font-family: var(--code-font);
+            border-bottom: 1px solid #222;
+        }
+
+        nav a {
+            color: var(--member-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .header-area {
+            margin-bottom: 60px;
+            border-left: 5px solid var(--member-color);
+            padding-left: 30px;
+        }
+
+        .role-title {
+            font-family: var(--code-font);
+            color: var(--member-color);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        .name-main {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            margin: 10px 0;
+        }
+
+        .quote-box {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin: 40px 0;
+            color: #fff;
+            position: relative;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--member-color);
+            width: fit-content;
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .spec-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border: 1px solid #222;
+        }
+
+        .spec-label {
+            font-family: var(--code-font);
+            font-size: 0.7rem;
+            color: var(--member-color);
+        }
+
+        .bio-section h3 {
+            font-family: var(--code-font);
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            color: var(--member-color);
+        }
+
+        .gear-box {
+            background: #000;
+            border: 1px dashed #444;
+            padding: 20px;
+            font-family: var(--code-font);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .watermark {
+                width: 70vh;
+                right: -20%;
+                opacity: 0.15;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="watermark"><img src="../img/rose_stand.png"></div>
+    <nav><a href="../index.html">
+            << RETURN TO SYSTEM_ROOT</a>
+    </nav>
+    <div class="container">
+        <header class="header-area">
+            <div class="role-title">Vo & Gt / Band Architect</div>
+            <h1 class="name-main">ローズ</h1>
+            <div class="name-sub">石神・R・フローレンス</div>
+        </header>
+        <div class="quote-box">"感情のオーバーフローを、1行のコードで解決してやるよ。"</div>
+        <div class="spec-grid">
+            <div class="spec-item">
+                <div class="spec-label">CODING SKILL</div>
+                <div class="spec-value">S+ (Full-stack)</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">SCREAM NOISE</div>
+                <div class="spec-value">4.2 GHz</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">BILINGUAL</div>
+                <div class="spec-value">JP 50% / EN 50%</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label">ALCOHOL</div>
+                <div class="spec-value">LOW (Shutdown)</div>
+            </div>
+        </div>
+        <section class="bio-section">
+            <h3>BIOGRAPHY</h3>
+            <p>元プログラマー。バンドの設計者。おにぎりプリントのTシャツを纏い、データサイエンス用語を駆使したリリックで感情をコード化する。日英が激しく交錯するバイリンガル・スタイルのボーカルが特徴。無邪気で好奇心旺盛な性格だが、曲作りの際は冷徹なロジックを優先するアーキテクトへと変貌する。
+            </p>
+            <h3>EQUIPMENT</h3>
+            <div class="gear-box">Guitar: Yellow Telecaster / Editor: VS Code / Favorite: Onigiri (Salmon)</div>
+        </section>
+    </div>
+</body>
+
+</html>

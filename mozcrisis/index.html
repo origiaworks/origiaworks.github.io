@@ -23,27 +23,27 @@
             scroll-behavior: smooth;
         }
 
-        /* Navigation */
+        /* --- Navigation --- */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
             padding: 15px 0;
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(5px);
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
             z-index: 1000;
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 20px; /* スマホ向けに狭める */
             font-family: var(--code-font);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             border-bottom: 1px solid #222;
         }
 
         nav a { color: #fff; text-decoration: none; transition: 0.3s; }
         nav a:hover { color: var(--cyber-blue); }
 
-        /* Glitch Header */
+        /* --- Glitch Header --- */
         header {
             height: 100vh;
             display: flex;
@@ -52,10 +52,12 @@
             align-items: center;
             background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
             border-bottom: 1px solid #333;
+            text-align: center;
+            padding: 0 20px;
         }
 
         .glitch-logo {
-            font-size: clamp(3.5rem, 12vw, 9rem);
+            font-size: clamp(3rem, 12vw, 9rem);
             font-weight: 900;
             letter-spacing: 0.15em;
             font-family: var(--code-font);
@@ -66,39 +68,41 @@
         .tagline {
             font-family: var(--code-font);
             color: var(--cyber-blue);
-            font-size: 1.1rem;
+            font-size: clamp(0.7rem, 2vw, 1.1rem);
             margin-top: 20px;
             opacity: 0.8;
         }
 
-        /* Section Styling */
+        /* --- Main Container --- */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 100px 20px;
+            padding: 80px 20px; /* スマホ向けに少し狭める */
         }
 
         .section-header {
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
 
         .section-header h2 {
             font-family: var(--code-font);
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
             display: inline-block;
             border-right: 10px solid var(--main-red);
             padding-right: 15px;
             margin: 0;
         }
 
-        /* Logic Box */
+        /* --- Logic Box (Responsive) --- */
         .logic-box {
             background: #000;
             border: 1px solid #333;
-            padding: 40px;
+            padding: clamp(20px, 5vw, 40px);
             font-family: var(--code-font);
-            margin-bottom: 100px;
+            margin-bottom: 80px;
             position: relative;
+            overflow-x: auto; /* コードのはみ出し対策 */
+            white-space: nowrap;
         }
 
         .logic-box::before {
@@ -112,17 +116,31 @@
             color: #fff;
         }
 
+        .logic-desc {
+            white-space: normal;
+            margin-top: 20px;
+            font-family: sans-serif;
+            color: #fff;
+            font-size: 0.95rem;
+        }
+
         .code-comment { color: #6a9955; }
         .code-keyword { color: #c586c0; }
         .code-func { color: #dcdcaa; }
         .code-string { color: #ce9178; }
 
-        /* Member Grid */
+        /* --- Member Grid & Link --- */
         .member-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             margin-bottom: 100px;
+        }
+
+        .member-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
         .member-card {
@@ -130,11 +148,12 @@
             border: 1px solid #222;
             overflow: hidden;
             transition: 0.4s ease;
+            height: 100%;
         }
 
-        .member-card:hover {
+        .member-link:hover .member-card {
             border-color: var(--cyber-blue);
-            transform: scale(1.02);
+            transform: translateY(-5px);
         }
 
         .img-wrapper {
@@ -151,18 +170,18 @@
             display: block;
         }
 
-        .info { padding: 25px; }
+        .info { padding: 20px; }
         .role-tag { font-family: var(--code-font); color: var(--main-red); font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
-        .name-area { display: flex; align-items: baseline; gap: 12px; margin: 8px 0; }
-        .name-jp { font-size: 1.8rem; font-weight: bold; }
+        .name-area { display: flex; align-items: baseline; gap: 10px; margin: 8px 0; }
+        .name-jp { font-size: 1.5rem; font-weight: bold; }
         .name-real { font-size: 0.8rem; color: #777; }
-        .profile-text { font-size: 0.9rem; color: #ccc; margin-top: 15px; }
+        .profile-text { font-size: 0.85rem; color: #ccc; margin-top: 10px; }
 
-        /* Discography Styles */
+        /* --- Discography Styles --- */
         .disco-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
         }
 
         .disco-card { text-align: left; }
@@ -179,9 +198,8 @@
         }
 
         .disco-card:hover .jacket {
-            transform: translateY(-5px);
+            transform: scale(1.03);
             border-color: var(--main-red);
-            box-shadow: 0 10px 20px rgba(255, 62, 62, 0.2);
         }
 
         .disco-title { font-size: 1.1rem; font-weight: bold; margin-bottom: 5px; display: block; color: #fff; }
@@ -200,18 +218,30 @@
 
         .yt-link:hover { background: var(--main-red); color: #fff; }
 
-        /* Footer & Disclaimer */
+        /* --- Footer --- */
         footer {
             background: #050505;
-            padding: 80px 20px;
+            padding: 60px 20px;
             text-align: center;
             border-top: 1px solid #1a1a1a;
         }
 
-        .copyright { font-family: var(--code-font); color: #444; margin-bottom: 30px; }
+        .copyright { font-family: var(--code-font); color: #444; margin-bottom: 20px; font-size: 0.8rem; }
         .disclaimer-box { max-width: 900px; margin: 0 auto; border-top: 1px solid #222; padding-top: 20px; }
-        .disclaimer-text { font-size: 0.7rem; color: #555; line-height: 1.8; text-align: justify; word-break: break-all; }
+        .disclaimer-text { font-size: 0.65rem; color: #555; line-height: 1.6; text-align: justify; word-break: break-all; }
 
+        /* --- Mobile Breakpoints --- */
+        @media (max-width: 768px) {
+            nav { gap: 15px; }
+            .container { padding: 60px 15px; }
+            .member-grid { grid-template-columns: 1fr; } /* スマホでは1列に */
+            .disco-grid { grid-template-columns: repeat(2, 1fr); } /* ディスコは2列維持 */
+        }
+
+        @media (max-width: 480px) {
+            .disco-grid { grid-template-columns: 1fr; } /* 極小画面ではディスコも1列 */
+            nav { font-size: 0.65rem; }
+        }
     </style>
 </head>
 <body>
@@ -239,67 +269,78 @@
             <span class="code-func">def</span> <span class="code-func">analyze_pain</span>(data_set):<br>
             &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment"># メモリリークした記憶を再起的にスキャン</span><br>
             &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> [exception <span class="code-keyword">for</span> exception <span class="code-keyword">in</span> data_set <span class="code-keyword">if</span> heart_rate > 180]<br>
-            <br>
-            <p style="margin-top: 20px; font-family: sans-serif; color: #fff;">
+            <div class="logic-desc">
                 MOZCRISICの楽曲は、精緻なアルゴリズムと肉体的な咆哮の衝突点にある。<br>
                 データサイエンスの比喩で綴られる歌詞は、現代社会のシステムエラーを暴き出し、<br>
                 スクリーモの轟音によってその「例外処理」を完遂する。
-            </p>
+            </div>
         </section>
 
         <!-- 03_MEMBERS -->
         <section id="members">
             <div class="section-header"><h2>MEMBERS</h2></div>
             <div class="member-grid">
-                <div class="member-card">
-                    <div class="img-wrapper"><img src="img/rose.png" alt="Rose"></div>
-                    <div class="info">
-                        <div class="role-tag">Vo & Gt / Architect</div>
-                        <div class="name-area"><span class="name-jp">ローズ</span><span class="age">20</span></div>
-                        <div class="name-real">石神・R・フローレンス</div>
-                        <p class="profile-text">元プログラマー。バンドの設計者。おにぎりプリントのTシャツを纏い、データサイエンス用語を駆使したリリックで感情をコード化する。日本語と英語が激しく交錯するバイリンガル・スタイル。</p>
+                
+                <!-- ROSE -->
+                <a href="members/rose.html" class="member-link">
+                    <div class="member-card">
+                        <div class="img-wrapper"><img src="img/rose.png" alt="Rose"></div>
+                        <div class="info">
+                            <div class="role-tag">Vo & Gt / Architect</div>
+                            <div class="name-area"><span class="name-jp">ローズ</span><span class="age">20</span></div>
+                            <div class="name-real">石神・R・フローレンス</div>
+                        </div>
                     </div>
-                </div>
+                </a>
 
-                <div class="member-card">
-                    <div class="img-wrapper"><img src="img/yodo.png" alt="Yodo"></div>
-                    <div class="info">
-                        <div class="role-tag">Bass / Core_Module</div>
-                        <div class="name-area"><span class="name-jp">淀</span><span class="age">23</span></div>
-                        <div class="name-real">御母衣 京子</div>
-                        <p class="profile-text">皇族の血を引くお嬢様。袴姿で白いベースを操る。酒とタバコを愛し、メンバー内で最も「ロック」な生き様を貫く姿から、敬意を込めて「姐さん」と呼ばれている。基底を揺るがす圧倒的な重低音をシステムに送り込む。</p>
+                <!-- YODO -->
+                <a href="members/yodo.html" class="member-link">
+                    <div class="member-card">
+                        <div class="img-wrapper"><img src="img/yodo.png" alt="Yodo"></div>
+                        <div class="info">
+                            <div class="role-tag">Bass / Core_Module</div>
+                            <div class="name-area"><span class="name-jp">淀</span><span class="age">23</span></div>
+                            <div class="name-real">御母衣 京子</div>
+                        </div>
                     </div>
-                </div>
+                </a>
 
-                <div class="member-card">
-                    <div class="img-wrapper"><img src="img/lena.png" alt="Lena"></div>
-                    <div class="info">
-                        <div class="role-tag">Key & Scream / Overload</div>
-                        <div class="name-area"><span class="name-jp">レナ</span><span class="age">22</span></div>
-                        <div class="name-real">斎藤 エレーナ</div>
-                        <p class="profile-text">ロシア出身の美しき叫び手。ゴスロリ衣装で超絶技巧のキーボードを弾き倒し、システムをオーバーロードさせる咆哮を放つ完璧主義のナルシスト。日本語は苦手だが、「ロリータしか勝たん。」という口癖だけは執拗なまでに使いこなす。</p>
+                <!-- LENA -->
+                <a href="members/lena.html" class="member-link">
+                    <div class="member-card">
+                        <div class="img-wrapper"><img src="img/lena.png" alt="Lena"></div>
+                        <div class="info">
+                            <div class="role-tag">Key & Scream / Overload</div>
+                            <div class="name-area"><span class="name-jp">レナ</span><span class="age">22</span></div>
+                            <div class="name-real">斎藤 エレーナ</div>
+                        </div>
                     </div>
-                </div>
+                </a>
 
-                <div class="member-card">
-                    <div class="img-wrapper"><img src="img/mio.png" alt="Mio"></div>
-                    <div class="info">
-                        <div class="role-tag">Drums / Traffic_Control</div>
-                        <div class="name-area"><span class="name-jp">ミオ</span><span class="age">21</span></div>
-                        <div class="name-real">ミオ・ロドリゲス</div>
-                        <p class="profile-text">ヒスパニック系のエネルギッシュなドラマー。スポーツ万能であらゆる競技において秀逸な成績を残す身体能力を持つが、本人はそのボーイッシュな性格とガタイの良さを気にしており、内面はメンバーの誰よりも乙女チック。ワイルドな打法で正確なクロックを刻む。</p>
+                <!-- MIO -->
+                <a href="members/mio.html" class="member-link">
+                    <div class="member-card">
+                        <div class="img-wrapper"><img src="img/mio.png" alt="Mio"></div>
+                        <div class="info">
+                            <div class="role-tag">Drums / Traffic_Control</div>
+                            <div class="name-area"><span class="name-jp">ミオ</span><span class="age">21</span></div>
+                            <div class="name-real">ミオ・ロドリゲス</div>
+                        </div>
                     </div>
-                </div>
+                </a>
 
-                <div class="member-card">
-                    <div class="img-wrapper"><img src="img/jiwoo.png" alt="Jiwoo"></div>
-                    <div class="info">
-                        <div class="role-tag">DJ / Encryption</div>
-                        <div class="name-area"><span class="name-jp">DJ JIWOO</span><span class="age">18</span></div>
-                        <div class="name-real">イ・ジウ</div>
-                        <p class="profile-text">韓国出身。ビッグサイズのパーカースタイルで素顔を隠し、ノイズを暗号化してフロアへ撒き散らす。極度の恥ずかしがり屋で公の場では一切喋らないため、彼女が口を開く代わりに淀がその想いを言葉にする。寡黙な最年少DJだが、そのオーバーサイズな服の中には圧倒的な美貌を秘めている。</p>
+                <!-- JIWOO -->
+                <a href="members/jiwoo.html" class="member-link">
+                    <div class="member-card">
+                        <div class="img-wrapper"><img src="img/jiwoo.png" alt="Jiwoo"></div>
+                        <div class="info">
+                            <div class="role-tag">DJ / Encryption</div>
+                            <div class="name-area"><span class="name-jp">JIWOO</span><span class="age">18</span></div>
+                            <div class="name-real">イ・ジウ</div>
+                        </div>
                     </div>
-                </div>
+                </a>
+
             </div>
         </section>
 
@@ -310,25 +351,25 @@
                 <div class="disco-card">
                     <img src="img/disco1.png" class="jacket" alt="J-pop is Dead">
                     <span class="disco-title">J-pop is Dead</span>
-                    <div class="disco-date">COMMING SOON</div>
+                    <div class="disco-date">COMING SOON</div>
                     <a class="yt-link" href="https://www.youtube.com/@origiaworks-studio" target="_blank">WATCH ON YOUTUBE</a>
                 </div>
                 <div class="disco-card">
                     <img src="img/disco2.png" class="jacket" alt="Identity Crisis">
                     <span class="disco-title">Identity Crisis</span>
-                    <div class="disco-date">COMMING SOON</div>
+                    <div class="disco-date">COMING SOON</div>
                     <a class="yt-link" href="https://www.youtube.com/@origiaworks-studio" target="_blank">WATCH ON YOUTUBE</a>
                 </div>
                 <div class="disco-card">
                     <img src="img/disco3.png" class="jacket" alt="Done">
                     <span class="disco-title">Done</span>
-                    <div class="disco-date">COMMING SOON</div>
+                    <div class="disco-date">COMING SOON</div>
                     <a class="yt-link" href="https://www.youtube.com/@origiaworks-studio" target="_blank">WATCH ON YOUTUBE</a>
                 </div>
                 <div class="disco-card">
                     <img src="img/disco4.png" class="jacket" alt="Seems like it">
                     <span class="disco-title">Seems like it</span>
-                    <div class="disco-date">COMMING SOON</div>
+                    <div class="disco-date">COMING SOON</div>
                     <a class="yt-link" href="https://www.youtube.com/@origiaworks-studio" target="_blank">WATCH ON YOUTUBE</a>
                 </div>
             </div>

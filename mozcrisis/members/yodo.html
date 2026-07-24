@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROFILE: YODO | MOZCRISIC</title>
+    <style>
+        :root {
+            --member-color: #ff3e3e;
+            --bg-black: #0a0a0a;
+            --text-white: #e0e0e0;
+            --code-font: 'Consolas', 'Monaco', 'Courier New', monospace;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: var(--text-white);
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .watermark {
+            position: fixed;
+            top: 50%;
+            right: -15%;
+            transform: translateY(-50%);
+            width: 100vh;
+            aspect-ratio: 1 / 1;
+            z-index: -1;
+            opacity: 0.25;
+            filter: brightness(1.1);
+            pointer-events: none;
+        }
+
+        .watermark img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        nav {
+            padding: 20px;
+            font-family: var(--code-font);
+            border-bottom: 1px solid #222;
+        }
+
+        nav a {
+            color: var(--member-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .header-area {
+            margin-bottom: 60px;
+            border-left: 5px solid var(--member-color);
+            padding-left: 30px;
+        }
+
+        .role-title {
+            font-family: var(--code-font);
+            color: var(--member-color);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        .name-main {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            margin: 10px 0;
+        }
+
+        .quote-box {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin: 40px 0;
+            color: #fff;
+            position: relative;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--member-color);
+            width: fit-content;
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .spec-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border: 1px solid #222;
+        }
+
+        .spec-label {
+            font-family: var(--code-font);
+            font-size: 0.7rem;
+            color: var(--member-color);
+        }
+
+        .bio-section h3 {
+            font-family: var(--code-font);
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            color: var(--member-color);
+        }
+
+        .gear-box {
+            background: #000;
+            border: 1px dashed #444;
+            padding: 20px;
+            font-family: var(--code-font);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .watermark {
+                width: 70vh;
+                right: -20%;
+                opacity: 0.15;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="watermark"><img src="../img/yodo_stand.png"></div>
+    <nav><a href="../index.html">
+            << RETURN TO SYSTEM_ROOT</a>
+    </nav>
+    <div class="container">
+        <header class="header-area" style="border-left-color: #00d4ff;">
+            <div class="role-title" style="color: #00d4ff;">Bass / Core Module / Sister</div>
+            <h1 class="name-main">淀</h1>
+            <div class="name-sub">御母衣 京子</div>
+        </header>
+        <div class="quote-box" style="border-bottom-color: #00d4ff;">「品格と轟音は両立する。姐さんと呼びたければ、ビートで示せ。」</div>
+        <div class="spec-grid">
+            <div class="spec-item">
+                <div class="spec-label" style="color: #00d4ff;">BASS FREQ</div>
+                <div class="spec-value">Sub-Harmonic</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label" style="color: #00d4ff;">ROCK-NESS</div>
+                <div class="spec-value">Critical Overdrive</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label" style="color: #00d4ff;">ALCOHOL</div>
+                <div class="spec-value">Limitless (Imperial)</div>
+            </div>
+            <div class="spec-item">
+                <div class="spec-label" style="color: #00d4ff;">JIWOO PROXY</div>
+                <div class="spec-value">Sync: 100%</div>
+            </div>
+        </div>
+        <section class="bio-section">
+            <h3 style="color: #00d4ff;">BIOGRAPHY</h3>
+            <p>皇族の血を引くお嬢様。袴姿で白いベースを操る。酒とタバコを愛し、メンバー内で最も「ロック」な生き様を貫く姿から、敬意を込めて「姐さん」と呼ばれている。恥ずかしがり屋なジウの意思をすべて代弁する唯一の理解者。
+            </p>
+            <h3>EQUIPMENT</h3>
+            <div class="gear-box">Bass: White Electric Bass / Favorite: Sake (Dry) / Special: Jiwoo's Mind Reading</div>
+        </section>
+    </div>
+</body>
+
+</html>
