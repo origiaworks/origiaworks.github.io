@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,19 +30,27 @@
             top: 0;
             width: 100%;
             padding: 15px 0;
-            background: rgba(0,0,0,0.85);
+            background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(8px);
             z-index: 1000;
             display: flex;
             justify-content: center;
-            gap: 20px; /* スマホ向けに狭める */
+            gap: 20px;
+            /* スマホ向けに狭める */
             font-family: var(--code-font);
             font-size: 0.75rem;
             border-bottom: 1px solid #222;
         }
 
-        nav a { color: #fff; text-decoration: none; transition: 0.3s; }
-        nav a:hover { color: var(--cyber-blue); }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--cyber-blue);
+        }
 
         /* --- Glitch Header --- */
         header {
@@ -77,7 +86,8 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 80px 20px; /* スマホ向けに少し狭める */
+            padding: 80px 20px;
+            /* スマホ向けに少し狭める */
         }
 
         .section-header {
@@ -93,41 +103,72 @@
             margin: 0;
         }
 
-        /* --- Logic Box (Responsive) --- */
+        /* --- Logic Box の修正版 --- */
         .logic-box {
             background: #000;
             border: 1px solid #333;
-            padding: clamp(20px, 5vw, 40px);
+            padding: clamp(30px, 5vw, 50px);
+            /* 内側の余白を少し広げました */
             font-family: var(--code-font);
-            margin-bottom: 80px;
+
+            /* ↓ 重要：上に余白（40px）を作ることで、赤いラベルが切れないようにします */
+            margin: 40px auto 100px;
+
             position: relative;
-            overflow-x: auto; /* コードのはみ出し対策 */
-            white-space: nowrap;
+
+            /* ↓ スマホで横幅からはみ出した時に、中のコードだけをスクロールさせます */
+            overflow-x: visible;
         }
 
         .logic-box::before {
             content: "lyric_logic.sh";
             position: absolute;
-            top: -12px;
+            top: -15px;
+            /* 位置を微調整 */
             left: 20px;
             background: var(--main-red);
-            padding: 2px 10px;
-            font-size: 0.7rem;
+            padding: 2px 12px;
+            font-size: 0.75rem;
             color: #fff;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        /* 中のコードがはみ出す場合の対策 */
+        .logic-box pre,
+        .logic-box div:not(.logic-desc) {
+            overflow-x: auto;
+            white-space: pre;
+            /* 改行させずに横スクロール */
+            padding-bottom: 10px;
         }
 
         .logic-desc {
             white-space: normal;
-            margin-top: 20px;
-            font-family: sans-serif;
-            color: #fff;
+            /* 説明文はちゃんと改行させる */
+            margin-top: 30px;
+            font-family: 'Segoe UI', 'Hiragino Kaku Gothic ProN', sans-serif;
+            color: #ccc;
             font-size: 0.95rem;
+            border-top: 1px solid #222;
+            padding-top: 20px;
         }
 
-        .code-comment { color: #6a9955; }
-        .code-keyword { color: #c586c0; }
-        .code-func { color: #dcdcaa; }
-        .code-string { color: #ce9178; }
+        .code-comment {
+            color: #6a9955;
+        }
+
+        .code-keyword {
+            color: #c586c0;
+        }
+
+        .code-func {
+            color: #dcdcaa;
+        }
+
+        .code-string {
+            color: #ce9178;
+        }
 
         /* --- Member Grid & Link --- */
         .member-grid {
@@ -170,12 +211,40 @@
             display: block;
         }
 
-        .info { padding: 20px; }
-        .role-tag { font-family: var(--code-font); color: var(--main-red); font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
-        .name-area { display: flex; align-items: baseline; gap: 10px; margin: 8px 0; }
-        .name-jp { font-size: 1.5rem; font-weight: bold; }
-        .name-real { font-size: 0.8rem; color: #777; }
-        .profile-text { font-size: 0.85rem; color: #ccc; margin-top: 10px; }
+        .info {
+            padding: 20px;
+        }
+
+        .role-tag {
+            font-family: var(--code-font);
+            color: var(--main-red);
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .name-area {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            margin: 8px 0;
+        }
+
+        .name-jp {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .name-real {
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        .profile-text {
+            font-size: 0.85rem;
+            color: #ccc;
+            margin-top: 10px;
+        }
 
         /* --- Discography Styles --- */
         .disco-grid {
@@ -184,7 +253,9 @@
             gap: 30px;
         }
 
-        .disco-card { text-align: left; }
+        .disco-card {
+            text-align: left;
+        }
 
         .jacket {
             width: 100%;
@@ -202,8 +273,20 @@
             border-color: var(--main-red);
         }
 
-        .disco-title { font-size: 1.1rem; font-weight: bold; margin-bottom: 5px; display: block; color: #fff; }
-        .disco-date { font-family: var(--code-font); font-size: 0.8rem; color: #666; margin-bottom: 10px; }
+        .disco-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #fff;
+        }
+
+        .disco-date {
+            font-family: var(--code-font);
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
 
         .yt-link {
             display: inline-block;
@@ -216,7 +299,10 @@
             transition: 0.3s;
         }
 
-        .yt-link:hover { background: var(--main-red); color: #fff; }
+        .yt-link:hover {
+            background: var(--main-red);
+            color: #fff;
+        }
 
         /* --- Footer --- */
         footer {
@@ -226,24 +312,63 @@
             border-top: 1px solid #1a1a1a;
         }
 
-        .copyright { font-family: var(--code-font); color: #444; margin-bottom: 20px; font-size: 0.8rem; }
-        .disclaimer-box { max-width: 900px; margin: 0 auto; border-top: 1px solid #222; padding-top: 20px; }
-        .disclaimer-text { font-size: 0.65rem; color: #555; line-height: 1.6; text-align: justify; word-break: break-all; }
+        .copyright {
+            font-family: var(--code-font);
+            color: #444;
+            margin-bottom: 20px;
+            font-size: 0.8rem;
+        }
+
+        .disclaimer-box {
+            max-width: 900px;
+            margin: 0 auto;
+            border-top: 1px solid #222;
+            padding-top: 20px;
+        }
+
+        .disclaimer-text {
+            font-size: 0.65rem;
+            color: #555;
+            line-height: 1.6;
+            text-align: justify;
+            word-break: break-all;
+        }
 
         /* --- Mobile Breakpoints --- */
         @media (max-width: 768px) {
-            nav { gap: 15px; }
-            .container { padding: 60px 15px; }
-            .member-grid { grid-template-columns: 1fr; } /* スマホでは1列に */
-            .disco-grid { grid-template-columns: repeat(2, 1fr); } /* ディスコは2列維持 */
+            nav {
+                gap: 15px;
+            }
+
+            .container {
+                padding: 60px 15px;
+            }
+
+            .member-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* スマホでは1列に */
+            .disco-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            /* ディスコは2列維持 */
         }
 
         @media (max-width: 480px) {
-            .disco-grid { grid-template-columns: 1fr; } /* 極小画面ではディスコも1列 */
-            nav { font-size: 0.65rem; }
+            .disco-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* 極小画面ではディスコも1列 */
+            nav {
+                font-size: 0.65rem;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <nav>
@@ -259,7 +384,7 @@
     </header>
 
     <div class="container">
-        
+
         <!-- 02_LOGIC -->
         <section id="logic" class="logic-box">
             <span class="code-comment"># Post-Digital Screamo Definition</span><br>
@@ -268,19 +393,22 @@
             <br>
             <span class="code-func">def</span> <span class="code-func">analyze_pain</span>(data_set):<br>
             &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment"># メモリリークした記憶を再起的にスキャン</span><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> [exception <span class="code-keyword">for</span> exception <span class="code-keyword">in</span> data_set <span class="code-keyword">if</span> heart_rate > 180]<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> [exception <span
+                class="code-keyword">for</span> exception <span class="code-keyword">in</span> data_set <span
+                class="code-keyword">if</span> heart_rate > 180]<br>
             <div class="logic-desc">
                 MOZCRISICの楽曲は、精緻なアルゴリズムと肉体的な咆哮の衝突点にある。<br>
-                データサイエンスの比喩で綴られる歌詞は、現代社会のシステムエラーを暴き出し、<br>
-                スクリーモの轟音によってその「例外処理」を完遂する。
+                データサイエンスの比喩で綴られる歌詞は、現代社会のシステムエラーを暴き出し、スクリーモの轟音によってその「例外処理」を完遂する。
             </div>
         </section>
 
         <!-- 03_MEMBERS -->
         <section id="members">
-            <div class="section-header"><h2>MEMBERS</h2></div>
+            <div class="section-header">
+                <h2>MEMBERS</h2>
+            </div>
             <div class="member-grid">
-                
+
                 <!-- ROSE -->
                 <a href="members/rose.html" class="member-link">
                     <div class="member-card">
@@ -346,31 +474,37 @@
 
         <!-- 04_DISCOGRAPHY -->
         <section id="discography">
-            <div class="section-header"><h2>DISCOGRAPHY</h2></div>
+            <div class="section-header">
+                <h2>DISCOGRAPHY</h2>
+            </div>
             <div class="disco-grid">
                 <div class="disco-card">
                     <img src="img/disco1.png" class="jacket" alt="J-pop is Dead">
                     <span class="disco-title">J-pop is Dead</span>
                     <div class="disco-date">COMING SOON</div>
-                    <a class="yt-link" href="https://www.youtube.com/@origiaworks-studio" target="_blank">WATCH ON YOUTUBE</a>
+                    <a class="yt-link" href="https://www.youtube.com/@origiaworks-studio" target="_blank">WATCH ON
+                        YOUTUBE</a>
                 </div>
                 <div class="disco-card">
                     <img src="img/disco2.png" class="jacket" alt="Identity Crisis">
                     <span class="disco-title">Identity Crisis</span>
                     <div class="disco-date">COMING SOON</div>
-                    <a class="yt-link" href="https://www.youtube.com/@origiaworks-studio" target="_blank">WATCH ON YOUTUBE</a>
+                    <a class="yt-link" href="https://www.youtube.com/@origiaworks-studio" target="_blank">WATCH ON
+                        YOUTUBE</a>
                 </div>
                 <div class="disco-card">
                     <img src="img/disco3.png" class="jacket" alt="Done">
                     <span class="disco-title">Done</span>
                     <div class="disco-date">COMING SOON</div>
-                    <a class="yt-link" href="https://www.youtube.com/@origiaworks-studio" target="_blank">WATCH ON YOUTUBE</a>
+                    <a class="yt-link" href="https://www.youtube.com/@origiaworks-studio" target="_blank">WATCH ON
+                        YOUTUBE</a>
                 </div>
                 <div class="disco-card">
                     <img src="img/disco4.png" class="jacket" alt="Seems like it">
                     <span class="disco-title">Seems like it</span>
                     <div class="disco-date">COMING SOON</div>
-                    <a class="yt-link" href="https://www.youtube.com/@origiaworks-studio" target="_blank">WATCH ON YOUTUBE</a>
+                    <a class="yt-link" href="https://www.youtube.com/@origiaworks-studio" target="_blank">WATCH ON
+                        YOUTUBE</a>
                 </div>
             </div>
         </section>
@@ -388,4 +522,5 @@
     </footer>
 
 </body>
+
 </html>
