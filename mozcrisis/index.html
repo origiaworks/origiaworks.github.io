@@ -304,6 +304,34 @@
             color: #fff;
         }
 
+        /* --- Download Link Style --- */
+        .dl-link {
+            display: inline-block;
+            font-family: var(--code-font);
+            font-size: 0.75rem;
+            color: var(--cyber-blue);
+            text-decoration: none;
+            border: 1px solid var(--cyber-blue);
+            padding: 4px 10px;
+            transition: 0.3s;
+            margin-left: 5px;
+            /* YouTubeボタンとの間隔 */
+        }
+
+        .dl-link:hover {
+            background: var(--cyber-blue);
+            color: #000;
+            /* ブルー背景時は文字を黒にして視認性を確保 */
+        }
+
+        /* ボタンが並ぶので、配置を微調整 */
+        .link-area {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
         /* --- Footer --- */
         footer {
             background: #050505;
@@ -478,33 +506,51 @@
                 <h2>DISCOGRAPHY</h2>
             </div>
             <div class="disc-grid">
+                <!-- J-Pop Is Dead (Active) -->
                 <div class="disc-card">
-                    <img src="img/disc001.png" class="jacket" alt="J-pop is Dead">
+                    <img src="img/disc/disc_000.jpg" class="jacket" alt="J-pop is Dead">
                     <span class="disc-title">J-Pop Is Dead</span>
                     <div class="disc-date">2026.8.7</div>
-                    <a class="yt-link" href="https://www.youtube.com/watch?v=HW7ypl7yyLI" target="_blank">WATCH ON
-                        YOUTUBE</a>
+                    <div class="link-area">
+                        <a class="yt-link" href="https://youtu.be/g1z95tXp5UI" target="_blank">WATCH</a>
+                        <a class="dl-link" href="https://github.com/origiaworks/works/releases/tag/jpop-is-dead"
+                            target="_blank">DOWNLOAD</a>
+                    </div>
                 </div>
+
+                <!-- Identity Crisis (Coming Soon) -->
                 <div class="disc-card">
-                    <img src="img/disc002.png" class="jacket" alt="Identity Crisis">
+                    <img src="img/disc/disc_001.jpg" class="jacket" alt="Identity Crisis">
                     <span class="disc-title">Identity Crisis</span>
-                    <div class="disc-date">COMING SOON</div>
-                    <a class="yt-link" href="https://www.youtube.com/@origiaworks-studio" target="_blank">WATCH ON
-                        YOUTUBE</a>
+                    <div class="disc-date">2026.8.7</div>
+                    <div class="link-area">
+                        <a class="yt-link" href="https://youtu.be/xhUc3UMOYtA" target="_blank">WATCH</a>
+                        <a class="dl-link" href="https://github.com/origiaworks/works/releases/tag/identity-crisis"
+                            target="_blank">DOWNLOAD</a>
+                    </div>
                 </div>
+
+                <!-- 以降、他のカードも同様に link-area で囲むと綺麗です -->
                 <div class="disc-card">
-                    <img src="img/disc003.png" class="jacket" alt="Done">
+                    <img src="img/disc/disc_002.jpg" class="jacket" alt="Done">
                     <span class="disc-title">Done</span>
-                    <div class="disc-date">COMING SOON</div>
-                    <a class="yt-link" href="https://www.youtube.com/@origiaworks-studio" target="_blank">WATCH ON
-                        YOUTUBE</a>
+                    <div class="disc-date">2026.8.7</div>
+                    <div class="link-area">
+                        <a class="yt-link" href="https://youtu.be/GFrqQNPh7Xk?si=moV_Q4sj1VvBUJql"
+                            target="_blank">WATCH</a>
+                        <a class="dl-link" href="https://github.com/origiaworks/works/releases/tag/done"
+                            target="_blank">DOWNLOAD</a>
+                    </div>
                 </div>
+
                 <div class="disc-card">
-                    <img src="img/disc004.png" class="jacket" alt="Seems like it">
+                    <img src="img/disc/disc_004.jpg" class="jacket" alt="Seems like it">
                     <span class="disc-title">Seems like it</span>
                     <div class="disc-date">COMING SOON</div>
-                    <a class="yt-link" href="https://www.youtube.com/@origiaworks-studio" target="_blank">WATCH ON
-                        YOUTUBE</a>
+                    <div class="link-area">
+                        <a class="yt-link" href="https://www.youtube.com/channel/UCRVgji3iKGKZnW1g9-Rpazg"
+                            target="_blank">WATCH</a>
+                    </div>
                 </div>
             </div>
         </section>
