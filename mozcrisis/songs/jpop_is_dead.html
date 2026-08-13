@@ -71,8 +71,8 @@
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            loadTextFile(`./lyric/${SONG_ID}_lyric.txt`, 'lyrics-content');
-            loadTextFile(`./lead/${SONG_ID}_lead.txt`, 'lead-content');
+            loadTextFile(`lyric/${SONG_ID}_lyric.txt`, 'lyrics-content');
+            loadTextFile(`lead/${SONG_ID}_lead.txt`, 'lead-content');
             document.getElementById('file-name-display').textContent = SONG_ID + "_lyric.txt";
         });
     </script>
