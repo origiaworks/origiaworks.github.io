@@ -70,7 +70,7 @@
     <script>
         async function loadModuleData() {
             try {
-                // 1. URLパラメータからIDを取得 (?id=jpop_is_dead など)
+                // 1. URLパラメータからIDを取得
                 const params = new URLSearchParams(window.location.search);
                 const SONG_ID = params.get('id');
 
@@ -79,51 +79,59 @@
                     return;
                 }
 
-                // 2. JSONデータベースを読み込み
-                // パスは module.html から見た相対パス（data/songs.json）
+                // 2. JSONから基本メタデータを読み込み
                 const response = await fetch('data/songs.json');
                 const database = await response.json();
                 const data = database[SONG_ID];
 
                 if (!data) throw new Error("MODULE_NOT_FOUND");
 
-                // 3. テキストデータの反映
+                // --- メタデータの反映 ---
                 document.title = `TRACK: ${data.title} | MOZCRISIS`;
                 document.getElementById('dynamic-title').textContent = data.title;
                 document.getElementById('dynamic-track-id').textContent = "TRACK_" + SONG_ID.toUpperCase();
-
-                // メタデータ
                 document.getElementById('meta-release').textContent = data.release;
                 document.getElementById('meta-architect').textContent = data.architect;
                 document.getElementById('meta-status').textContent = data.status;
 
-                // YouTube
                 if (data.youtube) {
                     document.getElementById('dynamic-yt').src = `https://www.youtube.com/embed/${data.youtube}`;
                 }
 
-                // リード文（改行処理）
-                const leadText = Array.isArray(data.lead) ? data.lead.join('\n') : data.lead;
-                document.getElementById('lead-content').innerText = leadText;
-
-                // 歌詞（改行処理）
-                const lyricsText = Array.isArray(data.lyrics) ? data.lyrics.join('\n') : data.lyrics;
-                document.getElementById('lyrics-content').innerText = lyricsText;
-
-                // 4. ビジュアル（画像）の反映
+                // --- 画像の反映 ---
                 document.getElementById('dynamic-hero').style.backgroundImage = `url('./keyvisual/${SONG_ID}_keyvisual.png')`;
                 document.getElementById('dynamic-artwork').src = `./artwork/${SONG_ID}_artwork.jpg`;
                 document.getElementById('file-name-display').textContent = SONG_ID + "_lyric.txt";
 
+                // 3. 外部テキストファイルを読み込む (lead と lyric)
+
+                // Leadファイルの読み込み (例: songs/lead/jpop_is_dead_lead.txt)
+                fetchTextFile(`lead/${SONG_ID}_lead.txt`, 'lead-content');
+
+                // Lyricファイルの読み込み (例: songs/lyric/jpop_is_dead_lyric.txt)
+                fetchTextFile(`lyric/${SONG_ID}_lyric.txt`, 'lyrics-content');
+
             } catch (e) {
                 console.error(e);
                 document.querySelector('.container').innerHTML = `
-                    <div style="padding: 100px 0; text-align: center;">
-                        <h1 style="color:var(--main-red); font-size: 2rem;">[ERROR] SYSTEM_FAILURE</h1>
-                        <p style="color: #666; font-family: var(--code-font);">${e.message}</p>
-                        <a href="../index.html" style="color: var(--cyber-blue); text-decoration: none;">>> RETURN_TO_DASHBOARD</a>
-                    </div>
-                `;
+                <div style="padding: 100px 0; text-align: center;">
+                    <h1 style="color:var(--main-red); font-size: 2rem;">[ERROR] SYSTEM_FAILURE</h1>
+                    <p style="color: #666; font-family: var(--code-font);">${e.message}</p>
+                    <a href="../index.html" style="color: var(--cyber-blue); text-decoration: none;">>> RETURN_TO_DASHBOARD</a>
+                </div>
+            `;
+            }
+        }
+
+        // テキストファイルを読み込んで指定のIDに流し込む共通関数
+        async function fetchTextFile(path, targetId) {
+            try {
+                const response = await fetch(path);
+                if (!response.ok) throw new Error(`FILE_NOT_FOUND: ${path}`);
+                const text = await response.text();
+                document.getElementById(targetId).innerText = text;
+            } catch (e) {
+                document.getElementById(targetId).innerText = `[ERROR] Failed to load ${path}`;
             }
         }
 
