@@ -4,15 +4,27 @@
     "release": "2026.08.07",
     "architect": "ROSE",
     "status": "STABLE_BUILD",
-    "lead": "ここにリード文を記述します。改行は\nで表現できます。",
-    "lyrics": "ここに歌詞を記述します。\nデータサイエンスとロックの融合。"
+    "youtube": "HW7ypl7yyLI"
   },
   "identity_crisis": {
     "title": "Identity Crisis",
-    "release": "2026.08.15",
+    "release": "2026.08.07",
     "architect": "ROSE",
     "status": "STABLE_BUILD",
-    "lead": "自己同一性のバグを修正するコード...",
-    "lyrics": "Who am I? / 鏡の中のバイナリ"
+    "youtube": "xhUc3UMOYtA"
+  },
+  "done": {
+    "title": "Done",
+    "release": "2026.08.07",
+    "architect": "ROSE",
+    "status": "STABLE_BUILD",
+    "youtube": "GFrqQNPh7Xk"
+  },
+  "chocolate": {
+    "title": "ChocoLate",
+    "release": "2026.08.08",
+    "architect": "ROSE",
+    "status": "STABLE_BUILD",
+    "youtube": "MNa4gSR1ZLs"
   }
 }
