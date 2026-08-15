@@ -1,0 +1,18 @@
+{
+  "jpop_is_dead": {
+    "title": "J-Pop Is Dead",
+    "release": "2026.08.07",
+    "architect": "ROSE",
+    "status": "STABLE_BUILD",
+    "lead": "ここにリード文を記述します。改行は\nで表現できます。",
+    "lyrics": "ここに歌詞を記述します。\nデータサイエンスとロックの融合。"
+  },
+  "identity_crisis": {
+    "title": "Identity Crisis",
+    "release": "2026.08.15",
+    "architect": "ROSE",
+    "status": "STABLE_BUILD",
+    "lead": "自己同一性のバグを修正するコード...",
+    "lyrics": "Who am I? / 鏡の中のバイナリ"
+  }
+}

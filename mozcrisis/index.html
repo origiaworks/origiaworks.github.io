@@ -498,51 +498,47 @@
                 </a>
             </div>
         </section>
-
         <!-- 04_DISCOGRAPHY -->
         <section id="discography">
             <div class="section-header">
                 <h2>DISCOGRAPHY</h2>
             </div>
-            <div class="disc-grid">
-                <div class="disc-card">
-                    <a href="songs/jpop_is_dead.html">
-                        <img src="songs/artwork/jpop_is_dead_artwork.jpg" class="jacket" alt="J-pop is Dead">
-                    </a>
-                    <a href="songs/jpop_is_dead.html" style="text-decoration:none;">
-                        <span class="disc-title">J-Pop Is Dead</span>
-                    </a>
-                    <div class="link-area">
-                        <a class="yt-link" href="https://youtu.be/HW7ypl7yyLI" target="_blank">WATCH</a>
-                        <a class="dl-link" href="songs/mp3/J-Pop_Is_Dead.mp3" target="_blank">DOWNLOAD</a>
-                    </div>
-                </div>
-                <div class="disc-card">
-                    <a href="songs/identity_crisis.html">
-                        <img src="songs/artwork/identity_crisis_artwork.jpg" class="jacket" alt="Identity Crisis">
-                    </a>
-                    <a href="songs/identity_crisis.html" style="text-decoration:none;">
-                        <span class="disc-title">Identity Crisis</span>
-                    </a>
-                    <div class="link-area">
-                        <a class="yt-link" href="https://youtu.be/xhUc3UMOYtA" target="_blank">WATCH</a>
-                        <a class="dl-link" href="songs/mp3/Identity_Crisis.mp3" target="_blank">DOWNLOAD</a>
-                    </div>
-                </div>
-                <div class="disc-card">
-                    <a href="songs/done.html">
-                        <img src="songs/artwork/done_artwork.jpg" class="jacket" alt="Done">
-                    </a>
-                    <a href="songs/done.html" style="text-decoration:none;">
-                        <span class="disc-title">Done</span>
-                    </a>
-                    <div class="link-area">
-                        <a class="yt-link" href="https://youtu.be/GFrqQNPh7Xk" target="_blank">WATCH</a>
-                        <a class="dl-link" href="songs/mp3/Done.mp3" target="_blank">DOWNLOAD</a>
-                    </div>
-                </div>                
+            <div id="disc-grid-container" class="disc-grid">
+                <!-- ここにJavaScriptで自動挿入されます -->
             </div>
         </section>
+
+        <script>
+            async function loadDiscography() {
+                try {
+                    const response = await fetch('songs/data/songs.json');
+                    const data = await response.json();
+                    const container = document.getElementById('disc-grid-container');
+
+                    for (const id in data) {
+                        const song = data[id];
+                        const card = document.createElement('div');
+                        card.className = 'disc-card';
+                        card.innerHTML = `
+                    <a href="songs/module.html?id=${id}">
+                        <img src="songs/artwork/${id}_artwork.jpg" class="jacket" alt="${song.title}">
+                    </a>
+                    <a href="songs/module.html?id=${id}" style="text-decoration:none;">
+                        <span class="disc-title">${song.title}</span>
+                    </a>
+                    <div class="link-area">
+                        <a class="yt-link" href="https://youtu.be/${song.youtube}" target="_blank">WATCH</a>
+                        <a class="dl-link" href="songs/mp3/${id}.mp3" target="_blank">DOWNLOAD</a>
+                    </div>
+                `;
+                        container.appendChild(card);
+                    }
+                } catch (e) {
+                    console.error("Failed to load discography:", e);
+                }
+            }
+            window.addEventListener('DOMContentLoaded', loadDiscography);
+        </script>
     </div>
 
     <footer>

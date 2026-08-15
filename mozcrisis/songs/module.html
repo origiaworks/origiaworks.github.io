@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRACK_MODULE | MOZCRISIS</title>
+    <!-- 外部CSSの読み込み -->
+    <link rel="stylesheet" href="../css/song_style.css">
+</head>
+
+<body>
+
+    <nav><a href="../index.html">SYS_ROOT >> RETURN_TO_DASHBOARD</a></nav>
+
+    <!-- 背景画像が動的に挿入されるエリア -->
+    <div id="dynamic-hero" class="hero-visual"></div>
+
+    <div class="container">
+        <!-- ヘッダー：アートワークとタイトル、メタデータ -->
+        <header class="song-header">
+            <div class="artwork-area">
+                <img id="dynamic-artwork" src="" class="artwork-img" alt="Artwork">
+            </div>
+            <div class="title-area">
+                <div id="dynamic-track-id" class="track-id">LOADING...</div>
+                <h1 id="dynamic-title">ACCESSING_DATA...</h1>
+                <div class="meta-list">
+                    <div class="meta-item">
+                        <span class="meta-label">RELEASE</span>
+                        <span id="meta-release" class="meta-value">----.--.--</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">ARCHITECT</span>
+                        <span id="meta-architect" class="meta-value">----</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">STATUS</span>
+                        <span id="meta-status" class="meta-value">----</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- YouTube動画セクション -->
+        <section class="video-section">
+            <div class="video-container">
+                <iframe id="dynamic-yt" src="" title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <!-- リード文（README.md風） -->
+        <section class="lead-section">
+            <div class="lead-header">README.md</div>
+            <p id="lead-content" class="lead-text">Fetching module documentation...</p>
+        </section>
+
+        <!-- 歌詞ターミナル -->
+        <div class="terminal">
+            <div class="terminal-bar">
+                <span id="file-name-display">source_code.txt</span>
+                <span style="color: #444;">UTF-8 / JSON_FED</span>
+            </div>
+            <pre id="lyrics-content" class="lyrics-box">Awaiting data stream...</pre>
+        </div>
+    </div>
+
+    <script>
+        async function loadModuleData() {
+            try {
+                // 1. URLパラメータからIDを取得 (?id=jpop_is_dead など)
+                const params = new URLSearchParams(window.location.search);
+                const SONG_ID = params.get('id');
+
+                if (!SONG_ID) {
+                    window.location.href = '../index.html';
+                    return;
+                }
+
+                // 2. JSONデータベースを読み込み
+                // パスは module.html から見た相対パス（data/songs.json）
+                const response = await fetch('data/songs.json');
+                const database = await response.json();
+                const data = database[SONG_ID];
+
+                if (!data) throw new Error("MODULE_NOT_FOUND");
+
+                // 3. テキストデータの反映
+                document.title = `TRACK: ${data.title} | MOZCRISIS`;
+                document.getElementById('dynamic-title').textContent = data.title;
+                document.getElementById('dynamic-track-id').textContent = "TRACK_" + SONG_ID.toUpperCase();
+
+                // メタデータ
+                document.getElementById('meta-release').textContent = data.release;
+                document.getElementById('meta-architect').textContent = data.architect;
+                document.getElementById('meta-status').textContent = data.status;
+
+                // YouTube
+                if (data.youtube) {
+                    document.getElementById('dynamic-yt').src = `https://www.youtube.com/embed/${data.youtube}`;
+                }
+
+                // リード文（改行処理）
+                const leadText = Array.isArray(data.lead) ? data.lead.join('\n') : data.lead;
+                document.getElementById('lead-content').innerText = leadText;
+
+                // 歌詞（改行処理）
+                const lyricsText = Array.isArray(data.lyrics) ? data.lyrics.join('\n') : data.lyrics;
+                document.getElementById('lyrics-content').innerText = lyricsText;
+
+                // 4. ビジュアル（画像）の反映
+                document.getElementById('dynamic-hero').style.backgroundImage = `url('./keyvisual/${SONG_ID}_keyvisual.png')`;
+                document.getElementById('dynamic-artwork').src = `./artwork/${SONG_ID}_artwork.jpg`;
+                document.getElementById('file-name-display').textContent = SONG_ID + "_lyric.txt";
+
+            } catch (e) {
+                console.error(e);
+                document.querySelector('.container').innerHTML = `
+                    <div style="padding: 100px 0; text-align: center;">
+                        <h1 style="color:var(--main-red); font-size: 2rem;">[ERROR] SYSTEM_FAILURE</h1>
+                        <p style="color: #666; font-family: var(--code-font);">${e.message}</p>
+                        <a href="../index.html" style="color: var(--cyber-blue); text-decoration: none;">>> RETURN_TO_DASHBOARD</a>
+                    </div>
+                `;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', loadModuleData);
+    </script>
+</body>
+
+</html>
