@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TRACK_MODULE | MOZCRISIS</title>
     <style>
-        /* 変数定義 */
         :root {
             --main-red: #ff3e3e;
             --cyber-blue: #00f3ff;
@@ -15,11 +13,10 @@
             --code-font: 'Consolas', 'Monaco', 'Courier New', monospace;
         }
 
-        /* 全体設定 - 背景を強制的に黒に */
-        html,
-        body {
+        /* 全体設定 - 強制ダークモード */
+        html, body {
             background-color: var(--bg-black) !important;
-            color: var(--text-white);
+            color: var(--text-white) !important;
             font-family: 'Segoe UI', 'Hiragino Kaku Gothic ProN', sans-serif;
             margin: 0;
             line-height: 1.6;
@@ -37,14 +34,9 @@
             z-index: 1000;
             box-sizing: border-box;
         }
+        nav a { color: var(--main-red); text-decoration: none; font-size: 0.8rem; }
 
-        nav a {
-            color: var(--main-red);
-            text-decoration: none;
-            font-size: 0.8rem;
-        }
-
-        /* メインビジュアル */
+        /* メインビジュアル（上部背景） */
         .hero-visual {
             width: 100%;
             height: 45vh;
@@ -54,7 +46,6 @@
             margin-top: 50px;
             background-color: #111;
         }
-
         .hero-visual::after {
             content: '';
             position: absolute;
@@ -73,45 +64,26 @@
             z-index: 10;
         }
 
-        /* ヘッダーエリア */
+        /* ヘッダー：ジャケットとタイトル */
         .song-header {
             display: flex;
             gap: 30px;
             margin-top: -80px;
             flex-wrap: wrap;
         }
-
-        .artwork-area {
-            flex: 0 0 220px;
+        .artwork-area { flex: 0 0 220px; }
+        .artwork-img { 
+            width: 100%; 
+            aspect-ratio: 1/1; 
+            border: 1px solid var(--main-red); 
+            object-fit: cover; 
+            background: #000; 
         }
+        .title-area { flex: 1; min-width: 300px; }
+        .track-id { font-family: var(--code-font); color: var(--main-red); font-size: 1rem; }
+        h1 { font-family: var(--code-font); font-size: clamp(2rem, 5vw, 3rem); margin: 5px 0; text-transform: uppercase; }
 
-        .artwork-img {
-            width: 100%;
-            aspect-ratio: 1/1;
-            border: 1px solid var(--main-red);
-            object-fit: cover;
-            background: #000;
-        }
-
-        .title-area {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .track-id {
-            font-family: var(--code-font);
-            color: var(--main-red);
-            font-size: 1rem;
-        }
-
-        h1 {
-            font-family: var(--code-font);
-            font-size: 3rem;
-            margin: 5px 0;
-            text-transform: uppercase;
-        }
-
-        /* メタ情報リスト */
+        /* メタ情報（日付・担当・状態） */
         .meta-list {
             display: flex;
             gap: 30px;
@@ -119,80 +91,21 @@
             padding-top: 15px;
             margin-top: 15px;
         }
+        .meta-label { font-size: 0.7rem; color: #666; display: block; }
+        .meta-value { font-family: var(--code-font); color: var(--cyber-blue); }
 
-        .meta-label {
-            font-size: 0.7rem;
-            color: #666;
-            display: block;
-        }
-
-        .meta-value {
-            font-family: var(--code-font);
-            color: var(--cyber-blue);
-        }
-
-        /* YouTube */
-        .video-section {
-            margin: 40px 0;
-            background: #000;
-            border: 1px solid #333;
-            padding-top: 25px;
-            position: relative;
-        }
-
-        .video-section::before {
-            content: "VISUAL_MONITOR.exe";
-            position: absolute;
-            top: 5px;
-            left: 10px;
-            font-size: 0.6rem;
-            color: #444;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* リード文 */
+        /* リード文セクション */
         .lead-section {
-            padding: 20px;
+            padding: 30px;
             background: rgba(0, 243, 255, 0.05);
             border-left: 3px solid var(--cyber-blue);
-            margin-bottom: 40px;
+            margin: 40px 0;
         }
+        .lead-header { font-family: var(--code-font); color: var(--cyber-blue); font-size: 0.8rem; margin-bottom: 10px; }
+        .lead-text { white-space: pre-wrap; font-size: 1.05rem; color: #ccc; margin: 0; line-height: 1.8; }
 
-        .lead-header {
-            font-family: var(--code-font);
-            color: var(--cyber-blue);
-            font-size: 0.8rem;
-            margin-bottom: 10px;
-        }
-
-        .lead-text {
-            white-space: pre-wrap;
-            font-size: 1rem;
-            color: #ccc;
-            margin: 0;
-        }
-
-        /* 歌詞 */
-        .terminal {
-            background: #000;
-            border: 1px solid #333;
-            margin-bottom: 80px;
-        }
-
+        /* 歌詞ターミナル */
+        .terminal { background: #000; border: 1px solid #333; margin-bottom: 100px; }
         .terminal-bar {
             background: #1a1a1a;
             padding: 10px;
@@ -202,36 +115,23 @@
             justify-content: space-between;
             border-bottom: 1px solid #333;
         }
-
-        .lyrics-box {
-            padding: 30px;
-            font-family: var(--code-font);
-            font-size: 1rem;
-            color: #aaa;
-            white-space: pre-wrap;
-            margin: 0;
-            line-height: 1.8;
+        .lyrics-box { 
+            padding: 40px; 
+            font-family: var(--code-font); 
+            font-size: 1rem; 
+            color: #aaa; 
+            white-space: pre-wrap; 
+            margin: 0; 
+            line-height: 1.8; 
         }
 
         @media (max-width: 600px) {
-            .song-header {
-                margin-top: -40px;
-                text-align: center;
-                justify-content: center;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .meta-list {
-                flex-direction: column;
-                gap: 10px;
-            }
+            .song-header { margin-top: -40px; text-align: center; justify-content: center; }
+            .meta-list { flex-direction: column; gap: 10px; }
+            .lyrics-box { padding: 25px; }
         }
     </style>
 </head>
-
 <body>
 
     <nav><a href="../index.html">SYS_ROOT >> RETURN_TO_DASHBOARD</a></nav>
@@ -247,27 +147,20 @@
                 <div id="dynamic-track-id" class="track-id">LOADING...</div>
                 <h1 id="dynamic-title">...</h1>
                 <div class="meta-list">
-                    <div class="meta-item"><span class="meta-label">RELEASE</span><span id="meta-release"
-                            class="meta-value">----</span></div>
-                    <div class="meta-item"><span class="meta-label">ARCHITECT</span><span id="meta-architect"
-                            class="meta-value">----</span></div>
-                    <div class="meta-item"><span class="meta-label">STATUS</span><span id="meta-status"
-                            class="meta-value">----</span></div>
+                    <div class="meta-item"><span class="meta-label">RELEASE</span><span id="meta-release" class="meta-value">----</span></div>
+                    <div class="meta-item"><span class="meta-label">ARCHITECT</span><span id="meta-architect" class="meta-value">----</span></div>
+                    <div class="meta-item"><span class="meta-label">STATUS</span><span id="meta-status" class="meta-value">----</span></div>
                 </div>
             </div>
         </header>
 
-        <section class="video-section">
-            <div class="video-container">
-                <iframe id="dynamic-yt" src="" allowfullscreen></iframe>
-            </div>
-        </section>
-
+        <!-- リード文エリア -->
         <section class="lead-section">
             <div class="lead-header">README.md</div>
             <p id="lead-content" class="lead-text">Fetching documentation...</p>
         </section>
 
+        <!-- 歌詞表示エリア -->
         <div class="terminal">
             <div class="terminal-bar">
                 <span id="file-name-display">source_code.txt</span>
@@ -284,39 +177,45 @@
                 const SONG_ID = params.get('id');
                 if (!SONG_ID) return;
 
+                // 1. JSONからデータを取得
                 const response = await fetch('data/songs.json');
                 const database = await response.json();
                 const data = database[SONG_ID];
                 if (!data) return;
 
-                // テキスト反映
+                // 2. メタデータの反映
                 document.getElementById('dynamic-title').textContent = data.title;
                 document.getElementById('dynamic-track-id').textContent = "TRACK_" + SONG_ID.toUpperCase();
                 document.getElementById('meta-release').textContent = data.release;
                 document.getElementById('meta-architect').textContent = data.architect;
                 document.getElementById('meta-status').textContent = data.status;
-                if (data.youtube) document.getElementById('dynamic-yt').src = `https://www.youtube.com/embed/${data.youtube}`;
 
-                // 画像反映
+                // 3. 画像の反映
                 document.getElementById('dynamic-hero').style.backgroundImage = `url('./keyvisual/${SONG_ID}_keyvisual.png')`;
                 document.getElementById('dynamic-artwork').src = `./artwork/${SONG_ID}_artwork.jpg`;
                 document.getElementById('file-name-display').textContent = SONG_ID + "_lyric.txt";
 
-                // ファイル読み込み
+                // 4. 外部テキストファイルの読み込み（lead と lyric）
                 fetchTextFile(`lead/${SONG_ID}_lead.txt`, 'lead-content');
                 fetchTextFile(`lyric/${SONG_ID}_lyric.txt`, 'lyrics-content');
-            } catch (e) { console.error(e); }
+
+            } catch (e) { 
+                console.error("System Error:", e); 
+            }
         }
 
         async function fetchTextFile(path, targetId) {
             try {
                 const response = await fetch(path);
+                if (!response.ok) throw new Error("Not Found");
                 const text = await response.text();
                 document.getElementById(targetId).innerText = text;
-            } catch (e) { document.getElementById(targetId).innerText = "File not found."; }
+            } catch (e) { 
+                document.getElementById(targetId).innerText = "[ERROR] File not found."; 
+            }
         }
+
         window.addEventListener('DOMContentLoaded', loadModuleData);
     </script>
 </body>
-
 </html>
