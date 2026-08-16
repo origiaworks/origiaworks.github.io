@@ -1,0 +1,77 @@
+{
+  "rose": {
+    "name": "ローズ",
+    "realName": "石神・Ｒ・フローレンス",
+    "role": "Vo & Gt / Band Architect",
+    "color": "#ff3e3e",
+    "quote": "「感情のオーバーフローを、1行のコードでリゾルブしてやるよ。」",
+    "specs": [
+      {"label": "CODING SKILL", "value": "S+ (Full-stack)"},
+      {"label": "SCREAM NOISE", "value": "4.2 GHz"},
+      {"label": "BILINGUAL", "value": "JP 50% / EN 50%"},
+      {"label": "ALCOHOL", "value": "LOW (Shutdown)"}
+    ],
+    "bio": "元プログラマー。バンドの設計者。おにぎりプリントのTシャツを纏い、データサイエンス用語を駆使したリリックで感情をコード化する。日英が激しく交錯するバイリンガル・スタイルのボーカルが特徴。無邪気で好奇心旺盛な性格だが、曲作りの際は冷徹なロジックを優先するアーキテクトへと変貌する。",
+    "gear": "Guitar: Yellow Telecaster / Editor: VS Code / Favorite: Onigiri (Salmon)"
+  },
+  "yodo": {
+    "name": "淀",
+    "realName": "御母衣 京子",
+    "role": "Bass / Core Module / Sister",
+    "color": "#00d4ff",
+    "quote": "「反骨と品格は両立する。それが私のロックだ。」",
+    "specs": [
+      {"label": "BASS FREQ", "value": "Sub-Harmonic"},
+      {"label": "ROCK-NESS", "value": "Critical Overdrive"},
+      {"label": "ALCOHOL", "value": "Limitless (Imperial)"},
+      {"label": "JIWOO PROXY", "value": "Sync: 100%"}
+    ],
+    "bio": "皇族の血を引くお嬢様。袴姿で白いベースを操る。酒とタバコを愛し、メンバー内で最も「ロック」な生き様を貫く姿から、敬意を込めて「姐さん」と呼ばれている。恥ずかしがり屋なジウの意思をすべて代弁する唯一の理解者。",
+    "gear": "Bass: White Electric Bass / Favorite: Sake (Dry) / Special: Jiwoo's Mind Reading"
+  },
+  "lena": {
+    "name": "レナ",
+    "realName": "斎藤 エレーナ",
+    "role": "Key & Scream / Overload",
+    "color": "#b8b8ff",
+    "quote": "「ロリータしか勝たん。」",
+    "specs": [
+      {"label": "KEYBOARD SPEED", "value": "220 BPM"},
+      {"label": "SCREAM VOL", "value": "120 dB"},
+      {"label": "JAPANESE", "value": "Error (Only Catchphrases)"},
+      {"label": "LOLITA PRIDE", "value": "MAX (Invincible)"}
+    ],
+    "bio": "ロシア出身の叫び手。ゴスロリ衣装で超絶技巧のキーボードを弾き倒し、システムをオーバーロードさせる咆哮を放つ完璧主義のナルシスト。日本語は苦手だが、「ロリータしか勝たん。」という口癖だけは執拗なまでに使いこなす。",
+    "gear": "Gear: High-End Synthesizer / Fashion: Gothic Lolita / Quote: ロリータしか勝たん。"
+  },
+  "mio": {
+    "name": "ミオ",
+    "realName": "ミオ・ロドリゲス",
+    "role": "Drums / Traffic Control",
+    "color": "#ffaa00",
+    "quote": "「どんな競技（リズム）でも、アタシが完璧にコントロールしてやる！」",
+    "specs": [
+      {"label": "STAMINA", "value": "Infinite (All-Rounder)"},
+      {"label": "GIRLY METER", "value": "120% (Hidden)"},
+      {"label": "ALCOHOL", "value": "High Rank"},
+      {"label": "CLOCK SYNC", "value": "0.001ms Precision"}
+    ],
+    "bio": "ヒスパニック系のエネルギッシュなドラマー。スポーツ万能であらゆる競技において秀逸な成績を残す身体能力を持つが、本人はそのボーイッシュな性格を気にしており、内面は乙女。ワイルドな打法で正確なクロックを刻む。",
+    "gear": "Drums: Custom Shell Kit / Stick: Heavy Oak / Sport: Decathlon Champion"
+  },
+  "jiwoo": {
+    "name": "JIWOO",
+    "realName": "イ・ジウ",
+    "role": "DJ / Encryption",
+    "color": "#00ff41",
+    "quote": "「............（淀：ジウは、音だけで十分と言っています。）」",
+    "specs": [
+      {"label": "ENCRYPTION", "value": "AES-256 Noise"},
+      {"label": "SHYNESS", "value": "Overflow"},
+      {"label": "BEAUTY", "value": "Hidden (SSR Rank)"},
+      {"label": "VOCAL", "value": "Silent Mode"}
+    ],
+    "bio": "韓国出身。ビッグサイズのパーカースタイルで素顔を隠し、ノイズを暗号化してフロアへ撒き散らす。極度の恥ずかしがり屋で公の場では一切喋らないため、彼女が口を開く代わりに淀がその想いを言葉にする。圧倒的な美貌を秘めた最年少DJ。",
+    "gear": "DJ Gear: Turntable & Sampler / Wear: Baggy Hoodie / Partner: YODO"
+  }
+}

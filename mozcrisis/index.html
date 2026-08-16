@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOZCRISIS | Digital Screamo & Algorithm Rock</title>
+    <title>MOZCRISIS | Algorithm Rock</title>
     <style>
         :root {
             --main-red: #ff3e3e;
@@ -36,7 +36,6 @@
             display: flex;
             justify-content: center;
             gap: 20px;
-            /* スマホ向けに狭める */
             font-family: var(--code-font);
             font-size: 0.75rem;
             border-bottom: 1px solid #222;
@@ -87,7 +86,6 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 80px 20px;
-            /* スマホ向けに少し狭める */
         }
 
         .section-header {
@@ -103,20 +101,14 @@
             margin: 0;
         }
 
-        /* --- Logic Box の修正版 --- */
+        /* --- Logic Box --- */
         .logic-box {
             background: #000;
             border: 1px solid #333;
             padding: clamp(30px, 5vw, 50px);
-            /* 内側の余白を少し広げました */
             font-family: var(--code-font);
-
-            /* ↓ 重要：上に余白（40px）を作ることで、赤いラベルが切れないようにします */
             margin: 40px auto 100px;
-
             position: relative;
-
-            /* ↓ スマホで横幅からはみ出した時に、中のコードだけをスクロールさせます */
             overflow-x: visible;
         }
 
@@ -124,7 +116,6 @@
             content: "lyric_logic.sh";
             position: absolute;
             top: -15px;
-            /* 位置を微調整 */
             left: 20px;
             background: var(--main-red);
             padding: 2px 12px;
@@ -134,20 +125,10 @@
             z-index: 10;
         }
 
-        /* 中のコードがはみ出す場合の対策 */
-        .logic-box pre,
-        .logic-box div:not(.logic-desc) {
-            overflow-x: auto;
-            white-space: pre;
-            /* 改行させずに横スクロール */
-            padding-bottom: 10px;
-        }
-
         .logic-desc {
             white-space: normal;
-            /* 説明文はちゃんと改行させる */
             margin-top: 30px;
-            font-family: 'Segoe UI', 'Hiragino Kaku Gothic ProN', sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             color: #ccc;
             font-size: 0.95rem;
             border-top: 1px solid #222;
@@ -166,14 +147,10 @@
             color: #dcdcaa;
         }
 
-        .code-string {
-            color: #ce9178;
-        }
-
-        /* --- Member Grid & Link --- */
+        /* --- Member Grid --- */
         .member-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-bottom: 100px;
         }
@@ -200,7 +177,6 @@
         .img-wrapper {
             width: 100%;
             aspect-ratio: 1 / 1;
-            background: #fff;
             overflow: hidden;
         }
 
@@ -223,16 +199,11 @@
             text-transform: uppercase;
         }
 
-        .name-area {
-            display: flex;
-            align-items: baseline;
-            gap: 10px;
-            margin: 8px 0;
-        }
-
         .name-jp {
             font-size: 1.5rem;
             font-weight: bold;
+            display: block;
+            margin: 5px 0;
         }
 
         .name-real {
@@ -240,17 +211,12 @@
             color: #777;
         }
 
-        .profile-text {
-            font-size: 0.85rem;
-            color: #ccc;
-            margin-top: 10px;
-        }
-
         /* --- Discography Styles --- */
         .disc-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 30px;
+            margin-bottom: 100px;
         }
 
         .disc-card {
@@ -264,39 +230,39 @@
             margin-bottom: 15px;
             transition: 0.3s;
             border: 1px solid #333;
-            display: block;
             object-fit: cover;
         }
 
         .disc-card:hover .jacket {
-            transform: scale(1.03);
             border-color: var(--main-red);
+            transform: scale(1.02);
         }
 
         .disc-title {
             font-size: 1.1rem;
             font-weight: bold;
-            margin-bottom: 5px;
-            display: block;
             color: #fff;
         }
 
-        .disc-date {
+        .link-area {
+            margin-top: 10px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .yt-link,
+        .dl-link {
             font-family: var(--code-font);
-            font-size: 0.8rem;
-            color: #666;
-            margin-bottom: 10px;
+            font-size: 0.7rem;
+            text-decoration: none;
+            padding: 4px 10px;
+            border: 1px solid;
+            transition: 0.3s;
         }
 
         .yt-link {
-            display: inline-block;
-            font-family: var(--code-font);
-            font-size: 0.75rem;
             color: var(--main-red);
-            text-decoration: none;
-            border: 1px solid var(--main-red);
-            padding: 4px 10px;
-            transition: 0.3s;
+            border-color: var(--main-red);
         }
 
         .yt-link:hover {
@@ -304,32 +270,59 @@
             color: #fff;
         }
 
-        /* --- Download Link Style --- */
         .dl-link {
-            display: inline-block;
-            font-family: var(--code-font);
-            font-size: 0.75rem;
             color: var(--cyber-blue);
-            text-decoration: none;
-            border: 1px solid var(--cyber-blue);
-            padding: 4px 10px;
-            transition: 0.3s;
-            margin-left: 5px;
-            /* YouTubeボタンとの間隔 */
+            border-color: var(--cyber-blue);
         }
 
         .dl-link:hover {
             background: var(--cyber-blue);
             color: #000;
-            /* ブルー背景時は文字を黒にして視認性を確保 */
         }
 
-        /* ボタンが並ぶので、配置を微調整 */
-        .link-area {
-            margin-top: 10px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
+        /* --- Protocol Section (Policy) --- */
+        .protocol-box {
+            background: #050505;
+            border: 1px solid #222;
+            padding: 40px;
+            font-family: var(--code-font);
+            font-size: 0.9rem;
+            margin-bottom: 80px;
+        }
+
+        .protocol-box h3 {
+            color: var(--cyber-blue);
+            font-size: 1rem;
+            border-left: 3px solid var(--main-red);
+            padding-left: 15px;
+            margin: 30px 0 15px;
+        }
+
+        .protocol-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .protocol-list li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+            color: #aaa;
+        }
+
+        .protocol-list li::before {
+            content: ">>";
+            position: absolute;
+            left: 0;
+            color: var(--main-red);
+        }
+
+        .credit-block {
+            background: #000;
+            padding: 20px;
+            border: 1px dashed #333;
+            margin-top: 20px;
+            color: var(--cyber-blue);
         }
 
         /* --- Footer --- */
@@ -343,55 +336,29 @@
         .copyright {
             font-family: var(--code-font);
             color: #444;
-            margin-bottom: 20px;
             font-size: 0.8rem;
-        }
-
-        .disclaimer-box {
-            max-width: 900px;
-            margin: 0 auto;
-            border-top: 1px solid #222;
-            padding-top: 20px;
         }
 
         .disclaimer-text {
             font-size: 0.65rem;
             color: #555;
-            line-height: 1.6;
+            max-width: 800px;
+            margin: 20px auto 0;
             text-align: justify;
-            word-break: break-all;
         }
 
-        /* --- Mobile Breakpoints --- */
         @media (max-width: 768px) {
             nav {
-                gap: 15px;
+                gap: 10px;
+                font-size: 0.65rem;
             }
 
             .container {
                 padding: 60px 15px;
             }
 
-            .member-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* スマホでは1列に */
-            .disco-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            /* ディスコは2列維持 */
-        }
-
-        @media (max-width: 480px) {
-            .disco-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* 極小画面ではディスコも1列 */
-            nav {
-                font-size: 0.65rem;
+            .protocol-box {
+                padding: 20px;
             }
         }
     </style>
@@ -404,11 +371,12 @@
         <a href="#logic">02_LOGIC</a>
         <a href="#members">03_MEMBERS</a>
         <a href="#discography">04_DISCOGRAPHY</a>
+        <a href="#protocol">05_PROTOCOL</a>
     </nav>
 
     <header id="home">
         <div class="glitch-logo">MOZCRISIS</div>
-        <div class="tagline">Execute: Digital_Screamo.sh --heavy --fast</div>
+        <div class="tagline">Execute: AlgorithmRock.sh --heavy --fast</div>
     </header>
 
     <div class="container">
@@ -425,8 +393,9 @@
                 class="code-keyword">for</span> exception <span class="code-keyword">in</span> data_set <span
                 class="code-keyword">if</span> heart_rate > 180]<br>
             <div class="logic-desc">
-                MOZCRISICの楽曲は、精緻なアルゴリズムと肉体的な咆哮の衝突点にある。<br>
-                データサイエンスの比喩で綴られる歌詞は、現代社会のシステムエラーを暴き出し、スクリーモの轟音によってその「例外処理」を完遂する。
+                これは音楽ではない。最先端AI技術が起こす奇跡のバグだ。<BR>
+                精緻なアルゴリズムと肉体的な咆哮の衝突点から生まれたアルゴリズム・ロック。<BR>
+                現代社会の例外処理を完遂するために、この周波数を全システムへインストールせよ。
             </div>
         </section>
 
@@ -436,122 +405,118 @@
                 <h2>MEMBERS</h2>
             </div>
             <div class="member-grid">
-
-                <!-- ROSE -->
-                <a href="member/rose.html" class="member-link">
+                <a href="members.html?id=rose" class="member-link">
                     <div class="member-card">
-                        <div class="img-wrapper"><img src="member/img/rose.png" alt="Rose"></div>
+                        <div class="img-wrapper"><img src="members/img/rose.png" alt="Rose"></div>
                         <div class="info">
                             <div class="role-tag">Vo & Gt / Architect</div>
-                            <div class="name-area"><span class="name-jp">ローズ</span></div>
-                            <div class="name-real">石神・Ｒ・フローレンス</div>
+                            <span class="name-jp">ローズ</span>
+                            <span class="name-real">石神・Ｒ・フローレンス</span>
                         </div>
                     </div>
                 </a>
-
-                <!-- YODO -->
-                <a href="member/yodo.html" class="member-link">
+                <a href="members.html?id=yodo" class="member-link">
                     <div class="member-card">
-                        <div class="img-wrapper"><img src="member/img/yodo.png" alt="Yodo"></div>
+                        <div class="img-wrapper"><img src="members/img/yodo.png" alt="Yodo"></div>
                         <div class="info">
                             <div class="role-tag">Bass / Core_Module</div>
-                            <div class="name-area"><span class="name-jp">淀</span></div>
-                            <div class="name-real">御母衣 京子</div>
+                            <span class="name-jp">淀</span>
+                            <span class="name-real">御母衣 京子</span>
                         </div>
                     </div>
                 </a>
-
-                <!-- LENA -->
-                <a href="member/lena.html" class="member-link">
+                <a href="members.html?id=lena" class="member-link">
                     <div class="member-card">
-                        <div class="img-wrapper"><img src="member/img/lena.png" alt="Lena"></div>
+                        <div class="img-wrapper"><img src="members/img/lena.png" alt="Lena"></div>
                         <div class="info">
                             <div class="role-tag">Key & Scream / Overload</div>
-                            <div class="name-area"><span class="name-jp">レナ</span></div>
-                            <div class="name-real">斎藤 エレーナ</div>
+                            <span class="name-jp">レナ</span>
+                            <span class="name-real">斎藤 エレーナ</span>
                         </div>
                     </div>
                 </a>
-
-                <!-- MIO -->
-                <a href="member/mio.html" class="member-link">
+                <a href="members.html?id=mio" class="member-link">
                     <div class="member-card">
-                        <div class="img-wrapper"><img src="member/img/mio.png" alt="Mio"></div>
+                        <div class="img-wrapper"><img src="members/img/mio.png" alt="Mio"></div>
                         <div class="info">
                             <div class="role-tag">Drums / Traffic_Control</div>
-                            <div class="name-area"><span class="name-jp">ミオ</span></div>
-                            <div class="name-real">ミオ・ロドリゲス</div>
+                            <span class="name-jp">ミオ</span>
+                            <span class="name-real">ミオ・ロドリゲス</span>
                         </div>
                     </div>
                 </a>
-
-                <!-- JIWOO -->
-                <a href="member/jiwoo.html" class="member-link">
+                <a href="members.html?id=jiwoo" class="member-link">
                     <div class="member-card">
-                        <div class="img-wrapper"><img src="member/img/jiwoo.png" alt="Jiwoo"></div>
+                        <div class="img-wrapper"><img src="members/img/jiwoo.png" alt="Jiwoo"></div>
                         <div class="info">
                             <div class="role-tag">DJ / Encryption</div>
-                            <div class="name-area"><span class="name-jp">JIWOO</span></div>
-                            <div class="name-real">イ・ジウ</div>
+                            <span class="name-jp">JIWOO</span>
+                            <span class="name-real">イ・ジウ</span>
                         </div>
                     </div>
                 </a>
             </div>
         </section>
+
         <!-- 04_DISCOGRAPHY -->
         <section id="discography">
             <div class="section-header">
                 <h2>DISCOGRAPHY</h2>
             </div>
-            <div id="disc-grid-container" class="disc-grid">
-                <!-- ここにJavaScriptで自動挿入されます -->
+            <div id="disc-grid-container" class="disc-grid"></div>
+        </section>
+
+        <!-- 05_PROTOCOL (Usage Policy Link) -->
+        <section id="protocol">
+            <div class="section-header">
+                <h2>RESOURCE_USAGE_PROTOCOL</h2>
+            </div>
+            <div class="protocol-link-box">
+                <p>
+                    音響資産（Auditory Assets）のデプロイおよび二次利用に関する実行プロトコルは、以下のドキュメントに定義されている。
+                    ユーザーは、リソースのインポート前に必ず当該プロトコルをロードし、実行権限を確認すること。
+                </p>
+                <div style="margin-top: 30px;">
+                    <a href="policy.html" class="protocol-btn">>> ACCESS_FULL_PROTOCOL_DOCUMENTATION</a>
+                </div>
             </div>
         </section>
 
-        <script>
-            async function loadDiscography() {
-                try {
-                    const response = await fetch('songs/data/songs.json');
-                    const data = await response.json();
-                    const container = document.getElementById('disc-grid-container');
-
-                    for (const id in data) {
-                        const song = data[id];
-                        const card = document.createElement('div');
-                        card.className = 'disc-card';
-                        card.innerHTML = `
-                    <a href="songs/module.html?id=${id}">
-                        <img src="songs/artwork/${id}_artwork.jpg" class="jacket" alt="${song.title}">
-                    </a>
-                    <a href="songs/module.html?id=${id}" style="text-decoration:none;">
-                        <span class="disc-title">${song.title}</span>
-                    </a>
-                    <div class="link-area">
-                        <a class="yt-link" href="https://youtu.be/${song.youtube}" target="_blank">WATCH</a>
-                        <a class="dl-link" href="songs/mp3/${id}.mp3" target="_blank">DOWNLOAD</a>
-                    </div>
-                `;
-                        container.appendChild(card);
-                    }
-                } catch (e) {
-                    console.error("Failed to load discography:", e);
-                }
-            }
-            window.addEventListener('DOMContentLoaded', loadDiscography);
-        </script>
     </div>
 
     <footer>
-        <div class="copyright">
-            &copy; 2026 MOZCRISIS / ORIGIAWORKS. ALL RIGHTS RESERVED.
-        </div>
-        <div class="disclaimer-box">
-            <p class="disclaimer-text">
-                MOZCRISIS（およびモズクライシス）はORIGIAWORKSが創作した架空の団体であり、表現や物語はすべてフィクションです。実在の人物・宗教・事件等とは一切関係ありません。また、特定の思想や信条を擁護・非難する目的で制作されたものではありません。
-            </p>
+        <div class="copyright">&copy; 2026 MOZCRISIS / ORIGIAWORKS.</div>
+        <div class="disclaimer-text">
+            MOZCRISISはORIGIAWORKSが創作した架空の団体であり、物語はすべてフィクションです。実在の人物・団体・事件等とは一切関係ありません。
         </div>
     </footer>
 
+    <script>
+        async function loadDiscography() {
+            try {
+                const response = await fetch('songs/data/songs.json');
+                const data = await response.json();
+                const container = document.getElementById('disc-grid-container');
+                for (const id in data) {
+                    const song = data[id];
+                    const card = document.createElement('div');
+                    card.className = 'disc-card';
+                    card.innerHTML = `
+                        <a href="songs.html?id=${id}">
+                            <img src="songs/artwork/${id}_artwork.jpg" class="jacket" alt="${song.title}">
+                        </a>
+                        <span class="disc-title">${song.title}</span>
+                        <div class="link-area">
+                            <a class="yt-link" href="https://youtu.be/${song.youtube}" target="_blank">WATCH</a>
+                            <a class="dl-link" href="songs/mp3/${id}.mp3" target="_blank">DOWNLOAD</a>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                }
+            } catch (e) { console.error("Data fetch error:", e); }
+        }
+        window.addEventListener('DOMContentLoaded', loadDiscography);
+    </script>
 </body>
 
 </html>

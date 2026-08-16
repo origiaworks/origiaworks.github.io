@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROTOCOL: USAGE_POLICY | MOZCRISIS</title>
+    <style>
+        :root {
+            --main-red: #ff3e3e;
+            --cyber-blue: #00f3ff;
+            --bg-black: #0a0a0a;
+            --text-white: #e0e0e0;
+            --code-font: 'Consolas', 'Monaco', 'Courier New', monospace;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: var(--text-white);
+            font-family: var(--code-font), sans-serif;
+            /* フォントもコード系を優先 */
+            margin: 0;
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+        }
+
+        nav {
+            padding: 20px;
+            border-bottom: 1px solid #222;
+            background: rgba(0, 0, 0, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: var(--main-red);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        header {
+            margin-bottom: 60px;
+            border-left: 5px solid var(--main-red);
+            padding-left: 30px;
+        }
+
+        h1 {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            color: var(--main-red);
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+
+        .lead-text {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 25px;
+            border: 1px solid #222;
+            font-size: 0.9rem;
+            margin-bottom: 50px;
+            color: #888;
+            position: relative;
+        }
+
+        .lead-text::before {
+            content: "SYSTEM_MESSAGE";
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            background: var(--bg-black);
+            padding: 0 10px;
+            font-size: 0.7rem;
+            color: var(--cyber-blue);
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            color: var(--text-white);
+            display: flex;
+            align-items: center;
+        }
+
+        h2::before {
+            content: "[FUNC] ";
+            color: var(--main-red);
+            margin-right: 10px;
+        }
+
+        h3 {
+            font-size: 1rem;
+            color: var(--cyber-blue);
+            margin-top: 30px;
+            text-transform: uppercase;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        li::before {
+            content: ">>";
+            position: absolute;
+            left: 0;
+            color: var(--main-red);
+        }
+
+        .box {
+            background: #000;
+            border: 1px solid #333;
+            padding: 20px;
+            margin: 20px 0;
+            color: var(--cyber-blue);
+            font-size: 0.85rem;
+        }
+
+        .status-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .status-ok {
+            background: rgba(0, 243, 255, 0.2);
+            color: var(--cyber-blue);
+        }
+
+        .status-deny {
+            background: rgba(255, 62, 62, 0.2);
+            color: var(--main-red);
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid #222;
+            color: #444;
+            font-size: 0.7rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav><a href="index.html">00_SYS_ROOT >> RETURN</a></nav>
+
+    <div class="container">
+        <header>
+            <h1>RESOURCE_USAGE_PROTOCOL</h1>
+            <div class="subtitle">Version 1.0.4 - MOZCRISIS Auditory Assets</div>
+        </header>
+
+        <div class="lead-text">
+            本リポジトリに格納されたAuditory Assets（BGM、効果音、楽曲データ群）の実行プロトコルを定義する。<br>
+            クリエイター（以下、ユーザー）は、自身のプロジェクト（動画、ゲーム、配信、または任意のインスタンス）へのリソース導入に際し、以下のアルゴリズムを遵守すること。
+        </div>
+
+        <section>
+            <h2>ASSET_LICENSE_STATUS</h2>
+            <p>公開されている全ての楽曲・音声リソースは <span class="status-tag status-ok">200 OK</span> <strong
+                    style="color:var(--cyber-blue)">著作権フリー（ロイヤリティフリー）</strong> としてマークされる。</p>
+
+            <h3 class="status-tag status-ok">ALLOWED_METHODS</h3>
+            <ul>
+                <li><strong>Multi-Environment Deployment</strong>：商用・非商用を問わず、あらゆるメディア環境へのデプロイ（収益化動画、ライブ配信、ゲームアプリ等）を許可する。
+                </li>
+                <li><strong>Resource Patching</strong>：作品の要件に基づいた素材の改変・加工（ループ処理、EQ調整、キー・テンポ変更、カット編集）を許可する。</li>
+                <li><strong>Extreme Content</strong>：成人向け（R-18 / R-18G）作品へのインポートを許可する。</li>
+            </ul>
+
+            <h3 class="status-tag status-deny">EXCEPTION_RESTRICTIONS</h3>
+            <ul>
+                <li><strong>Raw Asset Mirroring</strong>：素材単体での再配布、転売、および第三者への貸与を禁止する。</li>
+                <li><strong>Identity Falsification</strong>：作詞・作曲・編曲者の情報を偽装、または自作として偽る行為を禁止する。</li>
+                <li><strong>Centralized Registration</strong>：JASRAC/NexTone等の著作権管理団体への登録、およびYouTube Content
+                    IDへのシステム登録を禁ずる（二次利用時のコンフリクトを回避するため）。</li>
+                <li><strong>Malicious Execution</strong>：公序良俗に反する目的、反社会的・政治・宗教活動、他者を誹謗中傷するノードでの実行を禁ずる。</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>METADATA_DESCRIPTION (CREDIT)</h2>
+            <ul>
+                <li>クレジットの記述は <span class="status-tag status-ok">OPTIONAL</span> 原則として任意とする。</li>
+                <li>システムへの貢献（クレジット表記）を行なう場合は、以下のソースコードをドキュメント（概要欄等）へ挿入せよ。</li>
+            </ul>
+            <div class="box">
+                // Artist: MOZCRISIS (https://origiaworks.github.io/mozcrisis)<br>
+                // Management: ORIGIAWORKS (https://origiaworks.github.io)
+            </div>
+        </section>
+        <section>
+            <h2>FORKING & REMIX</h2>
+            <p>
+                本リポジトリのOff Vocalリソース等を利用した「歌ってみた」のパッチ適用や、リミックス（二次創作アレンジ）のビルド・公開を強く推奨する。<br>
+                ただし、生成された成果物に対しても「Centralized Registration」の禁止条項が継承されるものとする。
+            </p>
+        </section>
+
+        <section>
+            <h2>DISCLAIMER (ERROR_REPORT)</h2>
+            <ul>
+                <li>リソースの著作権（著作権法上の権利）自体は、設計者（ORIGIAWORKS）に帰属し続ける。</li>
+                <li>本リソースの実行（利用）により発生したランタイムエラー、トラブル、損害、不利益に対し、当システム（ORIGIAWORKS）は一切のスタックをトレースせず、責任を負わない。</li>
+                <li>本プロトコルは、予告なくアップデート（変更）される場合がある。</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>CONTACT_ENDPOINT</h2>
+            <p>プロトコルの詳細、または個別楽曲のオーダー・独占ライセンスの承認依頼は、以下のエンドポイントへ送信せよ。</p>
+            <div class="box">
+                <a href="https://origiaworks.github.io/contact.html"
+                    target="_blank">https://origiaworks.github.io/contact.html</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        EXECUTION_COMPLETE: MOZCRISIS SYSTEM NODE_001
+    </footer>
+
+</body>
+
+</html>
