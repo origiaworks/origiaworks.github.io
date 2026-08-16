@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +15,8 @@
         }
 
         /* 全体設定 - 強制ダークモード */
-        html, body {
+        html,
+        body {
             background-color: var(--bg-black) !important;
             color: var(--text-white) !important;
             font-family: 'Segoe UI', 'Hiragino Kaku Gothic ProN', sans-serif;
@@ -34,7 +36,12 @@
             z-index: 1000;
             box-sizing: border-box;
         }
-        nav a { color: var(--main-red); text-decoration: none; font-size: 0.8rem; }
+
+        nav a {
+            color: var(--main-red);
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
 
         /* メインビジュアル（上部背景） */
         .hero-visual {
@@ -46,6 +53,7 @@
             margin-top: 50px;
             background-color: #111;
         }
+
         .hero-visual::after {
             content: '';
             position: absolute;
@@ -71,17 +79,36 @@
             margin-top: -80px;
             flex-wrap: wrap;
         }
-        .artwork-area { flex: 0 0 220px; }
-        .artwork-img { 
-            width: 100%; 
-            aspect-ratio: 1/1; 
-            border: 1px solid var(--main-red); 
-            object-fit: cover; 
-            background: #000; 
+
+        .artwork-area {
+            flex: 0 0 220px;
         }
-        .title-area { flex: 1; min-width: 300px; }
-        .track-id { font-family: var(--code-font); color: var(--main-red); font-size: 1rem; }
-        h1 { font-family: var(--code-font); font-size: clamp(2rem, 5vw, 3rem); margin: 5px 0; text-transform: uppercase; }
+
+        .artwork-img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border: 1px solid var(--main-red);
+            object-fit: cover;
+            background: #000;
+        }
+
+        .title-area {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .track-id {
+            font-family: var(--code-font);
+            color: var(--main-red);
+            font-size: 1rem;
+        }
+
+        h1 {
+            font-family: var(--code-font);
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin: 5px 0;
+            text-transform: uppercase;
+        }
 
         /* メタ情報（日付・担当・状態） */
         .meta-list {
@@ -91,8 +118,17 @@
             padding-top: 15px;
             margin-top: 15px;
         }
-        .meta-label { font-size: 0.7rem; color: #666; display: block; }
-        .meta-value { font-family: var(--code-font); color: var(--cyber-blue); }
+
+        .meta-label {
+            font-size: 0.7rem;
+            color: #666;
+            display: block;
+        }
+
+        .meta-value {
+            font-family: var(--code-font);
+            color: var(--cyber-blue);
+        }
 
         /* リード文セクション */
         .lead-section {
@@ -101,11 +137,29 @@
             border-left: 3px solid var(--cyber-blue);
             margin: 40px 0;
         }
-        .lead-header { font-family: var(--code-font); color: var(--cyber-blue); font-size: 0.8rem; margin-bottom: 10px; }
-        .lead-text { white-space: pre-wrap; font-size: 1.05rem; color: #ccc; margin: 0; line-height: 1.8; }
+
+        .lead-header {
+            font-family: var(--code-font);
+            color: var(--cyber-blue);
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        .lead-text {
+            white-space: pre-wrap;
+            font-size: 1.05rem;
+            color: #ccc;
+            margin: 0;
+            line-height: 1.8;
+        }
 
         /* 歌詞ターミナル */
-        .terminal { background: #000; border: 1px solid #333; margin-bottom: 100px; }
+        .terminal {
+            background: #000;
+            border: 1px solid #333;
+            margin-bottom: 100px;
+        }
+
         .terminal-bar {
             background: #1a1a1a;
             padding: 10px;
@@ -115,23 +169,36 @@
             justify-content: space-between;
             border-bottom: 1px solid #333;
         }
-        .lyrics-box { 
-            padding: 40px; 
-            font-family: var(--code-font); 
-            font-size: 1rem; 
-            color: #aaa; 
-            white-space: pre-wrap; 
-            margin: 0; 
-            line-height: 1.8; 
+
+        .lyrics-box {
+            padding: 40px;
+            font-family: var(--code-font);
+            font-size: 1rem;
+            color: #aaa;
+            white-space: pre-wrap;
+            margin: 0;
+            line-height: 1.8;
         }
 
         @media (max-width: 600px) {
-            .song-header { margin-top: -40px; text-align: center; justify-content: center; }
-            .meta-list { flex-direction: column; gap: 10px; }
-            .lyrics-box { padding: 25px; }
+            .song-header {
+                margin-top: -40px;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .meta-list {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .lyrics-box {
+                padding: 25px;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <nav><a href="index.html">SYS_ROOT >> RETURN_TO_DASHBOARD</a></nav>
@@ -147,9 +214,12 @@
                 <div id="dynamic-track-id" class="track-id">LOADING...</div>
                 <h1 id="dynamic-title">...</h1>
                 <div class="meta-list">
-                    <div class="meta-item"><span class="meta-label">RELEASE</span><span id="meta-release" class="meta-value">----</span></div>
-                    <div class="meta-item"><span class="meta-label">ARCHITECT</span><span id="meta-architect" class="meta-value">----</span></div>
-                    <div class="meta-item"><span class="meta-label">STATUS</span><span id="meta-status" class="meta-value">----</span></div>
+                    <div class="meta-item"><span class="meta-label">RELEASE</span><span id="meta-release"
+                            class="meta-value">----</span></div>
+                    <div class="meta-item"><span class="meta-label">ARCHITECT</span><span id="meta-architect"
+                            class="meta-value">----</span></div>
+                    <div class="meta-item"><span class="meta-label">STATUS</span><span id="meta-status"
+                            class="meta-value">----</span></div>
                 </div>
             </div>
         </header>
@@ -177,30 +247,30 @@
                 const SONG_ID = params.get('id');
                 if (!SONG_ID) return;
 
-                // 1. JSONからデータを取得
-                const response = await fetch('data/songs.json');
+                // 1. JSONからデータを取得 (songs/ フォルダをパスに追加)
+                const response = await fetch('songs/data/songs.json');
                 const database = await response.json();
                 const data = database[SONG_ID];
                 if (!data) return;
 
-                // 2. メタデータの反映
+                // 2. テキスト反映
                 document.getElementById('dynamic-title').textContent = data.title;
                 document.getElementById('dynamic-track-id').textContent = "TRACK_" + SONG_ID.toUpperCase();
                 document.getElementById('meta-release').textContent = data.release;
                 document.getElementById('meta-architect').textContent = data.architect;
                 document.getElementById('meta-status').textContent = data.status;
 
-                // 3. 画像の反映
+                // 3. 画像反映 (songs/ フォルダをパスに追加)
                 document.getElementById('dynamic-hero').style.backgroundImage = `url('songs/keyvisual/${SONG_ID}_keyvisual.png')`;
                 document.getElementById('dynamic-artwork').src = `songs/artwork/${SONG_ID}_artwork.jpg`;
                 document.getElementById('file-name-display').textContent = SONG_ID + "_lyric.txt";
 
-                // 4. 外部テキストファイルの読み込み（lead と lyric）
+                // 4. 外部テキストファイル読み込み (songs/ フォルダをパスに追加)
                 fetchTextFile(`songs/lead/${SONG_ID}_lead.txt`, 'lead-content');
                 fetchTextFile(`songs/lyric/${SONG_ID}_lyric.txt`, 'lyrics-content');
 
-            } catch (e) { 
-                console.error("System Error:", e); 
+            } catch (e) {
+                console.error("System Error:", e);
             }
         }
 
@@ -210,12 +280,12 @@
                 if (!response.ok) throw new Error("Not Found");
                 const text = await response.text();
                 document.getElementById(targetId).innerText = text;
-            } catch (e) { 
-                document.getElementById(targetId).innerText = "[ERROR] File not found."; 
+            } catch (e) {
+                document.getElementById(targetId).innerText = "[ERROR] File not found.";
             }
         }
-
         window.addEventListener('DOMContentLoaded', loadModuleData);
     </script>
 </body>
+
 </html>
