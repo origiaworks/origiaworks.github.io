@@ -17,8 +17,7 @@
         body {
             background-color: var(--bg-black);
             color: var(--text-white);
-            font-family: var(--code-font), sans-serif;
-            /* フォントもコード系を優先 */
+            font-family: var(--code-font), 'Segoe UI', 'Hiragino Kaku Gothic ProN', sans-serif;
             margin: 0;
             line-height: 1.8;
             letter-spacing: 0.5px;
@@ -70,7 +69,7 @@
             border: 1px solid #222;
             font-size: 0.9rem;
             margin-bottom: 50px;
-            color: #888;
+            color: #ccc;
             position: relative;
         }
 
@@ -176,71 +175,70 @@
     <div class="container">
         <header>
             <h1>RESOURCE_USAGE_PROTOCOL</h1>
-            <div class="subtitle">Version 1.0.4 - MOZCRISIS Auditory Assets</div>
+            <div class="subtitle">MOZCRISIS 音楽素材利用規約 (Music Terms of Use)</div>
         </header>
 
         <div class="lead-text">
-            本リポジトリに格納されたAuditory Assets（BGM、効果音、楽曲データ群）の実行プロトコルを定義する。<br>
-            クリエイター（以下、ユーザー）は、自身のプロジェクト（動画、ゲーム、配信、または任意のインスタンス）へのリソース導入に際し、以下のアルゴリズムを遵守すること。
+            本リポジトリで公開している音楽素材（BGM、楽曲データ等）の利用規約です。<br>
+            動画制作、ゲーム開発、ライブ配信など、クリエイターの皆様の活動に自由にご活用ください。素材を利用した時点で、本規約に同意したものとみなします。
         </div>
 
         <section>
             <h2>ASSET_LICENSE_STATUS</h2>
-            <p>公開されている全ての楽曲・音声リソースは <span class="status-tag status-ok">200 OK</span> <strong
-                    style="color:var(--cyber-blue)">著作権フリー（ロイヤリティフリー）</strong> としてマークされる。</p>
+            <p>公開されている全ての楽曲・音声素材は <span class="status-tag status-ok">200 OK</span> <strong
+                    style="color:var(--cyber-blue)">著作権フリー（ロイヤリティフリー）</strong> です。</p>
 
-            <h3 class="status-tag status-ok">ALLOWED_METHODS</h3>
+            <h3 class="status-tag status-ok">ALLOWED_METHODS（許可事項）</h3>
             <ul>
-                <li><strong>Multi-Environment Deployment</strong>：商用・非商用を問わず、あらゆるメディア環境へのデプロイ（収益化動画、ライブ配信、ゲームアプリ等）を許可する。
-                </li>
-                <li><strong>Resource Patching</strong>：作品の要件に基づいた素材の改変・加工（ループ処理、EQ調整、キー・テンポ変更、カット編集）を許可する。</li>
-                <li><strong>Extreme Content</strong>：成人向け（R-18 / R-18G）作品へのインポートを許可する。</li>
+                <li><strong>商用・非商用問わず利用可能</strong>：YouTube等の収益化動画、配信、同人ゲーム、アプリ、演劇、広告など、あらゆる作品で使用できます。</li>
+                <li><strong>素材の加工・改変</strong>：作品に合わせたループ処理、カット編集、テンポやキーの変更、エフェクト追加などの加工が可能です。</li>
+                <li><strong>成人向け作品での利用</strong>：R-18 / R-18G作品への導入も制限いたしません。</li>
             </ul>
 
-            <h3 class="status-tag status-deny">EXCEPTION_RESTRICTIONS</h3>
+            <h3 class="status-tag status-deny">EXCEPTION_RESTRICTIONS（禁止事項）</h3>
             <ul>
-                <li><strong>Raw Asset Mirroring</strong>：素材単体での再配布、転売、および第三者への貸与を禁止する。</li>
-                <li><strong>Identity Falsification</strong>：作詞・作曲・編曲者の情報を偽装、または自作として偽る行為を禁止する。</li>
-                <li><strong>Centralized Registration</strong>：JASRAC/NexTone等の著作権管理団体への登録、およびYouTube Content
-                    IDへのシステム登録を禁ずる（二次利用時のコンフリクトを回避するため）。</li>
-                <li><strong>Malicious Execution</strong>：公序良俗に反する目的、反社会的・政治・宗教活動、他者を誹謗中傷するノードでの実行を禁ずる。</li>
+                <li><strong>二次配布・販売の禁止</strong>：音楽素材をそのまま、あるいは加工して、素材単体で配布・転売・貸与することを禁止します。</li>
+                <li><strong>自作発言の禁止</strong>：作詞・作曲・編曲者を自らと偽る行為、またはそれに類する行為を禁止します。</li>
+                <li><strong>権利団体・Content IDへの登録禁止</strong>：JASRAC/NexTone等の著作権管理団体への登録、およびYouTube Content IDへの登録を固く禁じます。</li>
+                <li><strong>不正な目的での利用禁止</strong>：公序良俗に反する目的、政治・宗教活動、他者を誹謗中傷する作品での利用を禁じます。</li>
             </ul>
         </section>
 
         <section>
-            <h2>METADATA_DESCRIPTION (CREDIT)</h2>
+            <h2>METADATA_DESCRIPTION（クレジット表記）</h2>
             <ul>
-                <li>クレジットの記述は <span class="status-tag status-ok">OPTIONAL</span> 原則として任意とする。</li>
-                <li>システムへの貢献（クレジット表記）を行なう場合は、以下のソースコードをドキュメント（概要欄等）へ挿入せよ。</li>
+                <li>クレジットの記載は <span class="status-tag status-ok">OPTIONAL</span> <strong>原則として任意（不要）</strong>です。</li>
+                <li>もし表記いただける場合は、以下の情報を動画の概要欄等にコピー＆ペーストしてください。</li>
             </ul>
             <div class="box">
-                // Artist: MOZCRISIS (https://origiaworks.github.io/mozcrisis)<br>
-                // Management: ORIGIAWORKS (https://origiaworks.github.io)
+                // Artist: MOZCRISIS (https://origiaworks.github.io/mozcrisis/)<br>
+                // Management: ORIGIAWORKS (https://origiaworks.github.io/)
             </div>
         </section>
+
         <section>
-            <h2>FORKING & REMIX</h2>
+            <h2>FORKING & REMIX（二次創作）</h2>
             <p>
-                本リポジトリのOff Vocalリソース等を利用した「歌ってみた」のパッチ適用や、リミックス（二次創作アレンジ）のビルド・公開を強く推奨する。<br>
-                ただし、生成された成果物に対しても「Centralized Registration」の禁止条項が継承されるものとする。
+                本リポジトリの楽曲を利用した「歌ってみた」や「リミックス」の制作・公開は大歓迎です。<br>
+                ただし、制作した二次創作物をYouTube Content IDや著作権管理団体へ登録することは、トラブル防止のため一律で禁止とさせていただきます。
             </p>
         </section>
 
         <section>
-            <h2>DISCLAIMER (ERROR_REPORT)</h2>
+            <h2>DISCLAIMER（免責事項）</h2>
             <ul>
-                <li>リソースの著作権（著作権法上の権利）自体は、設計者（ORIGIAWORKS）に帰属し続ける。</li>
-                <li>本リソースの実行（利用）により発生したランタイムエラー、トラブル、損害、不利益に対し、当システム（ORIGIAWORKS）は一切のスタックをトレースせず、責任を負わない。</li>
-                <li>本プロトコルは、予告なくアップデート（変更）される場合がある。</li>
+                <li><strong>著作権の帰属</strong>：楽曲の著作権（著作権法上の権利）自体は、制作者であるORIGIAWORKSが保持します。</li>
+                <li><strong>トラブルへの責任</strong>：本素材を利用したことで発生したトラブル、損害、不利益に対して、ORIGIAWORKSは一切の責任を負いかねます。</li>
+                <li><strong>規約の変更</strong>：本規約の内容は、予告なく変更される場合があります。常に最新のプロトコルを確認してください。</li>
             </ul>
         </section>
 
         <section>
-            <h2>CONTACT_ENDPOINT</h2>
-            <p>プロトコルの詳細、または個別楽曲のオーダー・独占ライセンスの承認依頼は、以下のエンドポイントへ送信せよ。</p>
+            <h2>CONTACT_ENDPOINT（お問い合わせ）</h2>
+            <p>規約に関するご質問や、商用での個別楽曲制作・独占ライセンスのご相談などは、以下のリンクよりご連絡ください。</p>
             <div class="box">
                 <a href="https://origiaworks.github.io/contact.html"
-                    target="_blank">https://origiaworks.github.io/contact.html</a>
+                    target="_blank" style="color:var(--cyber-blue); text-decoration:none;">>> お問い合わせフォームを開く</a>
             </div>
         </section>
     </div>
