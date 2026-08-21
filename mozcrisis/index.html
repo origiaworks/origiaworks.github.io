@@ -505,15 +505,11 @@
                     const card = document.createElement('div');
                     card.className = 'disc-card';
                     card.innerHTML = `
-                        <a href="songs.html?id=${id}">
-                            <img src="songs/artwork/${id}_artwork.jpg" class="jacket" alt="${song.title}">
-                        </a>
-                        <span class="disc-title">${song.title}</span>
-                        <div class="link-area">
-                            <a class="yt-link" href="https://youtu.be/${song.youtube}" target="_blank">WATCH</a>
-                            <a class="dl-link" href="songs/mp3/${id}.mp3" target="_blank">DOWNLOAD</a>
-                        </div>
-                    `;
+                            <a href="songs.html?id=${id}" style="text-decoration:none;">
+                                <img src="songs/artwork/${id}_artwork.jpg" class="jacket" alt="${song.title}">
+                                <span class="disc-title">${song.title}</span>
+                            </a>
+                        `;
                     container.appendChild(card);
                 }
             } catch (e) { console.error("Data fetch error:", e); }

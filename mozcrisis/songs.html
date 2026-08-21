@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRACK_MODULE | MOZCRISIS</title>
+    <title>TRACK_DETAIL | MOZCRISIS</title>
     <style>
+        /* --- 既存のスタイルを維持しつつ、ボタンエリアを追加 --- */
         :root {
             --main-red: #ff3e3e;
             --cyber-blue: #00f3ff;
@@ -14,7 +15,6 @@
             --code-font: 'Consolas', 'Monaco', 'Courier New', monospace;
         }
 
-        /* 全体設定 - 強制ダークモード */
         html,
         body {
             background-color: var(--bg-black) !important;
@@ -24,7 +24,6 @@
             line-height: 1.6;
         }
 
-        /* ナビゲーション */
         nav {
             padding: 15px 20px;
             font-family: var(--code-font);
@@ -43,7 +42,6 @@
             font-size: 0.8rem;
         }
 
-        /* メインビジュアル（上部背景） */
         .hero-visual {
             width: 100%;
             height: 45vh;
@@ -72,7 +70,6 @@
             z-index: 10;
         }
 
-        /* ヘッダー：ジャケットとタイトル */
         .song-header {
             display: flex;
             gap: 30px;
@@ -110,7 +107,6 @@
             text-transform: uppercase;
         }
 
-        /* メタ情報（日付・担当・状態） */
         .meta-list {
             display: flex;
             gap: 30px;
@@ -130,7 +126,49 @@
             color: var(--cyber-blue);
         }
 
-        /* リード文セクション */
+        /* --- New: Action Area (Buttons) --- */
+        .action-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            font-family: var(--code-font);
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-decoration: none;
+            border: 1px solid;
+            transition: 0.3s;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .btn-yt {
+            color: var(--main-red);
+            border-color: var(--main-red);
+        }
+
+        .btn-yt:hover {
+            background: var(--main-red);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(255, 62, 62, 0.4);
+        }
+
+        .btn-dl {
+            color: var(--cyber-blue);
+            border-color: var(--cyber-blue);
+        }
+
+        .btn-dl:hover {
+            background: var(--cyber-blue);
+            color: #000;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+        }
+
         .lead-section {
             padding: 30px;
             background: rgba(0, 243, 255, 0.05);
@@ -153,7 +191,6 @@
             line-height: 1.8;
         }
 
-        /* 歌詞ターミナル */
         .terminal {
             background: #000;
             border: 1px solid #333;
@@ -192,8 +229,8 @@
                 gap: 10px;
             }
 
-            .lyrics-box {
-                padding: 25px;
+            .btn {
+                width: 100%;
             }
         }
     </style>
@@ -201,7 +238,7 @@
 
 <body>
 
-    <nav><a href="index.html">SYS_ROOT >> RETURN_TO_DASHBOARD</a></nav>
+    <nav><a href="index.html">RETURN_TO_DASHBOARD</a></nav>
 
     <div id="dynamic-hero" class="hero-visual"></div>
 
@@ -224,13 +261,17 @@
             </div>
         </header>
 
-        <!-- リード文エリア -->
+        <!-- ボタンエリアを新設 -->
+        <div class="action-area">
+            <a id="link-yt" href="" target="_blank" class="btn btn-yt">>> WATCH_ON_YOUTUBE</a>
+            <a id="link-dl" href="" target="_blank" class="btn btn-dl">>> DOWNLOAD_MP3_BINARY</a>
+        </div>
+
         <section class="lead-section">
             <div class="lead-header">README.md</div>
             <p id="lead-content" class="lead-text">Fetching documentation...</p>
         </section>
 
-        <!-- 歌詞表示エリア -->
         <div class="terminal">
             <div class="terminal-bar">
                 <span id="file-name-display">source_code.txt</span>
@@ -247,42 +288,39 @@
                 const SONG_ID = params.get('id');
                 if (!SONG_ID) return;
 
-                // 1. JSONからデータを取得 (songs/ フォルダをパスに追加)
                 const response = await fetch('songs/data/songs.json');
                 const database = await response.json();
                 const data = database[SONG_ID];
                 if (!data) return;
 
-                // 2. テキスト反映
+                // テキスト・メタ反映
                 document.getElementById('dynamic-title').textContent = data.title;
                 document.getElementById('dynamic-track-id').textContent = "TRACK_" + SONG_ID.toUpperCase();
                 document.getElementById('meta-release').textContent = data.release;
                 document.getElementById('meta-architect').textContent = data.architect;
                 document.getElementById('meta-status').textContent = data.status;
 
-                // 3. 画像反映 (songs/ フォルダをパスに追加)
+                // ボタンのリンク先を設定
+                document.getElementById('link-yt').href = `https://youtu.be/${data.youtube}`;
+                document.getElementById('link-dl').href = `https://github.com/origiaworks/origiaworks.github.io/raw/refs/heads/main/mozcrisis/songs/mp3/${SONG_ID}.mp3`;
+
+                // 画像・テキスト反映
                 document.getElementById('dynamic-hero').style.backgroundImage = `url('songs/keyvisual/${SONG_ID}_keyvisual.png')`;
                 document.getElementById('dynamic-artwork').src = `songs/artwork/${SONG_ID}_artwork.jpg`;
                 document.getElementById('file-name-display').textContent = SONG_ID + "_lyric.txt";
 
-                // 4. 外部テキストファイル読み込み (songs/ フォルダをパスに追加)
                 fetchTextFile(`songs/lead/${SONG_ID}_lead.txt`, 'lead-content');
                 fetchTextFile(`songs/lyric/${SONG_ID}_lyric.txt`, 'lyrics-content');
 
-            } catch (e) {
-                console.error("System Error:", e);
-            }
+            } catch (e) { console.error("System Error:", e); }
         }
 
         async function fetchTextFile(path, targetId) {
             try {
                 const response = await fetch(path);
-                if (!response.ok) throw new Error("Not Found");
                 const text = await response.text();
                 document.getElementById(targetId).innerText = text;
-            } catch (e) {
-                document.getElementById(targetId).innerText = "[ERROR] File not found.";
-            }
+            } catch (e) { document.getElementById(targetId).innerText = "File not found."; }
         }
         window.addEventListener('DOMContentLoaded', loadModuleData);
     </script>
