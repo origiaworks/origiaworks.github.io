@@ -264,7 +264,7 @@
         <!-- ボタンエリアを新設 -->
         <div class="action-area">
             <a id="link-yt" href="" target="_blank" class="btn btn-yt">>> WATCH_ON_YOUTUBE</a>
-            <a id="link-dl" href="" target="_blank" class="btn btn-dl">>> DOWNLOAD_MP3_BINARY</a>
+            <a id="link-dl" href="" download class="btn btn-dl">>> DOWNLOAD_MP3_BINARY</a>
         </div>
 
         <section class="lead-section">
@@ -302,7 +302,7 @@
 
                 // ボタンのリンク先を設定
                 document.getElementById('link-yt').href = `https://youtu.be/${data.youtube}`;
-                document.getElementById('link-dl').href = `https://github.com/origiaworks/origiaworks.github.io/raw/refs/heads/main/mozcrisis/songs/mp3/${SONG_ID}.mp3`;
+                document.getElementById('link-dl').href = `songs/mp3/${SONG_ID}.mp3`;
 
                 // 画像・テキスト反映
                 document.getElementById('dynamic-hero').style.backgroundImage = `url('songs/keyvisual/${SONG_ID}_keyvisual.png')`;
