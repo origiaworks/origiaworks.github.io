@@ -109,7 +109,6 @@
             font-family: var(--code-font);
             margin: 40px auto 100px;
             position: relative;
-            overflow-x: visible;
         }
 
         .logic-box::before {
@@ -221,6 +220,7 @@
 
         .disc-card {
             text-align: left;
+            transition: 0.3s;
         }
 
         .jacket {
@@ -228,101 +228,53 @@
             aspect-ratio: 1 / 1;
             background: #222;
             margin-bottom: 15px;
-            transition: 0.3s;
             border: 1px solid #333;
             object-fit: cover;
+            transition: 0.3s;
         }
 
         .disc-card:hover .jacket {
             border-color: var(--main-red);
-            transform: scale(1.02);
+            transform: scale(1.03);
         }
 
         .disc-title {
             font-size: 1.1rem;
             font-weight: bold;
             color: #fff;
+            display: block;
+            margin-top: 5px;
         }
 
-        .link-area {
-            margin-top: 10px;
-            display: flex;
-            gap: 8px;
-        }
-
-        .yt-link,
-        .dl-link {
-            font-family: var(--code-font);
-            font-size: 0.7rem;
-            text-decoration: none;
-            padding: 4px 10px;
-            border: 1px solid;
-            transition: 0.3s;
-        }
-
-        .yt-link {
-            color: var(--main-red);
-            border-color: var(--main-red);
-        }
-
-        .yt-link:hover {
-            background: var(--main-red);
-            color: #fff;
-        }
-
-        .dl-link {
-            color: var(--cyber-blue);
-            border-color: var(--cyber-blue);
-        }
-
-        .dl-link:hover {
-            background: var(--cyber-blue);
-            color: #000;
-        }
-
-        /* --- Protocol Section (Policy) --- */
-        .protocol-box {
-            background: #050505;
+        /* --- Protocol Section --- */
+        .protocol-link-box {
+            background: #000;
             border: 1px solid #222;
             padding: 40px;
-            font-family: var(--code-font);
-            font-size: 0.9rem;
             margin-bottom: 80px;
         }
 
-        .protocol-box h3 {
-            color: var(--cyber-blue);
-            font-size: 1rem;
-            border-left: 3px solid var(--main-red);
-            padding-left: 15px;
-            margin: 30px 0 15px;
+        .protocol-link-box p {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
         }
 
-        .protocol-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .protocol-list li {
-            margin-bottom: 10px;
-            padding-left: 20px;
-            position: relative;
-            color: #aaa;
-        }
-
-        .protocol-list li::before {
-            content: ">>";
-            position: absolute;
-            left: 0;
+        .protocol-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border: 1px solid var(--main-red);
             color: var(--main-red);
+            text-decoration: none;
+            font-family: var(--code-font);
+            font-weight: bold;
+            transition: 0.3s;
         }
 
-        .credit-block {
-            background: #000;
-            padding: 20px;
-            border: 1px dashed #333;
-            margin-top: 20px;
-            color: var(--cyber-blue);
+        .protocol-btn:hover {
+            background: var(--main-red);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(255, 62, 62, 0.4);
         }
 
         /* --- Footer --- */
@@ -357,8 +309,8 @@
                 padding: 60px 15px;
             }
 
-            .protocol-box {
-                padding: 20px;
+            .protocol-link-box {
+                padding: 25px;
             }
         }
     </style>
@@ -371,7 +323,7 @@
         <a href="#logic">02_LOGIC</a>
         <a href="#members">03_MEMBERS</a>
         <a href="#discography">04_DISCOGRAPHY</a>
-        <a href="#protocol">05_PROTOCOL</a>
+        <a href="policy.html">05_PROTOCOL</a>
     </nav>
 
     <header id="home">
@@ -389,7 +341,6 @@
             precision_algorithm<br>
             <br>
             <span class="code-func">def</span> <span class="code-func">execute_miracle_bug</span>():<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-comment"># 精緻なアルゴリズムと人間が持つ衝動の衝突点</span><br>
             &nbsp;&nbsp;&nbsp;&nbsp;collision = precision_algorithm + human_impulse<br>
             &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> collision.generate_sound(<span
                 class="code-string">"ALGORITHM_ROCK"</span>)<br>
@@ -466,22 +417,20 @@
             <div class="section-header">
                 <h2>DISCOGRAPHY</h2>
             </div>
-            <div id="disc-grid-container" class="disc-grid"></div>
+            <div id="disc-grid-container" class="disc-grid">
+                <!-- JavaScriptで自動挿入されます -->
+            </div>
         </section>
 
-        <!-- 05_PROTOCOL (Usage Policy Link) -->
+        <!-- 05_PROTOCOL -->
         <section id="protocol">
             <div class="section-header">
                 <h2>RESOURCE_USAGE_PROTOCOL</h2>
             </div>
             <div class="protocol-link-box">
-                <p>
-                    音響資産（Auditory Assets）のデプロイおよび二次利用に関する実行プロトコルは、以下のドキュメントに定義されている。
-                    ユーザーは、リソースのインポート前に必ず当該プロトコルをロードし、実行権限を確認すること。
-                </p>
-                <div style="margin-top: 30px;">
-                    <a href="policy.html" class="protocol-btn">>> ACCESS_FULL_PROTOCOL_DOCUMENTATION</a>
-                </div>
+                <p>音響資産（Auditory
+                    Assets）のデプロイおよび二次利用に関する実行プロトコルは、以下のドキュメントに定義されている。ユーザーは、リソースのインポート前に必ず当該プロトコルをロードし、実行権限を確認すること。</p>
+                <a href="policy.html" class="protocol-btn">>> ACCESS_FULL_PROTOCOL_DOCUMENTATION</a>
             </div>
         </section>
 
@@ -497,23 +446,33 @@
     <script>
         async function loadDiscography() {
             try {
+                // 1. JSONデータの取得
                 const response = await fetch('songs/data/songs.json');
+                if (!response.ok) throw new Error("NETWORK_RESPONSE_NOT_OK");
+
                 const data = await response.json();
                 const container = document.getElementById('disc-grid-container');
+                container.innerHTML = ''; // クリア
+
+                // 2. データをループしてカードを生成
                 for (const key in data) {
-                        const song = data[key];
-                        const sid = song.id; // データ内のIDを使用
-                        const card = document.createElement('div');
-                        card.className = 'disc-card';
-                        card.innerHTML = `
-                            <a href="songs.html?id=${sid}" style="text-decoration:none;">
-                                <img src="songs/artwork/${sid}_artwork.jpg" class="jacket" alt="${song.title}">
-                                <span class="disc-title">${song.title}</span>
-                            </a>
-                        `;
-                        container.appendChild(card);
-                    }
-            } catch (e) { console.error("Data fetch error:", e); }
+                    const song = data[key];
+                    const sid = song.id; // JSON内のidを使用
+
+                    const card = document.createElement('div');
+                    card.className = 'disc-card';
+                    card.innerHTML = `
+                        <a href="songs.html?id=${sid}" style="text-decoration:none;">
+                            <img src="songs/artwork/${sid}_artwork.jpg" class="jacket" alt="${song.title}">
+                            <span class="disc-title">${song.title}</span>
+                        </a>
+                    `;
+                    container.appendChild(card);
+                }
+            } catch (e) {
+                console.error("Discography Load Error:", e);
+                document.getElementById('disc-grid-container').innerHTML = `<p style="color:var(--main-red);">[ERROR] SYSTEM_FAILURE: FAILED_TO_FETCH_RESOURCES</p>`;
+            }
         }
         window.addEventListener('DOMContentLoaded', loadDiscography);
     </script>
