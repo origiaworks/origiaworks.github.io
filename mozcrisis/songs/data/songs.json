@@ -1,30 +1,10 @@
 {
   "jpop_is_dead": {
+    "id": "Jpop_Is_Dead",
     "title": "J-Pop Is Dead",
     "release": "2026.08.07",
     "architect": "ROSE",
     "status": "STABLE_BUILD",
-    "youtube": "HW7ypl7yyLI"
-  },
-  "identity_crisis": {
-    "title": "Identity Crisis",
-    "release": "2026.08.07",
-    "architect": "ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "xhUc3UMOYtA"
-  },
-  "done": {
-    "title": "Done",
-    "release": "2026.08.07",
-    "architect": "ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "GFrqQNPh7Xk"
-  },
-  "chocolate": {
-    "title": "ChocoLate",
-    "release": "2026.08.08",
-    "architect": "ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "MNa4gSR1ZLs"
+    "youtube": "https://youtu.be/w2hubBG4yzk
   }
 }

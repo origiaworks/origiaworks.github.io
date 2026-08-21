@@ -285,32 +285,36 @@
         async function loadModuleData() {
             try {
                 const params = new URLSearchParams(window.location.search);
-                const SONG_ID = params.get('id');
-                if (!SONG_ID) return;
+                const targetKey = params.get('id'); // URLからのキー
+                if (!targetKey) return;
 
                 const response = await fetch('songs/data/songs.json');
                 const database = await response.json();
-                const data = database[SONG_ID];
+                const data = database[targetKey]; // 該当データを探す
                 if (!data) return;
+
+                // --- ここから data.id をメインに使用 ---
+                const sid = data.id; // データ内のIDを取得
 
                 // テキスト・メタ反映
                 document.getElementById('dynamic-title').textContent = data.title;
-                document.getElementById('dynamic-track-id').textContent = "TRACK_" + SONG_ID.toUpperCase();
+                document.getElementById('dynamic-track-id').textContent = "TRACK_" + sid.toUpperCase();
                 document.getElementById('meta-release').textContent = data.release;
                 document.getElementById('meta-architect').textContent = data.architect;
                 document.getElementById('meta-status').textContent = data.status;
 
-                // ボタンのリンク先を設定
-                document.getElementById('link-yt').href = `https://youtu.be/${data.youtube}`;
-                document.getElementById('link-dl').href = `songs/mp3/${SONG_ID}.mp3`;
+                // ボタンのリンク先を設定 (sid を使用)
+                document.getElementById('link-yt').href = data.youtube;
+                document.getElementById('link-dl').href = `songs/mp3/${sid}.mp3`;
 
-                // 画像・テキスト反映
-                document.getElementById('dynamic-hero').style.backgroundImage = `url('songs/keyvisual/${SONG_ID}_keyvisual.png')`;
-                document.getElementById('dynamic-artwork').src = `songs/artwork/${SONG_ID}_artwork.jpg`;
-                document.getElementById('file-name-display').textContent = SONG_ID + "_lyric.txt";
+                // 画像反映 (sid を使用)
+                document.getElementById('dynamic-hero').style.backgroundImage = `url('songs/keyvisual/${sid}_keyvisual.png')`;
+                document.getElementById('dynamic-artwork').src = `songs/artwork/${sid}_artwork.jpg`;
+                document.getElementById('file-name-display').textContent = sid + "_lyric.txt";
 
-                fetchTextFile(`songs/lead/${SONG_ID}_lead.txt`, 'lead-content');
-                fetchTextFile(`songs/lyric/${SONG_ID}_lyric.txt`, 'lyrics-content');
+                // テキストファイル読み込み (sid を使用)
+                fetchTextFile(`songs/lead/${sid}_lead.txt`, 'lead-content');
+                fetchTextFile(`songs/lyric/${sid}_lyric.txt`, 'lyrics-content');
 
             } catch (e) { console.error("System Error:", e); }
         }
