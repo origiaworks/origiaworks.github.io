@@ -284,34 +284,37 @@
         async function loadModuleData() {
             try {
                 const params = new URLSearchParams(window.location.search);
-                const targetKey = params.get('id'); // URLからのキー
-                if (!targetKey) return;
+                const sid = params.get('id'); // URLからIDを取得 (例: Jpop_Is_Dead)
+                if (!sid) return;
 
                 const response = await fetch('songs/data/songs.json');
                 const database = await response.json();
-                const data = database[targetKey]; // 該当データを探す
-                if (!data) return;
 
-                // --- ここから data.id をメインに使用 ---
-                const sid = data.id; // データ内のIDを取得
+                // キーを直接指定してデータを取得（一瞬で終わります）
+                const data = database[sid];
 
-                // テキスト・メタ反映
+                if (!data) {
+                    console.error("Track not found:", sid);
+                    return;
+                }
+
+                // --- データの反映 ---
                 document.getElementById('dynamic-title').textContent = data.title;
                 document.getElementById('dynamic-track-id').textContent = "TRACK_" + sid.toUpperCase();
                 document.getElementById('meta-release').textContent = data.release;
                 document.getElementById('meta-architect').textContent = data.architect;
                 document.getElementById('meta-status').textContent = data.status;
 
-                // ボタンのリンク先を設定 (sid を使用)
+                // ボタン
                 document.getElementById('link-yt').href = data.youtube;
                 document.getElementById('link-dl').href = `songs/mp3/${sid}.mp3`;
 
-                // 画像反映 (sid を使用)
+                // 画像 (sidを使ってそのままファイル名を指定)
                 document.getElementById('dynamic-hero').style.backgroundImage = `url('songs/keyvisual/${sid}_keyvisual.png')`;
                 document.getElementById('dynamic-artwork').src = `songs/artwork/${sid}_artwork.jpg`;
                 document.getElementById('file-name-display').textContent = sid + "_lyric.txt";
 
-                // テキストファイル読み込み (sid を使用)
+                // テキスト読み込み
                 fetchTextFile(`songs/lead/${sid}_lead.txt`, 'lead-content');
                 fetchTextFile(`songs/lyric/${sid}_lyric.txt`, 'lyrics-content');
 
@@ -323,7 +326,7 @@
                 const response = await fetch(path);
                 const text = await response.text();
                 document.getElementById(targetId).innerText = text;
-            } catch (e) { document.getElementById(targetId).innerText = "File not found."; }
+            } catch (e) { document.getElementById(targetId).innerText = "[ERROR] Resource not found."; }
         }
         window.addEventListener('DOMContentLoaded', loadModuleData);
     </script>

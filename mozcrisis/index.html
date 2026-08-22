@@ -455,17 +455,14 @@
                 container.innerHTML = ''; // クリア
 
                 // 2. データをループしてカードを生成
-                for (const key in data) {
-                    const song = data[key];
-                    const sid = song.id; // JSON内のidを使用
-
+                for (const sid in data) { // keyそのものが sid になる
+                    const song = data[sid];
                     const card = document.createElement('div');
-                    card.className = 'disc-card';
                     card.innerHTML = `
-                        <a href="songs.html?id=${sid}" style="text-decoration:none;">
-                            <img src="songs/artwork/${sid}_artwork.jpg" class="jacket" alt="${song.title}">
-                            <span class="disc-title">${song.title}</span>
-                        </a>
+                    <a href="songs.html?id=${sid}">
+                        <img src="songs/artwork/${sid}_artwork.jpg" class="jacket">
+                        <span class="disc-title">${song.title}</span>
+                    </a>
                     `;
                     container.appendChild(card);
                 }
