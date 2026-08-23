@@ -5,14 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TRACK_DETAIL | MOZCRISIS</title>
     <style>
-        :root {
-            --main-red: #ff3e3e;
-            --cyber-blue: #00f3ff;
-            --bg-black: #0a0a0a;
-            --card-bg: #151515;
-            --text-white: #e0e0e0;
-            --code-font: 'Consolas', 'Monaco', 'Courier New', monospace;
-        }
+        :root { --main-red: #ff3e3e; --cyber-blue: #00f3ff; --bg-black: #0a0a0a; --card-bg: #151515; --text-white: #e0e0e0; --code-font: 'Consolas', 'Monaco', 'Courier New', monospace; }
         html, body { background-color: var(--bg-black) !important; color: var(--text-white) !important; font-family: 'Segoe UI', 'Hiragino Kaku Gothic ProN', sans-serif; margin: 0; line-height: 1.6; }
         nav { padding: 15px 20px; font-family: var(--code-font); border-bottom: 1px solid #222; background: rgba(0, 0, 0, 0.9); position: fixed; width: 100%; top: 0; z-index: 1000; box-sizing: border-box; }
         nav a { color: var(--main-red); text-decoration: none; font-size: 0.8rem; }
@@ -72,42 +65,32 @@
             <pre id="lyrics-content" class="lyrics-box">Awaiting data stream...</pre>
         </div>
     </div>
-
     <script>
         async function loadModuleData() {
             try {
                 const params = new URLSearchParams(window.location.search);
                 const sid = params.get('id'); 
                 if (!sid) return;
-
-                // 1. JSON取得 (ルートの data/songs.json)
                 const response = await fetch('data/songs.json');
                 const database = await response.json();
                 const data = database[sid];
                 if (!data) return;
 
-                // 2. 反映
                 document.getElementById('dynamic-title').textContent = data.title;
                 document.getElementById('dynamic-track-id').textContent = "TRACK_" + sid.toUpperCase();
                 document.getElementById('meta-release').textContent = data.release;
                 document.getElementById('meta-architect').textContent = data.architect;
                 document.getElementById('meta-status').textContent = data.status;
-
                 document.getElementById('link-yt').href = data.youtube;
                 document.getElementById('link-dl').href = `songs/${sid}/${sid}.mp3`;
-
-                // 3. 画像反映 (songs/ID/ID_用途.ext)
                 document.getElementById('dynamic-hero').style.backgroundImage = `url('songs/${sid}/${sid}_keyvisual.png')`;
                 document.getElementById('dynamic-artwork').src = `songs/${sid}/${sid}_artwork.jpg`;
                 document.getElementById('file-name-display').textContent = sid + "_lyric.txt";
 
-                // 4. テキスト反映 (songs/ID/ID_用途.txt)
                 fetchTextFile(`songs/${sid}/${sid}_lead.txt`, 'lead-content');
                 fetchTextFile(`songs/${sid}/${sid}_lyric.txt`, 'lyrics-content');
-
-            } catch (e) { console.error("System Error:", e); }
+            } catch (e) { console.error(e); }
         }
-
         async function fetchTextFile(path, targetId) {
             try {
                 const response = await fetch(path);

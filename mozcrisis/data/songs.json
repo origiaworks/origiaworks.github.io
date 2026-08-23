@@ -1,16 +1,149 @@
 {
-  "Jpop_Is_Dead": {
-    "title": "J-Pop Is Dead",
+  "BLOOD_GAME": {
+    "title": "Blood Game",
+    "release": "2026.08.22",
+    "architect": "ROSE",
+    "status": "STABLE_BUILD",
+    "youtube": "https://youtu.be/TODO"
+  },
+  "Chocolate": {
+    "title": "ChocoLate",
+    "release": "2026.08.08",
+    "architect": "ROSE",
+    "status": "STABLE_BUILD",
+    "youtube": "https://youtu.be/MNa4gSR1ZLs"
+  },
+  "Dagger": {
+    "title": "Dagger",
+    "release": "2026.08.15",
+    "architect": "ROSE",
+    "status": "STABLE_BUILD",
+    "youtube": "https://youtu.be/TODO"
+  },
+  "Deus_Ex_Machina_Noah_Overload_Genesis": {
+    "title": "デウス・エクス・マキナ・ノア：オーバーロード・ジェネシス",
+    "release": "2026.08.16",
+    "architect": "ROSE",
+    "status": "STABLE_BUILD",
+    "youtube": "https://youtu.be/TODO"
+  },
+  "Done": {
+    "title": "Done",
     "release": "2026.08.07",
     "architect": "ROSE",
     "status": "STABLE_BUILD",
+    "youtube": "https://youtu.be/GFrqQNPh7Xk"
+  },
+  "Glitched_Boot_Sequence": {
+    "title": "Glitched Boot Sequence",
+    "release": "2026.08.23",
+    "architect": "ROSE",
+    "status": "STABLE_BUILD",
+    "youtube": "https://youtu.be/TODO"
+  },
+  "Hook_Up_With_Me": {
+    "title": "Hook Up With Me",
+    "release": "2026.08.22",
+    "architect": "ROSE",
+    "status": "STABLE_BUILD",
+    "youtube": "https://youtu.be/TODO"
+  },
+  "Identity_Crisis": {
+    "title": "Identity Crisis",
+    "release": "2026.08.07",
+    "architect": "ROSE",
+    "status": "STABLE_BUILD",
+    "youtube": "https://youtu.be/xhUc3UMOYtA"
+  },
+  "Izagurare": {
+    "title": "イザギュラレ",
+    "release": "2026.08.08",
+    "architect": "ROSE",
+    "status": "STABLE_BUILD",
+    "youtube": "https://youtu.be/TODO"
+  },
+  "JPop_Is_Dead": {
+    "title": "J-Pop Is Dead",
+    "release": "2026.08.21",
+    "architect": "ROSE",
+    "status": "STABLE_BUILD",
     "youtube": "https://youtu.be/w2hubBG4yzk"
+  },
+  "Kami_ni_Erabareta_Mono_no_Asobi": {
+    "title": "神ニ選バレタ者ノ遊ビ",
+    "release": "2026.08.23",
+    "architect": "ROSE",
+    "status": "STABLE_BUILD",
+    "youtube": "https://youtu.be/TODO"
+  },
+  "Kansutoro": {
+    "title": "カンストロ",
+    "release": "2026.08.10",
+    "architect": "ROSE",
+    "status": "STABLE_BUILD",
+    "youtube": "https://youtu.be/TODO"
+  },
+  "Kimi_no_Uta_Hana_to_Mau": {
+    "title": "君の詩、花と舞う。",
+    "release": "2026.08.10",
+    "architect": "ROSE",
+    "status": "STABLE_BUILD",
+    "youtube": "https://youtu.be/TODO"
+  },
+  "Kyosuukai": {
+    "title": "虚数解",
+    "release": "2026.08.11",
+    "architect": "ROSE",
+    "status": "STABLE_BUILD",
+    "youtube": "https://youtu.be/TODO"
   },
   "OVERDOSE": {
     "title": "OVERDOSE",
     "release": "2026.08.09",
     "architect": "ROSE",
     "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/..."
+    "youtube": "https://youtu.be/FLASsOuHd3Q"
+  },
+  "Oborozukiyo": {
+    "title": "オボロヅキヨ",
+    "release": "2026.08.14",
+    "architect": "ROSE",
+    "status": "STABLE_BUILD",
+    "youtube": "https://youtu.be/TODO"
+  },
+  "SYNCHRONIZE": {
+    "title": "SYNCHRONIZE",
+    "release": "2026.08.15",
+    "architect": "ROSE",
+    "status": "STABLE_BUILD",
+    "youtube": "https://youtu.be/TODO"
+  },
+  "Seems_like_it": {
+    "title": "Seems like it",
+    "release": "2026.08.12",
+    "architect": "ROSE",
+    "status": "STABLE_BUILD",
+    "youtube": "https://youtu.be/TODO"
+  },
+  "Stellustrious": {
+    "title": "ステラストリアス",
+    "release": "2026.08.17",
+    "architect": "ROSE",
+    "status": "STABLE_BUILD",
+    "youtube": "https://youtu.be/TODO"
+  },
+  "This_Is_My_Rock": {
+    "title": "This Is My Rock",
+    "release": "2026.08.20",
+    "architect": "ROSE",
+    "status": "STABLE_BUILD",
+    "youtube": "https://youtu.be/TODO"
+  },
+  "echo_me": {
+    "title": "echo $me",
+    "release": "2026.08.12",
+    "architect": "ROSE",
+    "status": "STABLE_BUILD",
+    "youtube": "https://youtu.be/TODO"
   }
 }
