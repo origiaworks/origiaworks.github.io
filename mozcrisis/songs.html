@@ -21,15 +21,14 @@
         .meta-list { display: flex; gap: 30px; border-top: 1px solid #333; padding-top: 15px; margin-top: 15px; }
         .meta-label { font-size: 0.7rem; color: #666; display: block; }
         .meta-value { font-family: var(--code-font); color: var(--cyber-blue); }
-        .action-area { display: flex; flex-wrap: wrap; gap: 15px; margin: 30px 0; }
+        .action-area { display: flex; flex-wrap: wrap; gap: 15px; margin: 30px 0 60px; } /* 余白調整 */
         .btn { padding: 12px 25px; font-family: var(--code-font); font-size: 0.9rem; font-weight: bold; text-decoration: none; border: 1px solid; transition: 0.3s; text-align: center; flex: 1; min-width: 200px; }
         .btn-yt { color: var(--main-red); border-color: var(--main-red); }
         .btn-yt:hover { background: var(--main-red); color: #fff; box-shadow: 0 0 15px rgba(255, 62, 62, 0.4); }
         .btn-dl { color: var(--cyber-blue); border-color: var(--cyber-blue); }
         .btn-dl:hover { background: var(--cyber-blue); color: #000; box-shadow: 0 0 15px rgba(0, 243, 255, 0.4); }
-        .lead-section { padding: 30px; background: rgba(0, 243, 255, 0.05); border-left: 3px solid var(--cyber-blue); margin: 40px 0; }
-        .lead-header { font-family: var(--code-font); color: var(--cyber-blue); font-size: 0.8rem; margin-bottom: 10px; }
-        .lead-text { white-space: pre-wrap; font-size: 1.05rem; color: #ccc; margin: 0; line-height: 1.8; }
+        
+        /* ターミナル（歌詞エリア） */
         .terminal { background: #000; border: 1px solid #333; margin-bottom: 100px; }
         .terminal-bar { background: #1a1a1a; padding: 10px; font-size: 0.7rem; color: #888; display: flex; justify-content: space-between; border-bottom: 1px solid #333; }
         .lyrics-box { padding: 40px; font-family: var(--code-font); font-size: 1rem; color: #aaa; white-space: pre-wrap; margin: 0; line-height: 1.8; }
@@ -56,10 +55,7 @@
             <a id="link-yt" href="" target="_blank" class="btn btn-yt">>> WATCH_ON_YOUTUBE</a>
             <a id="link-dl" href="" download class="btn btn-dl">>> DOWNLOAD_MP3_BINARY</a>
         </div>
-        <section class="lead-section">
-            <div class="lead-header">README.md</div>
-            <p id="lead-content" class="lead-text">Fetching documentation...</p>
-        </section>
+        
         <div class="terminal">
             <div class="terminal-bar"><span id="file-name-display">source_code.txt</span><span>UTF-8 / RAW_FETCH</span></div>
             <pre id="lyrics-content" class="lyrics-box">Awaiting data stream...</pre>
@@ -87,7 +83,6 @@
                 document.getElementById('dynamic-artwork').src = `songs/${sid}/${sid}_artwork.jpg`;
                 document.getElementById('file-name-display').textContent = sid + "_lyric.txt";
 
-                fetchTextFile(`songs/${sid}/${sid}_lead.txt`, 'lead-content');
                 fetchTextFile(`songs/${sid}/${sid}_lyric.txt`, 'lyrics-content');
             } catch (e) { console.error(e); }
         }
