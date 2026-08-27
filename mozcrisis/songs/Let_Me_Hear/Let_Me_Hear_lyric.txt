@@ -39,8 +39,7 @@ Let me hear Let me hear
 捧げた宿命を銀河の楔に変えて
 虚実を脱ぎ捨て　表裏一体の因果を照らせ
 Let me hear Let me hear 
-消えない涙痕が星座を描く
-I wanted to live longer.
+消えない涙痕よ　私を導け
 
 Let me hear...
-Connection lost=>(0f,0f,0f)
+(0f,0f,0f)

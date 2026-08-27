@@ -166,5 +166,12 @@
     "architect": "ROSE",
     "status": "STABLE_BUILD",
     "youtube": "https://youtu.be/TODO"
+  },
+  "Let_Me_Hear": {
+    "title": "Let Me Hear",
+    "release": "2026.08.27",
+    "architect": "ROSE",
+    "status": "STABLE_BUILD",
+    "youtube": "https://youtu.be/TODO"
   }
 }
