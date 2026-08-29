@@ -1,191 +1,164 @@
 {
-  "BLOOD_GAME": {
-    "title": "Blood Game",
-    "release": "2026.08.22",
-    "architect": "ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/TODO"
-  },
-  "Chocolate": {
-    "title": "ChocoLate",
-    "release": "2026.08.08",
-    "architect": "ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/MNa4gSR1ZLs"
-  },
-  "Dagger": {
-    "title": "Dagger",
-    "release": "2026.08.17",
-    "architect": "ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/TODO"
-  },
-  "Deus_Ex_Machina_Noah_Overload_Genesis": {
-    "title": "デウス・エクス・マキナ・ノア：オーバーロード・ジェネシス",
-    "release": "2026.08.19",
-    "architect": "ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/TODO"
-  },
   "Done": {
     "title": "Done",
     "release": "2026.08.07",
     "architect": "ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/GFrqQNPh7Xk"
-  },
-  "Glitched_Boot_Sequence": {
-    "title": "Glitched Boot Sequence",
-    "release": "2026.08.23",
-    "architect": "LENA / ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/TODO"
-  },
-  "Hook_Up_With_Me": {
-    "title": "Hook Up With Me",
-    "release": "2026.08.21",
-    "architect": "ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/TODO"
+    "section": "J-Pop_Is_Dead"
   },
   "Identity_Crisis": {
     "title": "Identity Crisis",
     "release": "2026.08.07",
     "architect": "ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/xhUc3UMOYtA"
-  },
-  "Izagurare": {
-    "title": "イザギュラレ",
-    "release": "2026.08.15",
-    "architect": "ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/TODO"
+    "section": "J-Pop_Is_Dead"
   },
   "JPop_Is_Dead": {
     "title": "J-Pop Is Dead",
     "release": "2026.08.07",
     "architect": "ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/w2hubBG4yzk"
+    "section": "J-Pop_Is_Dead"
   },
-  "Kami_ni_Erabareta_Mono_no_Asobi": {
-    "title": "神ニ選バレタ者ノ遊ビ",
-    "release": "2026.08.24",
+  "Chocolate": {
+    "title": "ChocoLate",
+    "release": "2026.08.08",
     "architect": "ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/TODO"
-  },
-  "Kansutoro": {
-    "title": "カンストロ",
-    "release": "2026.08.19",
-    "architect": "ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/TODO"
-  },
-  "Kimi_no_Uta_Hana_to_Mau": {
-    "title": "君の詩、花と舞う。",
-    "release": "2026.08.15",
-    "architect": "YODO / ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/TODO"
-  },
-  "Kyosuukai": {
-    "title": "虚数解",
-    "release": "2026.08.16",
-    "architect": "LENA / ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/TODO"
-  },
-  "OVERDOSE": {
-    "title": "OVERDOSE",
-    "release": "2026.08.20",
-    "architect": "ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/FLASsOuHd3Q"
-  },
-  "Oborozukiyo": {
-    "title": "オボロヅキヨ",
-    "release": "2026.08.19",
-    "architect": "YODO / ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/TODO"
-  },
-  "SYNCHRONIZE": {
-    "title": "SYNCHRONIZE",
-    "release": "2026.08.17",
-    "architect": "LENA / ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/TODO"
+    "section": "J-Pop_Is_Dead"
   },
   "Seems_like_it": {
     "title": "Seems like it",
     "release": "2026.08.12",
     "architect": "ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/TODO"
+    "section": "J-Pop_Is_Dead"
   },
-  "Stellustrious": {
-    "title": "ステラストリアス",
-    "release": "2026.08.20",
-    "architect": "LENA / ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/TODO"
-  },
-  "This_Is_My_Rock": {
-    "title": "This Is My Rock",
-    "release": "2026.08.20",
+  "Izagurare": {
+    "title": "イザギュラレ",
+    "release": "2026.08.15",
     "architect": "ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/TODO"
+    "section": "J-Pop_Is_Dead"
+  },
+  "Kimi_no_Uta_Hana_to_Mau": {
+    "title": "君の詩、花と舞う。",
+    "release": "2026.08.15",
+    "architect": "YODO / ROSE",
+    "section": "ZANSHIN"
   },
   "echo_me": {
     "title": "echo $me",
     "release": "2026.08.15",
     "architect": "LENA / ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/TODO"
+    "section": "Geometric_Resonance"
+  },
+  "Kyosuukai": {
+    "title": "虚数解",
+    "release": "2026.08.16",
+    "architect": "LENA / ROSE",
+    "section": "Geometric_Resonance"
+  },
+  "Dagger": {
+    "title": "Dagger",
+    "release": "2026.08.17",
+    "architect": "ROSE",
+    "section": "J-Pop_Is_Dead"
+  },
+  "SYNCHRONIZE": {
+    "title": "SYNCHRONIZE",
+    "release": "2026.08.17",
+    "architect": "LENA / ROSE",
+    "section": "Geometric_Resonance"
+  },
+  "Deus_Ex_Machina_Noah_Overload_Genesis": {
+    "title": "デウス・エクス・マキナ・ノア：オーバーロード・ジェネシス",
+    "release": "2026.08.19",
+    "architect": "ROSE",
+    "section": "J-Pop_Is_Dead"
+  },
+  "Kansutoro": {
+    "title": "カンストロ",
+    "release": "2026.08.19",
+    "architect": "ROSE",
+    "section": "J-Pop_Is_Dead"
+  },
+  "Oborozukiyo": {
+    "title": "オボロヅキヨ",
+    "release": "2026.08.19",
+    "architect": "YODO / ROSE",
+    "section": "ZANSHIN"
+  },
+  "OVERDOSE": {
+    "title": "OVERDOSE",
+    "release": "2026.08.20",
+    "architect": "ROSE",
+    "section": "J-Pop_Is_Dead"
+  },
+  "Stellustrious": {
+    "title": "ステラストリアス",
+    "release": "2026.08.20",
+    "architect": "LENA / ROSE",
+    "section": "Geometric_Resonance"
+  },
+  "This_Is_My_Rock": {
+    "title": "This Is My Rock",
+    "release": "2026.08.20",
+    "architect": "ROSE",
+    "section": "J-Pop_Is_Dead"
+  },
+  "Hook_Up_With_Me": {
+    "title": "Hook Up With Me",
+    "release": "2026.08.21",
+    "architect": "ROSE",
+    "section": "J-Pop_Is_Dead"
+  },
+  "BLOOD_GAME": {
+    "title": "Blood Game",
+    "release": "2026.08.22",
+    "architect": "ROSE",
+    "section": "J-Pop_Is_Dead"
+  },
+  "Glitched_Boot_Sequence": {
+    "title": "Glitched Boot Sequence",
+    "release": "2026.08.23",
+    "architect": "LENA / ROSE",
+    "section": "Geometric_Resonance"
   },
   "Geometric_Resonance": {
     "title": "Geometric Resonance",
     "release": "2026.08.23",
     "architect": "LENA / ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/TODO"
+    "section": "Geometric_Resonance"
+  },
+  "Kami_ni_Erabareta_Mono_no_Asobi": {
+    "title": "神ニ選バレタ者ノ遊ビ",
+    "release": "2026.08.24",
+    "architect": "ROSE",
+    "section": "J-Pop_Is_Dead"
   },
   "RESONATE": {
     "title": "RESONATE",
     "release": "2026.08.24",
     "architect": "LENA / ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/TODO"
+    "section": "Geometric_Resonance"
   },
   "RE_FACTOR": {
     "title": "RE:FACTOR",
     "release": "2026.08.25",
     "architect": "LENA / ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/TODO"
+    "section": "Geometric_Resonance"
   },
   "Let_Me_Hear": {
     "title": "Let Me Hear",
     "release": "2026.08.28",
-    "architect": "ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/TODO"
+    "architect": "LENA / ROSE",
+    "section": "Geometric_Resonance"
   },
   "Digital_Tattoo": {
     "title": "デジタルタトゥー",
     "release": "2026.08.29",
     "architect": "ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/TODO"
+    "section": "TIMEKILLER"
   },
   "TIMEKILLER": {
     "title": "TIMEKILLER",
     "release": "2026.08.29",
     "architect": "ROSE",
-    "status": "STABLE_BUILD",
-    "youtube": "https://youtu.be/TODO"
+    "section": "TIMEKILLER"
   }
 }
