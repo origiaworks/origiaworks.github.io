@@ -180,5 +180,12 @@
     "architect": "ROSE",
     "status": "STABLE_BUILD",
     "youtube": "https://youtu.be/TODO"
+  },
+  "TIMEKILLER": {
+    "title": "TIMEKILLER",
+    "release": "2026.08.29",
+    "architect": "ROSE",
+    "status": "STABLE_BUILD",
+    "youtube": "https://youtu.be/TODO"
   }
 }
