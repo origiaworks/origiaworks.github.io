@@ -45,6 +45,8 @@
                 <div class="meta-list">
                     <div class="meta-item"><span class="meta-label">RELEASE</span><span id="meta-release" class="meta-value">----</span></div>
                     <div class="meta-item"><span class="meta-label">ARCHITECT</span><span id="meta-architect" class="meta-value">----</span></div>
+                    <!-- EDITION項目を追加 -->
+                    <div class="meta-item"><span class="meta-label">EDITION</span><span id="meta-edition" class="meta-value">----</span></div>
                 </div>
             </div>
         </header>
@@ -67,10 +69,13 @@
                 const database = await response.json();
                 const data = database[sid];
                 if (!data) return;
+
                 document.getElementById('dynamic-title').textContent = data.title;
                 document.getElementById('dynamic-track-id').textContent = "TRACK_" + sid.toUpperCase();
                 document.getElementById('meta-release').textContent = data.release;
                 document.getElementById('meta-architect').textContent = data.architect;
+                document.getElementById('meta-edition').textContent = data.edition || "UNKNOWN_EDITION";
+
                 document.getElementById('link-wav').href = `songs/${sid}/${sid}.wav`;
                 document.getElementById('link-mp3').href = `songs/${sid}/${sid}.mp3`;
                 document.getElementById('dynamic-hero').style.backgroundImage = `url('songs/${sid}/${sid}_keyvisual.png')`;
