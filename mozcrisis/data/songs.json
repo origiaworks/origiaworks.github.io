@@ -3,37 +3,37 @@
     "title": "Done",
     "release": "2026.08.07",
     "architect": "ROSE",
-    "section": "BOOT_EDITION"
+    "section": "TIMEKILLER_EDITION"
   },
   "Identity_Crisis": {
     "title": "Identity Crisis",
     "release": "2026.08.07",
     "architect": "ROSE",
-    "section": "BOOT_EDITION"
+    "section": "TIMEKILLER_EDITION"
   },
   "JPop_Is_Dead": {
     "title": "J-Pop Is Dead",
     "release": "2026.08.07",
     "architect": "ROSE",
-    "section": "BOOT_EDITION"
+    "section": "TIMEKILLER_EDITION"
   },
   "Chocolate": {
     "title": "ChocoLate",
     "release": "2026.08.08",
     "architect": "ROSE",
-    "section": "BOOT_EDITION"
+    "section": "TIMEKILLER_EDITION"
   },
   "Seems_like_it": {
     "title": "Seems like it",
     "release": "2026.08.12",
     "architect": "ROSE",
-    "section": "BOOT_EDITION"
+    "section": "TIMEKILLER_EDITION"
   },
   "Izagurare": {
     "title": "イザギュラレ",
     "release": "2026.08.15",
     "architect": "ROSE",
-    "section": "BOOT_EDITION"
+    "section": "TIMEKILLER_EDITION"
   },
   "Kimi_no_Uta_Hana_to_Mau": {
     "title": "君の詩、花と舞う。",
@@ -69,13 +69,13 @@
     "title": "デウス・エクス・マキナ・ノア：オーバーロード・ジェネシス",
     "release": "2026.08.19",
     "architect": "ROSE",
-    "section": "BOOT_EDITION"
+    "section": "TIMEKILLER_EDITION"
   },
   "Kansutoro": {
     "title": "カンストロ",
     "release": "2026.08.19",
     "architect": "ROSE",
-    "section": "BOOT_EDITION"
+    "section": "TIMEKILLER_EDITION"
   },
   "Oborozukiyo": {
     "title": "オボロヅキヨ",
@@ -87,7 +87,7 @@
     "title": "OVERDOSE",
     "release": "2026.08.20",
     "architect": "ROSE",
-    "section": "BOOT_EDITION"
+    "section": "TIMEKILLER_EDITION"
   },
   "Stellustrious": {
     "title": "ステラストリアス",
@@ -119,7 +119,7 @@
     "architect": "LENA / ROSE",
     "section": "GEOMETRIC_RESONANCE_EDITION"
   },
-  "GEOMETRIC_RESONANCE_EDITION": {
+  "Geometric_Resonance": {
     "title": "Geometric Resonance",
     "release": "2026.08.23",
     "architect": "LENA / ROSE",
@@ -153,17 +153,17 @@
     "title": "デジタルタトゥー",
     "release": "2026.08.29",
     "architect": "ROSE",
-    "section": "TIMEKILLER"
+    "section": "TIMEKILLER_EDITION"
   },
   "TIMEKILLER": {
     "title": "TIMEKILLER",
     "release": "2026.08.29",
     "architect": "ROSE",
-    "section": "TIMEKILLER"
+    "section": "TIMEKILLER_EDITION"
   },
-  "RENNOHANA": {
-    "title": "RENNOHANA",
-    "release": "2026.08.29",
+  "Kimi_itou_Hana": {
+    "title": "君といふ花",
+    "release": "2026.08.30",
     "architect": "ROSE",
     "section": "ZANSHIN_EDITION"
   }
