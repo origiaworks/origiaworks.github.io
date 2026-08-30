@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,375 +14,201 @@
             --code-font: 'Consolas', 'Monaco', 'Courier New', monospace;
         }
 
-        body {
-            background-color: var(--bg-black);
-            color: var(--text-white);
-            font-family: 'Segoe UI', 'Hiragino Kaku Gothic ProN', sans-serif;
-            margin: 0;
-            line-height: 1.6;
-            scroll-behavior: smooth;
+        body { background-color: var(--bg-black); color: var(--text-white); font-family: 'Segoe UI', sans-serif; margin: 0; line-height: 1.6; scroll-behavior: smooth; }
+        nav { position: fixed; top: 0; width: 100%; padding: 15px 0; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); z-index: 1000; display: flex; justify-content: center; gap: 20px; font-family: var(--code-font); font-size: 0.75rem; border-bottom: 1px solid #222; }
+        nav a { color: #fff; text-decoration: none; transition: 0.3s; }
+        nav a:hover { color: var(--cyber-blue); }
+
+        header { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%); text-align: center; padding: 0 20px; }
+        .glitch-logo { font-size: clamp(3rem, 12vw, 9rem); font-weight: 900; letter-spacing: 0.15em; font-family: var(--code-font); text-shadow: 2px 0 var(--main-red), -2px 0 var(--cyber-blue); }
+        .tagline { font-family: var(--code-font); color: var(--cyber-blue); font-size: clamp(0.7rem, 2vw, 1.1rem); margin-top: 20px; opacity: 0.8; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
+
+        /* --- EDITION BLOCK STYLES --- */
+        .edition-block {
+            margin-bottom: 120px;
+            border-top: 1px solid #222;
+            padding-top: 40px;
         }
 
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 15px 0;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
-            z-index: 1000;
+        .edition-header {
             display: flex;
-            justify-content: center;
-            gap: 20px;
-            font-family: var(--code-font);
-            font-size: 0.75rem;
-            border-bottom: 1px solid #222;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--cyber-blue);
-        }
-
-        header {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
-            text-align: center;
-            padding: 0 20px;
-        }
-
-        .glitch-logo {
-            font-size: clamp(3rem, 12vw, 9rem);
-            font-weight: 900;
-            letter-spacing: 0.15em;
-            font-family: var(--code-font);
-            text-shadow: 2px 0 var(--main-red), -2px 0 var(--cyber-blue);
-        }
-
-        .tagline {
-            font-family: var(--code-font);
-            color: var(--cyber-blue);
-            font-size: clamp(0.7rem, 2vw, 1.1rem);
-            margin-top: 20px;
-            opacity: 0.8;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 80px 20px;
-        }
-
-        .section-header {
+            gap: 40px;
             margin-bottom: 40px;
+            align-items: flex-end;
+            flex-wrap: wrap;
         }
 
-        .section-header h2 {
+        .edition-master-jacket {
+            flex: 0 0 280px;
+            aspect-ratio: 1 / 1;
+            background: #111;
+            border: 2px solid var(--main-red);
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(255, 62, 62, 0.2);
+        }
+
+        .edition-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .edition-label {
             font-family: var(--code-font);
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            display: inline-block;
-            border-right: 10px solid var(--main-red);
-            padding-right: 15px;
+            color: var(--main-red);
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .edition-title {
+            font-family: var(--code-font);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 900;
             margin: 0;
-        }
-
-        /* --- DISCOGRAPHY SECTION STYLES --- */
-        .disc-section {
-            margin-bottom: 80px;
-        }
-
-        .disc-section-title {
-            font-family: var(--code-font);
-            font-size: 1.1rem;
-            color: var(--cyber-blue);
-            border-bottom: 1px solid #222;
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
 
-        .disc-section-title::before {
-            content: "// SECTION: ";
-            opacity: 0.5;
-            font-size: 0.8rem;
-            margin-right: 5px;
-        }
-
-        .disc-grid {
+        /* --- SONG GRID (INSIDE EDITION) --- */
+        .song-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
         }
 
-        .disc-card {
+        .song-card {
             text-align: left;
-        }
-
-        .jacket {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            background: #222;
-            margin-bottom: 15px;
-            border: 1px solid #333;
-            object-fit: cover;
             transition: 0.3s;
         }
 
-        .disc-card:hover .jacket {
-            border-color: var(--main-red);
-            transform: scale(1.03);
+        .song-card:hover { transform: translateY(-5px); }
+
+        .song-jacket {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: #222;
+            margin-bottom: 10px;
+            border: 1px solid #333;
+            object-fit: cover;
         }
 
-        .disc-title {
-            font-size: 0.95rem;
+        .song-card:hover .song-jacket { border-color: var(--cyber-blue); }
+
+        .song-title {
+            font-size: 0.85rem;
             font-weight: bold;
-            color: #fff;
+            color: #ccc;
             display: block;
             line-height: 1.4;
         }
 
-        /* --- OTHER SECTIONS --- */
-        .logic-box {
-            background: #000;
-            border: 1px solid #333;
-            padding: clamp(30px, 5vw, 50px);
-            font-family: var(--code-font);
-            margin: 40px auto 100px;
-            position: relative;
-        }
+        /* -------------------------- */
 
-        .logic-box::before {
-            content: "lyric_logic.sh";
-            position: absolute;
-            top: -15px;
-            left: 20px;
-            background: var(--main-red);
-            padding: 2px 12px;
-            font-size: 0.75rem;
-            color: #fff;
-            font-weight: bold;
-        }
+        .logic-box { background: #000; border: 1px solid #333; padding: clamp(30px, 5vw, 50px); font-family: var(--code-font); margin: 40px auto 100px; position: relative; }
+        .logic-box::before { content: "lyric_logic.sh"; position: absolute; top: -15px; left: 20px; background: var(--main-red); padding: 2px 12px; font-size: 0.75rem; color: #fff; font-weight: bold; }
+        .logic-desc { margin-top: 30px; color: #ccc; font-size: 0.95rem; border-top: 1px solid #222; padding-top: 20px; }
 
-        .logic-desc {
-            white-space: normal;
-            margin-top: 30px;
-            color: #ccc;
-            font-size: 0.95rem;
-            border-top: 1px solid #222;
-            padding-top: 20px;
-        }
-
-        .code-comment { color: #6a9955; }
-        .code-keyword { color: #c586c0; }
-        .code-func { color: #dcdcaa; }
-
-        .member-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 100px;
-        }
-
+        .member-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 100px; }
         .member-link { text-decoration: none; color: inherit; display: block; }
-        .member-card { background: var(--card-bg); border: 1px solid #222; overflow: hidden; transition: 0.4s ease; height: 100%; }
-        .member-link:hover .member-card { border-color: var(--cyber-blue); transform: translateY(-5px); }
+        .member-card { background: var(--card-bg); border: 1px solid #222; overflow: hidden; transition: 0.4s ease; }
         .img-wrapper { width: 100%; aspect-ratio: 1 / 1; overflow: hidden; }
         .img-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .info { padding: 20px; }
-        .role-tag { font-family: var(--code-font); color: var(--main-red); font-size: 0.75rem; font-weight: bold; }
-        .name-jp { font-size: 1.5rem; font-weight: bold; display: block; margin: 5px 0; }
-        .name-real { font-size: 0.8rem; color: #777; }
-
-        .protocol-link-box { background: #000; border: 1px solid #222; padding: 40px; margin-bottom: 80px; }
-        .protocol-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 30px;
-            border: 1px solid var(--main-red);
-            color: var(--main-red);
-            text-decoration: none;
-            font-family: var(--code-font);
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .protocol-btn:hover { background: var(--main-red); color: #fff; box-shadow: 0 0 15px rgba(255, 62, 62, 0.4); }
+        .role-tag { font-family: var(--code-font); color: var(--main-red); font-size: 0.75rem; }
+        .name-jp { font-size: 1.5rem; font-weight: bold; display: block; }
 
         footer { background: #050505; padding: 60px 20px; text-align: center; border-top: 1px solid #1a1a1a; }
-        .disclaimer-text { font-size: 0.65rem; color: #555; margin-top: 20px; line-height: 1.6; max-width: 800px; margin: 20px auto 0; font-family: sans-serif; }
+        .disclaimer-text { font-size: 0.65rem; color: #555; margin-top: 20px; max-width: 800px; margin: 20px auto 0; }
 
         @media (max-width: 768px) {
-            nav { gap: 10px; font-size: 0.65rem; }
-            .container { padding: 60px 15px; }
+            .edition-header { flex-direction: column; align-items: center; text-align: center; }
+            .edition-master-jacket { flex: 0 0 200px; }
         }
     </style>
 </head>
-
 <body>
-    <nav><a href="#home">01_HOME</a><a href="#logic">02_LOGIC</a><a href="#members">03_MEMBERS</a><a
-            href="#discography">04_DISCOGRAPHY</a><a href="policy.html">05_PROTOCOL</a></nav>
-    <header id="home">
-        <div class="glitch-logo">MOZCRISIS</div>
-        <div class="tagline">Execute: AlgorithmRock.sh --heavy --fast</div>
-    </header>
+    <nav><a href="#home">01_HOME</a><a href="#logic">02_LOGIC</a><a href="#members">03_MEMBERS</a><a href="#discography">04_DISCOGRAPHY</a><a href="policy.html">05_PROTOCOL</a></nav>
+    <header id="home"><div class="glitch-logo">MOZCRISIS</div><div class="tagline">Execute: AlgorithmRock.sh --heavy --fast</div></header>
     <div class="container">
-        <!-- LOGIC SECTION -->
-        <section id="logic" class="logic-box">
-            <span class="code-comment"># Algorithm Rock Definition</span><br><span class="code-keyword">import</span>
-            human_impulse<br><span class="code-keyword">from</span> moz_system <span class="code-keyword">import</span>
-            precision_algorithm<br><br>
-            <span class="code-func">def</span> <span
-                class="code-func">execute_miracle_bug</span>():<br>&nbsp;&nbsp;&nbsp;&nbsp;collision =
-            precision_algorithm + human_impulse<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span>
-            collision.generate_sound(<span class="code-string">"ALGORITHM_ROCK"</span>)<br>
-            <div class="logic-desc">
-                精緻なアルゴリズムと、人間が持つ衝動の衝突点。その狭間で生まれた「奇跡のバグ」――それが、アルゴリズムロック。計算し尽くされたデジタルサウンドと、感情を揺さぶるロックが融合した疾走感をお楽しみください。
-            </div>
-        </section>
-
-        <!-- MEMBERS SECTION -->
+        
+        <!-- Logic & Members (Previous implementations) -->
         <section id="members">
-            <div class="section-header">
-                <h2>MEMBERS</h2>
-            </div>
+            <div class="section-header"><h2>MEMBERS</h2></div>
             <div class="member-grid">
-                <a href="members.html?id=rose" class="member-link">
-                    <div class="member-card">
-                        <div class="img-wrapper"><img src="members/img/rose.png"></div>
-                        <div class="info">
-                            <div class="role-tag">Vo & Gt</div><span class="name-jp">ローズ</span><span
-                                class="name-real">石神・Ｒ・フローレンス</span>
-                        </div>
-                    </div>
-                </a>
-                <a href="members.html?id=yodo" class="member-link">
-                    <div class="member-card">
-                        <div class="img-wrapper"><img src="members/img/yodo.png"></div>
-                        <div class="info">
-                            <div class="role-tag">Bass</div><span class="name-jp">淀</span><span class="name-real">御母衣
-                                京子</span>
-                        </div>
-                    </div>
-                </a>
-                <a href="members.html?id=lena" class="member-link">
-                    <div class="member-card">
-                        <div class="img-wrapper"><img src="members/img/lena.png"></div>
-                        <div class="info">
-                            <div class="role-tag">Key & Scream</div><span class="name-jp">レナ</span><span
-                                class="name-real">斎藤 エレーナ</span>
-                        </div>
-                    </div>
-                </a>
-                <a href="members.html?id=mio" class="member-link">
-                    <div class="member-card">
-                        <div class="img-wrapper"><img src="members/img/mio.png"></div>
-                        <div class="info">
-                            <div class="role-tag">Drums</div><span class="name-jp">ミオ</span><span
-                                class="name-real">ミオ・ロドリゲス</span>
-                        </div>
-                    </div>
-                </a>
-                <a href="members.html?id=jiwoo" class="member-link">
-                    <div class="member-card">
-                        <div class="img-wrapper"><img src="members/img/jiwoo.png"></div>
-                        <div class="info">
-                            <div class="role-tag">DJ</div><span class="name-jp">JIWOO</span><span
-                                class="name-real">イ・ジウ</span>
-                        </div>
-                    </div>
-                </a>
+                <!-- Member cards here -->
+                <a href="members.html?id=rose" class="member-link"><div class="member-card"><div class="img-wrapper"><img src="members/img/rose.png"></div><div class="info"><div class="role-tag">Vo & Gt</div><span class="name-jp">ローズ</span></div></div></a>
+                <a href="members.html?id=yodo" class="member-link"><div class="member-card"><div class="img-wrapper"><img src="members/img/yodo.png"></div><div class="info"><div class="role-tag">Bass</div><span class="name-jp">淀</span></div></div></a>
+                <a href="members.html?id=lena" class="member-link"><div class="member-card"><div class="img-wrapper"><img src="members/img/lena.png"></div><div class="info"><div class="role-tag">Key & Scream</div><span class="name-jp">レナ</span></div></div></a>
+                <a href="members.html?id=mio" class="member-link"><div class="member-card"><div class="img-wrapper"><img src="members/img/mio.png"></div><div class="info"><div class="role-tag">Drums</div><span class="name-jp">ミオ</span></div></div></a>
+                <a href="members.html?id=jiwoo" class="member-link"><div class="member-card"><div class="img-wrapper"><img src="members/img/jiwoo.png"></div><div class="info"><div class="role-tag">DJ</div><span class="name-jp">JIWOO</span></div></div></a>
             </div>
         </section>
 
-        <!-- DISCOGRAPHY SECTION -->
         <section id="discography">
-            <div class="section-header">
-                <h2>DISCOGRAPHY</h2>
-            </div>
-            <div id="disc-grid-container"></div>
-        </section>
-
-        <!-- PROTOCOL SECTION -->
-        <section id="protocol">
-            <div class="section-header">
-                <h2>RESOURCE_USAGE_PROTOCOL</h2>
-            </div>
-            <div class="protocol-link-box">
-                <p>音響資産（Auditory Assets）の利用に関する実行プロトコルは、以下のドキュメントに定義されている。ユーザーは必ず当該プロトコルを確認すること。</p><a
-                    href="policy.html" class="protocol-btn">>> ACCESS_PROTOCOL</a>
-            </div>
+            <div class="section-header"><h2>DISCOGRAPHY</h2></div>
+            <div id="edition-container"></div>
         </section>
     </div>
-
-    <footer>
-        <div class="copyright">&copy; 2026 MOZCRISIS / ORIGIAWORKS.</div>
-        <div class="disclaimer-text">
-            MOZCRISIS（モズクライシス）はORIGIAWORKSが管理する架空の団体であり、設定や物語はすべてフィクションです。<br>
-            当プロジェクトが提供する楽曲は、制作工程の一部において生成AI技術を使用しています。
-        </div>
-    </footer>
+    <footer><div class="copyright">&copy; 2026 MOZCRISIS / ORIGIAWORKS.</div></footer>
 
     <script>
         async function loadDiscography() {
             try {
                 const response = await fetch('data/songs.json');
-                if (!response.ok) throw new Error();
                 const data = await response.json();
-                const container = document.getElementById('disc-grid-container');
+                const container = document.getElementById('edition-container');
                 container.innerHTML = '';
 
-                // 1. セクションごとにグループ化
-                const sections = {};
+                // 1. エディションごとにグループ化
+                const editions = {};
                 for (const sid in data) {
-                    const sec = data[sid].section || "OTHERS";
-                    if (!sections[sec]) sections[sec] = [];
-                    sections[sec].push({ id: sid, ...data[sid] });
+                    const ed = data[sid].edition || "STANDARD_BUILD";
+                    if (!editions[ed]) editions[ed] = [];
+                    editions[ed].push({ id: sid, ...data[sid] });
                 }
 
-                // 2. セクションごとに描画
-                for (const sectionName in sections) {
-                    const sectionWrapper = document.createElement('div');
-                    sectionWrapper.className = 'disc-section';
+                // 2. エディションごとに描画
+                for (const editionName in editions) {
+                    const edWrapper = document.createElement('div');
+                    edWrapper.className = 'edition-block';
 
-                    const title = document.createElement('div');
-                    title.className = 'disc-section-title';
-                    title.textContent = sectionName;
-                    sectionWrapper.appendChild(title);
+                    // エディションヘッダー（マスタージャケット + 情報）
+                    // ジャケットのパス例: data/editions/OVERLOAD_EDITION.jpg
+                    const edHeader = document.createElement('div');
+                    edHeader.className = 'edition-header';
+                    edHeader.innerHTML = `
+                        <img src="data/editions/${editionName}.jpg" class="edition-master-jacket" onerror="this.src='data/editions/default.jpg'">
+                        <div class="edition-info">
+                            <span class="edition-label">COLLECTION_ARCHIVE</span>
+                            <h3 class="edition-title">${editionName.replace(/_/g, ' ')}</h3>
+                        </div>
+                    `;
+                    edWrapper.appendChild(edHeader);
 
-                    const grid = document.createElement('div');
-                    grid.className = 'disc-grid';
+                    // そのエディションに属する楽曲グリッド
+                    const sGrid = document.createElement('div');
+                    sGrid.className = 'song-grid';
 
-                    sections[sectionName].forEach(song => {
-                        const card = document.createElement('div');
-                        card.className = 'disc-card';
-                        card.innerHTML = `
+                    editions[editionName].forEach(song => {
+                        const sCard = document.createElement('div');
+                        sCard.className = 'song-card';
+                        sCard.innerHTML = `
                             <a href="songs.html?id=${song.id}" style="text-decoration:none;">
-                                <img src="songs/${song.id}/${song.id}_artwork.jpg" class="jacket">
-                                <span class="disc-title">${song.title}</span>
+                                <img src="songs/${song.id}/${song.id}_artwork.jpg" class="song-jacket">
+                                <span class="song-title">${song.title}</span>
                             </a>`;
-                        grid.appendChild(card);
+                        sGrid.appendChild(sCard);
                     });
 
-                    sectionWrapper.appendChild(grid);
-                    container.appendChild(sectionWrapper);
+                    edWrapper.appendChild(sGrid);
+                    container.appendChild(edWrapper);
                 }
-            } catch (e) { 
-                document.getElementById('disc-grid-container').innerHTML = `<p style="color:var(--main-red);">[ERROR] FAILED_TO_FETCH_RESOURCES</p>`; 
-            }
+            } catch (e) { console.error(e); }
         }
         window.addEventListener('DOMContentLoaded', loadDiscography);
     </script>
 </body>
-
 </html>

@@ -26,7 +26,7 @@
       {"label": "ALCOHOL", "value": "Limitless (Imperial)"},
       {"label": "JIWOO PROXY", "value": "Sync: 100%"}
     ],
-    "bio": "皇族の血を引くお嬢様。袴姿で白いベースを操る。タバコとロックを愛し、メンバー内で最も「ロック」な生き様を貫く姿から、敬意を込めて「姐さん」と呼ばれている。恥ずかしがり屋なジウの意思をすべて代弁する唯一の理解者。",
+    "bio": "皇族の血を引くお嬢様。袴姿で白いベースを操る。タバコとロックを愛し、メンバー内で最も「ロック」な生き様を貫く姿から、敬意を込めて「姐さん」と呼ばれている。恥ずかしがり屋で内向的なジウの唯一の理解者。",
     "gear": "Bass: White Electric Bass / Favorite: Sake (Dry) / Special: Jiwoo's Mind Reading"
   },
   "lena": {
@@ -64,14 +64,14 @@
     "realName": "イ・ジウ",
     "role": "DJ / Encryption",
     "color": "#00ff41",
-    "quote": "「............（淀：ジウは、音だけで十分と言っています。）」",
+    "quote": "「............。」",
     "specs": [
       {"label": "ENCRYPTION", "value": "AES-256 Noise"},
       {"label": "SHYNESS", "value": "Overflow"},
       {"label": "BEAUTY", "value": "Hidden (SSR Rank)"},
       {"label": "VOCAL", "value": "Silent Mode"}
     ],
-    "bio": "韓国出身。ビッグサイズのパーカースタイルで素顔を隠し、ノイズを暗号化してフロアへ撒き散らす。極度の恥ずかしがり屋で公の場では一切喋らないため、彼女が口を開く代わりに淀がその想いを言葉にする。圧倒的な美貌を秘めた最年少DJ。",
+    "bio": "韓国出身。ビッグサイズのパーカースタイルで素顔を隠し、ノイズを暗号化してフロアへ撒き散らす。極度の恥ずかしがり屋で公の場では一切喋らず、プロモーション活動にも消極的。淀に絶対の信頼を寄せる。圧倒的な美貌を秘めた最年少DJ。",
     "gear": "DJ Gear: Turntable & Sampler / Wear: Baggy Hoodie / Partner: YODO"
   }
 }

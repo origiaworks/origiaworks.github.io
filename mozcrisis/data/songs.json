@@ -166,5 +166,11 @@
     "release": "2026.08.30",
     "architect": "ROSE",
     "edition": "ZANSHIN_EDITION"
+  },
+  "RAIKO": {
+    "title": "雷鼓",
+    "release": "2026.08.31",
+    "architect": "ROSE",
+    "edition": "ZANSHIN_EDITION"
   }
 }
