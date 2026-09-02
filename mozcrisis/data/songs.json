@@ -164,13 +164,19 @@
   "Kimi_toiu_Hana": {
     "title": "君といふ花",
     "release": "2026.08.30",
-    "architect": "ROSE",
+    "architect": "YODO / ROSE",
     "edition": "ZANSHIN_EDITION"
   },
   "RAIKO": {
     "title": "雷鼓",
     "release": "2026.08.31",
-    "architect": "ROSE",
+    "architect": "YODO / ROSE",
+    "edition": "ZANSHIN_EDITION"
+  },
+  "HAKUJIN": {
+    "title": "白刃",
+    "release": "2026.09.01",
+    "architect": "YODO / ROSE",
     "edition": "ZANSHIN_EDITION"
   }
 }
