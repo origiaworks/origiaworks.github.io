@@ -181,8 +181,14 @@
   },
   "IKKITOSEN": {
     "title": "一騎当千",
-    "release": "2026.09.02",
-    "architect": "YODO / ROSE",
+    "release": "2026.09.03",
+    "architect": "YODO",
+    "edition": "ZANSHIN_EDITION"
+  },
+  "ISSHOUSENKOTSU": {
+    "title": "一将万骨",
+    "release": "2026.09.03",
+    "architect": "ROSE",
     "edition": "ZANSHIN_EDITION"
   }
 }
