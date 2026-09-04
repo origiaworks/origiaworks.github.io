@@ -44,37 +44,37 @@
   "echo_me": {
     "title": "echo $me",
     "release": "2026.08.15",
-    "architect": "LENA / ROSE",
+    "architect": "JIWOO / ROSE",
     "edition": "GEOMETRIC_RESONANCE_EDITION"
   },
   "Kyosuukai": {
     "title": "虚数解",
     "release": "2026.08.16",
-    "architect": "LENA / ROSE",
+    "architect": "ROSE",
     "edition": "GEOMETRIC_RESONANCE_EDITION"
   },
   "Dagger": {
     "title": "Dagger",
     "release": "2026.08.17",
-    "architect": "ROSE",
+    "architect": "LENA / ROSE",
     "edition": "CLASSIC_EDITION"
   },
   "SYNCHRONIZE": {
     "title": "SYNCHRONIZE",
     "release": "2026.08.17",
-    "architect": "LENA / ROSE",
+    "architect": "ROSE",
     "edition": "GEOMETRIC_RESONANCE_EDITION"
   },
   "Deus_Ex_Machina_Noah_Overload_Genesis": {
     "title": "デウス・エクス・マキナ・ノア：オーバーロード・ジェネシス",
     "release": "2026.08.19",
-    "architect": "ROSE",
+    "architect": "LENA",
     "edition": "OVERLOAD_EDITION"
   },
   "Kansutoro": {
     "title": "カンストロ",
     "release": "2026.08.19",
-    "architect": "ROSE",
+    "architect": "JIWOO / ROSE",
     "edition": "OVERLOAD_EDITION"
   },
   "Oborozukiyo": {
@@ -86,7 +86,7 @@
   "OVERDOSE": {
     "title": "OVERDOSE",
     "release": "2026.08.20",
-    "architect": "ROSE",
+    "architect": "LENA / ROSE",
     "edition": "OVERLOAD_EDITION"
   },
   "Stellustrious": {
@@ -116,13 +116,13 @@
   "Glitched_Boot_Sequence": {
     "title": "Glitched Boot Sequence",
     "release": "2026.08.23",
-    "architect": "LENA / ROSE",
+    "architect": "JIWOO / ROSE",
     "edition": "GEOMETRIC_RESONANCE_EDITION"
   },
   "Geometric_Resonance": {
     "title": "Geometric Resonance",
     "release": "2026.08.23",
-    "architect": "LENA / ROSE",
+    "architect": "JIWOO / ROSE",
     "edition": "GEOMETRIC_RESONANCE_EDITION"
   },
   "Kami_ni_Erabareta_Mono_no_Asobi": {
@@ -146,19 +146,19 @@
   "Let_Me_Hear": {
     "title": "Let Me Hear",
     "release": "2026.08.28",
-    "architect": "LENA / ROSE",
+    "architect": "ROSE",
     "edition": "GEOMETRIC_RESONANCE_EDITION"
   },
   "Digital_Tattoo": {
     "title": "デジタルタトゥー",
     "release": "2026.08.29",
-    "architect": "ROSE",
+    "architect": "JIWOO / ROSE",
     "edition": "OVERLOAD_EDITION"
   },
   "TIMEKILLER": {
     "title": "TIMEKILLER",
     "release": "2026.08.29",
-    "architect": "ROSE",
+    "architect": "JIWOO / ROSE",
     "edition": "OVERLOAD_EDITION"
   },
   "Kimi_toiu_Hana": {
@@ -194,7 +194,7 @@
   "Love_Bugs_the_World": {
     "title": "Love Bugs the World",
     "release": "2026.09.04",
-    "architect": "ROSE",
+    "architect": "JIWOO / ROSE",
     "edition": "OVERLOAD_EDITION"
   }
 }
