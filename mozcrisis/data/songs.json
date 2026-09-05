@@ -196,5 +196,11 @@
     "release": "2026.09.04",
     "architect": "JIWOO / ROSE",
     "edition": "OVERLOAD_EDITION"
+  },
+  " Unknown_Flower": {
+    "title": "Unknown_Flower",
+    "release": "2026.09.04",
+    "architect": "ROSE",
+    "edition": "Unknown"
   }
 }
