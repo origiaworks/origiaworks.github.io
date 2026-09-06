@@ -48,21 +48,19 @@
         .name-jp { font-size: 1.5rem; font-weight: bold; display: block; margin: 5px 0; }
         .name-real { font-size: 0.8rem; color: #777; }
 
-        /* Edition Block STYLES */
-        .edition-block { margin-bottom: 120px; border-top: 1px solid #222; padding-top: 40px; }
-        .edition-header { display: flex; gap: 40px; margin-bottom: 40px; align-items: flex-end; flex-wrap: wrap; }
-        .edition-master-jacket { flex: 0 0 280px; aspect-ratio: 1 / 1; background: #111; border: 2px solid var(--main-red); object-fit: cover; box-shadow: 0 0 20px rgba(255, 62, 62, 0.2); }
-        .edition-info { flex: 1; min-width: 300px; }
-        .edition-label { font-family: var(--code-font); color: var(--main-red); font-size: 0.8rem; font-weight: bold; display: block; margin-bottom: 5px; }
-        .edition-title { font-family: var(--code-font); font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 900; margin: 0; letter-spacing: 2px; text-transform: uppercase; }
+        /* --- EDITION BLOCK (NO IMAGE VERSION) --- */
+        .edition-block { margin-bottom: 100px; padding-top: 40px; border-top: 1px solid #222; }
+        .edition-header { margin-bottom: 30px; border-left: 4px solid var(--main-red); padding-left: 20px; }
+        .edition-label { font-family: var(--code-font); color: var(--main-red); font-size: 0.75rem; font-weight: bold; display: block; margin-bottom: 5px; opacity: 0.7; }
+        .edition-title { font-family: var(--code-font); font-size: clamp(1.4rem, 3.5vw, 2.2rem); font-weight: 900; margin: 0; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
 
-        /* Song Grid Inside Edition */
-        .song-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; }
+        /* Song Grid */
+        .song-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 30px; }
         .song-card { text-align: left; transition: 0.3s; }
         .song-card:hover { transform: translateY(-5px); }
-        .song-jacket { width: 100%; aspect-ratio: 1 / 1; background: #222; margin-bottom: 10px; border: 1px solid #333; object-fit: cover; }
-        .song-card:hover .song-jacket { border-color: var(--cyber-blue); }
-        .song-title { font-size: 0.85rem; font-weight: bold; color: #ccc; display: block; line-height: 1.4; }
+        .song-jacket { width: 100%; aspect-ratio: 1 / 1; background: #222; margin-bottom: 15px; border: 1px solid #333; object-fit: cover; transition: 0.3s; }
+        .song-card:hover .song-jacket { border-color: var(--main-red); box-shadow: 0 0 15px rgba(255, 62, 62, 0.2); }
+        .song-title { font-size: 0.95rem; font-weight: bold; color: #fff; display: block; line-height: 1.4; }
 
         /* Protocol Section */
         .protocol-link-box { background: #000; border: 1px solid #222; padding: 40px; margin-bottom: 80px; }
@@ -74,8 +72,7 @@
 
         @media (max-width: 768px) {
             nav { gap: 10px; font-size: 0.65rem; }
-            .edition-header { flex-direction: column; align-items: center; text-align: center; }
-            .edition-master-jacket { flex: 0 0 200px; }
+            .container { padding: 60px 15px; }
         }
     </style>
 </head>
@@ -154,7 +151,7 @@
             </div>
         </section>
 
-        <!-- 04_DISCOGRAPHY (Edition-Based) -->
+        <!-- 04_DISCOGRAPHY -->
         <section id="discography">
             <div class="section-header"><h2>DISCOGRAPHY</h2></div>
             <div id="edition-container"></div>
@@ -194,7 +191,7 @@
                     editions[ed].push({ id: sid, ...data[sid] });
                 }
 
-                // 2. エディションごとに描画
+                // 2. エディションごとに描画（画像なし・テキストヘッダー版）
                 for (const editionName in editions) {
                     const edWrapper = document.createElement('div');
                     edWrapper.className = 'edition-block';
@@ -202,11 +199,8 @@
                     const edHeader = document.createElement('div');
                     edHeader.className = 'edition-header';
                     edHeader.innerHTML = `
-                        <img src="data/editions/${editionName}.jpg" class="edition-master-jacket" onerror="this.src='data/editions/default.jpg'">
-                        <div class="edition-info">
-                            <span class="edition-label">COLLECTION_ARCHIVE</span>
-                            <h3 class="edition-title">${editionName.replace(/_/g, ' ')}</h3>
-                        </div>
+                        <span class="edition-label">COLLECTION_ARCHIVE</span>
+                        <h3 class="edition-title">${editionName.replace(/_/g, ' ')}</h3>
                     `;
                     edWrapper.appendChild(edHeader);
 
