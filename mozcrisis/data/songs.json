@@ -195,12 +195,12 @@
     "title": "Love Bugs the World",
     "release": "2026.09.04",
     "architect": "JIWOO / ROSE",
-    "edition": "OVERLOAD_EDITION"
+    "edition": "DYSTOPIA_EDITION"
   },
-  " Unknown_Flower": {
+  "Unknown_Flower": {
     "title": "Unknown Flower",
     "release": "2026.09.06",
     "architect": "ROSE",
-    "edition": "UNKNOWN"
+    "edition": "DYSTOPIA_EDITION"
   }
 }
