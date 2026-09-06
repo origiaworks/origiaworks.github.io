@@ -3,320 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ORIGIAWORKS - Application Privacy Policy</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>MOZCRISIS | Algorithm Rock</title>
+    <style>
+        :root {
+            --main-red: #ff3e3e;
+            --cyber-blue: #00f3ff;
+            --bg-black: #0a0a0a;
+            --card-bg: #151515;
+            --text-white: #e0e0e0;
+            --code-font: 'Consolas', 'Monaco', 'Courier New', monospace;
+        }
+
+        body { background-color: var(--bg-black); color: var(--text-white); font-family: 'Segoe UI', 'Hiragino Kaku Gothic ProN', sans-serif; margin: 0; line-height: 1.6; scroll-behavior: smooth; }
+        
+        /* Navigation */
+        nav { position: fixed; top: 0; width: 100%; padding: 15px 0; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); z-index: 1000; display: flex; justify-content: center; gap: 20px; font-family: var(--code-font); font-size: 0.75rem; border-bottom: 1px solid #222; }
+        nav a { color: #fff; text-decoration: none; transition: 0.3s; }
+        nav a:hover { color: var(--cyber-blue); }
+
+        /* Header */
+        header { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%); text-align: center; padding: 0 20px; }
+        .glitch-logo { font-size: clamp(3rem, 12vw, 9rem); font-weight: 900; letter-spacing: 0.15em; font-family: var(--code-font); text-shadow: 2px 0 var(--main-red), -2px 0 var(--cyber-blue); }
+        .tagline { font-family: var(--code-font); color: var(--cyber-blue); font-size: clamp(0.7rem, 2vw, 1.1rem); margin-top: 20px; opacity: 0.8; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
+        .section-header { margin-bottom: 40px; }
+        .section-header h2 { font-family: var(--code-font); font-size: clamp(1.8rem, 5vw, 2.5rem); display: inline-block; border-right: 10px solid var(--main-red); padding-right: 15px; margin: 0; }
+
+        /* Logic Box */
+        .logic-box { background: #000; border: 1px solid #333; padding: clamp(30px, 5vw, 50px); font-family: var(--code-font); margin: 40px auto 100px; position: relative; }
+        .logic-box::before { content: "lyric_logic.sh"; position: absolute; top: -15px; left: 20px; background: var(--main-red); padding: 2px 12px; font-size: 0.75rem; color: #fff; font-weight: bold; }
+        .logic-desc { margin-top: 30px; color: #ccc; font-size: 0.95rem; border-top: 1px solid #222; padding-top: 20px; }
+        .code-comment { color: #6a9955; } .code-keyword { color: #c586c0; } .code-func { color: #dcdcaa; }
+
+        /* Members */
+        .member-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 100px; }
+        .member-link { text-decoration: none; color: inherit; display: block; }
+        .member-card { background: var(--card-bg); border: 1px solid #222; overflow: hidden; transition: 0.4s ease; height: 100%; }
+        .member-link:hover .member-card { border-color: var(--cyber-blue); transform: translateY(-5px); }
+        .img-wrapper { width: 100%; aspect-ratio: 1 / 1; overflow: hidden; }
+        .img-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .info { padding: 20px; }
+        .role-tag { font-family: var(--code-font); color: var(--main-red); font-size: 0.75rem; font-weight: bold; }
+        .name-jp { font-size: 1.5rem; font-weight: bold; display: block; margin: 5px 0; }
+        .name-real { font-size: 0.8rem; color: #777; }
+
+        /* --- EDITION BLOCK (NO IMAGE VERSION) --- */
+        .edition-block { margin-bottom: 100px; padding-top: 40px; border-top: 1px solid #222; }
+        .edition-header { margin-bottom: 30px; border-left: 4px solid var(--main-red); padding-left: 20px; }
+        .edition-label { font-family: var(--code-font); color: var(--main-red); font-size: 0.75rem; font-weight: bold; display: block; margin-bottom: 5px; opacity: 0.7; }
+        .edition-title { font-family: var(--code-font); font-size: clamp(1.4rem, 3.5vw, 2.2rem); font-weight: 900; margin: 0; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
+
+        /* Song Grid */
+        .song-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 30px; }
+        .song-card { text-align: left; transition: 0.3s; }
+        .song-card:hover { transform: translateY(-5px); }
+        .song-jacket { width: 100%; aspect-ratio: 1 / 1; background: #222; margin-bottom: 15px; border: 1px solid #333; object-fit: cover; transition: 0.3s; }
+        .song-card:hover .song-jacket { border-color: var(--main-red); box-shadow: 0 0 15px rgba(255, 62, 62, 0.2); }
+        .song-title { font-size: 0.95rem; font-weight: bold; color: #fff; display: block; line-height: 1.4; }
+
+        /* Protocol Section */
+        .protocol-link-box { background: #000; border: 1px solid #222; padding: 40px; margin-bottom: 80px; }
+        .protocol-btn { display: inline-block; margin-top: 20px; padding: 12px 30px; border: 1px solid var(--main-red); color: var(--main-red); text-decoration: none; font-family: var(--code-font); font-weight: bold; transition: 0.3s; }
+        .protocol-btn:hover { background: var(--main-red); color: #fff; box-shadow: 0 0 15px rgba(255, 62, 62, 0.4); }
+
+        footer { background: #050505; padding: 60px 20px; text-align: center; border-top: 1px solid #1a1a1a; }
+        .disclaimer-text { font-size: 0.65rem; color: #555; margin-top: 20px; max-width: 800px; margin: 20px auto 0; font-family: sans-serif; }
+
+        @media (max-width: 768px) {
+            nav { gap: 10px; font-size: 0.65rem; }
+            .container { padding: 60px 15px; }
+        }
+    </style>
 </head>
 <body>
+    <nav>
+        <a href="#home">01_HOME</a>
+        <a href="#logic">02_LOGIC</a>
+        <a href="#members">03_MEMBERS</a>
+        <a href="#discography">04_DISCOGRAPHY</a>
+        <a href="policy.html">05_PROTOCOL</a>
+    </nav>
 
-    <!-- ヘッダー（全ページ共通） -->
-    <header id="header-placeholder"></header>
+    <header id="home">
+        <div class="glitch-logo">MOZCRISIS</div>
+        <div class="tagline">Execute: AlgorithmRock.sh --heavy --fast</div>
+    </header>
 
-    <!-- ここからが各ページ固有のコンテンツ -->
-    <main>
-        <div class="container">
-            <h1>Application Privacy Policy<br>（アプリケーション・プライバシーポリシー）</h1>
-
-            <h2>1. プライバシーポリシーについて</h2>
-            <h3>ⅰ. 対象</h3>
-            <p>アプリケーション・プライバシーポリシー（以下「本ポリシー」といいます）は、ORIGIAWORKS（以下「当方」といいます）が提供する携帯端末（ただし、Google LLCが提供するOS「Android」を利用できる携帯端末に限ります、以下「携帯端末」といいます）向けアプリケーション（以下「本アプリ」といいます）における個人情報の取扱を定めたものです。</p>
-
-            <h2>2. 個人情報の取得、利用目的</h2>
-            <h3>ⅰ. 取得する情報の一覧</h3>
-            <p>当方は、本アプリの提供にあたり、お客様から以下の情報を取得する場合があります。</p>
-            
-            <h4>取得する可能性のある情報</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>カテゴリ</th>
-                        <th>データの種類</th>
-                        <th>説明</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>位置情報</td>
-                        <td>おおよその位置情報</td>
-                        <td>3 平方キロメートル以上の地域でのユーザーまたはデバイスの物理的な位置情報（例: ユーザーがいる都市）。</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>正確な位置情報</td>
-                        <td>3 平方キロメートル未満の地域内にあるユーザーまたはデバイスの物理的な位置情報。</td>
-                    </tr>
-                    <tr>
-                        <td>個人情報</td>
-                        <td>名前</td>
-                        <td>ユーザーの姓名、ニックネームなど、ユーザーが自身を表記する方法。</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>メールアドレス</td>
-                        <td>ユーザーのメールアドレス。</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>ユーザー ID</td>
-                        <td>特定できる個人に関連する識別子（アカウント ID、アカウント番号、アカウント名など）。</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>住所</td>
-                        <td>ユーザーの住所（送付先住所や自宅の住所など）。</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>電話番号</td>
-                        <td>ユーザーの電話番号。</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>人種、民族</td>
-                        <td>ユーザーの人種や民族に関する情報。</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>政治信条、宗教</td>
-                        <td>ユーザーの政治信条または宗教に関する情報。</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>性的指向</td>
-                        <td>ユーザーの性的指向に関する情報。</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>その他の情報</td>
-                        <td>生年月日、性同一性、従軍経験など、その他の個人情報。</td>
-                    </tr>
-                    <tr>
-                        <td>財務情報</td>
-                        <td>ユーザーのお支払い情報</td>
-                        <td>クレジット カード番号など、ユーザーの金融口座に関する情報。</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>購入履歴</td>
-                        <td>ユーザーが行った購入や取引に関する情報。</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>クレジット スコア</td>
-                        <td>ユーザーの信用に関する情報（信用履歴、クレジット スコアなど）。</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>その他の財務情報</td>
-                        <td>その他の財務情報（ユーザーの年収、負債など）。</td>
-                    </tr>
-                    <tr>
-                        <td>健康、フィットネス</td>
-                        <td>健康情報</td>
-                        <td>医療記録や症状など、ユーザーの健康に関する情報。</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>フィットネス情報</td>
-                        <td>運動やその他の身体活動など、ユーザーのフィットネスに関する情報。</td>
-                    </tr>
-                    <tr>
-                        <td>メッセージ</td>
-                        <td>メール</td>
-                        <td>ユーザーのメール（メールの件名、送信元、宛先、メールの内容など）。</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>SMS または MMS</td>
-                        <td>ユーザーのテキスト メッセージ（送信元、宛先、メッセージの内容など）。</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>その他のアプリ内メッセージ</td>
-                        <td>その他の種類のメッセージ（インスタント メッセージ、チャット コンテンツなど）。</td>
-                    </tr>
-                    <tr>
-                        <td>写真と動画</td>
-                        <td>写真</td>
-                        <td>ユーザーの写真。</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>動画</td>
-                        <td>ユーザーの動画。</td>
-                    </tr>
-                    <tr>
-                        <td>音声ファイル</td>
-                        <td>音声などの録音</td>
-                        <td>ボイスメールやサウンド レコーディングなどのユーザーの声。</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>音楽ファイル</td>
-                        <td>ユーザーの音楽ファイル。</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>その他の音声ファイル</td>
-                        <td>ユーザーが作成または提供したその他の音声ファイル。</td>
-                    </tr>
-                    <tr>
-                        <td>ファイル、ドキュメント</td>
-                        <td>ファイル、ドキュメント</td>
-                        <td>ユーザーのファイルやドキュメント、またはファイルやドキュメントに関する情報（ファイル名など）。</td>
-                    </tr>
-                    <tr>
-                        <td>カレンダー</td>
-                        <td>カレンダーの予定</td>
-                        <td>ユーザーのカレンダーからの情報（予定、予定のメモ、参加者など）。</td>
-                    </tr>
-                    <tr>
-                        <td>連絡先</td>
-                        <td>連絡先</td>
-                        <td>ユーザーの連絡先に関する情報（連絡先の名前、メッセージの履歴や、ユーザー名、連絡間隔、連絡頻度、交流期間、通話履歴といったソーシャル グラフ情報など）。</td>
-                    </tr>
-                    <tr>
-                        <td>アプリのアクティビティ</td>
-                        <td>アプリ インタラクション</td>
-                        <td>ユーザーがアプリをどのように操作しているかに関する情報（例: ページへのアクセス数、タップした項目）。</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>アプリ内の検索履歴</td>
-                        <td>ユーザーがアプリ内で検索した内容に関する情報。</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>インストール済みのアプリ</td>
-                        <td>ユーザーのデバイスにインストールされているアプリに関する情報。</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>その他のユーザー作成コンテンツ</td>
-                        <td>この一覧、または他のセクションに記載されていない、その他のユーザー作成コンテンツ（例: ユーザーに関する情報、自由形式の回答）。</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>その他の操作</td>
-                        <td>この一覧に記載されていない、その他のユーザー アクティビティやアプリ内操作（ゲームプレイ、高評価、ダイアログでの選択など）。</td>
-                    </tr>
-                    <tr>
-                        <td>ウェブ閲覧</td>
-                        <td>ウェブ閲覧履歴</td>
-                        <td>ユーザーがアクセスしたウェブサイトに関する情報。</td>
-                    </tr>
-                    <tr>
-                        <td>アプリの情報、パフォーマンス</td>
-                        <td>クラッシュログ</td>
-                        <td>アプリのクラッシュ データ（アプリがデバイスでクラッシュした回数、クラッシュに直接関係するその他の情報など）。</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>診断</td>
-                        <td>デバイスでのアプリのパフォーマンスに関する情報（バッテリー駆動時間、読み込み時間、レイテンシ、フレームレート、技術的な診断など）。</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>その他のアプリのパフォーマンス データ</td>
-                        <td>ここに記載されていないその他のアプリのパフォーマンス データ。</td>
-                    </tr>
-                    <tr>
-                        <td>デバイスまたはその他の ID</td>
-                        <td>デバイスまたはその他の ID</td>
-                        <td>各デバイス、ブラウザ、アプリに関連する識別子（IMEI 番号、MAC アドレス、Widevine デバイス ID、Firebase インストール ID、広告 ID など）。</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h3>利用目的</h3>
-            <p>当方は、取得した情報を以下の目的で利用する場合があります。</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>データの用途</th>
-                        <th>説明</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>アカウント管理</td>
-                        <td>デベロッパーのアプリで使うユーザー アカウントの設定や管理を行うために使用します。</td>
-                    </tr>
-                    <tr>
-                        <td>広告、マーケティング</td>
-                        <td>広告、マーケティング コミュニケーションの表示やターゲットの設定、広告パフォーマンスの測定に使用します。</td>
-                    </tr>
-                    <tr>
-                        <td>アプリの機能</td>
-                        <td>アプリで提供される機能に使用します。</td>
-                    </tr>
-                    <tr>
-                        <td>分析</td>
-                        <td>ユーザーのアプリの使用状況やアプリのパフォーマンスに関するデータの収集に使用します。</td>
-                    </tr>
-                    <tr>
-                        <td>デベロッパーによる情報伝達</td>
-                        <td>アプリやデベロッパーに関するニュースや通知の送信に使用します。</td>
-                    </tr>
-                    <tr>
-                        <td>不正行為防止、セキュリティ、コンプライアンス</td>
-                        <td>不正行為防止、セキュリティ、法律の遵守に使用します。</td>
-                    </tr>
-                    <tr>
-                        <td>カスタマイズ</td>
-                        <td>おすすめのコンテンツや候補の表示など、アプリのカスタマイズに使用します。</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h2>3. 第三者提供・情報収集モジュール</h2>
-            <h3>ⅰ. 第三者提供</h3>
-            <p>当方は、「個人情報保護に関する基本方針」の「4．第三者提供・共同利用について」に記載している場合に個人情報を国内外の第三者に開示する場合があります。</p>
-            <h3>ⅱ. 情報収集モジュール</h3>
-            <p>本アプリには、本アプリに含まれる機能の提供や広告表示、利用状況解析等を目的として、第三者が提供する以下の情報収集モジュールが含まれます。これらの情報収集モジュールにより取得される情報又は取得された情報の利用目的等については、各情報収集モジュール提供会社が提供しているプライバシーポリシーをご確認ください。</p>
-            <ul>
-                <li>Google AdMob（広告、マーケティングに使用するため。）</li>
-                <li>Azure PlayFab（アカウント管理、ランキング機能、マーケティングに使用するため。）</li>
-                <li>photon（オンライン対戦・チャット機能に使用するため。）</li>
-            </ul>
-
-            <h2>4. 通知・公表又は同意取得の方法、利用者関与の方法</h2>
-            <h3>ⅰ. 通知・公表</h3>
-            <p>本ポリシーは、初回起動時の画面及び本アプリ内の説明ページのほか、アプリストア(Google Play)の本アプリダウンロードページに設置されたプライバシーポリシーリンクに掲示・公表しております。当方は本ポリシーを変更することがあり、重要な変更を行う際は本アプリ内又は各掲示箇所において告知いたします。変更後の本ポリシーは、本アプリ内又は各掲示箇所に掲示された時点から適用されるものとします。</p>
-            <h3>ⅱ. 同意取得の方法</h3>
-            <p>本アプリは利用規約及び本ポリシーをご確認いただき、同意の上でご利用ください。お客様が本アプリを利用すること（変更後の本ポリシーについては、変更後に本アプリの利用継続）を以て、本ポリシーに同意したものとみなされます。</p>
-            <h3>ⅲ. 情報の取得・送信の停止</h3>
-            <p>本アプリを携帯端末より削除(アンインストール)することで、情報の取得及び送信を停止することができます。</p>
-
-            <h2>5. 開示等請求、お問い合わせ</h2>
-            <h3>ⅰ. 開示、訂正、追加、削除、利用停止等の請求</h3>
-            <p>当方は、お客様本人又はその代理人から当該お客様の個人情報の開示、訂正、削除、利用停止等の請求があった場合、法令に基づき可能な範囲で遅滞なく対応を行います。これらの請求に関しては、当方の「個人情報保護に関する基本方針」をご確認ください。</p>
-            <h3>ⅱ. 問い合わせ</h3>
-            <p>本アプリにおける個人情報の取扱に関するお問い合わせ、ご相談、及び苦情は、当方の「個人情報保護に関する基本方針」をご確認いただきお問い合わせください。</p>
-
-            <h2>6. 管理方針</h2>
-            <h3>ⅰ. 本ポリシーの変更</h3>
-            <p>本ポリシーの内容は修正・変更されることがあります。修正・変更後の本ポリシーについては、当方が別途定める場合を除いて、当サイトに掲載したときから効力を生じるものとします。</p>
-            <h3>ii. データ保持期間</h3>
-            <p>本人から取得した個人情報、本アプリ利用に伴い生成されたすべてのデータは、上記に記載の「利用目的」の達成に不要となった場合に削除します。ただし、適用される法令、規則の順守、政府、裁判所、その他監督機関からの命令に対応するための期間は、安全管理措置を行った上で保持します。</p>
-
-            <h2>7.データ削除依頼</h2>
-            <p>当方サービスにおけるデータの削除依頼は以下のリンクからお受けいたします。</p>
-            <p>データ削除依頼：<a href="data-deletion.html" target="_blank" rel="noopener noreferrer">https://origiaworks.github.io/data-deletion.html</a></p>
-
-            <h2>８.附則</h2>
-            <p>本プライバシーポリシーに定めのない事項は「個人情報保護に関する基本方針」が適用されます。</p>
-            
-            <div class="policy-dates">
-                <p>2025年11月1日　改定</p>
-                <p>2023年2月11日　制定</p>
+    <div class="container">
+        <!-- 02_LOGIC -->
+        <section id="logic" class="logic-box">
+            <span class="code-comment"># Algorithm Rock Definition</span><br>
+            <span class="code-keyword">import</span> human_impulse<br>
+            <span class="code-keyword">from</span> moz_system <span class="code-keyword">import</span> precision_algorithm<br><br>
+            <span class="code-func">def</span> <span class="code-func">execute_miracle_bug</span>():<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;collision = precision_algorithm + human_impulse<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> collision.generate_sound(<span class="code-string">"ALGORITHM_ROCK"</span>)<br>
+            <div class="logic-desc">
+                精緻なアルゴリズムと、人間が持つ衝動の衝突点。その狭間で生まれた「奇跡のバグ」――それが、アルゴリズムロック。計算し尽くされたデジタルサウンドと、感情を揺さぶるロックが融合した疾走感をお楽しみください。
             </div>
+        </section>
+
+        <!-- 03_MEMBERS -->
+        <section id="members">
+            <div class="section-header"><h2>MEMBERS</h2></div>
+            <div class="member-grid">
+                <a href="members.html?id=rose" class="member-link">
+                    <div class="member-card">
+                        <div class="img-wrapper"><img src="members/img/rose.png"></div>
+                        <div class="info">
+                            <div class="role-tag">Vo & Gt</div><span class="name-jp">ローズ</span><span class="name-real">石神・Ｒ・フローレンス</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="members.html?id=yodo" class="member-link">
+                    <div class="member-card">
+                        <div class="img-wrapper"><img src="members/img/yodo.png"></div>
+                        <div class="info">
+                            <div class="role-tag">Bass</div><span class="name-jp">淀</span><span class="name-real">御母衣 京子</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="members.html?id=lena" class="member-link">
+                    <div class="member-card">
+                        <div class="img-wrapper"><img src="members/img/lena.png"></div>
+                        <div class="info">
+                            <div class="role-tag">Key & Scream</div><span class="name-jp">レナ</span><span class="name-real">斎藤 エレーナ</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="members.html?id=mio" class="member-link">
+                    <div class="member-card">
+                        <div class="img-wrapper"><img src="members/img/mio.png"></div>
+                        <div class="info">
+                            <div class="role-tag">Drums</div><span class="name-jp">ミオ</span><span class="name-real">ミオ・ロドリゲス</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="members.html?id=jiwoo" class="member-link">
+                    <div class="member-card">
+                        <div class="img-wrapper"><img src="members/img/jiwoo.png"></div>
+                        <div class="info">
+                            <div class="role-tag">DJ</div><span class="name-jp">JIWOO</span><span class="name-real">イ・ジウ</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- 04_DISCOGRAPHY -->
+        <section id="discography">
+            <div class="section-header"><h2>DISCOGRAPHY</h2></div>
+            <div id="edition-container"></div>
+        </section>
+
+        <!-- 05_PROTOCOL -->
+        <section id="protocol">
+            <div class="section-header"><h2>RESOURCE_USAGE_PROTOCOL</h2></div>
+            <div class="protocol-link-box">
+                <p>音響資産（Auditory Assets）の利用に関する実行プロトコルは、以下のドキュメントに定義されている。ユーザーは必ず当該プロトコルを確認すること。</p>
+                <a href="policy.html" class="protocol-btn">>> ACCESS_PROTOCOL</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="copyright">&copy; 2026 MOZCRISIS / ORIGIAWORKS.</div>
+        <div class="disclaimer-text">
+            MOZCRISIS（モズクライシス）はORIGIAWORKSが管理する架空の団体であり、設定や物語はすべてフィクションです。<br>
+            当プロジェクトが提供する楽曲は、制作工程の一部において生成AI技術を使用しています。
         </div>
-    </main>
-    <!-- ここまでが各ページ固有のコンテンツ -->
+    </footer>
 
-    <!-- フッター（全ページ共通） -->
-    <footer id="footer-placeholder"></footer>
-    <script src="js/main.js"></script>
+    <script>
+        async function loadDiscography() {
+            try {
+                const response = await fetch('data/songs.json');
+                const data = await response.json();
+                const container = document.getElementById('edition-container');
+                container.innerHTML = '';
+
+                // 1. エディションごとにグループ化
+                const editions = {};
+                for (const sid in data) {
+                    const ed = data[sid].edition || "UNKNOWN_EDITION";
+                    if (!editions[ed]) editions[ed] = [];
+                    editions[ed].push({ id: sid, ...data[sid] });
+                }
+
+                // 2. エディションごとに描画（画像なし・テキストヘッダー版）
+                for (const editionName in editions) {
+                    const edWrapper = document.createElement('div');
+                    edWrapper.className = 'edition-block';
+
+                    const edHeader = document.createElement('div');
+                    edHeader.className = 'edition-header';
+                    edHeader.innerHTML = `
+                        <span class="edition-label">COLLECTION_ARCHIVE</span>
+                        <h3 class="edition-title">${editionName.replace(/_/g, ' ')}</h3>
+                    `;
+                    edWrapper.appendChild(edHeader);
+
+                    const sGrid = document.createElement('div');
+                    sGrid.className = 'song-grid';
+
+                    editions[editionName].forEach(song => {
+                        const sCard = document.createElement('div');
+                        sCard.className = 'song-card';
+                        sCard.innerHTML = `
+                            <a href="songs.html?id=${song.id}" style="text-decoration:none;">
+                                <img src="songs/${song.id}/${song.id}_artwork.jpg" class="song-jacket">
+                                <span class="song-title">${song.title}</span>
+                            </a>`;
+                        sGrid.appendChild(sCard);
+                    });
+
+                    edWrapper.appendChild(sGrid);
+                    container.appendChild(edWrapper);
+                }
+            } catch (e) { console.error(e); }
+        }
+        window.addEventListener('DOMContentLoaded', loadDiscography);
+    </script>
 </body>
-
 </html>
