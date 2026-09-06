@@ -202,5 +202,11 @@
     "release": "2026.09.06",
     "architect": "ROSE",
     "edition": "DYSTOPIA_EDITION"
+  },
+  "Show_Me_Everything": {
+    "title": "Show Me Everything",
+    "release": "2026.09.06",
+    "architect": "LENA",
+    "edition": "DYSTOPIA_EDITION"
   }
 }
