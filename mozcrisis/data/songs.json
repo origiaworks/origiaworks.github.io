@@ -68,7 +68,7 @@
   "Deus_Ex_Machina_Noah_Overload_Genesis": {
     "title": "デウス・エクス・マキナ・ノア：オーバーロード・ジェネシス",
     "release": "2026.08.19",
-    "architect": "LENA",
+    "architect": "ROSE",
     "edition": "OVERLOAD_EDITION"
   },
   "Kansutoro": {
@@ -182,13 +182,13 @@
   "IKKITOSEN": {
     "title": "一騎当千",
     "release": "2026.09.02",
-    "architect": "YODO",
+    "architect": "YODO / ROSE",
     "edition": "ZANSHIN_EDITION"
   },
   "ISSHOUBANKOTSU": {
     "title": "一将万骨",
     "release": "2026.09.03",
-    "architect": "ROSE",
+    "architect": "ROSE / YODO",
     "edition": "ZANSHIN_EDITION"
   },
   "Love_Bugs_the_World": {
@@ -211,6 +211,12 @@
   },
   "Turning_Point": {
     "title": "Turning Point",
+    "release": "2026.09.07",
+    "architect": "ROSE",
+    "edition": "DYSTOPIA_EDITION"
+  },
+  "Shooting_Me": {
+    "title": "Shooting Me",
     "release": "2026.09.07",
     "architect": "ROSE",
     "edition": "DYSTOPIA_EDITION"
