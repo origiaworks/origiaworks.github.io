@@ -208,5 +208,11 @@
     "release": "2026.09.06",
     "architect": "LENA",
     "edition": "DYSTOPIA_EDITION"
+  },
+  "Turning_Point": {
+    "title": "Turning Point",
+    "release": "2026.09.07",
+    "architect": "ROSE",
+    "edition": "DYSTOPIA_EDITION"
   }
 }
