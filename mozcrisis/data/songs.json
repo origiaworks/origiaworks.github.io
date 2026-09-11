@@ -238,5 +238,11 @@
     "release": "2026.09.10",
     "architect": "ROSE",
     "edition": "DYSTOPIA_EDITION"
+  },
+  "Bloom_Proudly": {
+    "title": "Bloom Proudly",
+    "release": "2026.09.11",
+    "architect": "ROSE",
+    "edition": "FANTASY_EDITION"
   }
 }
