@@ -244,5 +244,11 @@
     "release": "2026.09.11",
     "architect": "ROSE",
     "edition": "FANTASY_EDITION"
+  },
+  "MAKERUMONKA": {
+    "title": "負けるもんか",
+    "release": "2026.09.13",
+    "architect": "ROSE",
+    "edition": "CLASSIC_EDITION"
   }
 }
