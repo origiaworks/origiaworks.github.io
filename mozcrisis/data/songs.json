@@ -250,5 +250,11 @@
     "release": "2026.09.13",
     "architect": "ROSE",
     "edition": "CLASSIC_EDITION"
+  },
+  "FIRE_ON": {
+    "title": "FIRE ON",
+    "release": "2026.09.13",
+    "architect": "ROSE",
+    "edition": "DYSTOPIA_EDITION"
   }
 }
