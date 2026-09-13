@@ -256,5 +256,11 @@
     "release": "2026.09.13",
     "architect": "ROSE",
     "edition": "DYSTOPIA_EDITION"
+  },
+  "ONE_SHOT_ONE_KILL": {
+    "title": "ONE SHOT ONE KILL",
+    "release": "2026.09.13",
+    "architect": "ROSE",
+    "edition": "DYSTOPIA_EDITION"
   }
 }
