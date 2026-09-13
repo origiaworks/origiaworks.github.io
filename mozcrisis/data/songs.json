@@ -262,5 +262,11 @@
     "release": "2026.09.13",
     "architect": "ROSE",
     "edition": "DYSTOPIA_EDITION"
+  },
+  "Life_Is_Beautiful": {
+    "title": "Life Is Beautiful",
+    "release": "2026.09.13",
+    "architect": "ROSE",
+    "edition": "DYSTOPIA_EDITION"
   }
 }
