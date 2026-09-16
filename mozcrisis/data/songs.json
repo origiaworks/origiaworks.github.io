@@ -267,6 +267,12 @@
     "title": "Life Is Beautiful",
     "release": "2026.09.13",
     "architect": "ROSE",
-    "edition": "DYSTOPIA_EDITION"
+    "edition": "OVERLOAD_EDITION"
+  },
+  "Daydream_Itadakimasu": {
+    "title": "デイドリーム、いただきます。",
+    "release": "2026.09.16",
+    "architect": "ROSE",
+    "edition": "CLASSIC_EDITION"
   }
 }
