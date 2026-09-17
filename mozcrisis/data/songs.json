@@ -280,5 +280,11 @@
     "release": "2026.09.17",
     "architect": "ROSE",
     "edition": "OVERLOAD_EDITION"
+  },
+  "COLD_FLAME": {
+    "title": "COLD FLAME",
+    "release": "2026.09.17",
+    "architect": "ROSE",
+    "edition": "OVERLOAD_EDITION"
   }
 }
