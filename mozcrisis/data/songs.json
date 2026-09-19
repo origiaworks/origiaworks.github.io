@@ -286,5 +286,11 @@
     "release": "2026.09.17",
     "architect": "ROSE",
     "edition": "OVERLOAD_EDITION"
+  },
+  "LAME": {
+    "title": "LAME",
+    "release": "2026.09.19",
+    "architect": "ROSE",
+    "edition": "OVERLOAD_EDITION"
   }
 }
