@@ -298,5 +298,11 @@
     "release": "2026.09.20",
     "architect": "ROSE",
     "edition": "FANTASY_EDITION"
+  },
+  "Wield_This_Blade": {
+    "title": "Wield This Blade",
+    "release": "2026.09.21",
+    "architect": "ROSE",
+    "edition": "FANTASY_EDITION"
   }
 }
