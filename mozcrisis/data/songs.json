@@ -310,5 +310,11 @@
     "release": "2026.09.21",
     "architect": "ROSE",
     "edition": "CLASSIC_EDITION"
+  },
+  "REIMEIELECTRO": {
+    "title": "レイメイエレクトロ",
+    "release": "2026.09.24",
+    "architect": "JIWOO / ROSE",
+    "edition": "CLASSIC_EDITION"
   }
 }
