@@ -3,318 +3,378 @@
     "title": "Done",
     "release": "2026.08.07",
     "architect": "ROSE",
-    "edition": "OVERLOAD_EDITION"
+    "edition": "OVERLOAD_EDITION",
+    "rec_season": "REC_01"
   },
   "Identity_Crisis": {
     "title": "Identity Crisis",
     "release": "2026.08.07",
     "architect": "ROSE",
-    "edition": "OVERLOAD_EDITION"
+    "edition": "OVERLOAD_EDITION",
+    "rec_season": "REC_01"
   },
   "JPop_Is_Dead": {
     "title": "J-Pop Is Dead",
     "release": "2026.08.07",
     "architect": "ROSE",
-    "edition": "OVERLOAD_EDITION"
+    "edition": "OVERLOAD_EDITION",
+    "rec_season": "REC_01"
   },
   "Chocolate": {
     "title": "ChocoLate",
     "release": "2026.08.08",
     "architect": "ROSE",
-    "edition": "OVERLOAD_EDITION"
+    "edition": "OVERLOAD_EDITION",
+    "rec_season": "REC_01"
   },
   "Seems_like_it": {
     "title": "Seems like it",
     "release": "2026.08.12",
     "architect": "ROSE",
-    "edition": "OVERLOAD_EDITION"
+    "edition": "OVERLOAD_EDITION",
+    "rec_season": "REC_01"
   },
   "Izagurare": {
     "title": "イザギュラレ",
     "release": "2026.08.15",
     "architect": "ROSE",
-    "edition": "OVERLOAD_EDITION"
+    "edition": "OVERLOAD_EDITION",
+    "rec_season": "REC_01"
   },
   "Kimi_no_Uta_Hana_to_Mau": {
     "title": "君の詩、花と舞う。",
     "release": "2026.08.15",
     "architect": "YODO / ROSE",
-    "edition": "ZANSHIN_EDITION"
+    "edition": "ZANSHIN_EDITION",
+    "rec_season": "REC_01"
   },
   "echo_me": {
     "title": "echo $me",
     "release": "2026.08.15",
     "architect": "JIWOO / ROSE",
-    "edition": "GEOMETRIC_RESONANCE_EDITION"
+    "edition": "GEOMETRIC_RESONANCE_EDITION",
+    "rec_season": "REC_01"
   },
   "Kyosuukai": {
     "title": "虚数解",
     "release": "2026.08.16",
     "architect": "ROSE",
-    "edition": "GEOMETRIC_RESONANCE_EDITION"
+    "edition": "GEOMETRIC_RESONANCE_EDITION",
+    "rec_season": "REC_01"
   },
   "Dagger": {
     "title": "Dagger",
     "release": "2026.08.17",
     "architect": "LENA / ROSE",
-    "edition": "CLASSIC_EDITION"
+    "edition": "CLASSIC_EDITION",
+    "rec_season": "REC_01"
   },
   "SYNCHRONIZE": {
     "title": "SYNCHRONIZE",
     "release": "2026.08.17",
     "architect": "ROSE",
-    "edition": "GEOMETRIC_RESONANCE_EDITION"
+    "edition": "GEOMETRIC_RESONANCE_EDITION",
+    "rec_season": "REC_01"
   },
   "Deus_Ex_Machina_Noah_Overload_Genesis": {
     "title": "デウス・エクス・マキナ・ノア：オーバーロード・ジェネシス",
     "release": "2026.08.19",
     "architect": "ROSE",
-    "edition": "OVERLOAD_EDITION"
+    "edition": "OVERLOAD_EDITION",
+    "rec_season": "REC_01"
   },
   "Kansutoro": {
     "title": "カンストロ",
     "release": "2026.08.19",
     "architect": "JIWOO / ROSE",
-    "edition": "OVERLOAD_EDITION"
+    "edition": "OVERLOAD_EDITION",
+    "rec_season": "REC_01"
   },
   "Oborozukiyo": {
     "title": "オボロヅキヨ",
     "release": "2026.08.19",
     "architect": "YODO / ROSE",
-    "edition": "ZANSHIN_EDITION"
+    "edition": "ZANSHIN_EDITION",
+    "rec_season": "REC_01"
   },
   "OVERDOSE": {
     "title": "OVERDOSE",
     "release": "2026.08.20",
     "architect": "LENA / ROSE",
-    "edition": "OVERLOAD_EDITION"
+    "edition": "OVERLOAD_EDITION",
+    "rec_season": "REC_01"
   },
   "Stellustrious": {
     "title": "ステラストリアス",
     "release": "2026.08.20",
     "architect": "LENA / ROSE",
-    "edition": "GEOMETRIC_RESONANCE_EDITION"
+    "edition": "GEOMETRIC_RESONANCE_EDITION",
+    "rec_season": "REC_01"
   },
   "This_Is_My_Rock": {
     "title": "This Is My Rock",
     "release": "2026.08.20",
     "architect": "ROSE",
-    "edition": "CLASSIC_EDITION"
+    "edition": "CLASSIC_EDITION",
+    "rec_season": "REC_01"
   },
   "Hook_Up_With_Me": {
     "title": "Hook Up With Me",
     "release": "2026.08.21",
     "architect": "ROSE",
-    "edition": "CLASSIC_EDITION"
+    "edition": "CLASSIC_EDITION",
+    "rec_season": "REC_01"
   },
   "BLOOD_GAME": {
     "title": "Blood Game",
     "release": "2026.08.22",
     "architect": "ROSE",
-    "edition": "CLASSIC_EDITION"
+    "edition": "CLASSIC_EDITION",
+    "rec_season": "REC_01"
   },
   "Glitched_Boot_Sequence": {
     "title": "Glitched Boot Sequence",
     "release": "2026.08.23",
     "architect": "JIWOO / ROSE",
-    "edition": "GEOMETRIC_RESONANCE_EDITION"
+    "edition": "GEOMETRIC_RESONANCE_EDITION",
+    "rec_season": "REC_01"
   },
   "Geometric_Resonance": {
     "title": "Geometric Resonance",
     "release": "2026.08.23",
     "architect": "JIWOO / ROSE",
-    "edition": "GEOMETRIC_RESONANCE_EDITION"
+    "edition": "GEOMETRIC_RESONANCE_EDITION",
+    "rec_season": "REC_01"
   },
   "Kami_ni_Erabareta_Mono_no_Asobi": {
     "title": "神ニ選バレタ者ノ遊ビ",
     "release": "2026.08.24",
     "architect": "ROSE",
-    "edition": "CLASSIC_EDITION"
+    "edition": "CLASSIC_EDITION",
+    "rec_season": "REC_01"
   },
   "RESONATE": {
     "title": "RESONATE",
     "release": "2026.08.24",
     "architect": "LENA / ROSE",
-    "edition": "GEOMETRIC_RESONANCE_EDITION"
+    "edition": "GEOMETRIC_RESONANCE_EDITION",
+    "rec_season": "REC_01"
   },
   "RE_FACTOR": {
     "title": "RE:FACTOR",
     "release": "2026.08.25",
     "architect": "LENA / ROSE",
-    "edition": "GEOMETRIC_RESONANCE_EDITION"
+    "edition": "GEOMETRIC_RESONANCE_EDITION",
+    "rec_season": "REC_01"
   },
   "Let_Me_Hear": {
     "title": "Let Me Hear",
     "release": "2026.08.28",
     "architect": "ROSE",
-    "edition": "GEOMETRIC_RESONANCE_EDITION"
+    "edition": "GEOMETRIC_RESONANCE_EDITION",
+    "rec_season": "REC_01"
   },
   "Digital_Tattoo": {
     "title": "デジタルタトゥー",
     "release": "2026.08.29",
     "architect": "JIWOO / ROSE",
-    "edition": "OVERLOAD_EDITION"
+    "edition": "OVERLOAD_EDITION",
+    "rec_season": "REC_02"
   },
   "TIMEKILLER": {
     "title": "TIMEKILLER",
     "release": "2026.08.29",
     "architect": "JIWOO / ROSE",
-    "edition": "OVERLOAD_EDITION"
+    "edition": "OVERLOAD_EDITION",
+    "rec_season": "REC_02"
   },
   "Kimi_toiu_Hana": {
     "title": "君といふ花",
     "release": "2026.08.30",
     "architect": "YODO / ROSE",
-    "edition": "ZANSHIN_EDITION"
+    "edition": "ZANSHIN_EDITION",
+    "rec_season": "REC_02"
   },
   "RAIKO": {
     "title": "雷鼓",
     "release": "2026.08.31",
     "architect": "YODO / ROSE",
-    "edition": "ZANSHIN_EDITION"
+    "edition": "ZANSHIN_EDITION",
+    "rec_season": "REC_02"
   },
   "HAKUJIN": {
     "title": "白刃",
     "release": "2026.09.01",
     "architect": "YODO / ROSE",
-    "edition": "ZANSHIN_EDITION"
+    "edition": "ZANSHIN_EDITION",
+    "rec_season": "REC_02"
   },
   "IKKITOSEN": {
     "title": "一騎当千",
     "release": "2026.09.02",
     "architect": "YODO / ROSE",
-    "edition": "ZANSHIN_EDITION"
+    "edition": "ZANSHIN_EDITION",
+    "rec_season": "REC_02"
   },
   "ISSHOUBANKOTSU": {
     "title": "一将万骨",
     "release": "2026.09.03",
     "architect": "ROSE / YODO",
-    "edition": "ZANSHIN_EDITION"
+    "edition": "ZANSHIN_EDITION",
+    "rec_season": "REC_02"
   },
   "Love_Bugs_the_World": {
     "title": "Love Bugs the World",
     "release": "2026.09.04",
     "architect": "JIWOO / ROSE",
-    "edition": "DYSTOPIA_EDITION"
+    "edition": "DYSTOPIA_EDITION",
+    "rec_season": "REC_02"
   },
   "Unknown_Flower": {
     "title": "Unknown Flower",
     "release": "2026.09.06",
     "architect": "JIWOO / ROSE",
-    "edition": "DYSTOPIA_EDITION"
+    "edition": "DYSTOPIA_EDITION",
+    "rec_season": "REC_02"
   },
   "Show_Me_Everything": {
     "title": "Show Me Everything",
     "release": "2026.09.06",
     "architect": "JIWOO / LENA",
-    "edition": "DYSTOPIA_EDITION"
+    "edition": "DYSTOPIA_EDITION",
+    "rec_season": "REC_02"
   },
   "Turning_Point": {
     "title": "Turning Point",
     "release": "2026.09.07",
     "architect": "JIWOO / ROSE",
-    "edition": "DYSTOPIA_EDITION"
+    "edition": "DYSTOPIA_EDITION",
+    "rec_season": "REC_02"
   },
   "Shooting_Me": {
     "title": "Shooting Me",
     "release": "2026.09.07",
     "architect": "JIWOO / ROSE",
-    "edition": "DYSTOPIA_EDITION"
+    "edition": "DYSTOPIA_EDITION",
+    "rec_season": "REC_02"
   },
   "Mou_Ubawanaide": {
     "title": "もう奪わないで",
     "release": "2026.09.09",
     "architect": "JIWOO / ROSE",
-    "edition": "DYSTOPIA_EDITION"
+    "edition": "DYSTOPIA_EDITION",
+    "rec_season": "REC_02"
   },
   "JUSTICE": {
     "title": "JUSTICE",
     "release": "2026.09.09",
     "architect": "ROSE",
-    "edition": "DYSTOPIA_EDITION"
+    "edition": "DYSTOPIA_EDITION",
+    "rec_season": "REC_02"
   },
   "Rewrite_the_Ending": {
     "title": "Rewrite the Ending",
     "release": "2026.09.10",
     "architect": "ROSE",
-    "edition": "DYSTOPIA_EDITION"
+    "edition": "DYSTOPIA_EDITION",
+    "rec_season": "REC_02"
   },
   "Bloom_Proudly": {
     "title": "Bloom Proudly",
     "release": "2026.09.11",
     "architect": "ROSE",
-    "edition": "FANTASY_EDITION"
+    "edition": "FANTASY_EDITION",
+    "rec_season": "REC_02"
   },
   "MAKERUMONKA": {
     "title": "負けるもんか",
     "release": "2026.09.13",
     "architect": "ROSE",
-    "edition": "CLASSIC_EDITION"
+    "edition": "CLASSIC_EDITION",
+    "rec_season": "REC_02"
   },
   "FIRE_ON": {
     "title": "FIRE ON",
     "release": "2026.09.13",
     "architect": "ROSE",
-    "edition": "DYSTOPIA_EDITION"
+    "edition": "DYSTOPIA_EDITION",
+    "rec_season": "REC_02"
   },
   "ONE_SHOT_ONE_KILL": {
     "title": "ONE SHOT ONE KILL",
     "release": "2026.09.13",
     "architect": "ROSE",
-    "edition": "DYSTOPIA_EDITION"
+    "edition": "DYSTOPIA_EDITION",
+    "rec_season": "REC_02"
   },
   "Life_Is_Beautiful": {
     "title": "Life Is Beautiful",
     "release": "2026.09.13",
     "architect": "ROSE",
-    "edition": "OVERLOAD_EDITION"
+    "edition": "OVERLOAD_EDITION",
+    "rec_season": "REC_02"
   },
   "Daydream_Itadakimasu": {
     "title": "デイドリーム、いただきます。",
     "release": "2026.09.16",
     "architect": "MIO / ROSE",
-    "edition": "CLASSIC_EDITION"
+    "edition": "CLASSIC_EDITION",
+    "rec_season": "REC_02"
   },
   "Two_Point_Eight": {
     "title": "Two Point Eight",
     "release": "2026.09.17",
     "architect": "ROSE",
-    "edition": "OVERLOAD_EDITION"
+    "edition": "OVERLOAD_EDITION",
+    "rec_season": "REC_02"
   },
   "COLD_FLAME": {
     "title": "COLD FLAME",
     "release": "2026.09.17",
     "architect": "ROSE",
-    "edition": "OVERLOAD_EDITION"
+    "edition": "OVERLOAD_EDITION",
+    "rec_season": "REC_02"
   },
   "LAME": {
     "title": "LAME",
     "release": "2026.09.19",
     "architect": "ROSE",
-    "edition": "OVERLOAD_EDITION"
+    "edition": "OVERLOAD_EDITION",
+    "rec_season": "REC_02"
   },
   "Soudesu_Watashi_ga_Saikyoudesu": {
     "title": "そうです、私が最強です。",
     "release": "2026.09.20",
     "architect": "ROSE",
-    "edition": "FANTASY_EDITION"
+    "edition": "FANTASY_EDITION",
+    "rec_season": "REC_02"
   },
   "Wield_This_Blade": {
     "title": "Wield This Blade",
     "release": "2026.09.21",
     "architect": "ROSE",
-    "edition": "FANTASY_EDITION"
+    "edition": "FANTASY_EDITION",
+    "rec_season": "REC_02"
   },
   "Watashi_ha_Mouinai": {
     "title": "私はもういない",
     "release": "2026.09.21",
     "architect": "ROSE",
-    "edition": "CLASSIC_EDITION"
+    "edition": "CLASSIC_EDITION",
+    "rec_season": "REC_02"
   },
   "REIMEIELECTRO": {
     "title": "レイメイエレクトロ",
     "release": "2026.09.24",
     "architect": "JIWOO / ROSE",
-    "edition": "CLASSIC_EDITION"
+    "edition": "CLASSIC_EDITION",
+    "rec_season": "REC_02"
+  },
+  "MONSTRUM": {
+    "title": "MONSTRUM",
+    "release": "2026.09.25",
+    "architect": "ROSE",
+    "edition": "DYSTOPIA_EDITION",
+    "rec_season": "REC_02"
   }
 }

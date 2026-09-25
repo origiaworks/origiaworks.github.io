@@ -391,4 +391,35 @@ button:hover {
         font-weight: bold;
         text-shadow: 0 0 10px rgba(255, 62, 62, 0.3);
     }
+
+    /* サポートメンバー用のスタイリング */
+    .support-header {
+        margin-top: 50px;
+        margin-bottom: 25px;
+        border-bottom: 1px dashed #333;
+        padding-bottom: 10px;
+    }
+
+    .support-header h3 {
+        font-family: var(--code-font);
+        color: var(--cyber-blue);
+        font-size: 1rem;
+        margin: 0;
+        letter-spacing: 2px;
+    }
+
+    .support-grid {
+        margin-bottom: 100px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 350px));
+        /* 2名が綺麗に収まる幅 */
+    }
+
+    .support-card {
+        border-color: #222;
+    }
+
+    .support-tag {
+        color: var(--cyber-blue) !important;
+        /* サポートは青タグ */
+    }
 }
