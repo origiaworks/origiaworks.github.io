@@ -376,5 +376,12 @@
     "architect": "ROSE",
     "edition": "DYSTOPIA_EDITION",
     "rec_season": "REC_02"
+  },
+  "Break_Every_Chain": {
+    "title": "Break Every Chain",
+    "release": "2026.09.27",
+    "architect": "ROSE",
+    "edition": "OVERLOAD_EDITION",
+    "rec_season": "REC_02"
   }
 }
