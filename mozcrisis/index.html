@@ -197,11 +197,13 @@
         }
 
         /* --- 03_MEMBERS --- */
+        /* コアメンバーのグリッド設定（巨大化を防ぎ、サイズを統一） */
         .member-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 120px;
+            /* 幅220px〜260pxに固定して、画面が広くても引き伸ばされないようにする */
+            grid-template-columns: repeat(auto-fill, minmax(220px, 260px));
+            gap: 25px;
+            margin-bottom: 80px;
         }
 
         .member-link {
@@ -227,6 +229,7 @@
             width: 100%;
             aspect-ratio: 1 / 1;
             overflow: hidden;
+            background: #111;
         }
 
         .img-wrapper img {
@@ -236,8 +239,9 @@
             display: block;
         }
 
+        /* カード内の文字サイズもコンパクトな枠に合わせてバランス調整 */
         .info {
-            padding: 20px;
+            padding: 15px;
         }
 
         .role-tag {
@@ -248,15 +252,23 @@
         }
 
         .name-jp {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: bold;
             display: block;
-            margin: 5px 0;
+            margin: 3px 0;
         }
 
         .name-real {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #777;
+        }
+
+        /* サポートメンバー用グリッド（コアメンバーと同じサイズ感で揃える） */
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 260px));
+            gap: 25px;
+            margin-bottom: 120px;
         }
 
         /* --- 04_DISCOGRAPHY (EDITION GROUPING) --- */
@@ -385,7 +397,47 @@
             }
 
             .container {
-                padding: 60px 15px;
+                padding: 40px 15px;
+            }
+
+            /* 余白を程よく調整 */
+
+            /* ★スマホでのディスコグラフィーを快適な2列表示にする★ */
+            .song-grid {
+                grid-template-columns: repeat(2, 1fr);
+                /* 強制的に美しい2列にする */
+                gap: 15px;
+                /* カード同士の間隔をキュッと詰める */
+            }
+
+            .song-jacket {
+                margin-bottom: 8px;
+                /* 文字との隙間を少し狭める */
+                border-radius: 4px;
+                /* 角をほんのり丸めるとスマホで綺麗に見えます */
+            }
+
+            .song-title {
+                font-size: 0.8rem;
+                /* スマホで見やすい文字サイズ */
+                line-height: 1.3;
+            }
+
+            /* エディション見出しもスマホ向けにスリム化 */
+            .edition-header {
+                margin-bottom: 20px;
+                padding-left: 12px;
+                border-left-width: 4px;
+            }
+
+            .edition-title {
+                font-size: 1.3rem;
+                /* 見出し文字のサイズ調整 */
+            }
+
+            .edition-block {
+                margin-bottom: 60px;
+                padding-top: 25px;
             }
         }
     </style>
@@ -459,96 +511,101 @@
             <div class="section-header">
                 <h2>MEMBERS</h2>
             </div>
-            <!-- コアメンバー 5名 -->
             <div class="member-grid">
-                <a href="members.html?id=rose" class="member-link">
+                <a href="members/rose.html" class="member-link">
                     <div class="member-card">
-                        <div class="img-wrapper"><img src="members/img/rose.png" alt="Rose"></div>
+                        <div class="img-wrapper"><img src="members/files/img/rose.png" alt="Rose"></div>
                         <div class="info">
-                            <div class="role-tag">Vo &amp; Gt</div>
-                            <span class="name-jp">ローズ</span>
-                            <span class="name-real">石神・Ｒ・フローレンス</span>
+                            <div class="role-tag">Vo &amp; Gt</div><span class="name-jp">ローズ</span><span
+                                class="name-real">石神・Ｒ・フローレンス</span>
                         </div>
                     </div>
                 </a>
-                <a href="members.html?id=yodo" class="member-link">
+                <a href="members/yodo.html" class="member-link">
                     <div class="member-card">
-                        <div class="img-wrapper"><img src="members/img/yodo.png" alt="Yodo"></div>
+                        <div class="img-wrapper"><img src="members/files/img/yodo.png" alt="Yodo"></div>
                         <div class="info">
-                            <div class="role-tag">Bass</div>
-                            <span class="name-jp">淀</span>
-                            <span class="name-real">御母衣 京子</span>
+                            <div class="role-tag">Bass</div><span class="name-jp">淀</span><span class="name-real">御母衣
+                                京子</span>
                         </div>
                     </div>
                 </a>
-                <a href="members.html?id=lena" class="member-link">
+                <a href="members/lena.html" class="member-link">
                     <div class="member-card">
-                        <div class="img-wrapper"><img src="members/img/lena.png" alt="Lena"></div>
+                        <div class="img-wrapper"><img src="members/files/img/lena.png" alt="Lena"></div>
                         <div class="info">
-                            <div class="role-tag">Key &amp; Scream</div>
-                            <span class="name-jp">レナ</span>
-                            <span class="name-real">斎藤 エレーナ</span>
+                            <div class="role-tag">Key &amp; Scream</div><span class="name-jp">レナ</span><span
+                                class="name-real">斎藤 エレーナ</span>
                         </div>
                     </div>
                 </a>
-                <a href="members.html?id=mio" class="member-link">
+                <a href="members/mio.html" class="member-link">
                     <div class="member-card">
-                        <div class="img-wrapper"><img src="members/img/mio.png" alt="Mio"></div>
+                        <div class="img-wrapper"><img src="members/files/img/mio.png" alt="Mio"></div>
                         <div class="info">
-                            <div class="role-tag">Drums</div>
-                            <span class="name-jp">ミオ</span>
-                            <span class="name-real">ミオ・ロドリゲス</span>
+                            <div class="role-tag">Drums</div><span class="name-jp">ミオ</span><span
+                                class="name-real">ミオ・ロドリゲス</span>
                         </div>
                     </div>
                 </a>
-                <a href="members.html?id=jiwoo" class="member-link">
+                <a href="members/jiwoo.html" class="member-link">
                     <div class="member-card">
-                        <div class="img-wrapper"><img src="members/img/jiwoo.png" alt="Jiwoo"></div>
+                        <div class="img-wrapper"><img src="members/files/img/jiwoo.png" alt="Jiwoo"></div>
                         <div class="info">
-                            <div class="role-tag">DJ</div>
-                            <span class="name-jp">JIWOO</span>
-                            <span class="name-real">イ・ジウ</span>
+                            <div class="role-tag">DJ</div><span class="name-jp">ジウ</span><span
+                                class="name-real">イ・ジウ</span>
                         </div>
                     </div>
                 </a>
             </div>
 
-            <!-- サポートメンバー 2名枠 -->
-            <!-- <div class="support-header">
-                <h3>// SUPPORT_UNITS</h3>
+            <!-- サポートユニット -->
+            <!-- サポートユニットの見出し -->
+            <div style="border-left: 3px solid var(--cyber-blue); padding-left: 15px; margin: 60px 0 25px;">
+                <h3
+                    style="font-family: var(--code-font); color: var(--cyber-blue); margin: 0; font-size: 1.1rem; letter-spacing: 2px;">
+                    // SUPPORT_UNITS</h3>
             </div>
-            <div class="member-grid support-grid">
-                <a href="members.html?id=support01" class="member-link">
+
+            <div class="support-grid">
+                <!-- アカネ -->
+                <a href="members/akane.html" class="member-link">
                     <div class="member-card support-card">
-                        <div class="img-wrapper"><img src="members/img/support01.png" alt="Support 01"></div>
+                        <div class="img-wrapper"><img src="members/files/img/akane.png" alt="Akane"
+                                onerror="this.src='members/files/img/default.png'"></div>
                         <div class="info">
-                            <div class="role-tag support-tag">Support Gt / Prog</div>
-                            <span class="name-jp">（サポート01名前）</span>
-                            <span class="name-real">SUB_ARCHITECT_01</span>
+                            <div class="role-tag" style="color: #ff1744;">Support Guitar</div>
+                            <span class="name-jp">アカネ</span>
+                            <span class="name-real">田口 あかね</span>
                         </div>
                     </div>
                 </a>
-                <a href="members.html?id=support02" class="member-link">
+
+                <!-- モモ -->
+                <a href="members/momo.html" class="member-link">
                     <div class="member-card support-card">
-                        <div class="img-wrapper"><img src="members/img/support02.png" alt="Support 02"></div>
+                        <div class="img-wrapper"><img src="members/files/img/momo.png" alt="Momo"
+                                onerror="this.src='members/files/img/default.png'"></div>
                         <div class="info">
-                            <div class="role-tag support-tag">Support Manipulator</div>
-                            <span class="name-jp">（サポート02名前）</span>
-                            <span class="name-real">SUB_ARCHITECT_02</span>
+                            <div class="role-tag" style="color: #ff66cc;">Support Strings</div>
+                            <span class="name-jp">モモ</span>
+                            <span class="name-real">櫻枝 桃香</span>
                         </div>
                     </div>
                 </a>
-                <a href="members.html?id=support03" class="member-link">
+                <!-- リコ -->
+                <a href="members/riko.html" class="member-link">
                     <div class="member-card support-card">
-                        <div class="img-wrapper"><img src="members/img/support03.png" alt="Support 03"></div>
+                        <div class="img-wrapper"><img src="members/files/img/riko.png" alt="Riko"
+                                onerror="this.src='members/files/img/default.png'"></div>
                         <div class="info">
-                            <div class="role-tag support-tag">Support Manipulator</div>
-                            <span class="name-jp">（サポート03名前）</span>
-                            <span class="name-real">SUB_ARCHITECT_03</span>
+                            <div class="role-tag" style="color: #ff66cc;">Support Strings</div>
+                            <span class="name-jp">リコ</span>
+                            <span class="name-real">山本 桐子</span>
                         </div>
                     </div>
                 </a>
-            </div> -->
+            </div>
         </section>
 
         <!-- 04_DISCOGRAPHY -->
@@ -616,10 +673,12 @@
                         const sCard = document.createElement('a');
                         sCard.href = `songs.html?id=${song.id}`;
                         sCard.className = 'song-card';
+                        sCard.href = `songs/${song.id}.html`; // 生成された個別HTMLへリンク！
+                        sCard.className = 'song-card';
                         sCard.innerHTML = `
-                            <img src="songs/${song.id}/${song.id}_artwork.jpg" class="song-jacket" alt="${song.title}">
+                            <img src="songs/files/${song.id}/${song.id}_artwork.jpg" class="song-jacket" alt="${song.title}">
                             <span class="song-title">${song.title}</span>
-                        `;
+`;
                         sGrid.appendChild(sCard);
                     });
 

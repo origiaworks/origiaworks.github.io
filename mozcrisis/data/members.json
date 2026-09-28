@@ -1,0 +1,218 @@
+{
+  "rose": {
+    "name": "ローズ",
+    "realName": "石神・Ｒ・フローレンス",
+    "role": "Vo & Gt / Band Architect",
+    "color": "#ff3e3e",
+    "quote": "「感情のオーバーフローを、1行のコードでリゾルブしてやるよ。」",
+    "specs": [
+      {
+        "label": "INTELLECT",
+        "value": "IQ 160 (Genius)"
+      },
+      {
+        "label": "GUITAR SKILL",
+        "value": "Clunky (下手だけど気迫)"
+      },
+      {
+        "label": "FAVORITE",
+        "value": "競馬 / おにぎり(鮭)"
+      },
+      {
+        "label": "TRADEMARK",
+        "value": "メガネ / 泣きボクロ / おにぎりT"
+      }
+    ],
+    "bio": "元プログラマーでバンドのギターボーカル・作詞作曲を担当する設計者。イギリス系ハーフでIQ 160を誇る頭脳派。ギターの腕前は自他共に認める「下手」だが、それを圧倒的な熱量と緻密なロジックでねじ伏せる。トレードマークは黒縁メガネ、左目の泣きボクロ、そしておにぎりプリントのTシャツ。重度のオタク気質かつ無類の競馬好き。明るく人懐っこい性格で、誰からも愛されるバンドの中心人物。",
+    "gear": "Guitar: Yellow Telecaster / Editor: VS Code / Favorite: 競馬新聞 & おにぎり"
+  },
+  "yodo": {
+    "name": "淀",
+    "realName": "御母衣 京子",
+    "role": "Bass / Core Module / Sister",
+    "color": "#0099ff",
+    "quote": "「反骨と品格は両立する。それが私のロックだ。」",
+    "specs": [
+      {
+        "label": "STATUS",
+        "value": "現役女子大生 / 皇族の血統"
+      },
+      {
+        "label": "TOP SECRET",
+        "value": "喫煙 & バンド活動 (家柄厳禁)"
+      },
+      {
+        "label": "OUTFIT",
+        "value": "伝統の和装 (袴姿)"
+      },
+      {
+        "label": "JIWOO BOND",
+        "value": "Private Besties (親友)"
+      }
+    ],
+    "bio": "皇族の血を引く由緒正しき名家のお嬢様であり、現役の女子大学生。ステージ衣装は凛とした袴姿。愛煙家だが、厳格な家柄ゆえにタバコを吸っていることやMOZCRISISでロックを鳴らしていることは家族には完全極秘。包容力のある頼れる姉御肌で、メンバー全員から「姐さん」と慕われている。人見知りなジウとはプライベートでも一緒に過ごすほどの大親友。",
+    "gear": "Bass: White Electric Bass / Costume: 伝統袴 / Secret: 隠し持ったライター"
+  },
+  "lena": {
+    "name": "レナ",
+    "realName": "斎藤 エレーナ",
+    "role": "Key & Scream / Overload",
+    "color": "#a855f7",
+    "quote": "「ロリータしか勝たん。」",
+    "specs": [
+      {
+        "label": "PIANO CONTEST",
+        "value": "World Competition Winner"
+      },
+      {
+        "label": "GAP FACTOR",
+        "value": "天然 (Airhead Level MAX)"
+      },
+      {
+        "label": "LANGUAGE",
+        "value": "日本語勉強中 (カタコト)"
+      },
+      {
+        "label": "FAITH",
+        "value": "ロリータしか勝たん。"
+      }
+    ],
+    "bio": "ロシア系ハーフの元天才ピアニスト。圧倒的な美貌とステージでの強烈な存在感、そして超絶技巧のキーボードと咆哮（スクリーム）でバンドの音圧を爆発させる。クラシックピアノの世界大会で入賞した輝かしい経歴を持つが、普段の性格は筋金入りの「天然」。日本語は少々苦手だが、愛してやまない「ロリータしか勝たん。」というフレーズだけは完璧に使いこなす。",
+    "gear": "Keyboard: High-End Workstation Synthesizer / Fashion: Gothic Lolita / Catchphrase: ロリータしか勝たん。"
+  },
+  "mio": {
+    "name": "ミオ",
+    "realName": "ミオ・ロドリゲス",
+    "role": "Drums / Intuitive Engine",
+    "color": "#ff9900",
+    "quote": "「どんなリズムでも、アタシの直感で完璧にコントロールしてやる！」",
+    "specs": [
+      {
+        "label": "PHYSICAL",
+        "value": "抜群の運動神経 & 身体能力"
+      },
+      {
+        "label": "PLAY STYLE",
+        "value": "野生の直感 (天才肌)"
+      },
+      {
+        "label": "ALCOHOL",
+        "value": "酒豪 (底なし)"
+      },
+      {
+        "label": "GAP",
+        "value": "見た目ボーイッシュ / 内面は乙女"
+      }
+    ],
+    "bio": "抜群の運動神経と身体能力を持つヒスパニック系ハーフのドラマー。陽気で人懐っこく、誰とでも一瞬で仲良くなれるムードメーカー。自由奔放で破天荒な性格だが、リズムのキープ力と緩急のセンスは野生の直感が導く完全な天才肌。豪快なお酒好きで見た目はワイルドかつボーイッシュだが、その内面はメンバーの中で一番ピュアで乙女チック。",
+    "gear": "Drums: Custom Shell Heavy Kit / Hobby: スポーツ全般 / Favorite: ビール & 甘いカクテル"
+  },
+  "jiwoo": {
+    "name": "JIWOO",
+    "realName": "イ・ジウ",
+    "role": "DJ / Encryption Beats",
+    "color": "#00e676",
+    "quote": "「............（いつも、みんなの音を聴いてる。）」",
+    "specs": [
+      {
+        "label": "PAST CAREER",
+        "value": "元アイドル志望生"
+      },
+      {
+        "label": "NATURE",
+        "value": "極度の人見知り & メンバー想い"
+      },
+      {
+        "label": "PLAY STYLE",
+        "value": "攻撃的アグレッシブ・ビート"
+      },
+      {
+        "label": "JOIN PHASE",
+        "value": "REC1 Support → REC2 Official"
+      }
+    ],
+    "bio": "韓国出身。ビッグサイズのパーカーで素顔を隠すうら若きDJ。REC_001では謎のサポートメンバー筆頭として暗躍し、REC_002で正式メンバーとして加入。元アイドル志望という過去を持つ。極度の人見知りで公の場ではほとんど言葉を発しないが、楽曲中ではその大人しさからは想像もつかないほど獰猛でアグレッシブなプレイを放つ。誰よりもメンバー想いで心優しい性格。",
+    "gear": "DJ Gear: Digital Turntable & Sampler / Wear: Oversized Baggy Hoodie / Partner: YODO"
+  },
+  "akane": {
+    "name": "アカネ",
+    "realName": "田口 あかね",
+    "role": "Support Guitar / Free-spirited Genius",
+    "color": "#737373",
+    "quote": "「音楽理論？ 知らねえよ。アタシが弾いた音が一番カッコいいコードだろ。」",
+    "specs": [
+      {
+        "label": "GUITAR TALENT",
+        "value": "Natural Genius (自他共に認める天才)"
+      },
+      {
+        "label": "THEORY SKILL",
+        "value": "0% (感覚と直感のみ)"
+      },
+      {
+        "label": "FREEDOM",
+        "value": "自由奔放 (他バンドから引く手あまた)"
+      },
+      {
+        "label": "MIO COMRADE",
+        "value": "大親友 (波長120%一致)"
+      }
+    ],
+    "bio": "自他共に認める天才ギタリスト。相棒の黒いレスポールから野生の嗅覚だけで凄まじい歪みと音圧を生み出す。小難しい音楽理論はまったく理解していないが、一度ギターを握れば誰も真似できない極上のリフを放つため、あらゆるバンドから引っ張りだこ。極めて自由奔放で縛られない性格。同じく直感派で破天荒なミオとウマが合い、プライベートでも大の仲良し。",
+    "gear": "Guitar: Black Les Paul / Style: Pure Intuition & High Gain / Best Friend: MIO"
+  },
+  "momo": {
+    "name": "モモ",
+    "realName": "櫻枝 桃香",
+    "role": "Support Traditional Strings / Clan Master",
+    "color": "#ff66cc",
+    "quote": "「伝統だの型だの、型にハメられてちゃ良い音は鳴らねえよ。ついてきな！」",
+    "specs": [
+      {
+        "label": "TITLE",
+        "value": "三味線全国大会 優勝実績"
+      },
+      {
+        "label": "INSTRUMENT",
+        "value": "一族相伝の銘器"
+      },
+      {
+        "label": "CHARACTER",
+        "value": "頼れる姉御肌 (豪快・型破り)"
+      },
+      {
+        "label": "YODO RIVALRY",
+        "value": "高校の同級生 & 好敵手"
+      }
+    ],
+    "bio": "三味線の全国大会で優勝を果たした圧倒的な経歴を持つ実力者。受け継がれてきた一族相伝の三味線を抱え、伝統や風習のしがらみを軽々と吹き飛ばすアグレッシブかつ獰猛なストロークで聴く者を魅了する。豪快で面倒見のよい姉御肌。淀とは高校時代の同級生であり、お互いの実力を最も深く認め合っている永遠のライバル。",
+    "gear": "Instrument: 一族相伝の津軽三味線 / Costume: ピンクの振袖 / Rival: YODO (高校同級生)"
+  },
+  "riko": {
+    "name": "リコ",
+    "realName": "山本 桐子",
+    "role": "Support Violin / Stradivarius Aristocrat",
+    "color": "#ffffff",
+    "quote": "「下品な電子音の塊ね。……でも、私のストラディバリウスが乗ってあげてもよろしくて？」",
+    "specs": [
+      {
+        "label": "VIOLIN VALUE",
+        "value": "本物のストラディバリウス (時価数億)"
+      },
+      {
+        "label": "PRIDE LEVEL",
+        "value": "最高峰 (超高慢なお嬢様)"
+      },
+      {
+        "label": "ATTENDANCE",
+        "value": "オファー拒否率 0% (皆勤賞)"
+      },
+      {
+        "label": "TRUE FEELINGS",
+        "value": "内心では音を認めている (隠れツンデレ)"
+      }
+    ],
+    "bio": "並外れてプライドが高いバイオリニストのお嬢様。名家出身で、時価数億円とも言われる本物のストラディバリウスを携えてクラシック界の王道を歩む。しばしばMOZCRISISのラウドなサウンドを「下品」「騒音」とバカにするような口を利くが、セッションのオファーを蹴ったことは一度もなく、内心では彼女たちの音楽性に強烈に惹かれ、認めている。",
+    "gear": "Violin: Antonio Stradivarius / Pedigree: 格式高き名門 / Offer Rejection: 0回"
+  }
+}
