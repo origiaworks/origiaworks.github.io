@@ -164,7 +164,7 @@
   "momo": {
     "name": "モモ",
     "realName": "櫻枝 桃香",
-    "role": "Support Traditional Strings / Clan Master",
+    "role": "Support Shamisen / Clan Master",
     "color": "#ff66cc",
     "quote": "「伝統だの型だの、型にハメられてちゃ良い音は鳴らねえよ。ついてきな！」",
     "specs": [
@@ -192,7 +192,7 @@
     "name": "リコ",
     "realName": "山本 桐子",
     "role": "Support Violin / Stradivarius Aristocrat",
-    "color": "#ffffff",
+    "color": "#ffff00",
     "quote": "「下品な電子音の塊ね。……でも、私の旋律が乗ってあげてもよろしくて？」",
     "specs": [
       {

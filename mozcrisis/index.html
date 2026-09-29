@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,124 +14,100 @@
             --code-font: 'Consolas', 'Monaco', 'Courier New', monospace;
         }
 
-        body {
-            background-color: var(--bg-black);
-            color: var(--text-white);
-            font-family: 'Segoe UI', 'Hiragino Kaku Gothic ProN', sans-serif;
-            margin: 0;
-            line-height: 1.6;
-            scroll-behavior: smooth;
+        body { 
+            background-color: var(--bg-black); 
+            color: var(--text-white); 
+            font-family: 'Segoe UI', 'Hiragino Kaku Gothic ProN', sans-serif; 
+            margin: 0; 
+            line-height: 1.6; 
+            scroll-behavior: smooth; 
+        }
+        
+        /* 固定メニューとスクロール位置補正 */
+        nav { 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            padding: 15px 0; 
+            background: rgba(0, 0, 0, 0.85); 
+            backdrop-filter: blur(8px); 
+            z-index: 1000; 
+            display: flex; 
+            justify-content: center; 
+            gap: 20px; 
+            font-family: var(--code-font); 
+            font-size: 0.75rem; 
+            border-bottom: 1px solid #222; 
+        }
+        nav a { color: #fff; text-decoration: none; transition: 0.3s; }
+        nav a:hover { color: var(--cyber-blue); }
+
+        section {
+            scroll-margin-top: 90px; /* メニュー潜り込み防止 */
         }
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 15px 0;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            font-family: var(--code-font);
-            font-size: 0.75rem;
-            border-bottom: 1px solid #222;
+        /* ヒーローエリア */
+        header { 
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%); 
+            text-align: center; 
+            padding: 0 20px; 
+        }
+        .glitch-logo { 
+            font-size: clamp(3rem, 12vw, 9rem); 
+            font-weight: 900; 
+            letter-spacing: 0.15em; 
+            font-family: var(--code-font); 
+            text-shadow: 2px 0 var(--main-red), -2px 0 var(--cyber-blue); 
+        }
+        .tagline { 
+            font-family: var(--code-font); 
+            color: var(--cyber-blue); 
+            font-size: clamp(0.7rem, 2vw, 1.1rem); 
+            margin-top: 20px; 
+            opacity: 0.8; 
         }
 
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            transition: 0.3s;
+        .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
+        .section-header { margin-bottom: 40px; padding-top: 20px; }
+        .section-header h2 { 
+            font-family: var(--code-font); 
+            font-size: clamp(1.8rem, 5vw, 2.5rem); 
+            display: inline-block; 
+            border-right: 10px solid var(--main-red); 
+            padding-right: 15px; 
+            margin: 0; 
+            line-height: 1.2;
         }
 
-        nav a:hover {
-            color: var(--cyber-blue);
+        /* 02_LOGIC & MANIFESTO */
+        .logic-box { 
+            background: #000; 
+            border: 1px solid #333; 
+            padding: clamp(25px, 4vw, 40px); 
+            font-family: var(--code-font); 
+            margin: 20px auto 30px; 
+            position: relative; 
         }
-
-        /* Header */
-        header {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
-            text-align: center;
-            padding: 0 20px;
+        .logic-box::before { 
+            content: "lyric_logic.sh"; 
+            position: absolute; 
+            top: -12px; 
+            left: 20px; 
+            background: var(--main-red); 
+            padding: 2px 12px; 
+            font-size: 0.75rem; 
+            color: #fff; 
+            font-weight: bold; 
         }
+        .code-comment { color: #6a9955; } 
+        .code-keyword { color: #c586c0; } 
+        .code-func { color: #dcdcaa; }
 
-        .glitch-logo {
-            font-size: clamp(3rem, 12vw, 9rem);
-            font-weight: 900;
-            letter-spacing: 0.15em;
-            font-family: var(--code-font);
-            text-shadow: 2px 0 var(--main-red), -2px 0 var(--cyber-blue);
-        }
-
-        .tagline {
-            font-family: var(--code-font);
-            color: var(--cyber-blue);
-            font-size: clamp(0.7rem, 2vw, 1.1rem);
-            margin-top: 20px;
-            opacity: 0.8;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 80px 20px;
-        }
-
-        .section-header {
-            margin-bottom: 40px;
-        }
-
-        .section-header h2 {
-            font-family: var(--code-font);
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            display: inline-block;
-            border-right: 10px solid var(--main-red);
-            padding-right: 15px;
-            margin: 0;
-        }
-
-        /* --- 02_LOGIC / MANIFESTO STYLES --- */
-        .logic-box {
-            background: #000;
-            border: 1px solid #333;
-            padding: clamp(25px, 4vw, 40px);
-            font-family: var(--code-font);
-            margin: 20px auto 30px;
-            position: relative;
-        }
-
-        .logic-box::before {
-            content: "lyric_logic.sh";
-            position: absolute;
-            top: -12px;
-            left: 20px;
-            background: var(--main-red);
-            padding: 2px 12px;
-            font-size: 0.75rem;
-            color: #fff;
-            font-weight: bold;
-        }
-
-        .code-comment {
-            color: #6a9955;
-        }
-
-        .code-keyword {
-            color: #c586c0;
-        }
-
-        .code-func {
-            color: #dcdcaa;
-        }
-
-        /* マニフェストカード（装飾枠） */
         .manifesto-card {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid #222;
@@ -144,7 +119,6 @@
             color: #ccc;
             font-size: 0.95rem;
         }
-
         .manifesto-badge {
             position: absolute;
             top: -12px;
@@ -157,294 +131,106 @@
             padding: 2px 10px;
             letter-spacing: 1px;
         }
+        .manifesto-title { font-family: var(--code-font); font-size: 1.4rem; color: #fff; margin: 5px 0 20px; letter-spacing: 2px; }
+        .manifesto-lead { font-size: 1.05rem; color: #fff; margin-bottom: 20px; }
+        .manifesto-quote { margin-top: 30px; padding-top: 20px; border-top: 1px dashed #333; font-size: 1.05rem; font-weight: bold; color: #eee; line-height: 2; }
+        .text-highlight { color: var(--cyber-blue); font-weight: bold; text-shadow: 0 0 10px rgba(0, 243, 255, 0.3); }
+        .text-highlight-red { color: var(--main-red); font-weight: bold; text-shadow: 0 0 10px rgba(255, 62, 62, 0.3); }
 
-        .manifesto-title {
-            font-family: var(--code-font);
-            font-size: 1.4rem;
-            color: #fff;
-            margin-top: 5px;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
+        /* --- 03_MEMBERS (メンバーカラー対応) --- */
+        .member-grid, .support-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(220px, 260px)); 
+            gap: 25px; 
+            margin-bottom: 80px; 
         }
+        .support-grid { margin-bottom: 120px; }
 
-        .manifesto-lead {
-            font-size: 1.05rem;
-            color: #fff;
-            margin-bottom: 20px;
-            font-weight: 500;
+        .member-link { text-decoration: none; color: inherit; display: block; }
+        .member-card { 
+            background: var(--card-bg); 
+            border: 1px solid #222; 
+            overflow: hidden; 
+            transition: 0.4s ease; 
+            height: 100%; 
         }
-
-        .manifesto-quote {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px dashed #333;
-            font-size: 1.05rem;
-            font-weight: bold;
-            color: #eee;
-            line-height: 2;
+        
+        /* メンバーカラーでのホバー発光演出 */
+        .member-link:hover .member-card { 
+            border-color: var(--c, var(--cyber-blue)); 
+            box-shadow: 0 0 15px var(--c, rgba(0, 243, 255, 0.3));
+            transform: translateY(-5px); 
         }
-
-        .text-highlight {
-            color: var(--cyber-blue);
-            font-weight: bold;
-            text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+        
+        .img-wrapper { 
+            width: 100%; 
+            aspect-ratio: 1 / 1; 
+            overflow: hidden; 
+            background: #111; 
         }
-
-        .text-highlight-red {
-            color: var(--main-red);
-            font-weight: bold;
-            text-shadow: 0 0 10px rgba(255, 62, 62, 0.3);
+        .img-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        
+        .info { padding: 15px; }
+        .role-tag { 
+            font-family: var(--code-font); 
+            color: var(--c, var(--main-red)); /* メンバーカラーをタグに適用 */
+            font-size: 0.75rem; 
+            font-weight: bold; 
         }
+        .name-jp { font-size: 1.3rem; font-weight: bold; display: block; margin: 3px 0; color: #fff; }
+        .name-real { font-size: 0.75rem; color: #777; }
 
-        /* --- 03_MEMBERS --- */
-        /* コアメンバーのグリッド設定（巨大化を防ぎ、サイズを統一） */
-        .member-grid {
-            display: grid;
-            /* 幅220px〜260pxに固定して、画面が広くても引き伸ばされないようにする */
-            grid-template-columns: repeat(auto-fill, minmax(220px, 260px));
-            gap: 25px;
-            margin-bottom: 80px;
-        }
+        /* 04_DISCOGRAPHY */
+        .edition-block { margin-bottom: 100px; padding-top: 40px; border-top: 1px solid #222; }
+        .edition-header { margin-bottom: 35px; border-left: 5px solid var(--main-red); padding-left: 20px; display: block; }
+        .edition-label { font-family: var(--code-font); color: var(--main-red); font-size: 0.75rem; font-weight: bold; display: block; margin-bottom: 5px; opacity: 0.8; }
+        .edition-title { font-family: var(--code-font); font-size: clamp(1.4rem, 3.5vw, 2.4rem); font-weight: 900; margin: 0; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
+        
+        .song-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 30px; }
+        .song-card { text-align: left; transition: 0.3s; text-decoration: none; display: block; }
+        .song-card:hover { transform: translateY(-5px); }
+        .song-jacket { width: 100%; aspect-ratio: 1 / 1; background: #222; margin-bottom: 15px; border: 1px solid #333; object-fit: cover; transition: 0.3s; }
+        .song-card:hover .song-jacket { border-color: var(--main-red); box-shadow: 0 0 15px rgba(255, 62, 62, 0.2); }
+        .song-title { font-size: 0.95rem; font-weight: bold; color: #fff; display: block; line-height: 1.4; }
 
-        .member-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
+        /* 05_PROTOCOL */
+        .protocol-link-box { background: #000; border: 1px solid #222; padding: 40px; margin-bottom: 80px; }
+        .protocol-btn { display: inline-block; margin-top: 20px; padding: 12px 30px; border: 1px solid var(--main-red); color: var(--main-red); text-decoration: none; font-family: var(--code-font); font-weight: bold; transition: 0.3s; }
+        .protocol-btn:hover { background: var(--main-red); color: #fff; box-shadow: 0 0 15px rgba(255, 62, 62, 0.4); }
 
-        .member-card {
-            background: var(--card-bg);
-            border: 1px solid #222;
-            overflow: hidden;
-            transition: 0.4s ease;
-            height: 100%;
-        }
+        footer { background: #050505; padding: 60px 20px; text-align: center; border-top: 1px solid #1a1a1a; }
+        .disclaimer-text { font-size: 0.65rem; color: #555; margin-top: 20px; max-width: 800px; margin: 20px auto 0; font-family: sans-serif; }
 
-        .member-link:hover .member-card {
-            border-color: var(--cyber-blue);
-            transform: translateY(-5px);
-        }
-
-        .img-wrapper {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            overflow: hidden;
-            background: #111;
-        }
-
-        .img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* カード内の文字サイズもコンパクトな枠に合わせてバランス調整 */
-        .info {
-            padding: 15px;
-        }
-
-        .role-tag {
-            font-family: var(--code-font);
-            color: var(--main-red);
-            font-size: 0.75rem;
-            font-weight: bold;
-        }
-
-        .name-jp {
-            font-size: 1.3rem;
-            font-weight: bold;
-            display: block;
-            margin: 3px 0;
-        }
-
-        .name-real {
-            font-size: 0.75rem;
-            color: #777;
-        }
-
-        /* サポートメンバー用グリッド（コアメンバーと同じサイズ感で揃える） */
-        .support-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 260px));
-            gap: 25px;
-            margin-bottom: 120px;
-        }
-
-        /* --- 04_DISCOGRAPHY (EDITION GROUPING) --- */
-        .edition-block {
-            margin-bottom: 100px;
-            padding-top: 40px;
-            border-top: 1px solid #222;
-        }
-
-        .edition-header {
-            margin-bottom: 35px;
-            border-left: 5px solid var(--main-red);
-            padding-left: 20px;
-            display: block;
-        }
-
-        .edition-label {
-            font-family: var(--code-font);
-            color: var(--main-red);
-            font-size: 0.75rem;
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
-            letter-spacing: 2px;
-            opacity: 0.8;
-        }
-
-        .edition-title {
-            font-family: var(--code-font);
-            font-size: clamp(1.4rem, 3.5vw, 2.4rem);
-            font-weight: 900;
-            margin: 0;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #fff;
-            line-height: 1.1;
-        }
-
-        .song-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 30px;
-        }
-
-        .song-card {
-            text-align: left;
-            transition: 0.3s;
-            text-decoration: none;
-            display: block;
-        }
-
-        .song-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .song-jacket {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            background: #222;
-            margin-bottom: 15px;
-            border: 1px solid #333;
-            object-fit: cover;
-            transition: 0.3s;
-        }
-
-        .song-card:hover .song-jacket {
-            border-color: var(--main-red);
-            box-shadow: 0 0 15px rgba(255, 62, 62, 0.2);
-        }
-
-        .song-title {
-            font-size: 0.95rem;
-            font-weight: bold;
-            color: #fff;
-            display: block;
-            line-height: 1.4;
-        }
-
-        /* --- 05_PROTOCOL --- */
-        .protocol-link-box {
-            background: #000;
-            border: 1px solid #222;
-            padding: 40px;
-            margin-bottom: 80px;
-        }
-
-        .protocol-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 30px;
-            border: 1px solid var(--main-red);
-            color: var(--main-red);
-            text-decoration: none;
-            font-family: var(--code-font);
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .protocol-btn:hover {
-            background: var(--main-red);
-            color: #fff;
-            box-shadow: 0 0 15px rgba(255, 62, 62, 0.4);
-        }
-
-        /* Footer */
-        footer {
-            background: #050505;
-            padding: 60px 20px;
-            text-align: center;
-            border-top: 1px solid #1a1a1a;
-        }
-
-        .disclaimer-text {
-            font-size: 0.65rem;
-            color: #555;
-            margin-top: 20px;
-            max-width: 800px;
-            margin: 20px auto 0;
-            font-family: sans-serif;
-        }
-
+        /* スマホ向け最適化 */
         @media (max-width: 768px) {
-            nav {
-                gap: 10px;
-                font-size: 0.65rem;
-            }
-
-            .container {
-                padding: 40px 15px;
-            }
-
-            /* 余白を程よく調整 */
-
-            /* ★スマホでのディスコグラフィーを快適な2列表示にする★ */
+            nav { gap: 10px; font-size: 0.65rem; }
+            .container { padding: 40px 15px; }
+            
+            /* スマホでディスコグラフィーを快適な2列表示にする */
             .song-grid {
                 grid-template-columns: repeat(2, 1fr);
-                /* 強制的に美しい2列にする */
                 gap: 15px;
-                /* カード同士の間隔をキュッと詰める */
             }
+            .song-jacket { margin-bottom: 8px; border-radius: 4px; }
+            .song-title { font-size: 0.8rem; line-height: 1.3; }
+            
+            .edition-header { margin-bottom: 20px; padding-left: 12px; border-left-width: 4px; }
+            .edition-title { font-size: 1.3rem; }
+            .edition-block { margin-bottom: 60px; padding-top: 25px; }
 
-            .song-jacket {
-                margin-bottom: 8px;
-                /* 文字との隙間を少し狭める */
-                border-radius: 4px;
-                /* 角をほんのり丸めるとスマホで綺麗に見えます */
+            /* メンバーカードもスマホで2列で見やすく */
+            .member-grid, .support-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
             }
-
-            .song-title {
-                font-size: 0.8rem;
-                /* スマホで見やすい文字サイズ */
-                line-height: 1.3;
-            }
-
-            /* エディション見出しもスマホ向けにスリム化 */
-            .edition-header {
-                margin-bottom: 20px;
-                padding-left: 12px;
-                border-left-width: 4px;
-            }
-
-            .edition-title {
-                font-size: 1.3rem;
-                /* 見出し文字のサイズ調整 */
-            }
-
-            .edition-block {
-                margin-bottom: 60px;
-                padding-top: 25px;
-            }
+            .info { padding: 10px; }
+            .name-jp { font-size: 1.1rem; }
         }
     </style>
 </head>
 
 <body>
-    <!-- ナビゲーション（05_PROTOCOLはページ内スクロール） -->
+    <!-- ナビゲーション -->
     <nav>
         <a href="#home">01_HOME</a>
         <a href="#logic">02_LOGIC</a>
@@ -453,7 +239,7 @@
         <a href="#protocol">05_PROTOCOL</a>
     </nav>
 
-    <!-- ヒーローエリア -->
+    <!-- ヒーロー -->
     <header id="home">
         <div class="glitch-logo">MOZCRISIS</div>
         <div class="tagline">Execute: AlgorithmRock.sh --heavy --fast</div>
@@ -465,43 +251,24 @@
             <div class="section-header">
                 <h2>LOGIC &amp; CONCEPT</h2>
             </div>
-
-            <!-- コードブロック -->
             <div class="logic-box">
                 <span class="code-comment"># Algorithm Rock Definition</span><br>
                 <span class="code-keyword">import</span> human_impulse<br>
-                <span class="code-keyword">from</span> moz_system <span class="code-keyword">import</span>
-                precision_algorithm<br><br>
+                <span class="code-keyword">from</span> moz_system <span class="code-keyword">import</span> precision_algorithm<br><br>
                 <span class="code-func">def</span> <span class="code-func">execute_miracle_bug</span>():<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;collision = precision_algorithm + human_impulse<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> collision.generate_sound(<span
-                    class="code-string">"ALGORITHM_ROCK"</span>)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> collision.generate_sound(<span class="code-string">"ALGORITHM_ROCK"</span>)<br>
             </div>
 
-            <!-- マニフェスト（プロジェクト宣言） -->
             <div class="manifesto-card">
                 <div class="manifesto-badge">SYSTEM_MANIFESTO.md</div>
                 <h3 class="manifesto-title">MOZCRISIS とは</h3>
-                <p class="manifesto-lead">
-                    MOZCRISIS（モズクライシス）は、デジタル技術とロックミュージックの融合から生まれた、架空の音楽プロジェクトです。
-                </p>
-                <p>
-                    人間の衝動、感情、創造性。<br>
-                    そして、アルゴリズムによって生み出される精密な音響。
-                </p>
-                <p>
-                    相反するように見える二つの要素を衝突させ、その境界から新しい音楽を生み出すことを目的としています。<br>
-                    その音楽を、私たちは<span class="text-highlight">「Algorithm Rock（アルゴリズム・ロック）」</span>と呼びます。
-                </p>
-                <p>
-                    MOZCRISISは、単なるバンドという枠組みではありません。<br>
-                    音楽、物語、キャラクター、デジタル技術、そして生成AIを含むさまざまな制作手法を組み合わせながら、ひとつの架空世界を構築していくプロジェクトです。
-                </p>
+                <p class="manifesto-lead">MOZCRISIS（モズクライシス）は、デジタル技術とロックミュージックの融合から生まれた、架空の音楽プロジェクトです。</p>
+                <p>人間の衝動、感情、創造性。<br>そして、アルゴリズムによって生み出される精密な音響。</p>
+                <p>相反するように見える二つの要素を衝突させ、その境界から新しい音楽を生み出すことを目的としています。<br>その音楽を、私たちは<span class="text-highlight">「Algorithm Rock（アルゴリズム・ロック）」</span>と呼びます。</p>
+                <p>MOZCRISISは、単なるバンドという枠組みではありません。<br>音楽、物語、キャラクター、デジタル技術、そして生成AIを含むさまざまな制作手法を組み合わせながら、ひとつの架空世界を構築していくプロジェクトです。</p>
                 <div class="manifesto-quote">
-                    計算された音。<br>
-                    予測できない衝動。<br>
-                    その衝突によって生まれる、<span class="text-highlight-red">「奇跡のバグ」</span>。<br><br>
-                    それが、MOZCRISISです。
+                    計算された音。<br>予測できない衝動。<br>その衝突によって生まれる、<span class="text-highlight-red">「奇跡のバグ」</span>。<br><br>それが、MOZCRISISです。
                 </div>
             </div>
         </section>
@@ -511,95 +278,105 @@
             <div class="section-header">
                 <h2>MEMBERS</h2>
             </div>
+
+            <!-- コアメンバー 5名（各自のカラーを指定） -->
             <div class="member-grid">
-                <a href="members/rose.html" class="member-link">
+                <!-- ローズ（赤: #ff3e3e） -->
+                <a href="members/rose.html" class="member-link" style="--c: #ff3e3e;">
                     <div class="member-card">
                         <div class="img-wrapper"><img src="members/files/img/rose.png" alt="Rose"></div>
                         <div class="info">
-                            <div class="role-tag">Vo &amp; Gt</div><span class="name-jp">ローズ</span><span
-                                class="name-real">石神・Ｒ・フローレンス</span>
+                            <div class="role-tag">Vo &amp; Gt</div>
+                            <span class="name-jp">ローズ</span>
+                            <span class="name-real">石神・Ｒ・フローレンス</span>
                         </div>
                     </div>
                 </a>
-                <a href="members/yodo.html" class="member-link">
+
+                <!-- 淀（青: #0099ff） -->
+                <a href="members/yodo.html" class="member-link" style="--c: #0099ff;">
                     <div class="member-card">
                         <div class="img-wrapper"><img src="members/files/img/yodo.png" alt="Yodo"></div>
                         <div class="info">
-                            <div class="role-tag">Bass</div><span class="name-jp">淀</span><span class="name-real">御母衣
-                                京子</span>
+                            <div class="role-tag">Bass</div>
+                            <span class="name-jp">淀</span>
+                            <span class="name-real">御母衣 京子</span>
                         </div>
                     </div>
                 </a>
-                <a href="members/lena.html" class="member-link">
+
+                <!-- レナ（紫: #a855f7） -->
+                <a href="members/lena.html" class="member-link" style="--c: #a855f7;">
                     <div class="member-card">
                         <div class="img-wrapper"><img src="members/files/img/lena.png" alt="Lena"></div>
                         <div class="info">
-                            <div class="role-tag">Key &amp; Scream</div><span class="name-jp">レナ</span><span
-                                class="name-real">斎藤 エレーナ</span>
+                            <div class="role-tag">Key &amp; Scream</div>
+                            <span class="name-jp">レナ</span>
+                            <span class="name-real">斎藤 エレーナ</span>
                         </div>
                     </div>
                 </a>
-                <a href="members/mio.html" class="member-link">
+
+                <!-- ミオ（橙: #ff9900） -->
+                <a href="members/mio.html" class="member-link" style="--c: #ff9900;">
                     <div class="member-card">
                         <div class="img-wrapper"><img src="members/files/img/mio.png" alt="Mio"></div>
                         <div class="info">
-                            <div class="role-tag">Drums</div><span class="name-jp">ミオ</span><span
-                                class="name-real">ミオ・ロドリゲス</span>
+                            <div class="role-tag">Drums</div>
+                            <span class="name-jp">ミオ</span>
+                            <span class="name-real">ミオ・ロドリゲス</span>
                         </div>
                     </div>
                 </a>
-                <a href="members/jiwoo.html" class="member-link">
+
+                <!-- JIWOO（緑: #00e676） -->
+                <a href="members/jiwoo.html" class="member-link" style="--c: #00e676;">
                     <div class="member-card">
                         <div class="img-wrapper"><img src="members/files/img/jiwoo.png" alt="Jiwoo"></div>
                         <div class="info">
-                            <div class="role-tag">DJ</div><span class="name-jp">ジウ</span><span
-                                class="name-real">イ・ジウ</span>
+                            <div class="role-tag">DJ</div>
+                            <span class="name-jp">JIWOO</span>
+                            <span class="name-real">イ・ジウ</span>
                         </div>
                     </div>
                 </a>
             </div>
 
-            <!-- サポートユニット -->
-            <!-- サポートユニットの見出し -->
+            <!-- サポートユニット 3名 -->
             <div style="border-left: 3px solid var(--cyber-blue); padding-left: 15px; margin: 60px 0 25px;">
-                <h3
-                    style="font-family: var(--code-font); color: var(--cyber-blue); margin: 0; font-size: 1.1rem; letter-spacing: 2px;">
-                    // SUPPORT_UNITS</h3>
+                <h3 style="font-family: var(--code-font); color: var(--cyber-blue); margin: 0; font-size: 1.1rem; letter-spacing: 2px;">// SUPPORT_UNITS</h3>
             </div>
-
             <div class="support-grid">
-                <!-- アカネ -->
-                <a href="members/akane.html" class="member-link">
-                    <div class="member-card support-card">
-                        <div class="img-wrapper"><img src="members/files/img/akane.png" alt="Akane"
-                                onerror="this.src='members/files/img/default.png'"></div>
+                <!-- アカネ（暗いグレー: #737373） -->
+                <a href="members/akane.html" class="member-link" style="--c: #737373;">
+                    <div class="member-card">
+                        <div class="img-wrapper"><img src="members/files/img/akane.png" alt="Akane" onerror="this.src='members/files/img/default.png'"></div>
                         <div class="info">
-                            <div class="role-tag" style="color: #ff1744;">Support Guitar</div>
+                            <div class="role-tag">Support Guitar</div>
                             <span class="name-jp">アカネ</span>
                             <span class="name-real">田口 あかね</span>
                         </div>
                     </div>
                 </a>
 
-                <!-- モモ -->
-                <a href="members/momo.html" class="member-link">
-                    <div class="member-card support-card">
-                        <div class="img-wrapper"><img src="members/files/img/momo.png" alt="Momo"
-                                onerror="this.src='members/files/img/default.png'"></div>
+                <!-- モモ（ピンク: #ff66cc） -->
+                <a href="members/momo.html" class="member-link" style="--c: #ff66cc;">
+                    <div class="member-card">
+                        <div class="img-wrapper"><img src="members/files/img/momo.png" alt="Momo" onerror="this.src='members/files/img/default.png'"></div>
                         <div class="info">
-                            <div class="role-tag" style="color: #ff66cc;">Support Strings</div>
+                            <div class="role-tag">Support Shamisen</div>
                             <span class="name-jp">モモ</span>
                             <span class="name-real">櫻枝 桃香</span>
                         </div>
                     </div>
                 </a>
-                <!-- リコ -->
-                <a href="members/riko.html" class="member-link">
-                    <div class="member-card support-card">
-                        <div class="img-wrapper"><img src="members/files/img/riko.png" alt="Riko"
-                                onerror="this.src='members/files/img/default.png'"></div>
+
+                <!-- リコ（黄: #ffff00） -->
+                <a href="members/riko.html" class="member-link" style="--c: #ffff00;">
+                    <div class="member-card">
+                        <div class="img-wrapper"><img src="members/files/img/riko.png" alt="Riko" onerror="this.src='members/files/img/default.png'"></div>
                         <div class="info">
-                            <div class="role-tag" style="color: #ff66cc;">Support Strings</div>
+                            <div class="role-tag">Support Violin</div>
                             <span class="name-jp">リコ</span>
                             <span class="name-real">山本 桐子</span>
                         </div>
@@ -671,28 +448,25 @@
 
                     editions[editionName].forEach(song => {
                         const sCard = document.createElement('a');
-                        sCard.href = `songs.html?id=${song.id}`;
-                        sCard.className = 'song-card';
-                        sCard.href = `songs/${song.id}.html`; // 生成された個別HTMLへリンク！
+                        sCard.href = `songs/${song.id}.html`;
                         sCard.className = 'song-card';
                         sCard.innerHTML = `
                             <img src="songs/files/${song.id}/${song.id}_artwork.jpg" class="song-jacket" alt="${song.title}">
                             <span class="song-title">${song.title}</span>
-`;
+                        `;
                         sGrid.appendChild(sCard);
                     });
 
                     edWrapper.appendChild(sGrid);
                     container.appendChild(edWrapper);
                 }
-            } catch (e) {
+            } catch (e) { 
                 console.error(e);
-                document.getElementById('edition-container').innerHTML =
-                    `<p style="color:var(--main-red);">[ERROR] FAILED_TO_FETCH_RESOURCES</p>`;
+                document.getElementById('edition-container').innerHTML = 
+                    `<p style="color:var(--main-red);">[ERROR] FAILED_TO_FETCH_RESOURCES</p>`; 
             }
         }
         window.addEventListener('DOMContentLoaded', loadDiscography);
     </script>
 </body>
-
 </html>
