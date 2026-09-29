@@ -193,26 +193,26 @@
     "realName": "山本 桐子",
     "role": "Support Violin / Stradivarius Aristocrat",
     "color": "#ffff00",
-    "quote": "「下品な電子音の塊ね。……でも、私の旋律が乗ってあげてもよろしくて？」",
+    "quote": "「下品な電子音の塊ね。……でも、わたくしの華麗な旋律が乗ってあげてもよろしくて？」",
     "specs": [
       {
         "label": "VIOLIN VALUE",
         "value": "ストラディバリウス"
       },
       {
+        "label": "PITCH ACCURACY",
+        "value": "絶対音感 (Absolute Pitch)"
+      },
+      {
         "label": "PRIDE LEVEL",
         "value": "最高峰 (超高慢なお嬢様)"
       },
       {
-        "label": "ATTENDANCE",
-        "value": "オファー拒否率 0% (皆勤賞)"
-      },
-      {
-        "label": "TRUE FEELINGS",
-        "value": "内心では音を認めている (隠れツンデレ)"
+        "label": "OFFER ACCEPT",
+        "value": "拒否率 0% (内心大歓迎)"
       }
     ],
-    "bio": "並外れてプライドが高いバイオリニストのお嬢様。名家出身で、時価数億円とも言われるストラディバリウスを携えてクラシック界の王道を歩む。しばしばMOZCRISISのラウドなサウンドを「下品」「騒音」とバカにするような口を利くが、セッションのオファーを蹴ったことは一度もなく、内心では彼女たちの音楽性に強烈に惹かれ、認めている。",
-    "gear": "Violin: Antonio Stradivarius / Pedigree: 格式高き名門 / Offer Rejection: 0回"
+    "bio": "並外れてプライドが高いバイオリニストのお嬢様。名家出身で、時価数億円とも言われる本物のストラディバリウスを携えてクラシック界の王道を歩む。人間離れした「絶対音感」の持ち主であり、MOZCRISISの複雑怪奇なアルゴリズムや変拍子も一聴で完璧に把握してしまう。しばしば彼女たちのサウンドを「騒音」とバカにするような口を利くが、セッションのオファーを蹴ったことは一度もなく、内心ではその唯一無二の音楽性に強烈に惹かれている。",
+    "gear": "Violin: Antonio Stradivarius / Ear: Absolute Pitch / True Nature: 重度のツンデレ"
   }
 }
