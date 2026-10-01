@@ -1,9 +1,9 @@
-#!/usr/bin/env python3
+#!/usr/init/env python3
 # -*- coding: utf-8 -*-
 """
 MOZCRISIS Unified Static Site Generator (SSG)
 - 楽曲HTML生成: data/songs.json -> songs/{sid}.html (資産: songs/files/{sid}/)
-- メンバーHTML生成: data/members.json -> members/{mid}.html (資産: members/files/img/)
+- メンバーHTML生成: data/members.json -> members/{mid}.html (資産: members/files/img/, members/files/voice/)
 """
 
 import json
@@ -151,11 +151,14 @@ def build_songs():
 
         print(f"  [Song OK] songs/{sid}.html")
 
+
 # ==========================================
 # 2. メンバー（Members）ビルド処理
 # ==========================================
 MEMBERS_JSON = os.path.join(DATA_DIR, "members.json")
 MEMBERS_DIR = os.path.join(BASE_DIR, "members")
+MEMBERS_FILES_DIR = os.path.join(MEMBERS_DIR, "files")
+VOICE_DIR = os.path.join(MEMBERS_FILES_DIR, "voice")
 
 MEMBER_HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="ja">
@@ -163,7 +166,7 @@ MEMBER_HTML_TEMPLATE = """<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PROFILE: {name_upper} ({name}) | MOZCRISIS</title>
-    <meta name="description" content="MOZCRISISメンバー「{name}（{real_name}）」公式プロフィール。担当：{role}。{quote}">
+    <meta name="description" content="MOZCRISISメンバー「{name}（{real_name}）」公式プロフィール。担当：{role} (CV: {cv})。{quote}">
     
     <!-- OGP (SNSシェア対策) -->
     <meta property="og:title" content="{name} ({real_name}) | MOZCRISIS PROFILE">
@@ -212,20 +215,43 @@ MEMBER_HTML_TEMPLATE = """<!DOCTYPE html>
         nav a {{ color: var(--member-color); text-decoration: none; font-weight: bold; font-size: 0.85rem; }}
         nav a:hover {{ text-decoration: underline; }}
         .container {{ max-width: 900px; margin: 0 auto; padding: 60px 20px; }}
-        .header-area {{ margin-bottom: 60px; border-left: 5px solid var(--member-color); padding-left: 30px; }}
+        .header-area {{ margin-bottom: 50px; border-left: 5px solid var(--member-color); padding-left: 30px; }}
         .role-title {{ font-family: var(--code-font); color: var(--member-color); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }}
-        .name-main {{ font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; margin: 10px 0; }}
+        .name-main {{ font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; margin: 10px 0 5px; }}
+        .cv-credit {{ font-family: var(--code-font); font-size: 0.9rem; color: #888; margin-bottom: 10px; }}
+        .cv-credit span {{ color: var(--member-color); font-weight: bold; }}
         .name-sub {{ font-size: 1rem; color: #777; font-family: var(--code-font); }}
+        
+        .quote-container {{ margin: 40px 0; }}
         .quote-box {{ 
             font-size: clamp(1.1rem, 3vw, 1.4rem); 
             font-style: italic; 
-            margin: 40px 0; 
             color: #fff; 
-            padding-bottom: 20px; 
+            padding-bottom: 15px; 
             border-bottom: 2px solid var(--member-color); 
             width: fit-content; 
             line-height: 1.6;
         }}
+        .voice-btn {{
+            background: transparent;
+            border: 1px solid var(--member-color);
+            color: var(--member-color);
+            font-family: var(--code-font);
+            font-size: 0.8rem;
+            padding: 8px 16px;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }}
+        .voice-btn:hover {{
+            background: var(--member-color);
+            color: #000;
+            box-shadow: 0 0 10px var(--member-color);
+        }}
+
         .spec-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 60px; }}
         .spec-item {{ background: rgba(255, 255, 255, 0.03); padding: 15px; border: 1px solid #222; }}
         .spec-label {{ font-family: var(--code-font); font-size: 0.7rem; color: var(--member-color); margin-bottom: 5px; }}
@@ -243,26 +269,43 @@ MEMBER_HTML_TEMPLATE = """<!DOCTYPE html>
     <div class="watermark">
         <img src="files/img/{mid}_stand.png" alt="{name} Stand Visual" onerror="this.style.display='none'">
     </div>
+    
     <nav>
         <a href="../index.html">&lt;&lt; RETURN_TO_HOME</a>
     </nav>
+    
     <div class="container">
         <header class="header-area">
             <div class="role-title">{role}</div>
             <h1 class="name-main">{name}</h1>
+            <div class="cv-credit">CV: <span>{cv}</span></div>
             <div class="name-sub">{real_name}</div>
         </header>
-        <div class="quote-box">{quote}</div>
+
+        <div class="quote-container">
+            <div class="quote-box">{quote}</div>
+            {voice_button_html}
+        </div>
+
         <div class="spec-grid">
             {specs_html}
         </div>
+
         <section class="bio-section">
             <h3>BIOGRAPHY</h3>
             <p class="bio-text">{bio}</p>
+            
             <h3>EQUIPMENT &amp; PARAMETERS</h3>
             <div class="gear-box">{gear}</div>
         </section>
     </div>
+
+    <script>
+        function playVoice(audioPath) {{
+            const audio = new Audio(audioPath);
+            audio.play().catch(e => console.log("Audio play blocked or missing:", e));
+        }}
+    </script>
 </body>
 </html>
 """
@@ -273,6 +316,7 @@ def build_members():
         return
 
     os.makedirs(MEMBERS_DIR, exist_ok=True)
+    os.makedirs(VOICE_DIR, exist_ok=True)
 
     with open(MEMBERS_JSON, "r", encoding="utf-8") as f:
         members = json.load(f)
@@ -288,6 +332,21 @@ def build_members():
         bio = data.get("bio", "")
         gear = data.get("gear", "")
         specs = data.get("specs", [])
+        
+        # CV情報と音声ファイルの取得
+        cv = data.get("cv", "TBD")
+        voice_file = data.get("voiceFile", "")
+
+        # ボイスファイル（members/files/voice/{voice_file}）が存在する場合のみボタンを生成
+        voice_path = os.path.join(VOICE_DIR, voice_file)
+        if voice_file and os.path.exists(voice_path):
+            voice_button_html = f"""
+            <button class="voice-btn" onclick="playVoice('files/voice/{voice_file}')">
+                ▶ PLAY_VOICE_SAMPLE
+            </button>
+            """
+        else:
+            voice_button_html = ""
 
         specs_html = ""
         for spec in specs:
@@ -307,6 +366,8 @@ def build_members():
             role=role,
             color=color,
             quote=quote,
+            cv=cv,
+            voice_button_html=voice_button_html,
             bio=bio,
             gear=gear,
             specs_html=specs_html

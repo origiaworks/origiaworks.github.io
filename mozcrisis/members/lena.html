@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PROFILE: LENA (レナ) | MOZCRISIS</title>
-    <meta name="description" content="MOZCRISISメンバー「レナ（斎藤 エレーナ）」公式プロフィール。担当：Key & Scream / Overload。「ロリータしか勝たん。」">
+    <meta name="description" content="MOZCRISISメンバー「レナ（斎藤 エレーナ）」公式プロフィール。担当：Key & Scream / Overload (CV: VOICEVOX:雨晴はう)。「ロリータしか勝たん。」">
     
     <!-- OGP (SNSシェア対策) -->
     <meta property="og:title" content="レナ (斎藤 エレーナ) | MOZCRISIS PROFILE">
@@ -53,20 +53,43 @@
         nav a { color: var(--member-color); text-decoration: none; font-weight: bold; font-size: 0.85rem; }
         nav a:hover { text-decoration: underline; }
         .container { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
-        .header-area { margin-bottom: 60px; border-left: 5px solid var(--member-color); padding-left: 30px; }
+        .header-area { margin-bottom: 50px; border-left: 5px solid var(--member-color); padding-left: 30px; }
         .role-title { font-family: var(--code-font); color: var(--member-color); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
-        .name-main { font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; margin: 10px 0; }
+        .name-main { font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; margin: 10px 0 5px; }
+        .cv-credit { font-family: var(--code-font); font-size: 0.9rem; color: #888; margin-bottom: 10px; }
+        .cv-credit span { color: var(--member-color); font-weight: bold; }
         .name-sub { font-size: 1rem; color: #777; font-family: var(--code-font); }
+        
+        .quote-container { margin: 40px 0; }
         .quote-box { 
             font-size: clamp(1.1rem, 3vw, 1.4rem); 
             font-style: italic; 
-            margin: 40px 0; 
             color: #fff; 
-            padding-bottom: 20px; 
+            padding-bottom: 15px; 
             border-bottom: 2px solid var(--member-color); 
             width: fit-content; 
             line-height: 1.6;
         }
+        .voice-btn {
+            background: transparent;
+            border: 1px solid var(--member-color);
+            color: var(--member-color);
+            font-family: var(--code-font);
+            font-size: 0.8rem;
+            padding: 8px 16px;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .voice-btn:hover {
+            background: var(--member-color);
+            color: #000;
+            box-shadow: 0 0 10px var(--member-color);
+        }
+
         .spec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 60px; }
         .spec-item { background: rgba(255, 255, 255, 0.03); padding: 15px; border: 1px solid #222; }
         .spec-label { font-family: var(--code-font); font-size: 0.7rem; color: var(--member-color); margin-bottom: 5px; }
@@ -84,16 +107,28 @@
     <div class="watermark">
         <img src="files/img/lena_stand.png" alt="レナ Stand Visual" onerror="this.style.display='none'">
     </div>
+    
     <nav>
         <a href="../index.html">&lt;&lt; RETURN_TO_HOME</a>
     </nav>
+    
     <div class="container">
         <header class="header-area">
             <div class="role-title">Key & Scream / Overload</div>
             <h1 class="name-main">レナ</h1>
+            <div class="cv-credit">CV: <span>VOICEVOX:雨晴はう</span></div>
             <div class="name-sub">斎藤 エレーナ</div>
         </header>
-        <div class="quote-box">「ロリータしか勝たん。」</div>
+
+        <div class="quote-container">
+            <div class="quote-box">「ロリータしか勝たん。」</div>
+            
+            <button class="voice-btn" onclick="playVoice('files/voice/lena_voice.mp3')">
+                ▶ PLAY_VOICE_SAMPLE
+            </button>
+            
+        </div>
+
         <div class="spec-grid">
             
             <div class="spec-item">
@@ -113,12 +148,21 @@
                 <div class="spec-value">ロリータしか勝たん。</div>
             </div>
         </div>
+
         <section class="bio-section">
             <h3>BIOGRAPHY</h3>
             <p class="bio-text">ロシア系ハーフの元天才ピアニスト。圧倒的な美貌とステージでの強烈な存在感、そして超絶技巧のキーボードと咆哮（スクリーム）でバンドの音圧を爆発させる。クラシックピアノの世界大会で入賞した輝かしい経歴を持つが、普段の性格は筋金入りの「天然」。日本語は少々苦手だが、愛してやまない「ロリータしか勝たん。」というフレーズだけは完璧に使いこなす。</p>
+            
             <h3>EQUIPMENT &amp; PARAMETERS</h3>
             <div class="gear-box">Keyboard: High-End Workstation Synthesizer / Fashion: Gothic Lolita / Catchphrase: ロリータしか勝たん。</div>
         </section>
     </div>
+
+    <script>
+        function playVoice(audioPath) {
+            const audio = new Audio(audioPath);
+            audio.play().catch(e => console.log("Audio play blocked or missing:", e));
+        }
+    </script>
 </body>
 </html>

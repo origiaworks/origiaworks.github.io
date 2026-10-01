@@ -3,6 +3,8 @@
     "name": "ローズ",
     "realName": "石神・Ｒ・フローレンス",
     "role": "Vo & Gt / Band Architect",
+    "cv": "VOICEVOX:四国めたん",
+    "voiceFile": "rose_voice.mp3",
     "color": "#ff3e3e",
     "quote": "「感情のオーバーフローを、1行のコードでリゾルブしてやるよ。」",
     "specs": [
@@ -30,8 +32,10 @@
     "name": "淀",
     "realName": "御母衣 京子",
     "role": "Bass / Core Module / Sister",
+    "cv": "VOICEVOX:中部つるぎ",
+    "voiceFile": "yodo_voice.mp3",
     "color": "#0099ff",
-    "quote": "「反骨と品格は両立する。それが私のロックだ。」",
+    "quote": "「反骨と品格は両立する。それがアタシのロックだ。」",
     "specs": [
       {
         "label": "STATUS",
@@ -57,6 +61,8 @@
     "name": "レナ",
     "realName": "斎藤 エレーナ",
     "role": "Key & Scream / Overload",
+    "cv": "VOICEVOX:雨晴はう",
+    "voiceFile": "lena_voice.mp3",
     "color": "#a855f7",
     "quote": "「ロリータしか勝たん。」",
     "specs": [
@@ -84,6 +90,8 @@
     "name": "ミオ",
     "realName": "ミオ・ロドリゲス",
     "role": "Drums / Intuitive Engine",
+    "cv": "VOICEVOX:春日部つむぎ",
+    "voiceFile": "mio_voice.mp3",
     "color": "#ff9900",
     "quote": "「どんなリズムでも、ボクの直感で完璧にコントロールしてやる！」",
     "specs": [
@@ -111,6 +119,8 @@
     "name": "JIWOO",
     "realName": "イ・ジウ",
     "role": "DJ / Encryption Beats",
+    "cv": "VOICEVOX:冥鳴ひまり",
+    "voiceFile": "jiwoo_voice.mp3",
     "color": "#00e676",
     "quote": "「.......わたしも、がんばる。」",
     "specs": [
@@ -138,6 +148,7 @@
     "name": "アカネ",
     "realName": "田口 あかね",
     "role": "Support Guitar / Free-spirited Genius",
+    "cv": "null",
     "color": "#737373",
     "quote": "「音楽理論？ 知らねえよ。アタシが弾いた音が一番カッコいいコードだろ。」",
     "specs": [
@@ -165,6 +176,7 @@
     "name": "モモ",
     "realName": "櫻枝 桃香",
     "role": "Support Shamisen / Clan Master",
+    "cv": "null",
     "color": "#ff66cc",
     "quote": "「伝統だの型だの、型にハメられてちゃ良い音は鳴らねえよ。ついてきな！」",
     "specs": [
@@ -192,6 +204,7 @@
     "name": "リコ",
     "realName": "山本 桐子",
     "role": "Support Violin / Stradivarius Aristocrat",
+    "cv": "null",
     "color": "#ffff00",
     "quote": "「下品な電子音の塊ね。……でも、わたくしの華麗な旋律が乗ってあげてもよろしくて？」",
     "specs": [

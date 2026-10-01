@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PROFILE: RIKO (リコ) | MOZCRISIS</title>
-    <meta name="description" content="MOZCRISISメンバー「リコ（山本 桐子）」公式プロフィール。担当：Support Violin / Stradivarius Aristocrat。「下品な電子音の塊ね。……でも、わたくしの華麗な旋律が乗ってあげてもよろしくて？」">
+    <meta name="description" content="MOZCRISISメンバー「リコ（山本 桐子）」公式プロフィール。担当：Support Violin / Stradivarius Aristocrat (CV: null)。「下品な電子音の塊ね。……でも、わたくしの華麗な旋律が乗ってあげてもよろしくて？」">
     
     <!-- OGP (SNSシェア対策) -->
     <meta property="og:title" content="リコ (山本 桐子) | MOZCRISIS PROFILE">
@@ -53,20 +53,43 @@
         nav a { color: var(--member-color); text-decoration: none; font-weight: bold; font-size: 0.85rem; }
         nav a:hover { text-decoration: underline; }
         .container { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
-        .header-area { margin-bottom: 60px; border-left: 5px solid var(--member-color); padding-left: 30px; }
+        .header-area { margin-bottom: 50px; border-left: 5px solid var(--member-color); padding-left: 30px; }
         .role-title { font-family: var(--code-font); color: var(--member-color); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
-        .name-main { font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; margin: 10px 0; }
+        .name-main { font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; margin: 10px 0 5px; }
+        .cv-credit { font-family: var(--code-font); font-size: 0.9rem; color: #888; margin-bottom: 10px; }
+        .cv-credit span { color: var(--member-color); font-weight: bold; }
         .name-sub { font-size: 1rem; color: #777; font-family: var(--code-font); }
+        
+        .quote-container { margin: 40px 0; }
         .quote-box { 
             font-size: clamp(1.1rem, 3vw, 1.4rem); 
             font-style: italic; 
-            margin: 40px 0; 
             color: #fff; 
-            padding-bottom: 20px; 
+            padding-bottom: 15px; 
             border-bottom: 2px solid var(--member-color); 
             width: fit-content; 
             line-height: 1.6;
         }
+        .voice-btn {
+            background: transparent;
+            border: 1px solid var(--member-color);
+            color: var(--member-color);
+            font-family: var(--code-font);
+            font-size: 0.8rem;
+            padding: 8px 16px;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .voice-btn:hover {
+            background: var(--member-color);
+            color: #000;
+            box-shadow: 0 0 10px var(--member-color);
+        }
+
         .spec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 60px; }
         .spec-item { background: rgba(255, 255, 255, 0.03); padding: 15px; border: 1px solid #222; }
         .spec-label { font-family: var(--code-font); font-size: 0.7rem; color: var(--member-color); margin-bottom: 5px; }
@@ -84,16 +107,24 @@
     <div class="watermark">
         <img src="files/img/riko_stand.png" alt="リコ Stand Visual" onerror="this.style.display='none'">
     </div>
+    
     <nav>
         <a href="../index.html">&lt;&lt; RETURN_TO_HOME</a>
     </nav>
+    
     <div class="container">
         <header class="header-area">
             <div class="role-title">Support Violin / Stradivarius Aristocrat</div>
             <h1 class="name-main">リコ</h1>
+            <div class="cv-credit">CV: <span>null</span></div>
             <div class="name-sub">山本 桐子</div>
         </header>
-        <div class="quote-box">「下品な電子音の塊ね。……でも、わたくしの華麗な旋律が乗ってあげてもよろしくて？」</div>
+
+        <div class="quote-container">
+            <div class="quote-box">「下品な電子音の塊ね。……でも、わたくしの華麗な旋律が乗ってあげてもよろしくて？」</div>
+            
+        </div>
+
         <div class="spec-grid">
             
             <div class="spec-item">
@@ -113,12 +144,21 @@
                 <div class="spec-value">拒否率 0% (内心大歓迎)</div>
             </div>
         </div>
+
         <section class="bio-section">
             <h3>BIOGRAPHY</h3>
             <p class="bio-text">並外れてプライドが高いバイオリニストのお嬢様。名家出身で、時価数億円とも言われる本物のストラディバリウスを携えてクラシック界の王道を歩む。人間離れした「絶対音感」の持ち主であり、MOZCRISISの複雑怪奇なアルゴリズムや変拍子も一聴で完璧に把握してしまう。しばしば彼女たちのサウンドを「騒音」とバカにするような口を利くが、セッションのオファーを蹴ったことは一度もなく、内心ではその唯一無二の音楽性に強烈に惹かれている。</p>
+            
             <h3>EQUIPMENT &amp; PARAMETERS</h3>
             <div class="gear-box">Violin: Antonio Stradivarius / Ear: Absolute Pitch / True Nature: 重度のツンデレ</div>
         </section>
     </div>
+
+    <script>
+        function playVoice(audioPath) {
+            const audio = new Audio(audioPath);
+            audio.play().catch(e => console.log("Audio play blocked or missing:", e));
+        }
+    </script>
 </body>
 </html>
