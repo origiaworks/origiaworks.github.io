@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOGRAPHY & CONCEPT | MOZCRISIS</title>
+    <style>
+        :root {
+            --main-red: #ff3e3e;
+            --cyber-blue: #00f3ff;
+            --bg-black: #0a0a0a;
+            --text-white: #e0e0e0;
+            --code-font: 'Consolas', 'Monaco', 'Courier New', monospace;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: var(--text-white);
+            font-family: var(--code-font), 'Segoe UI', sans-serif;
+            margin: 0;
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+        }
+
+        nav {
+            padding: 15px 20px;
+            border-bottom: 1px solid #222;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(8px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+
+        nav a {
+            color: var(--main-red);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        nav a:hover {
+            color: var(--cyber-blue);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 120px 20px 60px; /* 固定ナビの高さ分トップに余剰を確保 */
+        }
+
+        header {
+            margin-bottom: 60px;
+            border-left: 5px solid var(--main-red);
+            padding-left: 30px;
+        }
+
+        h1 {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            color: var(--main-red);
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+
+        section {
+            margin-bottom: 80px;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            color: var(--text-white);
+            display: flex;
+            align-items: center;
+        }
+
+        h2::before {
+            content: "[LOG] ";
+            color: var(--cyber-blue);
+            margin-right: 10px;
+        }
+
+        /* ロジック・コード風ボックス */
+        .logic-box {
+            background: #000;
+            border: 1px solid #333;
+            padding: 30px;
+            font-family: var(--code-font);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .logic-box::before {
+            content: "lyric_logic.sh";
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--main-red);
+            padding: 2px 12px;
+            font-size: 0.75rem;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .code-comment { color: #6a9955; }
+        .code-keyword { color: #c586c0; }
+        .code-func { color: #dcdcaa; }
+
+        /* マニフェストカード */
+        .manifesto-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid #222;
+            border-left: 4px solid var(--cyber-blue);
+            padding: 35px;
+            margin-bottom: 50px;
+            line-height: 1.9;
+            color: #ccc;
+            font-size: 0.95rem;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .manifesto-lead {
+            font-size: 1.05rem;
+            color: #fff;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .manifesto-quote {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px dashed #333;
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: #eee;
+            line-height: 2;
+            font-family: var(--code-font);
+        }
+
+        .text-highlight { color: var(--cyber-blue); font-weight: bold; }
+        .text-highlight-red { color: var(--main-red); font-weight: bold; }
+
+        /* タイムライン用スタイル */
+        .timeline-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            font-family: var(--code-font);
+        }
+
+        .timeline-item {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #222;
+            border-left: 3px solid #444;
+            padding: 20px 25px;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .timeline-item:hover {
+            border-color: #444;
+            background: rgba(20, 20, 20, 0.5);
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -8px;
+            top: 25px;
+            width: 9px;
+            height: 9px;
+            background: var(--bg-black);
+            border: 2px solid var(--cyber-blue);
+            border-radius: 50%;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .t-version {
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .status-done { color: var(--cyber-blue); }
+        .status-maintenance { color: #ffaa00; }
+        .status-upcoming { color: var(--main-red); }
+
+        .t-date {
+            font-size: 0.75rem;
+            color: #777;
+        }
+
+        .t-desc {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #aaa;
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid #222;
+            color: #444;
+            font-size: 0.7rem;
+            font-family: var(--code-font);
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 90px 15px 40px; }
+            header { padding-left: 15px; }
+            .timeline-header { flex-direction: column; align-items: flex-start; gap: 2px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav><a href="index.html">&lt;&lt; 00_SYS_ROOT >> RETURN_TO_HOME</a></nav>
+
+    <div class="container">
+        <header>
+            <h1>BIOGRAPHY &amp; CONCEPT</h1>
+            <div class="subtitle">MOZCRISIS プロジェクトの思想と歴史 (System Architecture & History)</div>
+        </header>
+
+        <section>
+            <h2>ALGORITHM_ROCK_DEFINITION</h2>
+            <div class="logic-box">
+                <span class="code-comment"># Algorithm Rock Definition</span><br>
+                <span class="code-keyword">import</span> human_impulse<br>
+                <span class="code-keyword">from</span> moz_system <span class="code-keyword">import</span> precision_algorithm<br><br>
+                <span class="code-func">def</span> <span class="code-func">execute_miracle_bug</span>():<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;collision = precision_algorithm + human_impulse<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> collision.generate_sound(<span class="code-string">"ALGORITHM_ROCK"</span>)
+            </div>
+
+            <div class="manifesto-card">
+                <p class="manifesto-lead">
+                    MOZCRISIS（モズクライシス）は、デジタル技術とロックミュージックの融合から生まれた、架空の音楽プロジェクトです。
+                </p>
+                <p>
+                    人間の衝動、感情、創造性。<br>
+                    そして、アルゴリズムによって生み出される精密な音響。
+                </p>
+                <p>
+                    相反するように見える二つの要素を衝突させ、その境界から新しい音楽を生み出すことを目的としています。<br>
+                    その音楽を、私たちは<span class="text-highlight">「Algorithm Rock（アルゴリズム・ロック）」</span>と呼びます。
+                </p>
+                <p>
+                    MOZCRISISは、単なるバンドという枠組みではありません。<br>
+                    音楽、物語、キャラクター、デジタル技術、そして生成AIを含むさまざまな制作手法を組み合わせながら、ひとつの架空世界を構築していくプロジェクトです。
+                </p>
+                <div class="manifesto-quote">
+                    計算された音。<br>
+                    予測できない衝動。<br>
+                    その衝突によって生まれる、<span class="text-highlight-red">「奇跡のバグ」</span>。<br><br>
+                    それが、MOZCRISISです。
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>SYSTEM_TIMELINE &amp; MAINTENANCE_LOG</h2>
+            <div class="timeline-list">
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="t-version status-done">REC_001 [COMPLETED]</span>
+                        <span class="t-date">2026.04.27 - 2026.05.19</span>
+                    </div>
+                    <p class="t-desc">初期ブートシーケンス。デジタルと衝動の衝突、およびバンドの基礎アルゴリズムを構築した第1期生成サイクル。</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="t-version status-maintenance">OFF_SEASON [MAINTENANCE]</span>
+                        <span class="t-date">Between REC_001 &amp; REC_002</span>
+                    </div>
+                    <p class="t-desc">次期サイクルに向けた作詞・世界観構築。ウェブサイトの開設。YouTubeの開設。</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="t-version status-done">REC_002 [COMPLETED]</span>
+                        <span class="t-date">2026.08.28 - 2026.09.26</span>
+                    </div>
+                    <p class="t-desc">JIWOOの正式メンバー加入に伴い、エレクトロ色の強いアグレッシブな楽曲群や、ラップアプローチを取り入れた新境地を開拓。キービジュアルに手描きによる人間的介入の深化。</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="t-version status-maintenance">OFF_SEASON [MAINTENANCE]</span>
+                        <span class="t-date">Between REC_002 &amp; REC_003</span>
+                    </div>
+                    <p class="t-desc">サポートメンバーのビジュアル公開、オーディオドラマ展開、YouTube Shortsによる多角的プロモーション展開。次世代リリックのコーディングおよび音響システムのアップデート準備。</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <span class="t-version status-upcoming">REC_003 [SCHEDULED]</span>
+                        <span class="t-date">2026.10.01 - (予定)</span>
+                    </div>
+                    <p class="t-desc">新サポート陣のシナジー、さらなる音響解析を組み込んだ第3期生成サイクル。</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        EXECUTION_COMPLETE: MOZCRISIS SYSTEM NODE_002 (BIO &amp; TIMELINE)
+    </footer>
+
+</body>
+
+</html>

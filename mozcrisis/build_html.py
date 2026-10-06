@@ -1,9 +1,10 @@
-#!/usr/init/env python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 MOZCRISIS Unified Static Site Generator (SSG)
-- 楽曲HTML生成: data/songs.json -> songs/{sid}.html (資産: songs/files/{sid}/)
-- メンバーHTML生成: data/members.json -> members/{mid}.html (資産: members/files/img/, members/files/voice/)
+- 楽曲個別HTML生成: data/songs.json -> songs/{sid}.html
+- 全曲カタログ生成: data/songs.json -> discography.html
+- メンバーHTML生成: data/members.json -> members/{mid}.html
 """
 
 import json
@@ -13,11 +14,12 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 
 # ==========================================
-# 1. 楽曲（Songs）ビルド処理
+# 1. 楽曲（Songs）および カタログ ビルド処理
 # ==========================================
 SONGS_JSON = os.path.join(DATA_DIR, "songs.json")
 SONGS_DIR = os.path.join(BASE_DIR, "songs")
 SONGS_FILES_DIR = os.path.join(SONGS_DIR, "files")
+DISCOGRAPHY_HTML_PATH = os.path.join(BASE_DIR, "discography.html")
 
 SONG_HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="ja">
@@ -99,6 +101,60 @@ SONG_HTML_TEMPLATE = """<!DOCTYPE html>
 </html>
 """
 
+DISCOGRAPHY_HTML_TEMPLATE = """<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DISCOGRAPHY | MOZCRISIS [No Copyright Music Archive]</title>
+    <meta name="description" content="MOZCRISIS（モズクライシス）が放つ全楽曲の完全カタログ。商用利用可能なアルゴリズム・ロックのフリーBGM音源（WAV/MP3）および歌詞をシーズン別に網羅。">
+    <style>
+        :root {{
+            --main-red: #ff3e3e;
+            --cyber-blue: #00f3ff;
+            --bg-black: #0a0a0a;
+            --card-bg: #151515;
+            --text-white: #e0e0e0;
+            --code-font: 'Consolas', 'Monaco', 'Courier New', monospace;
+        }}
+        body {{ background-color: var(--bg-black); color: var(--text-white); font-family: 'Segoe UI', sans-serif; margin: 0; line-height: 1.6; }}
+        nav {{ padding: 15px 20px; font-family: var(--code-font); border-bottom: 1px solid #222; background: rgba(0, 0, 0, 0.9); position: fixed; width: 100%; top: 0; z-index: 1000; box-sizing: border-box; }}
+        nav a {{ color: var(--main-red); text-decoration: none; font-size: 0.8rem; font-weight: bold; }}
+        nav a:hover {{ color: var(--cyber-blue); }}
+        .container {{ max-width: 1200px; margin: 0 auto; padding: 100px 20px 80px; }}
+        header {{ margin-bottom: 50px; border-left: 5px solid var(--main-red); padding-left: 30px; }}
+        h1 {{ font-family: var(--code-font); font-size: clamp(2rem, 5vw, 3rem); margin: 0; text-transform: uppercase; letter-spacing: 2px; }}
+        .subtitle {{ color: var(--cyber-blue); font-size: 0.85rem; font-family: var(--code-font); margin-top: 10px; }}
+        .season-block {{ margin-bottom: 60px; border-top: 1px solid #222; padding-top: 30px; }}
+        .season-header {{ margin-bottom: 25px; border-left: 4px solid var(--cyber-blue); padding-left: 15px; }}
+        .season-title {{ font-family: var(--code-font); font-size: 1.3rem; color: #fff; margin: 0; letter-spacing: 2px; }}
+        .song-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 15px; }}
+        .song-card {{ background: var(--card-bg); border: 1px solid #222; text-decoration: none; color: inherit; display: block; transition: 0.3s; }}
+        .song-card:hover {{ border-color: var(--cyber-blue); transform: translateY(-3px); box-shadow: 0 0 10px rgba(0, 243, 255, 0.2); }}
+        .song-jacket {{ width: 100%; aspect-ratio: 1 / 1; background: #111; object-fit: cover; display: block; }}
+        .song-info {{ padding: 8px; }}
+        .song-meta {{ font-family: var(--code-font); font-size: 0.55rem; color: var(--main-red); margin-bottom: 2px; display: block; }}
+        .song-title {{ font-size: 0.8rem; font-weight: bold; color: #fff; display: block; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }}
+        footer {{ background: #050505; padding: 40px 20px; text-align: center; border-top: 1px solid #1a1a1a; font-family: var(--code-font); font-size: 0.7rem; color: #555; }}
+        @media (max-width: 768px) {{ .container {{ padding: 80px 12px 30px; }} .song-grid {{ grid-template-columns: repeat(3, 1fr); gap: 10px; }} .song-info {{ padding: 6px; }} .song-title {{ font-size: 0.7rem; }} }}
+    </style>
+</head>
+<body>
+    <nav><a href="index.html">&lt;&lt; RETURN_TO_DASHBOARD</a></nav>
+    <div class="container">
+        <header>
+            <h1>DISCOGRAPHY</h1>
+            <div class="subtitle">// ALL AUDIO ASSETS &amp; LYRICS ARCHIVE</div>
+        </header>
+        {seasons_html}
+    </div>
+    <footer>
+        MOZCRISIS / ORIGIAWORKS - SYSTEM CATALOG NODE
+    </footer>
+</body>
+</html>
+"""
+
 def build_songs():
     if not os.path.exists(SONGS_JSON):
         print(f"[ERROR] {SONGS_JSON} が見つかりません。")
@@ -111,6 +167,7 @@ def build_songs():
 
     print(f"\n[*] 楽曲データビルド開始 (全 {len(songs)} 曲)...")
 
+    # 1. 各楽曲の個別HTML生成
     for sid, data in songs.items():
         title = data.get("title", sid)
         release = data.get("release", "----")
@@ -149,7 +206,48 @@ def build_songs():
         with open(out_path, "w", encoding="utf-8") as out:
             out.write(html_content)
 
-        print(f"  [Song OK] songs/{sid}.html")
+    print("  [Song OK] 全個別HTML生成完了")
+
+    # 2. discography.html の静的生成
+    print("[*] カタログページ (discography.html) 生成開始...")
+    seasons = {}
+    for sid, data in songs.items():
+        season = data.get("rec_season", "REC_000")
+        if season not in seasons:
+            seasons[season] = []
+        seasons[season].append((sid, data))
+
+    seasons_html = ""
+    for season_name, song_list in sorted(seasons.items()):
+        cards_html = ""
+        for sid, data in song_list:
+            title = data.get("title", sid)
+            edition = data.get("edition", "UNKNOWN_EDITION")
+            cards_html += f"""
+            <a href="songs/{sid}.html" class="song-card">
+                <img src="songs/files/{sid}/{sid}_artwork.jpg" class="song-jacket" alt="{title}">
+                <div class="song-info">
+                    <span class="song-meta">{edition}</span>
+                    <span class="song-title">{title}</span>
+                </div>
+            </a>
+            """
+        
+        seasons_html += f"""
+        <div class="season-block">
+            <div class="season-header">
+                <h2 class="season-title">{season_name}</h2>
+            </div>
+            <div class="song-grid">
+                {cards_html}
+            </div>
+        </div>
+        """
+
+    discography_content = DISCOGRAPHY_HTML_TEMPLATE.format(seasons_html=seasons_html)
+    with open(DISCOGRAPHY_HTML_PATH, "w", encoding="utf-8") as out:
+        out.write(discography_content)
+    print("  [Catalog OK] discography.html 生成完了")
 
 
 # ==========================================
@@ -333,11 +431,9 @@ def build_members():
         gear = data.get("gear", "")
         specs = data.get("specs", [])
         
-        # CV情報と音声ファイルの取得
         cv = data.get("cv", "TBD")
         voice_file = data.get("voiceFile", "")
 
-        # ボイスファイル（members/files/voice/{voice_file}）が存在する場合のみボタンを生成
         voice_path = os.path.join(VOICE_DIR, voice_file)
         if voice_file and os.path.exists(voice_path):
             voice_button_html = f"""
@@ -378,6 +474,7 @@ def build_members():
             out.write(html_content)
 
         print(f"  [Member OK] members/{mid}.html")
+
 
 # ==========================================
 # 3. 統合実行
