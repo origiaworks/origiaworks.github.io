@@ -438,7 +438,7 @@
                 <div style="margin-top: 25px;">
                     <a href="bio.html" class="protocol-btn"
                         style="border-color: var(--cyber-blue); color: var(--cyber-blue);">
-                        &gt;&gt; READ_FULL_BIOGRAPHY_AND_SYSTEM_TIMELINE
+                        &gt;&gt; READ_FULL_BIOGRAPHY
                     </a>
                 </div>
             </div>
@@ -611,13 +611,11 @@
                     `;
                 });
                 container.appendChild(grid);
-                // 下部に全曲カタログ（discography.html）への誘導ボタンを設置
                 const btnContainer = document.createElement('div');
-                // text-align を center（中央）または left（左）にお好みで調整し、margin-bottom で下に空間を作ります
                 btnContainer.style.cssText = "text-align: left; margin-top: 50px; margin-bottom: 80px;";
                 btnContainer.innerHTML = `
                     <a href="discography.html" class="protocol-btn" style="border-color: var(--cyber-blue); color: var(--cyber-blue);">
-                        &gt;&gt; VIEW_ALL_DISCOGRAPHY (ALL TRACKS CATALOG)
+                        &gt;&gt; VIEW_ALL_DISCOGRAPHY
                     </a>
                 `;
                 container.appendChild(btnContainer);
