@@ -66,7 +66,7 @@ SONG_HTML_TEMPLATE = """<!DOCTYPE html>
     </style>
 </head>
 <body>
-    <nav><a href="../index.html">&lt;&lt; RETURN_TO_DASHBOARD</a></nav>
+    <nav><a href="../discography.html">&lt;&lt; RETURN</a></nav>
     <div class="hero-visual"></div>
     <div class="container">
         <header class="song-header">
@@ -141,7 +141,7 @@ DISCOGRAPHY_HTML_TEMPLATE = """<!DOCTYPE html>
     </style>
 </head>
 <body>
-    <nav><a href="index.html">&lt;&lt; RETURN_TO_DASHBOARD</a></nav>
+    <nav><a href="index.html">&lt;&lt; RETURN</a></nav>
     <div class="container">
         <header>
             <h1>DISCOGRAPHY</h1>
@@ -155,6 +155,7 @@ DISCOGRAPHY_HTML_TEMPLATE = """<!DOCTYPE html>
 </body>
 </html>
 """
+
 
 def build_songs():
     if not os.path.exists(SONGS_JSON):
@@ -200,7 +201,7 @@ def build_songs():
             rec_season=rec_season,
             lyrics=lyrics,
             wav_display=wav_display,
-            wav_button=wav_button
+            wav_button=wav_button,
         )
 
         out_path = os.path.join(SONGS_DIR, f"{sid}.html")
@@ -233,7 +234,7 @@ def build_songs():
                 </div>
             </a>
             """
-        
+
         seasons_html += f"""
         <div class="season-block">
             <div class="season-header">
@@ -370,7 +371,7 @@ MEMBER_HTML_TEMPLATE = """<!DOCTYPE html>
     </div>
     
     <nav>
-        <a href="../index.html">&lt;&lt; RETURN_TO_HOME</a>
+        <a href="../index.html">&lt;&lt; RETURN</a>
     </nav>
     
     <div class="container">
@@ -409,6 +410,7 @@ MEMBER_HTML_TEMPLATE = """<!DOCTYPE html>
 </html>
 """
 
+
 def build_members():
     if not os.path.exists(MEMBERS_JSON):
         print(f"[ERROR] {MEMBERS_JSON} が見つかりません。")
@@ -431,7 +433,7 @@ def build_members():
         bio = data.get("bio", "")
         gear = data.get("gear", "")
         specs = data.get("specs", [])
-        
+
         cv = data.get("cv", "TBD")
         voice_file = data.get("voiceFile", "")
 
@@ -467,7 +469,7 @@ def build_members():
             voice_button_html=voice_button_html,
             bio=bio,
             gear=gear,
-            specs_html=specs_html
+            specs_html=specs_html,
         )
 
         out_path = os.path.join(MEMBERS_DIR, f"{mid}.html")
