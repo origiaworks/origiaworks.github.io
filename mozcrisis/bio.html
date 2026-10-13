@@ -49,7 +49,8 @@
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 120px 20px 60px; /* 固定ナビの高さ分トップに余剰を確保 */
+            padding: 120px 20px 60px;
+            /* 固定ナビの高さ分トップに余剰を確保 */
         }
 
         header {
@@ -112,9 +113,17 @@
             font-weight: bold;
         }
 
-        .code-comment { color: #6a9955; }
-        .code-keyword { color: #c586c0; }
-        .code-func { color: #dcdcaa; }
+        .code-comment {
+            color: #6a9955;
+        }
+
+        .code-keyword {
+            color: #c586c0;
+        }
+
+        .code-func {
+            color: #dcdcaa;
+        }
 
         /* マニフェストカード */
         .manifesto-card {
@@ -147,8 +156,15 @@
             font-family: var(--code-font);
         }
 
-        .text-highlight { color: var(--cyber-blue); font-weight: bold; }
-        .text-highlight-red { color: var(--main-red); font-weight: bold; }
+        .text-highlight {
+            color: var(--cyber-blue);
+            font-weight: bold;
+        }
+
+        .text-highlight-red {
+            color: var(--main-red);
+            font-weight: bold;
+        }
 
         /* タイムライン用スタイル */
         .timeline-list {
@@ -198,9 +214,17 @@
             font-weight: bold;
         }
 
-        .status-done { color: var(--cyber-blue); }
-        .status-maintenance { color: #ffaa00; }
-        .status-upcoming { color: var(--main-red); }
+        .status-done {
+            color: var(--cyber-blue);
+        }
+
+        .status-maintenance {
+            color: #ffaa00;
+        }
+
+        .status-upcoming {
+            color: var(--main-red);
+        }
 
         .t-date {
             font-size: 0.75rem;
@@ -225,9 +249,19 @@
         }
 
         @media (max-width: 768px) {
-            .container { padding: 90px 15px 40px; }
-            header { padding-left: 15px; }
-            .timeline-header { flex-direction: column; align-items: flex-start; gap: 2px; }
+            .container {
+                padding: 90px 15px 40px;
+            }
+
+            header {
+                padding-left: 15px;
+            }
+
+            .timeline-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2px;
+            }
         }
     </style>
 </head>
@@ -243,14 +277,18 @@
         </header>
 
         <section>
-            <h2>ALGORITHM_ROCK_DEFINITION</h2>
+            <h2>ALGORITHM_ROCK</h2>
             <div class="logic-box">
                 <span class="code-comment"># Algorithm Rock Definition</span><br>
                 <span class="code-keyword">import</span> human_impulse<br>
-                <span class="code-keyword">from</span> moz_system <span class="code-keyword">import</span> precision_algorithm<br><br>
+                <span class="code-keyword">from</span> moz_system <span class="code-keyword">import</span>
+                precision_algorithm<br><br>
                 <span class="code-func">def</span> <span class="code-func">execute_miracle_bug</span>():<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;collision = precision_algorithm + human_impulse<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> collision.generate_sound(<span class="code-string">"ALGORITHM_ROCK"</span>)
+                &nbsp;&nbsp;&nbsp;&nbsp;collision = precision_algorithm +<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;human_impulse<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> collision.generate_sound(<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"ALGORITHM_ROCK"</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;)<br>
             </div>
 
             <div class="manifesto-card">
@@ -279,7 +317,7 @@
         </section>
 
         <section>
-            <h2>SYSTEM_TIMELINE &amp; MAINTENANCE_LOG</h2>
+            <h2>SYS_LOG</h2>
             <div class="timeline-list">
                 <div class="timeline-item">
                     <div class="timeline-header">
@@ -302,7 +340,8 @@
                         <span class="t-version status-done">REC_002 [COMPLETED]</span>
                         <span class="t-date">2026.08.28 - 2026.09.26</span>
                     </div>
-                    <p class="t-desc">JIWOOの正式メンバー加入に伴い、エレクトロ色の強いアグレッシブな楽曲群や、ラップアプローチを取り入れた新境地を開拓。キービジュアルに手描きによる人間的介入の深化。</p>
+                    <p class="t-desc">
+                        JIWOOの正式メンバー加入に伴い、エレクトロ色の強いアグレッシブな楽曲群や、ラップアプローチを取り入れた新境地を開拓。キービジュアルに手描きによる人間的介入の深化。</p>
                 </div>
 
                 <div class="timeline-item">
@@ -310,7 +349,8 @@
                         <span class="t-version status-maintenance">OFF_SEASON [MAINTENANCE]</span>
                         <span class="t-date">Between REC_002 &amp; REC_003</span>
                     </div>
-                    <p class="t-desc">サポートメンバーのビジュアル公開、オーディオドラマ展開、YouTube Shortsによる多角的プロモーション展開。次世代リリックのコーディングおよび音響システムのアップデート準備。</p>
+                    <p class="t-desc">サポートメンバーのビジュアル公開、オーディオドラマ展開、YouTube
+                        Shortsによる多角的プロモーション展開。次世代リリックのコーディングおよび音響システムのアップデート準備。</p>
                 </div>
 
                 <div class="timeline-item">

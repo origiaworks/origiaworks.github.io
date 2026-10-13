@@ -17,9 +17,10 @@
         html, body { background-color: var(--bg-black) !important; color: var(--text-white) !important; font-family: 'Segoe UI', 'Hiragino Kaku Gothic ProN', sans-serif; margin: 0; line-height: 1.6; }
         nav { padding: 15px 20px; font-family: var(--code-font); border-bottom: 1px solid #222; background: rgba(0, 0, 0, 0.9); position: fixed; width: 100%; top: 0; z-index: 1000; box-sizing: border-box; }
         nav a { color: var(--main-red); text-decoration: none; font-size: 0.8rem; font-weight: bold; }
+        nav a:hover { color: var(--cyber-blue); }
         .hero-visual { width: 100%; height: 45vh; background-position: center; background-size: cover; position: relative; margin-top: 50px; background-color: #111; background-image: url('files/Bloom_Proudly/Bloom_Proudly_keyvisual.png'); }
         .hero-visual::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, var(--bg-black), transparent); }
-        .container { max-width: 900px; margin: 0 auto; padding: 20px; position: relative; z-index: 10; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; position: relative; z-index: 10; box-sizing: border-box; }
         .song-header { display: flex; gap: 30px; margin-top: -80px; flex-wrap: wrap; }
         .artwork-area { flex: 0 0 220px; }
         .artwork-img { width: 100%; aspect-ratio: 1/1; border: 1px solid var(--main-red); object-fit: cover; background: #000; }
@@ -30,7 +31,7 @@
         .meta-label { font-size: 0.7rem; color: #666; display: block; }
         .meta-value { font-family: var(--code-font); color: var(--cyber-blue); }
         .action-area { display: flex; flex-wrap: wrap; gap: 15px; margin: 30px 0 60px; }
-        .btn { padding: 12px 25px; font-family: var(--code-font); font-size: 0.9rem; font-weight: bold; text-decoration: none; border: 1px solid; transition: 0.3s; text-align: center; flex: 1; min-width: 200px; }
+        .btn { padding: 12px 25px; font-family: var(--code-font); font-size: 0.9rem; font-weight: bold; text-decoration: none; border: 1px solid; transition: 0.3s; text-align: center; flex: 1; min-width: 200px; box-sizing: border-box; }
         .btn-wav { color: var(--main-red); border-color: var(--main-red); display: block; }
         .btn-wav:hover { background: var(--main-red); color: #fff; box-shadow: 0 0 15px rgba(255, 62, 62, 0.4); }
         .btn-mp3 { color: var(--cyber-blue); border-color: var(--cyber-blue); }
