@@ -26,6 +26,7 @@ SONG_HTML_TEMPLATE = """<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
     <title>{title} | MOZCRISIS [Algorithm Rock]</title>
     <meta name="description" content="MOZCRISIS楽曲「{title}」（{edition} / {rec_season}）。商用利用可能なフリーBGM（No Copyright Music）。作詞・設計：{architect}。">
     
@@ -35,12 +36,7 @@ SONG_HTML_TEMPLATE = """<!DOCTYPE html>
     <meta property="og:image" content="files/{sid}/{sid}_artwork.jpg">
     <meta property="og:type" content="music.song">
 
-    <style>
-        :root {{ --main-red: #ff3e3e; --cyber-blue: #00f3ff; --bg-black: #0a0a0a; --card-bg: #151515; --text-white: #e0e0e0; --code-font: 'Consolas', 'Monaco', 'Courier New', monospace; }}
-        html, body {{ background-color: var(--bg-black) !important; color: var(--text-white) !important; font-family: 'Segoe UI', 'Hiragino Kaku Gothic ProN', sans-serif; margin: 0; line-height: 1.6; }}
-        nav {{ padding: 15px 20px; font-family: var(--code-font); border-bottom: 1px solid #222; background: rgba(0, 0, 0, 0.9); position: fixed; width: 100%; top: 0; z-index: 1000; box-sizing: border-box; }}
-        nav a {{ color: var(--main-red); text-decoration: none; font-size: 0.8rem; font-weight: bold; }}
-        nav a:hover {{ color: var(--cyber-blue); }}
+    <style>        
         .hero-visual {{ width: 100%; height: 45vh; background-position: center; background-size: cover; position: relative; margin-top: 50px; background-color: #111; background-image: url('files/{sid}/{sid}_keyvisual.png'); }}
         .hero-visual::after {{ content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, var(--bg-black), transparent); }}
         .container {{ max-width: 900px; margin: 0 auto; padding: 20px; position: relative; z-index: 10; box-sizing: border-box; }}
@@ -49,7 +45,6 @@ SONG_HTML_TEMPLATE = """<!DOCTYPE html>
         .artwork-img {{ width: 100%; aspect-ratio: 1/1; border: 1px solid var(--main-red); object-fit: cover; background: #000; }}
         .title-area {{ flex: 1; min-width: 300px; }}
         .track-id {{ font-family: var(--code-font); color: var(--main-red); font-size: 1rem; }}
-        h1 {{ font-family: var(--code-font); font-size: clamp(1.8rem, 5vw, 2.8rem); margin: 5px 0; }}
         .meta-list {{ display: flex; gap: 30px; border-top: 1px solid #333; padding-top: 15px; margin-top: 15px; flex-wrap: wrap; }}
         .meta-label {{ font-size: 0.7rem; color: #666; display: block; }}
         .meta-value {{ font-family: var(--code-font); color: var(--cyber-blue); }}
@@ -98,7 +93,7 @@ SONG_HTML_TEMPLATE = """<!DOCTYPE html>
             <pre class="lyrics-box">{lyrics}</pre>
         </div>
     </div>
-</body>
+</body
 </html>
 """
 
@@ -107,6 +102,7 @@ DISCOGRAPHY_HTML_TEMPLATE = """<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>DISCOGRAPHY | MOZCRISIS [No Copyright Music Archive]</title>
     <meta name="description" content="MOZCRISIS（モズクライシス）が放つ全楽曲の完全カタログ。商用利用可能なアルゴリズム・ロックのフリーBGM音源（WAV/MP3）および歌詞をシーズン別に網羅。">
     <style>
@@ -265,6 +261,7 @@ MEMBER_HTML_TEMPLATE = """<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
     <title>PROFILE: {name_upper} ({name}) | MOZCRISIS</title>
     <meta name="description" content="MOZCRISISメンバー「{name}（{real_name}）」公式プロフィール。担当：{role} (CV: {cv})。{quote}">
     
@@ -281,14 +278,6 @@ MEMBER_HTML_TEMPLATE = """<!DOCTYPE html>
             --text-white: #e0e0e0; 
             --code-font: 'Consolas', 'Monaco', 'Courier New', monospace; 
         }}
-        body {{ 
-            background-color: var(--bg-black); 
-            color: var(--text-white); 
-            font-family: 'Segoe UI', 'Hiragino Kaku Gothic ProN', sans-serif; 
-            margin: 0; 
-            line-height: 1.6; 
-            overflow-x: hidden; 
-        }}
         .watermark {{ 
             position: fixed; 
             top: 50%; 
@@ -302,18 +291,6 @@ MEMBER_HTML_TEMPLATE = """<!DOCTYPE html>
             pointer-events: none; 
         }}
         .watermark img {{ width: 100%; height: 100%; object-fit: contain; }}
-        nav {{ 
-            padding: 20px; 
-            font-family: var(--code-font); 
-            border-bottom: 1px solid #222; 
-            background: rgba(0,0,0,0.8); 
-            backdrop-filter: blur(8px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }}
-        nav a {{ color: var(--member-color); text-decoration: none; font-weight: bold; font-size: 0.85rem; }}
-        nav a:hover {{ text-decoration: underline; }}
         .container {{ max-width: 900px; margin: 0 auto; padding: 60px 20px; }}
         .header-area {{ margin-bottom: 50px; border-left: 5px solid var(--member-color); padding-left: 30px; }}
         .role-title {{ font-family: var(--code-font); color: var(--member-color); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }}

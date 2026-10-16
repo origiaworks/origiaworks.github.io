@@ -4,168 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>PROTOCOL: USAGE_POLICY | MOZCRISIS</title>
-    <style>
-        :root {
-            --main-red: #ff3e3e;
-            --cyber-blue: #00f3ff;
-            --bg-black: #0a0a0a;
-            --text-white: #e0e0e0;
-            --code-font: 'Consolas', 'Monaco', 'Courier New', monospace;
-        }
-
-        body {
-            background-color: var(--bg-black);
-            color: var(--text-white);
-            font-family: var(--code-font), 'Segoe UI', 'Hiragino Kaku Gothic ProN', sans-serif;
-            margin: 0;
-            line-height: 1.8;
-            letter-spacing: 0.5px;
-        }
-
-        nav {
-            padding: 20px;
-            border-bottom: 1px solid #222;
-            background: rgba(0, 0, 0, 0.9);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav a {
-            color: var(--main-red);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.8rem;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-
-        header {
-            margin-bottom: 60px;
-            border-left: 5px solid var(--main-red);
-            padding-left: 30px;
-        }
-
-        h1 {
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
-            margin: 0;
-            text-transform: uppercase;
-        }
-
-        .subtitle {
-            color: var(--main-red);
-            font-size: 0.8rem;
-            margin-top: 10px;
-        }
-
-        .lead-text {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 25px;
-            border: 1px solid #222;
-            font-size: 0.9rem;
-            margin-bottom: 50px;
-            color: #ccc;
-            position: relative;
-        }
-
-        .lead-text::before {
-            content: "SYSTEM_MESSAGE";
-            position: absolute;
-            top: -10px;
-            left: 15px;
-            background: var(--bg-black);
-            padding: 0 10px;
-            font-size: 0.7rem;
-            color: var(--cyber-blue);
-        }
-
-        section {
-            margin-bottom: 60px;
-        }
-
-        h2 {
-            font-size: 1.2rem;
-            border-bottom: 1px solid #333;
-            padding-bottom: 10px;
-            margin-bottom: 25px;
-            color: var(--text-white);
-            display: flex;
-            align-items: center;
-        }
-
-        h2::before {
-            content: "[FUNC] ";
-            color: var(--main-red);
-            margin-right: 10px;
-        }
-
-        h3 {
-            font-size: 1rem;
-            color: var(--cyber-blue);
-            margin-top: 30px;
-            text-transform: uppercase;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        li {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 12px;
-            font-size: 0.95rem;
-        }
-
-        li::before {
-            content: ">>";
-            position: absolute;
-            left: 0;
-            color: var(--main-red);
-        }
-
-        .box {
-            background: #000;
-            border: 1px solid #333;
-            padding: 20px;
-            margin: 20px 0;
-            color: var(--cyber-blue);
-            font-size: 0.85rem;
-        }
-
-        .status-tag {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 3px;
-            font-size: 0.7rem;
-            font-weight: bold;
-            margin-right: 10px;
-        }
-
-        .status-ok {
-            background: rgba(0, 243, 255, 0.2);
-            color: var(--cyber-blue);
-        }
-
-        .status-deny {
-            background: rgba(255, 62, 62, 0.2);
-            color: var(--main-red);
-        }
-
-        footer {
-            text-align: center;
-            padding: 60px 20px;
-            border-top: 1px solid #222;
-            color: #444;
-            font-size: 0.7rem;
-        }
-    </style>
 </head>
 
 <body>
@@ -187,23 +27,24 @@
             <h2>ASSET_LICENSE_STATUS</h2>
             <p>公開されている全ての楽曲・音声素材は <span class="status-tag status-ok">200 OK</span> <strong
                     style="color:var(--cyber-blue)">著作権フリー（ロイヤリティフリー）</strong> です。</p>
-
+            <hr>
             <h3 class="status-tag status-ok">ALLOWED_METHODS（許可事項）</h3>
             <ul>
                 <li><strong>商用・非商用問わず利用可能</strong>：YouTube等の収益化動画、配信、同人ゲーム、アプリ、演劇、広告など、あらゆる作品で使用できます。</li>
                 <li><strong>素材の加工・改変</strong>：作品に合わせたループ処理、カット編集、テンポやキーの変更、エフェクト追加などの加工が可能です。</li>
                 <li><strong>成人向け作品での利用</strong>：R-18 / R-18G作品への導入も制限いたしません。</li>
             </ul>
-
+            <hr>
             <h3 class="status-tag status-deny">EXCEPTION_RESTRICTIONS（禁止事項）</h3>
             <ul>
                 <li><strong>二次配布・販売の禁止</strong>：音楽素材をそのまま、あるいは加工して、素材単体で配布・転売・貸与することを禁止します。</li>
                 <li><strong>自作発言の禁止</strong>：作詞・作曲・編曲者を自らと偽る行為、またはそれに類する行為を禁止します。</li>
-                <li><strong>権利団体・Content IDへの登録禁止</strong>：JASRAC/NexTone等の著作権管理団体への登録、およびYouTube Content IDへの登録を固く禁じます。</li>
+                <li><strong>権利団体・Content IDへの登録禁止</strong>：JASRAC/NexTone等の著作権管理団体への登録、およびYouTube Content IDへの登録を固く禁じます。
+                </li>
                 <li><strong>不正な目的での利用禁止</strong>：公序良俗に反する目的、政治・宗教活動、他者を誹謗中傷する作品での利用を禁じます。</li>
             </ul>
         </section>
-
+        <hr>
         <section>
             <h2>METADATA_DESCRIPTION（クレジット表記）</h2>
             <ul>
@@ -215,7 +56,7 @@
                 // Management: ORIGIAWORKS (https://origiaworks.github.io/)
             </div>
         </section>
-
+        <hr>
         <section>
             <h2>FORKING & REMIX（二次創作）</h2>
             <p>
@@ -223,7 +64,7 @@
                 ただし、制作した二次創作物をYouTube Content IDや著作権管理団体へ登録することは、トラブル防止のため一律で禁止とさせていただきます。
             </p>
         </section>
-
+        <hr>
         <section>
             <h2>DISCLAIMER（免責事項）</h2>
             <ul>
@@ -232,17 +73,16 @@
                 <li><strong>規約の変更</strong>：本規約の内容は、予告なく変更される場合があります。常に最新のプロトコルを確認してください。</li>
             </ul>
         </section>
-
+        <hr>
         <section>
             <h2>CONTACT_ENDPOINT（お問い合わせ）</h2>
             <p>規約に関するご質問や、商用での個別楽曲制作・独占ライセンスのご相談などは、以下のリンクよりご連絡ください。</p>
             <div class="box">
-                <a href="https://origiaworks.github.io/contact.html"
-                    target="_blank" style="color:var(--cyber-blue); text-decoration:none;">>> お問い合わせフォームを開く</a>
+                <a href="https://origiaworks.github.io/contact.html" target="_blank"
+                    style="color:var(--cyber-blue); text-decoration:none;">>> お問い合わせフォームを開く</a>
             </div>
         </section>
     </div>
-
     <footer>
         EXECUTION_COMPLETE: MOZCRISIS SYSTEM NODE_001
     </footer>

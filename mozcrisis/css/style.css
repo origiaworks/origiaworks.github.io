@@ -18,19 +18,14 @@ body {
 
 /* Navigation */
 nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 15px 0;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(8px);
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+    padding: 20px;
     font-family: var(--code-font);
-    font-size: 0.75rem;
     border-bottom: 1px solid #222;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 nav a {
@@ -50,14 +45,19 @@ section {
 
 /* Header */
 header {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
-    text-align: center;
-    padding: 0 20px;
+    margin-bottom: 60px;
+    border-left: 5px solid var(--main-red);
+    padding-left: 30px;
+}
+
+/* Cyber Horizontal Rule (サイバー風水平線) */
+hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--cyber-blue), var(--main-red), transparent);
+    margin: 50px 0;
+    position: relative;
+    box-shadow: 0 0 8px rgba(0, 243, 255, 0.4);
 }
 
 .glitch-logo {
@@ -140,8 +140,16 @@ header {
     color: #ccc;
     line-height: 1.8;
 }
-.text-highlight { color: var(--cyber-blue); font-weight: bold; }
-.text-highlight-red { color: var(--main-red); font-weight: bold; }
+
+.text-highlight {
+    color: var(--cyber-blue);
+    font-weight: bold;
+}
+
+.text-highlight-red {
+    color: var(--main-red);
+    font-weight: bold;
+}
 
 /* 03_MEMBERS (全8名対応・カラー発光) */
 .member-grid,

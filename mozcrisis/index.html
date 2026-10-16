@@ -6,16 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MOZCRISIS | Algorithm Rock</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Header */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 15px 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-family: var(--code-font);
+            font-size: 0.75rem;
+            border-bottom: 1px solid #222;
+        }
+
+        /* サイバー風境界線 (hr) のデザイン定義 */
+        .cyber-divider {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--cyber-blue), var(--main-red), transparent);
+            margin: 80px 0;
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
+        }
+    </style>
 </head>
 
 <body>
-    <!-- ナビゲーション -->
+    <!-- ナビゲーション (AUDIO_DRAMA を追加) -->
     <nav>
         <a href="#home">01_HOME</a>
         <a href="#logic">02_LOGIC</a>
         <a href="#members">03_MEMBERS</a>
         <a href="#discography">04_DISCOGRAPHY</a>
-        <a href="#protocol">05_PROTOCOL</a>
+        <a href="audio_drama.html">05_AUDIO_DRAMA</a>
+        <a href="#protocol">06_PROTOCOL</a>
     </nav>
 
     <!-- ヒーローエリア -->
@@ -43,7 +82,6 @@
                     class="text-highlight-red">「奇跡のバグ」</span>。――それが、<span class="text-highlight">「Algorithm
                     Rock（アルゴリズム・ロック）」</span>。
                 <br><br>
-                <!-- 光る専用クラス（protocol-btn または cyber-btn）を適用 -->
                 <div style="margin-top: 25px;">
                     <a href="bio.html" class="protocol-btn"
                         style="border-color: var(--cyber-blue); color: var(--cyber-blue);">
@@ -52,6 +90,8 @@
                 </div>
             </div>
         </section>
+
+        <hr class="cyber-divider">
 
         <!-- 03_MEMBERS -->
         <section id="members">
@@ -117,11 +157,11 @@
                 </a>
             </div>
 
-            <!-- サポートユニット 3名 -->
+            <!-- サポートユニット 4名 (るかP追加) -->
             <div style="border-left: 3px solid var(--cyber-blue); padding-left: 15px; margin: 60px 0 25px;">
                 <h3
                     style="font-family: var(--code-font); color: var(--cyber-blue); margin: 0; font-size: 1.1rem; letter-spacing: 2px;">
-                    // SUPPORT_UNITS</h3>
+                    // SUPPORT_UNITS &amp; STAFF</h3>
             </div>
             <div class="support-grid">
                 <a href="members/akane.html" class="member-link" style="--c: #737373;">
@@ -160,9 +200,9 @@
                     </div>
                 </a>
 
-                <a href="members/rukap.html" class="member-link" style="--c: #ffffff;">
+                <a href="members/rukap.html" class="member-link" style="--c: #00f3ff;">
                     <div class="member-card">
-                        <div class="img-wrapper"><img src="members/files/img/rukap.png" alt="rukap"
+                        <div class="img-wrapper"><img src="members/files/img/rukap.png" alt="RukaP"
                                 onerror="this.src='members/files/img/default.png'"></div>
                         <div class="info">
                             <div class="role-tag">Producer</div>
@@ -174,6 +214,8 @@
             </div>
         </section>
 
+        <hr class="cyber-divider">
+
         <!-- 04_DISCOGRAPHY -->
         <section id="discography">
             <div class="section-header">
@@ -181,6 +223,8 @@
             </div>
             <div id="edition-container"></div>
         </section>
+
+        <hr class="cyber-divider">
 
         <!-- 05_PROTOCOL -->
         <section id="protocol">
@@ -211,10 +255,8 @@
                 const container = document.getElementById('edition-container');
                 container.innerHTML = '';
 
-                // songs.json から全曲配列を作る（キーの順、またはリリース日順）
                 const songKeys = Object.keys(data);
-                // 最新の4曲を取得（後ろから4曲、またはお好みでスライス）
-                const latestKeys = songKeys.slice(-4).reverse(); // 新しいもの順にする場合は reverse()
+                const latestKeys = songKeys.slice(-4).reverse();
 
                 const grid = document.createElement('div');
                 grid.className = 'song-grid';

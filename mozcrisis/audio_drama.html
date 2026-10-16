@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUDIO_DRAMA ARCHIVE | MOZCRISIS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .drama-card {
+            background: var(--card-bg);
+            border: 1px solid #222;
+            padding: 35px;
+            margin-bottom: 50px;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .drama-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--cyber-blue);
+        }
+
+        .ep-number {
+            font-family: var(--code-font);
+            color: var(--main-red);
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .ep-title {
+            font-family: var(--code-font);
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            color: #fff;
+            margin: 0 0 20px 0;
+            line-height: 1.4;
+        }
+
+        .ep-desc {
+            color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.9;
+            margin-bottom: 30px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* レスポンシブ対応のYouTube埋め込みラッパー */
+        .video-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            border: 1px solid #333;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .drama-divider {
+            border: 0;
+            height: 1px;
+            background: #222;
+            margin: 60px 0;
+        }
+
+        @media (max-width: 768px) {
+            .drama-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav><a href="index.html">&lt;&lt; RETURN_TO_DASHBOARD</a></nav>
+
+    <div class="container">
+        <header style="margin-bottom: 60px; border-left: 5px solid var(--main-red); padding-left: 30px;">
+            <h1
+                style="font-family: var(--code-font); font-size: clamp(2rem, 5vw, 3rem); margin: 0; text-transform: uppercase; letter-spacing: 2px;">
+                AUDIO_DRAMA</h1>
+            <div class="subtitle"
+                style="color: var(--cyber-blue); font-size: 0.85rem; font-family: var(--code-font); margin-top: 10px;">
+                // SYSTEM LOGS &amp; BACKSTAGE CONVERSATIONS</div>
+        </header>
+
+        <div class="drama-card">
+            <span class="ep-number">#04</span>
+            <h2 class="ep-title">メンバー全員で『歌ってみた』を同時視聴してみた</h2>
+            <p class="ep-desc">
+                ちゃんねるゼロの「成神 零」様による『オボロヅキヨ』カバー動画をメンバー全員で視聴！<br>
+                熱いライブアレンジとこだわりにスタジオが熱狂の渦に...！？
+            </p>
+            <div class="video-container">
+                <iframe src="" title="MOZCRISIS Audio Drama #04" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="drama-card">
+            <span class="ep-number">#03</span>
+            <h2 class="ep-title">初！『歌ってみた』のオファーが届いた夜</h2>
+            <p class="ep-desc">
+                バンド初の「歌ってみた」カバーオファーが舞い込み、大興奮のスタジオ。<br>
+                深夜0時の公開を待つメンバーたちだったが、深夜テンションで徐々に様子がおかしくなり始め……！？
+            </p>
+            <div class="video-container">
+                <iframe src="" title="MOZCRISIS Audio Drama #03" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="drama-card">
+            <span class="ep-number">#02</span>
+            <h2 class="ep-title">祝！YouTube初コメントがついた結果</h2>
+            <p class="ep-desc">
+                持ち曲が50曲を突破し、ついに動画に記念すべき最初のリスナーコメントが到着！<br>
+                期待と歓喜に包まれるスタジオで、メンバー全員が見守る中読み上げられたその衝撃の内容とは……！？
+            </p>
+            <div class="video-container">
+                <iframe src="" title="MOZCRISIS Audio Drama #02" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <hr class="drama-divider">
+
+        <div class="drama-card">
+            <span class="ep-number">#01</span>
+            <h2 class="ep-title">自主制作PVを作った結果</h2>
+            <p class="ep-desc">
+                ローズが気合を入れて作った紹介PVをメンバーにお披露目したものの、返ってきたのはまさかの……！？<br>
+                クールな音楽の裏で繰り広げられる、不憫で騒がしい日常のヒトコマ。
+            </p>
+            <div class="video-container">
+                <iframe src="" title="MOZCRISIS Audio Drama #01" allowfullscreen></iframe>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        MOZCRISIS / ORIGIAWORKS - AUDIO DRAMA STREAM NODE
+    </footer>
+</body>
+
+</html>
