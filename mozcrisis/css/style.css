@@ -19,9 +19,9 @@ body {
 /* Navigation */
 nav {
     padding: 20px;
-    font-family: var(--code-font);
     border-bottom: 1px solid #222;
     background: rgba(0, 0, 0, 0.8);
+    font-family: var(--code-font);
     backdrop-filter: blur(8px);
     position: sticky;
     top: 0;
@@ -40,17 +40,14 @@ nav a:hover {
 
 section {
     scroll-margin-top: 90px;
-    /* メニュー潜り込み防止 */
 }
 
-/* Header */
 header {
     margin-bottom: 60px;
     border-left: 5px solid var(--main-red);
     padding-left: 30px;
 }
 
-/* Cyber Horizontal Rule (サイバー風水平線) */
 hr {
     border: 0;
     height: 1px;

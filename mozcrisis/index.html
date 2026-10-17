@@ -23,16 +23,17 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 15px 0;
-            background: rgba(0, 0, 0, 0.85);
+            padding: 12px 10px;
+            background: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(8px);
             z-index: 1000;
             display: flex;
             justify-content: center;
-            gap: 20px;
-            font-family: var(--code-font);
+            flex-wrap: wrap;
+            gap: 12px 20px;
             font-size: 0.75rem;
             border-bottom: 1px solid #222;
+            box-sizing: border-box;
         }
 
         /* サイバー風境界線 (hr) のデザイン定義 */
@@ -49,12 +50,12 @@
 <body>
     <!-- ナビゲーション (AUDIO_DRAMA を追加) -->
     <nav>
-        <a href="#home">01_HOME</a>
-        <a href="#logic">02_LOGIC</a>
-        <a href="#members">03_MEMBERS</a>
-        <a href="#discography">04_DISCOGRAPHY</a>
-        <a href="audio_drama.html">05_AUDIO_DRAMA</a>
-        <a href="#protocol">06_PROTOCOL</a>
+        <a href="#home">HOME</a>
+        <a href="#logic">LOGIC</a>
+        <a href="#members">MEMBERS</a>
+        <a href="#discography">DISCOGRAPHY</a>
+        <a href="audio_drama.html">AUDIO_DRAMA</a>
+        <a href="#protocol">PROTOCOL</a>
     </nav>
 
     <!-- ヒーローエリア -->
@@ -200,7 +201,7 @@
                     </div>
                 </a>
 
-                <a href="members/rukap.html" class="member-link" style="--c: #00f3ff;">
+                <a href="members/rukap.html" class="member-link" style="--c: #ffffff;">
                     <div class="member-card">
                         <div class="img-wrapper"><img src="members/files/img/rukap.png" alt="RukaP"
                                 onerror="this.src='members/files/img/default.png'"></div>
