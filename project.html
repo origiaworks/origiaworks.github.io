@@ -6,6 +6,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ORIGIAWORKS - Project</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* --- セクション・レイアウト基本設定 --- */
+        .project-section {
+            margin-bottom: 40px;
+        }
+
+        .project-section h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .project-section img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .project-section p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .project-section ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .project-section li {
+            margin-bottom: 10px;
+        }
+
+        /* --- 共通ボタンスタイル --- */
+        .btn {
+            display: inline-block;
+            padding: 10px 18px;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        /* --- ボタン固有のカラー設定 --- */
+        /* モズクライシス特設サイト（暗いグレー） */
+        .btn-mozcrisis {
+            background-color: #333333;
+        }
+
+        .btn-mozcrisis:hover {
+            background-color: #4f4f4f;
+        }
+
+        /* YouTubeチャンネル（赤） */
+        .btn-youtube {
+            background-color: #ff0000;
+        }
+
+        .btn-youtube:hover {
+            background-color: #cc0000;
+        }
+
+        /* Google Play（おまかせ：公式準拠のダークグリーン＋影） */
+        .btn-googleplay {
+            padding: 12px 20px; /* Google Play用に少しゆとりを持たせたサイズ */
+            background-color: #01875f;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-googleplay:hover {
+            background-color: #00a272;
+            box-shadow: 0 4px 10px rgba(1, 135, 95, 0.3);
+        }
+
+        /* --- レイアウト用補助クラス --- */
+        .project-actions {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .mt-20 {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -23,21 +113,24 @@
             <!-- 注目プロジェクト（MOZCRISIS） -->
             <section class="project-section">
                 <h2>MOZCRISIS（モズクライシス）</h2>
-                <p>AI技術を活用し、フリーBGMとキャラクターデザインが融合した総合音楽プロジェクトです。</p>
-                <p>
+
+                <img src="mozcrisis/songs/files/REIMEIELECTRO/REIMEIELECTRO_keyvisual.png" alt="MOZCRISISのイメージ画像" class="project-kv">
+
+                <p class="project-lead">AI技術を活用し、フリーBGMとキャラクターデザインが融合した総合音楽プロジェクトです。</p>
+                <p class="project-description">
                     架空のバンドの世界観をベースに、商用利用可のフリーBGMの数々、笑いを誘うボイスドラマ、そして個性豊かなメンバーたちのストーリーが織りなす、総合音楽エンターテインメントです。ボカロＰとしての活動で培った音楽とゲーム制作で培ったキャラクターデザインが融合した唯一無二の世界観を、ぜひ特設サイトやYouTubeでお楽しみください！
                 </p>
-                <p style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
-                    <a href="mozcrisis/index.html" class="btn"
-                        style="display: inline-block; padding: 10px 18px; background-color: #e67e22; color: #fff; text-decoration: none; border-radius: 4px; font-weight: bold;">
+
+                <div class="project-actions">
+                    <a href="mozcrisis/index.html" class="btn btn-mozcrisis">
                         MOZCRISIS 特設サイトへ行く ＞
                     </a>
-                    <a href="https://www.youtube.com/@mozcrisis" target="_blank" rel="noopener noreferrer" class="btn"
-                        style="display: inline-block; padding: 10px 18px; background-color: #ff0000; color: #fff; text-decoration: none; border-radius: 4px; font-weight: bold;">
+                    <a href="https://www.youtube.com/@mozcrisis" target="_blank" rel="noopener noreferrer" class="btn btn-youtube">
                         YouTubeチャンネルを見る ▶
                     </a>
-                </p>
+                </div>
             </section>
+
             <!-- ゲーム・アプリ開発実績 -->
             <section class="project-section">
                 <h2>ゲーム・アプリ開発</h2>
@@ -55,17 +148,15 @@
                         累計1,000DLを達成。Google Playにて配信中。
                     </li>
                 </ul>
-                <!-- Google Play デベロッパーページへのリンクボタン -->
-                <p style="margin-top: 20px;">
-                    <a href="https://play.google.com/store/apps/dev?id=6355453693267651472&hl=ja-JP" target="_blank"
-                        rel="noopener noreferrer" class="btn"
-                        style="display: inline-block; padding: 12px 20px; background-color: #01875f; color: #fff; text-decoration: none; border-radius: 4px; font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                
+                <p class="mt-20">
+                    <a href="https://play.google.com/store/apps/dev?id=6355453693267651472&hl=ja-JP" target="_blank" rel="noopener noreferrer" class="btn btn-googleplay">
                         Google Play で他のアプリも見る ＞
                     </a>
                 </p>
             </section>
 
-            <!-- その他の制作実績 -->
+            <!-- そのその他の制作実績 -->
             <section class="project-section">
                 <h2>その他の制作実績</h2>
                 <ul>

@@ -383,5 +383,12 @@
     "architect": "ROSE",
     "edition": "OVERLOAD",
     "rec_season": "REC_002"
+  },
+  "SHANIMUNI": {
+    "title": "シャニムニ",
+    "release": "2026.10.18",
+    "architect": "ROSE / HARUKA",
+    "edition": "OVERLOAD",
+    "rec_season": "REC_002"
   }
 }
