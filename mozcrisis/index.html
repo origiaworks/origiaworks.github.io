@@ -17,6 +17,8 @@
             background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
             text-align: center;
             padding: 0 20px;
+            border-left: none;
+            padding-left: 0;
         }
 
         nav {
@@ -35,15 +37,6 @@
             border-bottom: 1px solid #222;
             box-sizing: border-box;
         }
-
-        /* サイバー風境界線 (hr) のデザイン定義 */
-        .cyber-divider {
-            border: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--cyber-blue), var(--main-red), transparent);
-            margin: 80px 0;
-            box-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
-        }
     </style>
 </head>
 
@@ -54,7 +47,7 @@
         <a href="#logic">LOGIC</a>
         <a href="#members">MEMBERS</a>
         <a href="#discography">DISCOGRAPHY</a>
-        <a href="audio_drama.html">AUDIO_DRAMA</a>
+        <a href="#audio_drama">AUDIO_DRAMA</a>
         <a href="#protocol">PROTOCOL</a>
     </nav>
 
@@ -65,7 +58,6 @@
     </header>
 
     <div class="container">
-        <!-- 02_LOGIC & SEO BRIEF -->
         <section id="logic" class="logic-box">
             <span class="code-comment"># Algorithm Rock Definition</span><br>
             <span class="code-keyword">import</span> human_impulse<br>
@@ -94,13 +86,10 @@
 
         <hr class="cyber-divider">
 
-        <!-- 03_MEMBERS -->
         <section id="members">
             <div class="section-header">
                 <h2>MEMBERS</h2>
             </div>
-
-            <!-- コアメンバー 5名 -->
             <div class="member-grid">
                 <a href="members/rose.html" class="member-link" style="--c: #ff3e3e;">
                     <div class="member-card">
@@ -158,7 +147,6 @@
                 </a>
             </div>
 
-            <!-- サポートユニット 4名 (るかP追加) -->
             <div style="border-left: 3px solid var(--cyber-blue); padding-left: 15px; margin: 60px 0 25px;">
                 <h3
                     style="font-family: var(--code-font); color: var(--cyber-blue); margin: 0; font-size: 1.1rem; letter-spacing: 2px;">
@@ -217,7 +205,6 @@
 
         <hr class="cyber-divider">
 
-        <!-- 04_DISCOGRAPHY -->
         <section id="discography">
             <div class="section-header">
                 <h2>DISCOGRAPHY</h2>
@@ -227,7 +214,25 @@
 
         <hr class="cyber-divider">
 
-        <!-- 05_PROTOCOL -->
+        <section id="audio_drama">
+            <div class="section-header">
+                <h2>AUDIO DRAMA</h2>
+            </div>
+            <div class="protocol-link-box">
+                <p>デジタル技術とロックミュージックの融合から生まれた音楽プロジェクト、MOZCRISIS。<br>
+                    時に衝突し、時に共鳴しながら、彼女たちは「Algorithm Rock」という奇跡のバグへ向かって突き進んでいく。<br>
+                    音楽だけでは語りきれなかった、彼女たちの「日常と戦い」のログがここに起動する。</p>
+                <div style="margin-top: 25px;">
+                    <a href="audio_drama.html" class="protocol-btn"
+                        style="border-color: var(--cyber-blue); color: var(--cyber-blue);">
+                        &gt;&gt; AUDIO_DRAMA_LIST
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <hr class="cyber-divider">
+
         <section id="protocol">
             <div class="section-header">
                 <h2>PROTOCOL</h2>
@@ -243,7 +248,7 @@
     <footer>
         <div class="copyright">&copy; 2026 MOZCRISIS / ORIGIAWORKS.</div>
         <div class="disclaimer-text">
-            MOZCRISIS（モズクライシス）はORIGIAWORKSが管理する架空の団体であり、設定や物語はすべてフィクションです。<br>
+            MOZCRISIS（モズクライシス）はORIGIAWORKSが運営する架空の団体であり、設定や物語はすべてフィクションです。<br>
             当プロジェクトが提供する楽曲は、制作工程の一部において生成AI技術を使用しています。
         </div>
     </footer>
