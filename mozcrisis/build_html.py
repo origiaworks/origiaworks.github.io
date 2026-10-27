@@ -4,11 +4,13 @@
 MOZCRISIS Unified Static Site Generator (SSG)
 - 楽曲個別HTML生成: data/songs.json -> songs/{sid}.html
 - 全曲カタログ生成: data/songs.json -> discography.html
+- トップページ更新: data/songs.json -> index.html (最新4曲を静的埋め込み)
 - メンバーHTML生成: data/members.json -> members/{mid}.html
 """
 
 import json
 import os
+import re
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
@@ -20,6 +22,7 @@ SONGS_JSON = os.path.join(DATA_DIR, "songs.json")
 SONGS_DIR = os.path.join(BASE_DIR, "songs")
 SONGS_FILES_DIR = os.path.join(SONGS_DIR, "files")
 DISCOGRAPHY_HTML_PATH = os.path.join(BASE_DIR, "discography.html")
+INDEX_HTML_PATH = os.path.join(BASE_DIR, "index.html")
 
 SONG_HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="ja">
@@ -93,7 +96,7 @@ SONG_HTML_TEMPLATE = """<!DOCTYPE html>
             <pre class="lyrics-box">{lyrics}</pre>
         </div>
     </div>
-</body
+</body>
 </html>
 """
 
@@ -255,6 +258,59 @@ def build_songs():
     with open(DISCOGRAPHY_HTML_PATH, "w", encoding="utf-8") as out:
         out.write(discography_content)
     print("  [Catalog OK] discography.html 生成完了")
+
+    # 3. index.html の最新4曲を静的埋め込み
+    build_index_latest_songs(songs)
+
+
+def build_index_latest_songs(songs):
+    """index.html の最新4曲を静的HTMLとして埋め込む"""
+    if not os.path.exists(INDEX_HTML_PATH):
+        print(f"[WARN] {INDEX_HTML_PATH} が見つからないため、トップページの更新をスキップします。")
+        return
+
+    print("[*] トップページ (index.html) の静的更新開始...")
+
+    song_keys = list(songs.keys())
+    latest_keys = song_keys[-4:]
+    latest_keys.reverse()
+
+    cards_html = ""
+    for sid in latest_keys:
+        data = songs[sid]
+        title = data.get("title", sid)
+        edition = data.get("edition", "UNKNOWN_EDITION")
+        cards_html += f"""
+                <a href="songs/{sid}.html" class="song-card">
+                    <img src="songs/files/{sid}/{sid}_artwork.jpg" class="song-jacket" alt="{title}">
+                    <div class="song-info">
+                        <span class="song-meta">{edition}</span>
+                        <span class="song-title">{title}</span>
+                    </div>
+                </a>"""
+
+    replacement_content = f"""
+            <div class="song-grid">{cards_html}
+            </div>
+            <div style="text-align: left; margin-top: 50px; margin-bottom: 80px;">
+                <a href="discography.html" class="protocol-btn" style="border-color: var(--cyber-blue); color: var(--cyber-blue);">
+                    &gt;&gt; ALL_DISCOGRAPHY
+                </a>
+            </div>
+        """
+
+    with open(INDEX_HTML_PATH, "r", encoding="utf-8") as f:
+        html = f.read()
+
+    # <div id="edition-container">...</div> の中身を正規表現で安全に置換
+    pattern = r'(<div id="edition-container">)(.*?)(</div>)'
+    if re.search(pattern, html, flags=re.DOTALL):
+        new_html = re.sub(pattern, rf'\1{replacement_content}\3', html, flags=re.DOTALL)
+        with open(INDEX_HTML_PATH, "w", encoding="utf-8") as f:
+            f.write(new_html)
+        print("  [Index OK] index.html の最新楽曲ブロックを静的更新しました")
+    else:
+        print("  [WARN] index.html 内に <div id=\"edition-container\"> が見つかりませんでした。")
 
 
 # ==========================================

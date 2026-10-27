@@ -195,7 +195,7 @@
                                 onerror="this.src='members/files/img/default.png'"></div>
                         <div class="info">
                             <div class="role-tag">Producer</div>
-                            <span class="name-jp">るかＰ</span>
+                            <span class="name-jp">るかぴー</span>
                             <span class="name-real">秋元 遥</span>
                         </div>
                     </div>
@@ -209,7 +209,72 @@
             <div class="section-header">
                 <h2>DISCOGRAPHY</h2>
             </div>
-            <div id="edition-container"></div>
+            <div id="edition-container">
+            <div class="song-grid">
+                <a href="songs/SHANIMUNI.html" class="song-card">
+                    <img src="songs/files/SHANIMUNI/SHANIMUNI_artwork.jpg" class="song-jacket" alt="シャニムニ">
+                    <div class="song-info">
+                        <span class="song-meta">OVERLOAD</span>
+                        <span class="song-title">シャニムニ</span>
+                    </div>
+                </a>
+                <a href="songs/Break_Every_Chain.html" class="song-card">
+                    <img src="songs/files/Break_Every_Chain/Break_Every_Chain_artwork.jpg" class="song-jacket" alt="Break Every Chain">
+                    <div class="song-info">
+                        <span class="song-meta">OVERLOAD</span>
+                        <span class="song-title">Break Every Chain</span>
+                    </div>
+                </a>
+                <a href="songs/MONSTRUM.html" class="song-card">
+                    <img src="songs/files/MONSTRUM/MONSTRUM_artwork.jpg" class="song-jacket" alt="MONSTRUM">
+                    <div class="song-info">
+                        <span class="song-meta">DYSTOPIA</span>
+                        <span class="song-title">MONSTRUM</span>
+                    </div>
+                </a>
+                <a href="songs/REIMEIELECTRO.html" class="song-card">
+                    <img src="songs/files/REIMEIELECTRO/REIMEIELECTRO_artwork.jpg" class="song-jacket" alt="レイメイエレクトロ">
+                    <div class="song-info">
+                        <span class="song-meta">CLASSIC</span>
+                        <span class="song-title">レイメイエレクトロ</span>
+                    </div>
+                </a>
+            </div>
+            <div style="text-align: left; margin-top: 50px; margin-bottom: 80px;">
+                <a href="discography.html" class="protocol-btn" style="border-color: var(--cyber-blue); color: var(--cyber-blue);">
+                    &gt;&gt; ALL_DISCOGRAPHY
+                </a>
+            </div>
+        </div>
+                </a>
+                <a href="songs/Break_Every_Chain.html" class="song-card">
+                    <img src="songs/files/Break_Every_Chain/Break_Every_Chain_artwork.jpg" class="song-jacket" alt="Break Every Chain">
+                    <div class="song-info">
+                        <span class="song-meta">OVERLOAD</span>
+                        <span class="song-title">Break Every Chain</span>
+                    </div>
+                </a>
+                <a href="songs/MONSTRUM.html" class="song-card">
+                    <img src="songs/files/MONSTRUM/MONSTRUM_artwork.jpg" class="song-jacket" alt="MONSTRUM">
+                    <div class="song-info">
+                        <span class="song-meta">DYSTOPIA</span>
+                        <span class="song-title">MONSTRUM</span>
+                    </div>
+                </a>
+                <a href="songs/REIMEIELECTRO.html" class="song-card">
+                    <img src="songs/files/REIMEIELECTRO/REIMEIELECTRO_artwork.jpg" class="song-jacket" alt="レイメイエレクトロ">
+                    <div class="song-info">
+                        <span class="song-meta">CLASSIC</span>
+                        <span class="song-title">レイメイエレクトロ</span>
+                    </div>
+                </a>
+            </div>
+            <div style="text-align: left; margin-top: 50px; margin-bottom: 80px;">
+                <a href="discography.html" class="protocol-btn" style="border-color: var(--cyber-blue); color: var(--cyber-blue);">
+                    &gt;&gt; ALL_DISCOGRAPHY
+                </a>
+            </div>
+        </div>
         </section>
 
         <hr class="cyber-divider">
@@ -251,52 +316,7 @@
             MOZCRISIS（モズクライシス）はORIGIAWORKSが運営する架空の団体であり、設定や物語はすべてフィクションです。<br>
             当プロジェクトが提供する楽曲は、制作工程の一部において生成AI技術を使用しています。
         </div>
-    </footer>
-
-    <script>
-        async function loadDiscography() {
-            try {
-                const response = await fetch('data/songs.json');
-                const data = await response.json();
-                const container = document.getElementById('edition-container');
-                container.innerHTML = '';
-
-                const songKeys = Object.keys(data);
-                const latestKeys = songKeys.slice(-4).reverse();
-
-                const grid = document.createElement('div');
-                grid.className = 'song-grid';
-
-                latestKeys.forEach(sid => {
-                    const song = data[sid];
-                    grid.innerHTML += `
-                        <a href="songs/${sid}.html" class="song-card">
-                            <img src="songs/files/${sid}/${sid}_artwork.jpg" class="song-jacket" alt="${song.title}">
-                            <div class="song-info">
-                                <span class="song-meta">${song.edition}</span>
-                                <span class="song-title">${song.title}</span>
-                            </div>
-                        </a>
-                    `;
-                });
-                container.appendChild(grid);
-                const btnContainer = document.createElement('div');
-                btnContainer.style.cssText = "text-align: left; margin-top: 50px; margin-bottom: 80px;";
-                btnContainer.innerHTML = `
-                    <a href="discography.html" class="protocol-btn" style="border-color: var(--cyber-blue); color: var(--cyber-blue);">
-                        &gt;&gt; ALL_DISCOGRAPHY
-                    </a>
-                `;
-                container.appendChild(btnContainer);
-
-            } catch (e) {
-                console.error(e);
-                document.getElementById('edition-container').innerHTML =
-                    `<p style="color:var(--main-red);">[ERROR] FAILED_TO_FETCH_RESOURCES</p>`;
-            }
-        }
-        window.addEventListener('DOMContentLoaded', loadDiscography);
-    </script>
+    </footer>    
 </body>
 
 </html>
