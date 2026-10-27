@@ -6,6 +6,7 @@ MOZCRISIS Unified Static Site Generator (SSG)
 - 全曲カタログ生成: data/songs.json -> discography.html
 - トップページ更新: data/songs.json -> index.html (最新4曲を静的埋め込み)
 - メンバーHTML生成: data/members.json -> members/{mid}.html
+- オーディオドラマ生成: data/audio_dramas.json -> audio_drama.html
 """
 
 import json
@@ -43,7 +44,7 @@ SONG_HTML_TEMPLATE = """<!DOCTYPE html>
         .hero-visual {{ width: 100%; height: 45vh; background-position: center; background-size: cover; position: relative; margin-top: 50px; background-color: #111; background-image: url('files/{sid}/{sid}_keyvisual.png'); }}
         .hero-visual::after {{ content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, var(--bg-black), transparent); }}
         .container {{ max-width: 900px; margin: 0 auto; padding: 20px; position: relative; z-index: 10; box-sizing: border-box; }}
-        .song-header {{ display: flex; gap: 30px; margin-top: -80px; flex-wrap: wrap; }}
+        .song-header {{ display: flex; gap: 30px; margin-top: -80px; flex-wrap: wrap; border-left: none; padding-left: 0; }}
         .artwork-area {{ flex: 0 0 220px; }}
         .artwork-img {{ width: 100%; aspect-ratio: 1/1; border: 1px solid var(--main-red); object-fit: cover; background: #000; }}
         .title-area {{ flex: 1; min-width: 300px; }}
@@ -122,11 +123,16 @@ DISCOGRAPHY_HTML_TEMPLATE = """<!DOCTYPE html>
         nav a {{ color: var(--main-red); text-decoration: none; font-size: 0.8rem; font-weight: bold; }}
         nav a:hover {{ color: var(--cyber-blue); }}
         .container {{ max-width: 1200px; margin: 0 auto; padding: 100px 20px 80px; box-sizing: border-box; width: 100%; }}
-        header {{ margin-bottom: 50px; border-left: 5px solid var(--cyber-blue); padding-left: 30px; background: linear-gradient(90deg, rgba(0, 243, 255, 0.08) 0%, transparent 100%); box-shadow: inset 4px 0 0 var(--main-red); }}
+        
+        /* 一番上のメインヘッダー：赤の1本線 */
+        header {{ margin-bottom: 50px; border-left: 5px solid var(--main-red); padding-left: 30px; background: linear-gradient(90deg, rgba(255, 62, 62, 0.08) 0%, transparent 100%); }}
         h1 {{ font-family: var(--code-font); font-size: clamp(2rem, 5vw, 3rem); margin: 0; text-transform: uppercase; letter-spacing: 2px; }}
         .subtitle {{ color: var(--cyber-blue); font-size: 0.85rem; font-family: var(--code-font); margin-top: 10px; }}
+        
         .season-block {{ margin-bottom: 60px; border-top: 1px solid #222; padding-top: 30px; }}
-        .season-header {{ margin-bottom: 25px; border-left: 4px solid var(--cyber-blue); padding-left: 15px; background: linear-gradient(90deg, rgba(0, 243, 255, 0.06) 0%, transparent 100%); box-shadow: inset 3px 0 0 var(--main-red); }}
+        
+        /* 各シーズンのヘッダー：青の1本線 */
+        .season-header {{ margin-bottom: 25px; border-left: 4px solid var(--cyber-blue); padding-left: 15px; background: linear-gradient(90deg, rgba(0, 243, 255, 0.06) 0%, transparent 100%); }}
         .season-title {{ font-family: var(--code-font); font-size: 1.3rem; color: #fff; margin: 0; letter-spacing: 2px; }}
         
         /* スマホ対応を強化したグリッド */
@@ -142,7 +148,7 @@ DISCOGRAPHY_HTML_TEMPLATE = """<!DOCTYPE html>
         
         @media (max-width: 768px) {{ 
             .container {{ padding: 80px 12px 30px; }} 
-            .song-grid {{ grid-template-columns: repeat(2, 1fr); gap: 10px; }} /* スマホでは確実に2列にして潰れを防ぐ */
+            .song-grid {{ grid-template-columns: repeat(2, 1fr); gap: 10px; }} 
             .song-info {{ padding: 6px; }} 
             .song-title {{ font-size: 0.75rem; }} 
         }}
@@ -266,9 +272,7 @@ def build_songs():
 def build_index_latest_songs(songs):
     """index.html の最新4曲を静的HTMLとして安全に埋め込む"""
     if not os.path.exists(INDEX_HTML_PATH):
-        print(
-            f"[WARN] {INDEX_HTML_PATH} が見つからないため、トップページの更新をスキップします。"
-        )
+        print(f"[WARN] {INDEX_HTML_PATH} が見つからないため、トップページの更新をスキップします。")
         return
 
     print("[*] トップページ (index.html) の静的更新開始...")
@@ -304,17 +308,15 @@ def build_index_latest_songs(songs):
     with open(INDEX_HTML_PATH, "r", encoding="utf-8") as f:
         html = f.read()
 
-    # コメント目印の間を確実に置換する（何度実行してもネスト崩れが起きない）
-    pattern = r"<!-- LATEST_SONGS_START -->.*?<!-- LATEST_SONGS_END -->"
+    pattern = r'<!-- LATEST_SONGS_START -->.*?<!-- LATEST_SONGS_END -->'
     if re.search(pattern, html, flags=re.DOTALL):
         new_html = re.sub(pattern, replacement_content, html, flags=re.DOTALL)
         with open(INDEX_HTML_PATH, "w", encoding="utf-8") as f:
             f.write(new_html)
         print("  [Index OK] index.html の最新楽曲ブロックを安全に静的更新しました")
     else:
-        print(
-            "  [WARN] index.html 内に <!-- LATEST_SONGS_START --> 目印が見つかりませんでした。"
-        )
+        print("  [WARN] index.html 内に <!-- LATEST_SONGS_START --> 目印が見つかりませんでした。")
+
 
 # ==========================================
 # 2. メンバー（Members）ビルド処理
@@ -525,10 +527,168 @@ def build_members():
 
 
 # ==========================================
-# 3. 統合実行
+# 3. オーディオドラマ（Audio Drama）ビルド処理
+# ==========================================
+AUDIO_DRAMAS_JSON = os.path.join(DATA_DIR, "audio_dramas.json")
+AUDIO_DRAMA_HTML_PATH = os.path.join(BASE_DIR, "audio_drama.html")
+
+AUDIO_DRAMA_HTML_TEMPLATE = """<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUDIO_DRAMA ARCHIVE | MOZCRISIS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .container {{
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            box-sizing: border-box;
+        }}
+
+        h1 {{
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            margin: 0;
+            text-transform: uppercase;
+            font-family: var(--code-font);
+        }}
+
+        .drama-card {{
+            background: var(--card-bg);
+            border: 1px solid #222;
+            padding: 35px;
+            margin-bottom: 50px;
+            box-sizing: border-box;
+        }}
+
+        .ep-number {{
+            font-family: var(--code-font);
+            color: var(--main-red);
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }}
+
+        .ep-title {{
+            font-family: var(--code-font);
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            color: #fff;
+            margin: 0 0 20px 0;
+            line-height: 1.4;
+        }}
+
+        .ep-desc {{
+            color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-family: 'Segoe UI', sans-serif;
+        }}
+
+        .video-container {{
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            border: 1px solid #333;
+            box-sizing: border-box;
+        }}
+
+        .video-container iframe {{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }}
+
+        footer {{
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid #222;
+            color: #444;
+            font-size: 0.7rem;
+            font-family: var(--code-font);
+        }}
+
+        @media (max-width: 768px) {{
+            .container {{ padding: 40px 15px; }}
+            .drama-card {{ padding: 20px; }}
+        }}
+    </style>
+</head>
+
+<body>
+
+    <nav><a href="index.html">&lt;&lt; RETURN</a></nav>
+
+    <div class="container">
+        <header>
+            <h1>AUDIO_DRAMA</h1>
+            <div class="subtitle">// SYSTEM LOGS &amp; BACKSTAGE CONVERSATIONS</div>
+        </header>
+        {cards_html}
+    </div>
+
+    <footer>
+        EXECUTION_COMPLETE: MOZCRISIS SYSTEM NODE_004
+    </footer>
+
+</body>
+
+</html>
+"""
+
+
+def build_audio_dramas():
+    if not os.path.exists(AUDIO_DRAMAS_JSON):
+        print(f"[WARN] {AUDIO_DRAMAS_JSON} が見つからないため、オーディオドラマの生成をスキップします。")
+        return
+
+    print("\n[*] オーディオドラマデータビルド開始...")
+
+    with open(AUDIO_DRAMAS_JSON, "r", encoding="utf-8") as f:
+        dramas = json.load(f)
+
+    cards_list = []
+    for item in dramas:
+        episode = item.get("episode", "EPISODE_???")
+        title = item.get("title", "")
+        desc = item.get("desc", "")
+        yt_id = item.get("youtube_id", "")
+
+        card = f"""        <div class="drama-card">
+            <span class="ep-number">{episode}</span>
+            <h2 class="ep-title">{title}</h2>
+            <p class="ep-desc">
+                {desc}
+            </p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/{yt_id}" title="{title}" allowfullscreen></iframe>
+            </div>
+        </div>"""
+        cards_list.append(card)
+
+    cards_html = "\n        <hr>\n".join(cards_list)
+    html_content = AUDIO_DRAMA_HTML_TEMPLATE.format(cards_html=cards_html)
+
+    with open(AUDIO_DRAMA_HTML_PATH, "w", encoding="utf-8") as out:
+        out.write(html_content)
+
+    print("  [Audio Drama OK] audio_drama.html 生成完了")
+
+
+# ==========================================
+# 4. 統合実行
 # ==========================================
 if __name__ == "__main__":
     print("=== MOZCRISIS BUILD SYSTEM STARTED ===")
     build_songs()
     build_members()
+    build_audio_dramas()
     print("\n=== ALL BUILD TASKS COMPLETED SUCCESSFULLY ===")

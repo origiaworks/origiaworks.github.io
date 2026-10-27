@@ -20,11 +20,16 @@
         nav a { color: var(--main-red); text-decoration: none; font-size: 0.8rem; font-weight: bold; }
         nav a:hover { color: var(--cyber-blue); }
         .container { max-width: 1200px; margin: 0 auto; padding: 100px 20px 80px; box-sizing: border-box; width: 100%; }
-        header { margin-bottom: 50px; border-left: 5px solid var(--cyber-blue); padding-left: 30px; background: linear-gradient(90deg, rgba(0, 243, 255, 0.08) 0%, transparent 100%); box-shadow: inset 4px 0 0 var(--main-red); }
+        
+        /* 一番上のメインヘッダー：赤の1本線 */
+        header { margin-bottom: 50px; border-left: 5px solid var(--main-red); padding-left: 30px; background: linear-gradient(90deg, rgba(255, 62, 62, 0.08) 0%, transparent 100%); }
         h1 { font-family: var(--code-font); font-size: clamp(2rem, 5vw, 3rem); margin: 0; text-transform: uppercase; letter-spacing: 2px; }
         .subtitle { color: var(--cyber-blue); font-size: 0.85rem; font-family: var(--code-font); margin-top: 10px; }
+        
         .season-block { margin-bottom: 60px; border-top: 1px solid #222; padding-top: 30px; }
-        .season-header { margin-bottom: 25px; border-left: 4px solid var(--cyber-blue); padding-left: 15px; background: linear-gradient(90deg, rgba(0, 243, 255, 0.06) 0%, transparent 100%); box-shadow: inset 3px 0 0 var(--main-red); }
+        
+        /* 各シーズンのヘッダー：青の1本線 */
+        .season-header { margin-bottom: 25px; border-left: 4px solid var(--cyber-blue); padding-left: 15px; background: linear-gradient(90deg, rgba(0, 243, 255, 0.06) 0%, transparent 100%); }
         .season-title { font-family: var(--code-font); font-size: 1.3rem; color: #fff; margin: 0; letter-spacing: 2px; }
         
         /* スマホ対応を強化したグリッド */
@@ -40,7 +45,7 @@
         
         @media (max-width: 768px) { 
             .container { padding: 80px 12px 30px; } 
-            .song-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } /* スマホでは確実に2列にして潰れを防ぐ */
+            .song-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } 
             .song-info { padding: 6px; } 
             .song-title { font-size: 0.75rem; } 
         }

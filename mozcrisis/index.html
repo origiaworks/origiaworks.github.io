@@ -7,8 +7,15 @@
     <title>MOZCRISIS | Algorithm Rock</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Header */
+        /* 画面外への突き抜け・横スクロールを完全に遮断 */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* ヒーローエリアの中央固定 */
         header {
+            width: 100%;
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -16,11 +23,31 @@
             align-items: center;
             background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
             text-align: center;
-            padding: 0 20px;
+            padding: 0 15px;
+            box-sizing: border-box; /* paddingで横幅が広がらないようにする */
             border-left: none;
             padding-left: 0;
         }
 
+        /* スマホ画面（320px〜）でも確実に収まるサイズに調整 */
+        .glitch-logo {
+            font-size: clamp(2rem, 9.5vw, 9rem) !important;
+            letter-spacing: 0.12em;
+            /* letter-spacingによる右側の余白を相殺して完全に中央へ配置 */
+            text-indent: 0.12em; 
+            max-width: 100%;
+            white-space: nowrap;
+        }
+
+        .tagline {
+            font-size: clamp(0.7rem, 2.5vw, 1.1rem);
+            max-width: 100%;
+            word-break: break-all;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        /* 固定ナビゲーションバー */
         nav {
             position: fixed;
             top: 0;
