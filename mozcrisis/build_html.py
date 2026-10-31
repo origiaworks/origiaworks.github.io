@@ -7,14 +7,96 @@ MOZCRISIS Unified Static Site Generator (SSG)
 - トップページ更新: data/songs.json -> index.html (最新4曲を静的埋め込み)
 - メンバーHTML生成: data/members.json -> members/{mid}.html
 - オーディオドラマ生成: data/audio_dramas.json -> audio_drama.html
+- サイトマップ生成: sitemap.xml (全ページ)
+- 全ページに title/description/canonical/OGP/Twitter/JSON-LD を自動付与
 """
 
 import json
 import os
 import re
+import html as html_lib
+from urllib.parse import quote
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
+
+# ==========================================
+# 0. SEO 共通設定・ヘルパー
+# ==========================================
+SITE_URL = "https://origiaworks.github.io/mozcrisis/"   # 末尾スラッシュ必須
+SITE_NAME = "MOZCRISIS"
+# SNSシェア用の既定画像。可能なら 1200x630 の専用画像(例: images/ogp.png)を用意して差し替える
+DEFAULT_OG_IMAGE = "members/files/img/rose.png"
+
+
+def esc(value):
+    """HTML属性・本文の両方で安全になるようエスケープ"""
+    return html_lib.escape(str(value), quote=True)
+
+
+def abs_url(path=""):
+    return SITE_URL + quote(path.lstrip("/"), safe="/#")
+
+
+def trunc(text, limit=120):
+    text = re.sub(r"\s+", " ", str(text)).strip()
+    return text if len(text) <= limit else text[: limit - 1] + "…"
+
+
+def iso_date(release):
+    """'2026.08.07' -> '2026-08-07' (不正な形式は None)"""
+    m = re.fullmatch(r"(\d{4})\.(\d{2})\.(\d{2})", str(release))
+    return "-".join(m.groups()) if m else None
+
+
+def jsonld_tag(obj):
+    body = json.dumps(obj, ensure_ascii=False, indent=2).replace("</", "<\\/")
+    return f'<script type="application/ld+json">\n    {body}\n    </script>'
+
+
+def breadcrumb(items):
+    """items: [(表示名, 相対パス), ...]"""
+    return {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": i + 1, "name": name, "item": abs_url(path)}
+            for i, (name, path) in enumerate(items)
+        ],
+    }
+
+
+def seo_head(title, description, path, image=None, og_type="website",
+             twitter_card="summary_large_image", jsonld=None):
+    """<title> / description / canonical / OGP / Twitter / JSON-LD をまとめて生成"""
+    url = abs_url(path)
+    img = abs_url(image or DEFAULT_OG_IMAGE)
+    t, d = esc(title), esc(description)
+    canonical = url.split("#")[0]
+    lines = [
+        f'<title>{t}</title>',
+        f'<meta name="description" content="{d}">',
+        f'<link rel="canonical" href="{esc(canonical)}">',
+        '<meta name="robots" content="index, follow, max-image-preview:large">',
+        '<meta name="theme-color" content="#0a0a0a">',
+        f'<meta property="og:site_name" content="{SITE_NAME}">',
+        '<meta property="og:locale" content="ja_JP">',
+        f'<meta property="og:type" content="{og_type}">',
+        f'<meta property="og:title" content="{t}">',
+        f'<meta property="og:description" content="{d}">',
+        f'<meta property="og:url" content="{esc(canonical)}">',
+        f'<meta property="og:image" content="{esc(img)}">',
+        f'<meta name="twitter:card" content="{twitter_card}">',
+        f'<meta name="twitter:title" content="{t}">',
+        f'<meta name="twitter:description" content="{d}">',
+        f'<meta name="twitter:image" content="{esc(img)}">',
+    ]
+    for obj in (jsonld or []):
+        lines.append(jsonld_tag(obj))
+    return "\n    ".join(lines)
+
+
+MUSIC_GROUP = {"@type": "MusicGroup", "name": SITE_NAME, "alternateName": "モズクライシス", "url": SITE_URL}
 
 # ==========================================
 # 1. 楽曲（Songs）および カタログ ビルド処理
@@ -31,14 +113,7 @@ SONG_HTML_TEMPLATE = """<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <title>{title} | MOZCRISIS [Algorithm Rock]</title>
-    <meta name="description" content="MOZCRISIS楽曲「{title}」（{edition} / {rec_season}）。商用利用可能なフリーBGM（No Copyright Music）。作詞・設計：{architect}。">
-    
-    <!-- OGP (SNSシェア対策) -->
-    <meta property="og:title" content="{title} | MOZCRISIS">
-    <meta property="og:description" content="MOZCRISIS「{title}」の公式音源ダウンロード・歌詞ページ。">
-    <meta property="og:image" content="files/{sid}/{sid}_artwork.jpg">
-    <meta property="og:type" content="music.song">
+    {seo_head}
 
     <style>        
         .hero-visual {{ width: 100%; height: 45vh; background-position: center; background-size: cover; position: relative; margin-top: 50px; background-color: #111; background-image: url('files/{sid}/{sid}_keyvisual.png'); }}
@@ -70,7 +145,7 @@ SONG_HTML_TEMPLATE = """<!DOCTYPE html>
     <div class="container">
         <header class="song-header">
             <div class="artwork-area">
-                <img src="files/{sid}/{sid}_artwork.jpg" class="artwork-img" alt="{title} Artwork">
+                <img src="files/{sid}/{sid}_artwork.jpg" class="artwork-img" alt="{title} アートワーク - MOZCRISIS">
             </div>
             <div class="title-area">
                 <div class="track-id">TRACK_{sid_upper}</div>
@@ -107,8 +182,7 @@ DISCOGRAPHY_HTML_TEMPLATE = """<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>DISCOGRAPHY | MOZCRISIS [No Copyright Music Archive]</title>
-    <meta name="description" content="MOZCRISIS（モズクライシス）が放つ全楽曲の完全カタログ。商用利用可能なアルゴリズム・ロックのフリーBGM音源（WAV/MP3）および歌詞をシーズン別に網羅。">
+    {seo_head}
     <style>
         :root {{
             --main-red: #ff3e3e;
@@ -119,9 +193,6 @@ DISCOGRAPHY_HTML_TEMPLATE = """<!DOCTYPE html>
             --code-font: 'Consolas', 'Monaco', 'Courier New', monospace;
         }}
         body {{ background-color: var(--bg-black); color: var(--text-white); font-family: 'Segoe UI', sans-serif; margin: 0; line-height: 1.6; overflow-x: hidden; }}
-        nav {{ padding: 15px 20px; font-family: var(--code-font); border-bottom: 1px solid #222; background: rgba(0, 0, 0, 0.9); position: fixed; width: 100%; top: 0; z-index: 1000; box-sizing: border-box; }}
-        nav a {{ color: var(--main-red); text-decoration: none; font-size: 0.8rem; font-weight: bold; }}
-        nav a:hover {{ color: var(--cyber-blue); }}
         .container {{ max-width: 1200px; margin: 0 auto; padding: 100px 20px 80px; box-sizing: border-box; width: 100%; }}
         
         /* 一番上のメインヘッダー：赤の1本線 */
@@ -205,15 +276,47 @@ def build_songs():
             wav_display = "display: none;"
             wav_button = ""
 
+        page_path = f"songs/{sid}.html"
+        artwork_path = f"songs/files/{sid}/{sid}_artwork.jpg"
+        song_ld = {
+            "@context": "https://schema.org",
+            "@type": "MusicRecording",
+            "name": title,
+            "url": abs_url(page_path),
+            "image": abs_url(artwork_path),
+            "genre": "Algorithm Rock",
+            "byArtist": MUSIC_GROUP,
+            "isAccessibleForFree": True,
+            "license": abs_url("policy.html"),
+            "audio": {
+                "@type": "AudioObject",
+                "contentUrl": abs_url(f"songs/files/{sid}/{sid}.mp3"),
+                "encodingFormat": "audio/mpeg",
+            },
+        }
+        if iso_date(release):
+            song_ld["datePublished"] = iso_date(release)
+        seo = seo_head(
+            title=f"{title}｜歌詞・フリーBGM音源 | MOZCRISIS",
+            description=(f"MOZCRISIS「{title}」（{edition} / {rec_season}、{release}公開）の歌詞と音源ダウンロード。"
+                         f"商用利用OK・著作権フリーのBGM（No Copyright Music）。作詞・設計：{architect}。"),
+            path=page_path,
+            image=artwork_path,
+            og_type="music.song",
+            twitter_card="summary",
+            jsonld=[song_ld, breadcrumb([("HOME", ""), ("DISCOGRAPHY", "discography.html"), (title, page_path)])],
+        )
+
         html_content = SONG_HTML_TEMPLATE.format(
+            seo_head=seo,
             sid=sid,
             sid_upper=sid.upper(),
-            title=title,
-            release=release,
-            architect=architect,
-            edition=edition,
-            rec_season=rec_season,
-            lyrics=lyrics,
+            title=esc(title),
+            release=esc(release),
+            architect=esc(architect),
+            edition=esc(edition),
+            rec_season=esc(rec_season),
+            lyrics=html_lib.escape(lyrics, quote=False),
             wav_display=wav_display,
             wav_button=wav_button,
         )
@@ -241,10 +344,10 @@ def build_songs():
             edition = data.get("edition", "UNKNOWN_EDITION")
             cards_html += f"""
             <a href="songs/{sid}.html" class="song-card">
-                <img src="songs/files/{sid}/{sid}_artwork.jpg" class="song-jacket" alt="{title}">
+                <img src="songs/files/{sid}/{sid}_artwork.jpg" class="song-jacket" alt="{esc(title)} - MOZCRISIS" loading="lazy" decoding="async">
                 <div class="song-info">
-                    <span class="song-meta">{edition}</span>
-                    <span class="song-title">{title}</span>
+                    <span class="song-meta">{esc(edition)}</span>
+                    <span class="song-title">{esc(title)}</span>
                 </div>
             </a>
             """
@@ -260,7 +363,28 @@ def build_songs():
         </div>
         """
 
-    discography_content = DISCOGRAPHY_HTML_TEMPLATE.format(seasons_html=seasons_html)
+    disco_ld = {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "MOZCRISIS DISCOGRAPHY",
+        "url": abs_url("discography.html"),
+        "mainEntity": {
+            "@type": "ItemList",
+            "numberOfItems": len(songs),
+            "itemListElement": [
+                {"@type": "ListItem", "position": i + 1, "url": abs_url(f"songs/{sid}.html"), "name": d.get("title", sid)}
+                for i, (sid, d) in enumerate(songs.items())
+            ],
+        },
+    }
+    disco_seo = seo_head(
+        title="全楽曲一覧（DISCOGRAPHY）｜MOZCRISIS 著作権フリー・商用利用OKのBGM音源アーカイブ",
+        description=(f"MOZCRISIS（モズクライシス）の全{len(songs)}曲を収録した公式カタログ。"
+                     "商用利用OKのアルゴリズム・ロック系フリーBGM音源（WAV/MP3）と歌詞を、シーズン別に掲載。"),
+        path="discography.html",
+        jsonld=[disco_ld, breadcrumb([("HOME", ""), ("DISCOGRAPHY", "discography.html")])],
+    )
+    discography_content = DISCOGRAPHY_HTML_TEMPLATE.format(seasons_html=seasons_html, seo_head=disco_seo)
     with open(DISCOGRAPHY_HTML_PATH, "w", encoding="utf-8") as out:
         out.write(discography_content)
     print("  [Catalog OK] discography.html 生成完了")
@@ -288,10 +412,10 @@ def build_index_latest_songs(songs):
         edition = data.get("edition", "UNKNOWN_EDITION")
         cards_html += f"""
                     <a href="songs/{sid}.html" class="song-card">
-                        <img src="songs/files/{sid}/{sid}_artwork.jpg" class="song-jacket" alt="{title}">
+                        <img src="songs/files/{sid}/{sid}_artwork.jpg" class="song-jacket" alt="{esc(title)} - MOZCRISIS" loading="lazy" decoding="async">
                         <div class="song-info">
-                            <span class="song-meta">{edition}</span>
-                            <span class="song-title">{title}</span>
+                            <span class="song-meta">{esc(edition)}</span>
+                            <span class="song-title">{esc(title)}</span>
                         </div>
                     </a>"""
 
@@ -332,14 +456,7 @@ MEMBER_HTML_TEMPLATE = """<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <title>PROFILE: {name_upper} ({name}) | MOZCRISIS</title>
-    <meta name="description" content="MOZCRISISメンバー「{name}（{real_name}）」公式プロフィール。担当：{role} (CV: {cv})。{quote}">
-    
-    <!-- OGP (SNSシェア対策) -->
-    <meta property="og:title" content="{name} ({real_name}) | MOZCRISIS PROFILE">
-    <meta property="og:description" content="{quote} 担当：{role}">
-    <meta property="og:image" content="files/img/{mid}.png">
-    <meta property="og:type" content="profile">
+    {seo_head}
 
     <style>
         :root {{ 
@@ -484,6 +601,35 @@ def build_members():
         cv = data.get("cv", "TBD")
         voice_file = data.get("voiceFile", "")
 
+        # --- SEO ---
+        page_path = f"members/{mid}.html"
+        img_rel = f"members/files/img/{mid}.png"
+        og_img = img_rel if os.path.exists(os.path.join(BASE_DIR, img_rel)) else DEFAULT_OG_IMAGE
+        cv_part = f"（CV: {cv}）" if cv and cv not in ("null", "TBD") else ""
+        first_sentence = bio.split("。")[0] + "。" if bio else ""
+        member_ld = {
+            "@context": "https://schema.org",
+            "@type": "ProfilePage",
+            "url": abs_url(page_path),
+            "mainEntity": {
+                "@type": "Person",
+                "name": name,
+                "alternateName": real_name,
+                "jobTitle": role,
+                "description": bio,
+                "image": abs_url(og_img),
+                "memberOf": MUSIC_GROUP,
+            },
+        }
+        seo = seo_head(
+            title=f"{name}｜MOZCRISISメンバープロフィール（{role}）",
+            description=trunc(f"MOZCRISISメンバー「{name}（{real_name}）」のプロフィール。担当：{role}{cv_part}。{first_sentence}", 120),
+            path=page_path,
+            image=og_img,
+            og_type="profile",
+            jsonld=[member_ld, breadcrumb([("HOME", ""), ("MEMBERS", "index.html#members"), (name, page_path)])],
+        )
+
         voice_path = os.path.join(VOICE_DIR, voice_file)
         if voice_file and os.path.exists(voice_path):
             voice_button_html = f"""
@@ -496,8 +642,8 @@ def build_members():
 
         specs_html = ""
         for spec in specs:
-            label = spec.get("label", "")
-            value = spec.get("value", "")
+            label = esc(spec.get("label", ""))
+            value = esc(spec.get("value", ""))
             specs_html += f"""
             <div class="spec-item">
                 <div class="spec-label">{label}</div>
@@ -505,17 +651,18 @@ def build_members():
             </div>"""
 
         html_content = MEMBER_HTML_TEMPLATE.format(
+            seo_head=seo,
             mid=mid,
-            name=name,
+            name=esc(name),
             name_upper=mid.upper(),
-            real_name=real_name,
-            role=role,
+            real_name=esc(real_name),
+            role=esc(role),
             color=color,
-            quote=quote,
-            cv=cv,
+            quote=esc(quote),
+            cv=esc(cv),
             voice_button_html=voice_button_html,
-            bio=bio,
-            gear=gear,
+            bio=esc(bio),
+            gear=esc(gear),
             specs_html=specs_html,
         )
 
@@ -538,7 +685,7 @@ AUDIO_DRAMA_HTML_TEMPLATE = """<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AUDIO_DRAMA ARCHIVE | MOZCRISIS</title>
+    {seo_head}
     <link rel="stylesheet" href="css/style.css">
     <style>
         .container {{
@@ -663,19 +810,26 @@ def build_audio_dramas():
         yt_id = item.get("youtube_id", "")
 
         card = f"""        <div class="drama-card">
-            <span class="ep-number">{episode}</span>
-            <h2 class="ep-title">{title}</h2>
+            <span class="ep-number">{esc(episode)}</span>
+            <h2 class="ep-title">{esc(title)}</h2>
             <p class="ep-desc">
                 {desc}
             </p>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/{yt_id}" title="{title}" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/{yt_id}" title="{esc(title)}" loading="lazy" allowfullscreen></iframe>
             </div>
         </div>"""
         cards_list.append(card)
 
     cards_html = "\n        <hr>\n".join(cards_list)
-    html_content = AUDIO_DRAMA_HTML_TEMPLATE.format(cards_html=cards_html)
+    drama_seo = seo_head(
+        title="オーディオドラマ一覧（AUDIO_DRAMA）｜MOZCRISIS 舞台裏の日常ログ",
+        description=(f"MOZCRISISのオーディオドラマ全{len(dramas)}話をYouTubeで公開。"
+                     "ローズ・淀・レナ・ミオ・JIWOOたちの騒がしい日常と、音楽の裏側を描くバックステージ劇場。"),
+        path="audio_drama.html",
+        jsonld=[breadcrumb([("HOME", ""), ("AUDIO_DRAMA", "audio_drama.html")])],
+    )
+    html_content = AUDIO_DRAMA_HTML_TEMPLATE.format(cards_html=cards_html, seo_head=drama_seo)
 
     with open(AUDIO_DRAMA_HTML_PATH, "w", encoding="utf-8") as out:
         out.write(html_content)
@@ -684,11 +838,44 @@ def build_audio_dramas():
 
 
 # ==========================================
-# 4. 統合実行
+# 4. サイトマップ生成
+# ==========================================
+def build_sitemap():
+    songs, members = {}, {}
+    if os.path.exists(SONGS_JSON):
+        with open(SONGS_JSON, "r", encoding="utf-8") as f:
+            songs = json.load(f)
+    if os.path.exists(MEMBERS_JSON):
+        with open(MEMBERS_JSON, "r", encoding="utf-8") as f:
+            members = json.load(f)
+
+    entries = [(abs_url(p), None) for p in ["", "bio.html", "discography.html", "audio_drama.html", "policy.html"]]
+    entries += [(abs_url(f"members/{mid}.html"), None) for mid in members]
+    # lastmod は実際の公開日が分かる楽曲のみ記載（不正確な日付は無視されるため）
+    entries += [(abs_url(f"songs/{sid}.html"), iso_date(d.get("release", ""))) for sid, d in songs.items()]
+
+    lines = ['<?xml version="1.0" encoding="UTF-8"?>',
+             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for loc, lastmod in entries:
+        lines.append("  <url>")
+        lines.append(f"    <loc>{esc(loc)}</loc>")
+        if lastmod:
+            lines.append(f"    <lastmod>{lastmod}</lastmod>")
+        lines.append("  </url>")
+    lines.append("</urlset>")
+
+    with open(os.path.join(BASE_DIR, "sitemap.xml"), "w", encoding="utf-8") as out:
+        out.write("\n".join(lines) + "\n")
+    print(f"  [Sitemap OK] sitemap.xml 生成完了 ({len(entries)} URL)")
+
+
+# ==========================================
+# 5. 統合実行
 # ==========================================
 if __name__ == "__main__":
     print("=== MOZCRISIS BUILD SYSTEM STARTED ===")
     build_songs()
     build_members()
     build_audio_dramas()
+    build_sitemap()
     print("\n=== ALL BUILD TASKS COMPLETED SUCCESSFULLY ===")
