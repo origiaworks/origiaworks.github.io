@@ -25,8 +25,8 @@ DATA_DIR = os.path.join(BASE_DIR, "data")
 # ==========================================
 SITE_URL = "https://origiaworks.github.io/mozcrisis/"   # 末尾スラッシュ必須
 SITE_NAME = "MOZCRISIS"
-# SNSシェア用の既定画像。可能なら 1200x630 の専用画像(例: images/ogp.png)を用意して差し替える
-DEFAULT_OG_IMAGE = "members/files/img/rose.png"
+# SNSシェア用の既定画像 (1200x630 推奨)。曲・メンバーページは個別画像を優先し、無い場合のみこれを使う
+DEFAULT_OG_IMAGE = "ogp.jpg"
 
 
 def esc(value):
@@ -302,7 +302,7 @@ def build_songs():
         seo = seo_head(
             title=f"{title}｜歌詞・フリーBGM音源 | MOZCRISIS",
             description=(f"MOZCRISIS「{title}」（{edition} / {rec_season}、{release}公開）の歌詞と音源ダウンロード。"
-                         f"商用利用OK・著作権フリーのBGM（No Copyright Music）。作詞・設計：{architect}。"),
+                         f"商用利用OKのフリーBGM。作詞・設計：{architect}。"),
             path=page_path,
             image=artwork_path,
             og_type="music.song",
@@ -381,7 +381,7 @@ def build_songs():
         },
     }
     disco_seo = seo_head(
-        title="全楽曲一覧（DISCOGRAPHY）｜MOZCRISIS 著作権フリー・商用利用OKのBGM音源アーカイブ",
+        title="全楽曲一覧（DISCOGRAPHY）｜MOZCRISIS フリーBGM・商用利用OK音源アーカイブ",
         description=(f"MOZCRISIS（モズクライシス）の全{len(songs)}曲を収録した公式カタログ。"
                      "商用利用OKのアルゴリズム・ロック系フリーBGM音源（WAV/MP3）と歌詞を、シーズン別に掲載。"),
         path="discography.html",
