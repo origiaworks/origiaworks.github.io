@@ -148,7 +148,8 @@
     "name": "アカネ",
     "realName": "田口 あかね",
     "role": "Support Guitar / Free-spirited Genius",
-    "cv": "null",
+    "cv": "VOICEVOX:あんこもん",
+    "voiceFile": "akane_voice.mp3",
     "color": "#737373",
     "quote": "「音楽理論？ 知らねえよ。アタシが弾いた音が一番カッコいいコードだろ。」",
     "specs": [
@@ -176,9 +177,10 @@
     "name": "モモ",
     "realName": "櫻枝 桃香",
     "role": "Support Shamisen / Clan Master",
-    "cv": "null",
+    "cv": "VOICEVOX:ぞん子",
+    "voiceFile": "momo_voice.mp3",
     "color": "#ff66cc",
-    "quote": "<span>「伝統だの型だの、型にハメられてちゃ良い音は鳴らねえよ。ついてきな！」</span>",
+    "quote": "「伝統だの型だの、型にハメられてちゃ良い音は鳴らねえよ。ついてきな！」",
     "specs": [
       {
         "label": "TITLE",
@@ -204,7 +206,8 @@
     "name": "リコ",
     "realName": "山本 桐子",
     "role": "Support Violin / Stradivarius Aristocrat",
-    "cv": "null",
+    "cv": "VOICEVOX:九州そら",
+    "voiceFile": "riko_voice.mp3",
     "color": "#ffff00",
     "quote": "「下品な電子音の塊ね。……でも、わたくしの華麗な旋律が乗ってあげてもよろしくて？」",
     "specs": [
@@ -243,7 +246,7 @@
       },
       {
         "label": "BIAS (偏愛)",
-        "value": "元ベーシストの淀には鬼指導 / ジウには狂気の甘さ"
+        "value": "淀には鬼指導 / ジウには狂気の甘さ"
       },
       {
         "label": "MEMBER POLICY",
