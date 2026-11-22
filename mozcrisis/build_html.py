@@ -9,6 +9,7 @@ MOZCRISIS Unified Static Site Generator (SSG)
 - オーディオドラマ生成: data/audio_dramas.json -> audio_drama.html
 - サイトマップ生成: sitemap.xml (全ページ)
 - 全ページに title/description/canonical/OGP/Twitter/JSON-LD を自動付与
+- YouTube限定視聴音源（SEQUENCEエディション等）の動的ボタンスイッチ対応
 """
 
 import json
@@ -25,7 +26,6 @@ DATA_DIR = os.path.join(BASE_DIR, "data")
 # ==========================================
 SITE_URL = "https://origiaworks.github.io/mozcrisis/"   # 末尾スラッシュ必須
 SITE_NAME = "MOZCRISIS"
-# SNSシェア用の既定画像 (1200x630 推奨)。曲・メンバーページは個別画像を優先し、無い場合のみこれを使う
 DEFAULT_OG_IMAGE = "ogp.jpg"
 
 
@@ -132,10 +132,12 @@ SONG_HTML_TEMPLATE = """<!DOCTYPE html>
         .meta-value {{ font-family: var(--code-font); color: var(--cyber-blue); }}
         .action-area {{ display: flex; flex-wrap: wrap; gap: 15px; margin: 30px 0 60px; }}
         .btn {{ padding: 12px 25px; font-family: var(--code-font); font-size: 0.9rem; font-weight: bold; text-decoration: none; border: 1px solid; transition: 0.3s; text-align: center; flex: 1; min-width: 200px; box-sizing: border-box; }}
-        .btn-wav {{ color: var(--main-red); border-color: var(--main-red); {wav_display} }}
+        .btn-wav {{ color: var(--main-red); border-color: var(--main-red); }}
         .btn-wav:hover {{ background: var(--main-red); color: #fff; box-shadow: 0 0 15px rgba(255, 62, 62, 0.4); }}
         .btn-mp3 {{ color: var(--cyber-blue); border-color: var(--cyber-blue); }}
         .btn-mp3:hover {{ background: var(--cyber-blue); color: #000; box-shadow: 0 0 15px rgba(0, 243, 255, 0.4); }}
+        .btn-yt {{ color: #ff2a2a; border-color: #ff2a2a; }}
+        .btn-yt:hover {{ background: #ff2a2a; color: #fff; box-shadow: 0 0 15px rgba(255, 42, 42, 0.5); }}
         .terminal {{ background: #000; border: 1px solid #333; margin-bottom: 100px; }}
         .terminal-bar {{ background: #1a1a1a; padding: 10px; font-size: 0.7rem; color: #888; display: flex; justify-content: space-between; border-bottom: 1px solid #333; }}
         .lyrics-box {{ padding: 40px; font-family: var(--code-font); font-size: 1rem; color: #aaa; white-space: pre-wrap; margin: 0; line-height: 1.8; }}
@@ -163,8 +165,7 @@ SONG_HTML_TEMPLATE = """<!DOCTYPE html>
         </header>
 
         <div class="action-area">
-            {wav_button}
-            <a href="files/{sid}/{sid}.mp3" download class="btn btn-mp3">&gt;&gt; DOWNLOAD_MP3_BINARY</a>
+            {action_buttons}
         </div>
 
         <div class="terminal">
@@ -264,6 +265,7 @@ def build_songs():
         architect = data.get("architect", "ROSE")
         edition = data.get("edition", "UNKNOWN_EDITION")
         rec_season = data.get("rec_season", "REC_000")
+        youtube_id = data.get("youtube_id", "").strip()
 
         lyric_path = os.path.join(SONGS_FILES_DIR, sid, f"{sid}_lyric.txt")
         lyrics = "Awaiting data stream..."
@@ -271,16 +273,21 @@ def build_songs():
             with open(lyric_path, "r", encoding="utf-8") as lf:
                 lyrics = lf.read()
 
-        wav_file_path = os.path.join(SONGS_FILES_DIR, sid, f"{sid}.wav")
-        if os.path.exists(wav_file_path):
-            wav_display = "display: block;"
-            wav_button = f'<a href="files/{sid}/{sid}.wav" download class="btn btn-wav">&gt;&gt; DOWNLOAD_WAV_MASTER</a>'
+        # ボタン出し分けロジック
+        if youtube_id:
+            # YouTube限定試聴音源の場合
+            yt_url = f"https://www.youtube.com/watch?v={youtube_id}"
+            action_buttons = f'<a href="{yt_url}" target="_blank" rel="noopener noreferrer" class="btn btn-yt">&gt;&gt; PLAY_ON_YOUTUBE_STREAM</a>'
         else:
-            wav_display = "display: none;"
-            wav_button = ""
+            # 通常音源 (WAV/MP3)
+            wav_file_path = os.path.join(SONGS_FILES_DIR, sid, f"{sid}.wav")
+            wav_button = f'<a href="files/{sid}/{sid}.wav" download class="btn btn-wav">&gt;&gt; DOWNLOAD_WAV_MASTER</a>' if os.path.exists(wav_file_path) else ""
+            action_buttons = f"""{wav_button}
+            <a href="files/{sid}/{sid}.mp3" download class="btn btn-mp3">&gt;&gt; DOWNLOAD_MP3_BINARY</a>""".strip()
 
         page_path = f"songs/{sid}.html"
         artwork_path = f"songs/files/{sid}/{sid}_artwork.jpg"
+        
         song_ld = {
             "@context": "https://schema.org",
             "@type": "MusicRecording",
@@ -291,18 +298,25 @@ def build_songs():
             "byArtist": MUSIC_GROUP,
             "isAccessibleForFree": True,
             "license": abs_url("policy.html"),
-            "audio": {
+        }
+
+        if youtube_id:
+            song_ld["sameAs"] = f"https://www.youtube.com/watch?v={youtube_id}"
+        else:
+            song_ld["audio"] = {
                 "@type": "AudioObject",
                 "contentUrl": abs_url(f"songs/files/{sid}/{sid}.mp3"),
                 "encodingFormat": "audio/mpeg",
-            },
-        }
+            }
+
         if iso_date(release):
             song_ld["datePublished"] = iso_date(release)
+
+        desc_action = "YouTube公式ストリーミング配信情報" if youtube_id else "音源ダウンロード"
         seo = seo_head(
-            title=f"{title}｜歌詞・フリーBGM音源 | MOZCRISIS",
-            description=(f"MOZCRISIS「{title}」（{edition} / {rec_season}、{release}公開）の歌詞と音源ダウンロード。"
-                         f"商用利用OKのフリーBGM。作詞・設計：{architect}。"),
+            title=f"{title}｜歌詞・音源情報 | MOZCRISIS",
+            description=(f"MOZCRISIS「{title}」（{edition} / {rec_season}、{release}公開）の歌詞と{desc_action}。"
+                         f"作詞・設計：{architect}。"),
             path=page_path,
             image=artwork_path,
             og_type="music.song",
@@ -320,8 +334,7 @@ def build_songs():
             edition=esc(edition),
             rec_season=esc(rec_season),
             lyrics=html_lib.escape(lyrics, quote=False),
-            wav_display=wav_display,
-            wav_button=wav_button,
+            action_buttons=action_buttons,
         )
 
         out_path = os.path.join(SONGS_DIR, f"{sid}.html")
@@ -854,7 +867,6 @@ def build_sitemap():
 
     entries = [(abs_url(p), None) for p in ["", "bio.html", "discography.html", "audio_drama.html", "policy.html"]]
     entries += [(abs_url(f"members/{mid}.html"), None) for mid in members]
-    # lastmod は実際の公開日が分かる楽曲のみ記載（不正確な日付は無視されるため）
     entries += [(abs_url(f"songs/{sid}.html"), iso_date(d.get("release", ""))) for sid, d in songs.items()]
 
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',

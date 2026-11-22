@@ -390,5 +390,13 @@
     "architect": "ORIGIAWORKS",
     "edition": "OVERLOAD",
     "rec_season": "REC_002"
+  },
+  "Official_Mix_Vol1": {
+    "title": "Official Mix Vol1",
+    "release": "2026.11.22",
+    "architect": "JIWOO",
+    "edition": "SEQUENCE",
+    "rec_season": "REC_003",
+    "youtube_id": "fHM7D36nElM"
   }
 }
