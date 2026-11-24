@@ -2,14 +2,12 @@
 # -*- coding: utf-8 -*-
 """
 MOZCRISIS Unified Static Site Generator (SSG)
-- 楽曲個別HTML生成: data/songs.json -> songs/{sid}.html
+- 楽曲個別HTML生成: data/songs.json -> songs/{sid}.html (WAV / MP3 / M4A / YouTube対応)
 - 全曲カタログ生成: data/songs.json -> discography.html
 - トップページ更新: data/songs.json -> index.html (最新4曲を静的埋め込み)
 - メンバーHTML生成: data/members.json -> members/{mid}.html
 - オーディオドラマ生成: data/audio_dramas.json -> audio_drama.html
 - サイトマップ生成: sitemap.xml (全ページ)
-- 全ページに title/description/canonical/OGP/Twitter/JSON-LD を自動付与
-- YouTube限定視聴音源（SEQUENCEエディション等）の動的ボタンスイッチ対応
 """
 
 import json
@@ -24,13 +22,12 @@ DATA_DIR = os.path.join(BASE_DIR, "data")
 # ==========================================
 # 0. SEO 共通設定・ヘルパー
 # ==========================================
-SITE_URL = "https://origiaworks.github.io/mozcrisis/"   # 末尾スラッシュ必須
+SITE_URL = "https://origiaworks.github.io/mozcrisis/"
 SITE_NAME = "MOZCRISIS"
 DEFAULT_OG_IMAGE = "ogp.jpg"
 
 
 def esc(value):
-    """HTML属性・本文の両方で安全になるようエスケープ"""
     return html_lib.escape(str(value), quote=True)
 
 
@@ -44,7 +41,6 @@ def trunc(text, limit=120):
 
 
 def iso_date(release):
-    """'2026.08.07' -> '2026-08-07' (不正な形式は None)"""
     m = re.fullmatch(r"(\d{4})\.(\d{2})\.(\d{2})", str(release))
     return "-".join(m.groups()) if m else None
 
@@ -55,7 +51,6 @@ def jsonld_tag(obj):
 
 
 def breadcrumb(items):
-    """items: [(表示名, 相対パス), ...]"""
     return {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
@@ -68,7 +63,6 @@ def breadcrumb(items):
 
 def seo_head(title, description, path, image=None, og_type="website",
              twitter_card="summary_large_image", jsonld=None):
-    """<title> / description / canonical / OGP / Twitter / JSON-LD をまとめて生成"""
     url = abs_url(path)
     img = abs_url(image or DEFAULT_OG_IMAGE)
     t, d = esc(title), esc(description)
@@ -131,11 +125,13 @@ SONG_HTML_TEMPLATE = """<!DOCTYPE html>
         .meta-label {{ font-size: 0.7rem; color: #666; display: block; }}
         .meta-value {{ font-family: var(--code-font); color: var(--cyber-blue); }}
         .action-area {{ display: flex; flex-wrap: wrap; gap: 15px; margin: 30px 0 60px; }}
-        .btn {{ padding: 12px 25px; font-family: var(--code-font); font-size: 0.9rem; font-weight: bold; text-decoration: none; border: 1px solid; transition: 0.3s; text-align: center; flex: 1; min-width: 200px; box-sizing: border-box; }}
+        .btn {{ padding: 12px 25px; font-family: var(--code-font); font-size: 0.9rem; font-weight: bold; text-decoration: none; border: 1px solid; transition: 0.3s; text-align: center; flex: 1; min-width: 180px; box-sizing: border-box; }}
         .btn-wav {{ color: var(--main-red); border-color: var(--main-red); }}
         .btn-wav:hover {{ background: var(--main-red); color: #fff; box-shadow: 0 0 15px rgba(255, 62, 62, 0.4); }}
         .btn-mp3 {{ color: var(--cyber-blue); border-color: var(--cyber-blue); }}
         .btn-mp3:hover {{ background: var(--cyber-blue); color: #000; box-shadow: 0 0 15px rgba(0, 243, 255, 0.4); }}
+        .btn-m4a {{ color: #00ff9d; border-color: #00ff9d; }}
+        .btn-m4a:hover {{ background: #00ff9d; color: #000; box-shadow: 0 0 15px rgba(0, 255, 157, 0.4); }}
         .btn-yt {{ color: #ff2a2a; border-color: #ff2a2a; }}
         .btn-yt:hover {{ background: #ff2a2a; color: #fff; box-shadow: 0 0 15px rgba(255, 42, 42, 0.5); }}
         .terminal {{ background: #000; border: 1px solid #333; margin-bottom: 100px; }}
@@ -199,18 +195,15 @@ DISCOGRAPHY_HTML_TEMPLATE = """<!DOCTYPE html>
         body {{ background-color: var(--bg-black); color: var(--text-white); font-family: 'Segoe UI', sans-serif; margin: 0; line-height: 1.6; overflow-x: hidden; }}
         .container {{ max-width: 1200px; margin: 0 auto; padding: 100px 20px 80px; box-sizing: border-box; width: 100%; }}
         
-        /* 一番上のメインヘッダー：赤の1本線 */
         header {{ margin-bottom: 50px; border-left: 5px solid var(--main-red); padding-left: 30px; background: linear-gradient(90deg, rgba(255, 62, 62, 0.08) 0%, transparent 100%); }}
         h1 {{ font-family: var(--code-font); font-size: clamp(2rem, 5vw, 3rem); margin: 0; text-transform: uppercase; letter-spacing: 2px; }}
         .subtitle {{ color: var(--cyber-blue); font-size: 0.85rem; font-family: var(--code-font); margin-top: 10px; }}
         
         .season-block {{ margin-bottom: 60px; border-top: 1px solid #222; padding-top: 30px; }}
         
-        /* 各シーズンのヘッダー：青の1本線 */
         .season-header {{ margin-bottom: 25px; border-left: 4px solid var(--cyber-blue); padding-left: 15px; background: linear-gradient(90deg, rgba(0, 243, 255, 0.06) 0%, transparent 100%); }}
         .season-title {{ font-family: var(--code-font); font-size: 1.3rem; color: #fff; margin: 0; letter-spacing: 2px; }}
         
-        /* スマホ対応を強化したグリッド */
         .song-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; box-sizing: border-box; }}
         .song-card {{ background: var(--card-bg); border: 1px solid #222; text-decoration: none; color: inherit; display: block; transition: 0.3s; box-sizing: border-box; min-width: 0; }}
         .song-card:hover {{ border-color: var(--cyber-blue); transform: translateY(-3px); box-shadow: 0 0 10px rgba(0, 243, 255, 0.2); }}
@@ -273,17 +266,25 @@ def build_songs():
             with open(lyric_path, "r", encoding="utf-8") as lf:
                 lyrics = lf.read()
 
-        # ボタン出し分けロジック
+        # ボタン判定 (YouTube / WAV / MP3 / M4A)
         if youtube_id:
-            # YouTube限定試聴音源の場合
             yt_url = f"https://www.youtube.com/watch?v={youtube_id}"
             action_buttons = f'<a href="{yt_url}" target="_blank" rel="noopener noreferrer" class="btn btn-yt">&gt;&gt; PLAY_ON_YOUTUBE_STREAM</a>'
         else:
-            # 通常音源 (WAV/MP3)
-            wav_file_path = os.path.join(SONGS_FILES_DIR, sid, f"{sid}.wav")
-            wav_button = f'<a href="files/{sid}/{sid}.wav" download class="btn btn-wav">&gt;&gt; DOWNLOAD_WAV_MASTER</a>' if os.path.exists(wav_file_path) else ""
-            action_buttons = f"""{wav_button}
-            <a href="files/{sid}/{sid}.mp3" download class="btn btn-mp3">&gt;&gt; DOWNLOAD_MP3_BINARY</a>""".strip()
+            buttons = []
+            wav_path = os.path.join(SONGS_FILES_DIR, sid, f"{sid}.wav")
+            if os.path.exists(wav_path):
+                buttons.append(f'<a href="files/{sid}/{sid}.wav" download class="btn btn-wav">&gt;&gt; DOWNLOAD_WAV_MASTER</a>')
+
+            mp3_path = os.path.join(SONGS_FILES_DIR, sid, f"{sid}.mp3")
+            if os.path.exists(mp3_path):
+                buttons.append(f'<a href="files/{sid}/{sid}.mp3" download class="btn btn-mp3">&gt;&gt; DOWNLOAD_MP3_BINARY</a>')
+
+            m4a_path = os.path.join(SONGS_FILES_DIR, sid, f"{sid}.m4a")
+            if os.path.exists(m4a_path):
+                buttons.append(f'<a href="files/{sid}/{sid}.m4a" download class="btn btn-m4a">&gt;&gt; DOWNLOAD_M4A_AAC</a>')
+
+            action_buttons = "\n            ".join(buttons) if buttons else '<span style="color:#666; font-family:var(--code-font);">// NO_BINARY_AVAILABLE</span>'
 
         page_path = f"songs/{sid}.html"
         artwork_path = f"songs/files/{sid}/{sid}_artwork.jpg"
@@ -312,7 +313,7 @@ def build_songs():
         if iso_date(release):
             song_ld["datePublished"] = iso_date(release)
 
-        desc_action = "YouTube公式ストリーミング配信情報" if youtube_id else "音源ダウンロード"
+        desc_action = "YouTube公式ストリーミング配信情報" if youtube_id else "音源ダウンロード（WAV/MP3/M4A）"
         seo = seo_head(
             title=f"{title}｜歌詞・音源情報 | MOZCRISIS",
             description=(f"MOZCRISIS「{title}」（{edition} / {rec_season}、{release}公開）の歌詞と{desc_action}。"
@@ -396,7 +397,7 @@ def build_songs():
     disco_seo = seo_head(
         title="全楽曲一覧（DISCOGRAPHY）｜MOZCRISIS フリーBGM・商用利用OK音源アーカイブ",
         description=(f"MOZCRISIS（モズクライシス）の全{len(songs)}曲を収録した公式カタログ。"
-                     "商用利用OKのアルゴリズム・ロック系フリーBGM音源（WAV/MP3）と歌詞を、シーズン別に掲載。"),
+                     "商用利用OKのアルゴリズム・ロック系フリーBGM音源（WAV/MP3/M4A）と歌詞を、シーズン別に掲載。"),
         path="discography.html",
         jsonld=[disco_ld, breadcrumb([("HOME", ""), ("DISCOGRAPHY", "discography.html")])],
     )
@@ -410,7 +411,6 @@ def build_songs():
 
 
 def build_index_latest_songs(songs):
-    """index.html の最新4曲を静的HTMLとして安全に埋め込む"""
     if not os.path.exists(INDEX_HTML_PATH):
         print(f"[WARN] {INDEX_HTML_PATH} が見つからないため、トップページの更新をスキップします。")
         return
@@ -617,7 +617,6 @@ def build_members():
         cv = data.get("cv", "TBD")
         voice_file = data.get("voiceFile", "")
 
-        # --- SEO ---
         page_path = f"members/{mid}.html"
         img_rel = f"members/files/img/{mid}.png"
         og_img = img_rel if os.path.exists(os.path.join(BASE_DIR, img_rel)) else DEFAULT_OG_IMAGE
