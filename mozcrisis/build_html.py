@@ -3,7 +3,7 @@
 """
 MOZCRISIS Unified Static Site Generator (SSG)
 - 楽曲個別HTML生成: data/songs.json -> songs/{sid}.html (WAV / MP3 / M4A / YouTube対応)
-- 全曲カタログ生成: data/songs.json -> discography.html
+- 全曲カタログ生成: data/songs.json -> discography.html (サイバーネオン境界線)
 - トップページ更新: data/songs.json -> index.html (最新4曲を静的埋め込み)
 - メンバーHTML生成: data/members.json -> members/{mid}.html
 - オーディオドラマ生成: data/audio_dramas.json -> audio_drama.html
@@ -176,6 +176,7 @@ SONG_HTML_TEMPLATE = """<!DOCTYPE html>
 </html>
 """
 
+# ↓ ここにサイバーネオン境界線のスタイル（.season-block / .season-block::before）を適用
 DISCOGRAPHY_HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -199,7 +200,22 @@ DISCOGRAPHY_HTML_TEMPLATE = """<!DOCTYPE html>
         h1 {{ font-family: var(--code-font); font-size: clamp(2rem, 5vw, 3rem); margin: 0; text-transform: uppercase; letter-spacing: 2px; }}
         .subtitle {{ color: var(--cyber-blue); font-size: 0.85rem; font-family: var(--code-font); margin-top: 10px; }}
         
-        .season-block {{ margin-bottom: 60px; border-top: 1px solid #222; padding-top: 30px; }}
+        /* サイバーネオングラデーション＆グロー境界線 */
+        .season-block {{
+            margin-bottom: 80px;
+            padding-top: 40px;
+            position: relative;
+        }}
+        .season-block::before {{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--cyber-blue), var(--main-red), transparent);
+            box-shadow: 0 0 8px rgba(0, 243, 255, 0.4);
+        }}
         
         .season-header {{ margin-bottom: 25px; border-left: 4px solid var(--cyber-blue); padding-left: 15px; background: linear-gradient(90deg, rgba(0, 243, 255, 0.06) 0%, transparent 100%); }}
         .season-title {{ font-family: var(--code-font); font-size: 1.3rem; color: #fff; margin: 0; letter-spacing: 2px; }}
@@ -219,6 +235,7 @@ DISCOGRAPHY_HTML_TEMPLATE = """<!DOCTYPE html>
             .song-grid {{ grid-template-columns: repeat(2, 1fr); gap: 10px; }} 
             .song-info {{ padding: 6px; }} 
             .song-title {{ font-size: 0.75rem; }} 
+            .season-block {{ margin-bottom: 50px; padding-top: 30px; }}
         }}
     </style>
 </head>
